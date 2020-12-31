@@ -49,6 +49,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ChunkContainer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChunkContainer.Designer.cs">
+      <DependentUpon>ChunkContainer.cs</DependentUpon>
+    </Compile>
     <Compile Include="DocumentContainer.cs">
       <SubType>Form</SubType>
     </Compile>

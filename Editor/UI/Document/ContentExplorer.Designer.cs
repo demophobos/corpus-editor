@@ -58,6 +58,7 @@ namespace Document
             this.treeView1.Size = new System.Drawing.Size(366, 450);
             this.treeView1.TabIndex = 9;
             this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
+            this.treeView1.DoubleClick += new System.EventHandler(this.treeView1_DoubleClick);
             // 
             // imageList1
             // 

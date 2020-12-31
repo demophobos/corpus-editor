@@ -16,9 +16,12 @@ namespace Document
 {
     public partial class ContentExplorer : DockContent
     {
+        public event EventHandler<IndexModel> IndexSelected;
+
         private DocumentProcess _documentProcess;
 
         private List<IndexModel> _indeces;
+
         public ContentExplorer(DocumentProcess documentProcess)
         {
             _documentProcess = documentProcess;
@@ -181,6 +184,14 @@ namespace Document
         private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
         {
             btnAddSubsection.Visible = treeView1.SelectedNode != null;
+        }
+
+        private void treeView1_DoubleClick(object sender, EventArgs e)
+        {
+            if (treeView1.SelectedNode.Tag is IndexModel index)
+            {
+                IndexSelected.Invoke(this, index);
+            }
         }
     }
 }

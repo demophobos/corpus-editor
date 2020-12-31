@@ -19,6 +19,10 @@ namespace Document
         public DocumentProcess DocumentProcess { get; private set; }
 
         private ContentExplorer _contentExplorer;
+
+        private List<ChunkContainer> _chunkContainers;
+
+        private ChunkContainer _chunkContainer;
         public DocumentContainer(HeaderModel header)
         {
             DocumentProcess = new DocumentProcess(header);
@@ -35,6 +39,43 @@ namespace Document
             _contentExplorer = new ContentExplorer(DocumentProcess);
 
             _contentExplorer.Show(dockPanel1, DockState.DockRight);
+
+            _contentExplorer.IndexSelected += ContentExplorer_IndexSelected;
+
+            _chunkContainers = new List<ChunkContainer>();
+        }
+
+        private void ContentExplorer_IndexSelected(object sender, IndexModel index)
+        {
+            if (DocumentProcess.Header.Id == index.HeaderId)
+            {
+                if (!(_chunkContainers.FirstOrDefault(p => p.Tag.ToString() == index.Id) is ChunkContainer existingControl))
+                {
+                    _chunkContainer = new ChunkContainer(index)
+                    {
+                        Tag = index.Id
+                    };
+
+                    _chunkContainers.Add(_chunkContainer);
+
+                    _chunkContainer.FormClosed += ChunkContainer_FormClosed;
+
+                    _chunkContainer.Show(dockPanel1, DockState.Document);
+                }
+                else
+                {
+                    existingControl.Activate();
+                }
+            }
+        }
+
+        private void ChunkContainer_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            var ctrl = (ChunkContainer)sender;
+
+            _chunkContainers.Remove(ctrl);
+
+            ctrl.Dispose();
         }
     }
 }
