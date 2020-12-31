@@ -10,6 +10,11 @@ namespace Project
 {
     public partial class ProjectExplorer : DockContent
     {
+        public event EventHandler<HeaderModel> HeaderDeleted;
+        public event EventHandler<HeaderModel> HeaderSelected;
+        public event EventHandler<HeaderModel> HeaderUpdated;
+        public event EventHandler<HeaderModel> HeaderAdded;
+
         public ProjectExplorer()
         {
             InitializeComponent();
@@ -155,7 +160,7 @@ namespace Project
 
         private async void mnuDeleteHeader_Click(object sender, EventArgs e)
         {
-            if (treeView1.SelectedNode.Tag is HeaderModel header && DialogProcess.DeleteWarning(header) == DialogResult.Yes)
+            if (treeView1.SelectedNode != null && treeView1.SelectedNode.Tag is HeaderModel header && DialogProcess.DeleteWarning(header) == DialogResult.Yes)
             {
 
                 await HeaderProcess.RemoveHeader(header).ConfigureAwait(true);
@@ -170,6 +175,14 @@ namespace Project
 
                     treeView1.EndUpdate();
                 }
+            }
+        }
+
+        private void treeView1_DoubleClick(object sender, EventArgs e)
+        {
+            if (treeView1.SelectedNode != null && treeView1.SelectedNode.Tag is HeaderModel header)
+            {
+                HeaderSelected.Invoke(this, header);
             }
         }
     }

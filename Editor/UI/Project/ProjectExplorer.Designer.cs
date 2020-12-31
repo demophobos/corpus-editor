@@ -72,6 +72,7 @@ namespace Project
             this.treeView1.Size = new System.Drawing.Size(314, 301);
             this.treeView1.TabIndex = 10;
             this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
+            this.treeView1.DoubleClick += new System.EventHandler(this.treeView1_DoubleClick);
             // 
             // mnuHeader
             // 
@@ -178,6 +179,8 @@ namespace Project
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(314, 326);
+            this.CloseButton = false;
+            this.CloseButtonVisible = false;
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.toolStrip2);
             this.Name = "ProjectExplorer";

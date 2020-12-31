@@ -136,6 +136,10 @@
       <Project>{02aefa8a-72f0-4d1f-b055-4c9e9563a2ab}</Project>
       <Name>Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\UI\Document\Document.csproj">
+      <Project>{df2e0071-e09f-4c01-a1f2-152b1a903a72}</Project>
+      <Name>Document</Name>
+    </ProjectReference>
     <ProjectReference Include="..\UI\Project\Project.csproj">
       <Project>{7e8ebd62-ea6c-403e-9b52-b9538273224a}</Project>
       <Name>Project</Name>

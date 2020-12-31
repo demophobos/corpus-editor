@@ -2,7 +2,7 @@
 
 namespace Model.Query
 {
-    public class BaseQuery
+    public class BaseQuery : IQuery
     {
         public override string ToString()
         {

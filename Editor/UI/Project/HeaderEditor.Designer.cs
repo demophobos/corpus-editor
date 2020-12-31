@@ -35,6 +35,7 @@ namespace Project
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
@@ -47,7 +48,6 @@ namespace Project
             this.editionTypeSource = new System.Windows.Forms.BindingSource(this.components);
             this.lblCode = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.codeSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.langSource)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
@@ -117,6 +117,16 @@ namespace Project
             this.label4.TabIndex = 6;
             this.label4.Text = "Издание:";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label2
+            // 
+            this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label2.Location = new System.Drawing.Point(417, 99);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(45, 26);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "Язык:";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // flowLayoutPanel1
             // 
@@ -243,16 +253,6 @@ namespace Project
             this.label6.TabIndex = 11;
             this.label6.Text = "Код:";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label2
-            // 
-            this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label2.Location = new System.Drawing.Point(417, 99);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(45, 26);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Язык:";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // HeaderEditor
             // 

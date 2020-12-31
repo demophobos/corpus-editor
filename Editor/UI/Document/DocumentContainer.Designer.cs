@@ -1,7 +1,7 @@
 ﻿
-namespace Project
+namespace Document
 {
-    partial class ContentExplorer
+    partial class DocumentContainer
     {
         /// <summary> 
         /// Обязательная переменная конструктора.
@@ -29,10 +29,33 @@ namespace Project
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
+            this.dockPanel1 = new WeifenLuo.WinFormsUI.Docking.DockPanel();
+            this.SuspendLayout();
+            // 
+            // dockPanel1
+            // 
+            this.dockPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dockPanel1.DocumentStyle = WeifenLuo.WinFormsUI.Docking.DocumentStyle.DockingWindow;
+            this.dockPanel1.Location = new System.Drawing.Point(0, 0);
+            this.dockPanel1.Name = "dockPanel1";
+            this.dockPanel1.Size = new System.Drawing.Size(640, 486);
+            this.dockPanel1.TabIndex = 1;
+            // 
+            // DocumentContainer
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(640, 486);
+            this.Controls.Add(this.dockPanel1);
+            this.HideOnClose = true;
+            this.Name = "DocumentContainer";
+            this.Load += new System.EventHandler(this.DocumentContainer_Load);
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        private WeifenLuo.WinFormsUI.Docking.DockPanel dockPanel1;
     }
 }

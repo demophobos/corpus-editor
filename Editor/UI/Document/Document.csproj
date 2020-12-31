@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{7E8EBD62-EA6C-403E-9B52-B9538273224A}</ProjectGuid>
+    <ProjectGuid>{DF2E0071-E09F-4C01-A1F2-152B1A903A72}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Project</RootNamespace>
-    <AssemblyName>Project</AssemblyName>
+    <RootNamespace>Document</RootNamespace>
+    <AssemblyName>Document</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -42,30 +42,30 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
     <Reference Include="WeifenLuo.WinFormsUI.Docking, Version=3.0.6.0, Culture=neutral, PublicKeyToken=5cded1a1a0a7b481, processorArchitecture=MSIL">
-      <HintPath>..\packages\DockPanelSuite.3.0.6\lib\net40\WeifenLuo.WinFormsUI.Docking.dll</HintPath>
+      <HintPath>..\..\packages\DockPanelSuite.3.0.6\lib\net40\WeifenLuo.WinFormsUI.Docking.dll</HintPath>
     </Reference>
     <Reference Include="WeifenLuo.WinFormsUI.Docking.ThemeVS2015, Version=3.0.6.0, Culture=neutral, PublicKeyToken=5cded1a1a0a7b481, processorArchitecture=MSIL">
-      <HintPath>..\packages\DockPanelSuite.ThemeVS2015.3.0.6\lib\net40\WeifenLuo.WinFormsUI.Docking.ThemeVS2015.dll</HintPath>
+      <HintPath>..\..\packages\DockPanelSuite.ThemeVS2015.3.0.6\lib\net40\WeifenLuo.WinFormsUI.Docking.ThemeVS2015.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="HeaderEditor.cs">
+    <Compile Include="DocumentContainer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="HeaderEditor.Designer.cs">
-      <DependentUpon>HeaderEditor.cs</DependentUpon>
+    <Compile Include="DocumentContainer.Designer.cs">
+      <DependentUpon>DocumentContainer.cs</DependentUpon>
     </Compile>
-    <Compile Include="ProjectEditor.cs">
+    <Compile Include="ContentExplorer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ProjectEditor.Designer.cs">
-      <DependentUpon>ProjectEditor.cs</DependentUpon>
+    <Compile Include="ContentExplorer.Designer.cs">
+      <DependentUpon>ContentExplorer.cs</DependentUpon>
     </Compile>
-    <Compile Include="ProjectExplorer.cs">
+    <Compile Include="IndexEditor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ProjectExplorer.Designer.cs">
-      <DependentUpon>ProjectExplorer.cs</DependentUpon>
+    <Compile Include="IndexEditor.Designer.cs">
+      <DependentUpon>IndexEditor.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -75,22 +75,22 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="HeaderEditor.resx">
-      <DependentUpon>HeaderEditor.cs</DependentUpon>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ContentExplorer.resx">
+      <DependentUpon>ContentExplorer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ProjectEditor.resx">
-      <DependentUpon>ProjectEditor.cs</DependentUpon>
+    <EmbeddedResource Include="DocumentContainer.resx">
+      <DependentUpon>DocumentContainer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ProjectExplorer.resx">
-      <DependentUpon>ProjectExplorer.cs</DependentUpon>
+    <EmbeddedResource Include="IndexEditor.resx">
+      <DependentUpon>IndexEditor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Model\Model.csproj">
