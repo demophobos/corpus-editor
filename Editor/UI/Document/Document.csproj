@@ -55,6 +55,18 @@
     <Compile Include="ChunkContainer.Designer.cs">
       <DependentUpon>ChunkContainer.cs</DependentUpon>
     </Compile>
+    <Compile Include="ChunkEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChunkEditor.Designer.cs">
+      <DependentUpon>ChunkEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ChunkExplorer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChunkExplorer.Designer.cs">
+      <DependentUpon>ChunkExplorer.cs</DependentUpon>
+    </Compile>
     <Compile Include="DocumentContainer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -84,6 +96,15 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="ChunkContainer.resx">
+      <DependentUpon>ChunkContainer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChunkEditor.resx">
+      <DependentUpon>ChunkEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChunkExplorer.resx">
+      <DependentUpon>ChunkExplorer.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ContentExplorer.resx">
       <DependentUpon>ContentExplorer.cs</DependentUpon>
     </EmbeddedResource>
