@@ -59,19 +59,31 @@ namespace Editor
             _projectExplorer.Show(dockPanel1, DockState.DockLeft);
         }
 
-        private void ProjectExplorer_HeaderDeleted(object sender, Model.HeaderModel e)
+        private void ProjectExplorer_HeaderDeleted(object sender, Model.HeaderModel header)
         {
-            throw new NotImplementedException();
+            var deleted = _openedDocuments.FirstOrDefault(i => i.DocumentProcess.Header.Id == header.Id);
+
+            if (deleted != null)
+            {
+                foreach (Control ctrl in deleted.Controls)
+                {
+                    ctrl.Dispose();
+                }
+
+                deleted.Close();
+
+                _openedDocuments.Remove(deleted);
+            }
         }
 
         private void ProjectExplorer_HeaderUpdated(object sender, Model.HeaderModel e)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         private void ProjectExplorer_HeaderAdded(object sender, Model.HeaderModel e)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         private void ProjectExplorer_HeaderSelected(object sender, Model.HeaderModel header)

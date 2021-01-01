@@ -9,7 +9,7 @@ namespace API
 {
     public class ChunkAPI : BaseAPI
     {
-        public static async Task<ChunkModel> GetChunk(ChunkByIndexQuery query)
+        public static async Task<ChunkModel> GetChunk(IQuery query)
         {
             try
             {

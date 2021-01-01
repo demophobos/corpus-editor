@@ -55,6 +55,8 @@
     <Compile Include="Control\Loader.Designer.cs">
       <DependentUpon>Loader.cs</DependentUpon>
     </Compile>
+    <Compile Include="Helper\RichTextBoxExtensions.cs" />
+    <Compile Include="Helper\TreeViewExtensions.cs" />
     <Compile Include="Process\ComboProcess.cs" />
     <Compile Include="Process\DialogProcess.cs" />
     <Compile Include="Process\TreeProcess.cs" />

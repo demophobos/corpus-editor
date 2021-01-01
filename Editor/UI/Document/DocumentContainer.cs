@@ -77,5 +77,15 @@ namespace Document
 
             ctrl.Dispose();
         }
+
+        private void btnCloseAllChunks_Click(object sender, EventArgs e)
+        {
+            foreach (IDockContent document in dockPanel1.DocumentsToArray())
+            {
+                document.DockHandler.DockPanel = null;
+                document.DockHandler.Close();
+            }
+            _chunkContainers = new List<ChunkContainer>();
+        }
     }
 }

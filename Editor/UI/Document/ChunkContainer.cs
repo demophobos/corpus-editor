@@ -36,7 +36,7 @@ namespace Document
 
 
 
-        private void btnAddChunk_Click(object sender, EventArgs e)
+        private async void btnAddChunk_Click(object sender, EventArgs e)
         {
             _chunk = new ChunkModel { IndexId = _index.Id };
 
@@ -44,7 +44,11 @@ namespace Document
 
             if (editor.ShowDialog() == DialogResult.OK)
             {
+                _chunk = await ChunkProcess.GetChunk(_index.Id).ConfigureAwait(true);
+
                 btnAddChunk.Enabled = false;
+
+                btnDeleteChunk.Enabled = btnEditChunk.Enabled = btnMorphAnalysis.Enabled = true;
 
                 _chunkExplorer = new ChunkExplorer(_chunk);
 
@@ -68,7 +72,7 @@ namespace Document
             }
         }
 
-        private void btnEditChunk_Click(object sender, EventArgs e)
+        private async void btnEditChunk_Click(object sender, EventArgs e)
         {
             var editor = new ChunkEditor(_chunk);
 
@@ -78,15 +82,26 @@ namespace Document
 
                 _chunkExplorer.Close();
 
+                _chunk = await ChunkProcess.GetChunk(_index.Id).ConfigureAwait(true);
+
                 _chunkExplorer = new ChunkExplorer(_chunk);
 
                 _chunkExplorer.Show(dockPanel1, DockState.Document);
             }
         }
 
-        private void btnDeleteChunk_Click(object sender, EventArgs e)
+        private async void btnDeleteChunk_Click(object sender, EventArgs e)
         {
+            if (DialogProcess.DeleteWarning(_chunk) == DialogResult.Yes)
+            {
+                await ChunkProcess.RemoveChunk(_chunk).ConfigureAwait(true);
 
+                _chunkExplorer.Close();
+
+                btnAddChunk.Enabled = true;
+
+                btnDeleteChunk.Enabled = btnEditChunk.Enabled = btnMorphAnalysis.Enabled = false;
+            }
         }
     }
 }

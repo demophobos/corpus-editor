@@ -134,26 +134,32 @@ namespace Project
 
         private void mnuCreateHeader_Click(object sender, EventArgs e)
         {
-            if (treeView1.SelectedNode != null && treeView1.SelectedNode.Tag is Model.ProjectModel project)
+            if (treeView1.SelectedNode != null && treeView1.SelectedNode.Tag is ProjectModel project)
             {
-                var editor = new HeaderEditor(new HeaderModel { ProjectId = project.Id });
+                var header = new HeaderModel { ProjectId = project.Id };
+
+                var editor = new HeaderEditor(header);
 
                 if (editor.ShowDialog() == DialogResult.OK)
                 {
                     LoadData();
+
+                    HeaderAdded.Invoke(this, header);
                 }
             }
         }
 
         private void mnuEditHeader_Click(object sender, EventArgs e)
         {
-            if (treeView1.SelectedNode != null && treeView1.SelectedNode.Tag is Model.HeaderModel header)
+            if (treeView1.SelectedNode != null && treeView1.SelectedNode.Tag is HeaderModel header)
             {
                 var editor = new HeaderEditor(header);
 
                 if (editor.ShowDialog() == DialogResult.OK)
                 {
                     LoadData();
+
+                    HeaderUpdated.Invoke(this, header);
                 }
             }
         }
@@ -162,7 +168,6 @@ namespace Project
         {
             if (treeView1.SelectedNode != null && treeView1.SelectedNode.Tag is HeaderModel header && DialogProcess.DeleteWarning(header) == DialogResult.Yes)
             {
-
                 await HeaderProcess.RemoveHeader(header).ConfigureAwait(true);
 
                 var node = treeView1.Nodes.Find(treeView1.SelectedNode.Name, true).FirstOrDefault();
@@ -174,6 +179,8 @@ namespace Project
                     treeView1.Nodes.Remove(node);
 
                     treeView1.EndUpdate();
+
+                    HeaderDeleted.Invoke(this, header);
                 }
             }
         }

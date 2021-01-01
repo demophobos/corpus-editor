@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="BaseModel.cs" />
     <Compile Include="ChunkModel.cs" />
+    <Compile Include="ElementModel.cs" />
     <Compile Include="Enum\CommentType.cs" />
     <Compile Include="Enum\ConditionOperator.cs" />
     <Compile Include="Enum\EditionTypeEnum.cs" />
@@ -68,6 +69,7 @@
     <Compile Include="AuthResponseModel.cs" />
     <Compile Include="Query\BaseQuery.cs" />
     <Compile Include="Query\ChunkByIndexQuery.cs" />
+    <Compile Include="Query\ElementByChunkQuery.cs" />
     <Compile Include="Query\HeaderQuery.cs" />
     <Compile Include="Query\IndexByHeaderQuery.cs" />
     <Compile Include="Query\IndexByParentQuery.cs" />

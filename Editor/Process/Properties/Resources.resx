@@ -117,18 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="toolStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="btnCloseAllChunks.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADgSURBVDhP7ZIxDoJAEEU5GzScgiCd1/AaFN6A2kKCNJJI
-        PIKVmkgoVoKwlRn34w6oWTGh9ic/m52/82YSsNq2pV8WQtybpplbJuGBbdtGc+a6LiVJQgqy0G2D+FG8
-        jinf5ZRuUsq2WQ/4tIIsdetTKPLE0/FMxaUgx3F6AGdsbKLqK90+ADCZN8CJGrKrqHqjBngURcj2bwCT
-        TQB2GIZU1/WhA4z5GwBG3m0B4YJiWZbd+dpo8h9gAKhPcvM8bzpASjlTv2k1GcDiTfBgzEEQACB02yC1
-        iY8A9DFjkJTSfwDCdLd9/0PJcAAAAABJRU5ErkJggg==
-</value>
+  <data name="PunctuationPattern" xml:space="preserve">
+    <value>["“”῾†»«᾽'\[\]&lt;&gt;.,\/#!$%?!\^&amp;\*;:{}=\-_`~–()\—]</value>
   </data>
 </root>

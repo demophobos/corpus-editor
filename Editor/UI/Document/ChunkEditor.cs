@@ -30,7 +30,7 @@ namespace Document
 
             var chunk = chunkSource.DataSource as ChunkModel;
 
-            _chunkModel = await ChunkProcess.SaveChunk(chunk).ConfigureAwait(true);
+            _chunkModel = await ChunkProcess.SaveChunkAndElements(chunk).ConfigureAwait(true);
 
             DialogResult = DialogResult.OK;
         }

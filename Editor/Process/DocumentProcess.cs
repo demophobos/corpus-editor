@@ -30,9 +30,9 @@ namespace Process
             return await API.IndexAPI.GetIndeces(query);
         }
 
-        public async Task<IndexModel> SaveIndex(IndexModel inx)
+        public async Task<IndexModel> SaveIndex(IndexModel index)
         {
-            return await API.IndexAPI.Save(inx);
+            return await API.IndexAPI.Save(index);
         }
 
         public async Task<IndexModel> DeleteIndex(IndexModel index)
