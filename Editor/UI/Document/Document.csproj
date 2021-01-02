@@ -67,6 +67,12 @@
     <Compile Include="ChunkExplorer.Designer.cs">
       <DependentUpon>ChunkExplorer.cs</DependentUpon>
     </Compile>
+    <Compile Include="ChunkViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChunkViewer.Designer.cs">
+      <DependentUpon>ChunkViewer.cs</DependentUpon>
+    </Compile>
     <Compile Include="DocumentContainer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -104,6 +110,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ChunkExplorer.resx">
       <DependentUpon>ChunkExplorer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChunkViewer.resx">
+      <DependentUpon>ChunkViewer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ContentExplorer.resx">
       <DependentUpon>ContentExplorer.cs</DependentUpon>

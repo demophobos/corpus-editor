@@ -23,6 +23,10 @@ namespace Document
         private List<ChunkContainer> _chunkContainers;
 
         private ChunkContainer _chunkContainer;
+
+        private ChunkViewer _chunkViewer;
+
+        private IndexModel _selectedIndex;
         public DocumentContainer(HeaderModel header)
         {
             DocumentProcess = new DocumentProcess(header);
@@ -42,7 +46,20 @@ namespace Document
 
             _contentExplorer.IndexSelected += ContentExplorer_IndexSelected;
 
+            _contentExplorer.IndexPreviewSelected += ContentExplorer_IndexPreviewSelected;
+
             _chunkContainers = new List<ChunkContainer>();
+
+            _chunkViewer = new ChunkViewer();
+
+            _chunkViewer.Show(_contentExplorer.Pane, DockAlignment.Bottom, 0.2);
+        }
+
+        private void ContentExplorer_IndexPreviewSelected(object sender, IndexModel index)
+        {
+            _selectedIndex = index;
+
+            _chunkViewer.LoadData(_selectedIndex);
         }
 
         private void ContentExplorer_IndexSelected(object sender, IndexModel index)
@@ -61,11 +78,41 @@ namespace Document
                     _chunkContainer.FormClosed += ChunkContainer_FormClosed;
 
                     _chunkContainer.Show(dockPanel1, DockState.Document);
+
+                    _chunkContainer.ChunkAdded += ChunkContainer_ChunkAdded;
+
+                    _chunkContainer.ChunkDeleted += ChunkContainer_ChunkDeleted;
+
+                    _chunkContainer.ChunkUpdated += ChunkContainer_ChunkUpdated;
                 }
                 else
                 {
                     existingControl.Activate();
                 }
+            }
+        }
+
+        private void ChunkContainer_ChunkUpdated(object sender, ChunkModel chunk)
+        {
+            if (_selectedIndex != null && chunk.IndexId == _selectedIndex.Id)
+            {
+                _chunkViewer.LoadData(_selectedIndex);
+            }
+        }
+
+        private void ChunkContainer_ChunkDeleted(object sender, ChunkModel chunk)
+        {
+            if (_selectedIndex != null && chunk.IndexId == _selectedIndex.Id)
+            {
+                _chunkViewer.LoadData(_selectedIndex);
+            }
+        }
+
+        private void ChunkContainer_ChunkAdded(object sender, ChunkModel chunk)
+        {
+            if (_selectedIndex != null && chunk.IndexId == _selectedIndex.Id)
+            {
+                _chunkViewer.LoadData(_selectedIndex);
             }
         }
 

@@ -18,6 +18,8 @@ namespace Document
     {
         public event EventHandler<IndexModel> IndexSelected;
 
+        public event EventHandler<IndexModel> IndexPreviewSelected;
+
         private DocumentProcess _documentProcess;
 
         private List<IndexModel> _indeces;
@@ -99,11 +101,6 @@ namespace Document
             }
         }
 
-        private void btnClearContent_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private async void btnAddSubsection_ClickAsync(object sender, EventArgs e)
         {
             if (treeView1.SelectedNode != null && treeView1.SelectedNode.Tag is IndexModel parentIndex)
@@ -183,15 +180,40 @@ namespace Document
 
         private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
         {
-            btnAddSubsection.Visible = treeView1.SelectedNode != null;
+            btnAddSubsection.Visible = e.Node != null;
+
+            if (e.Action == TreeViewAction.ByKeyboard &&
+                (e.Action != TreeViewAction.Collapse ||
+                e.Action != TreeViewAction.Expand) &&
+                e.Node.Tag is IndexModel index)
+            {
+                IndexPreviewSelected.Invoke(this, index);
+            }
         }
 
-        private void treeView1_DoubleClick(object sender, EventArgs e)
+        private void treeView1_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
-            if (treeView1.SelectedNode.Tag is IndexModel index)
+            if (e.Node.Tag is IndexModel index)
+            {
+                IndexPreviewSelected.Invoke(this, index);
+            }
+        }
+
+        private void treeView1_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+            if (e.Node.Tag is IndexModel index)
+            {
+                IndexSelected.Invoke(this, index);
+            }
+        }
+
+        private void btnOpenEditor_Click(object sender, EventArgs e)
+        {
+            if (treeView1.SelectedNode != null && treeView1.SelectedNode.Tag is IndexModel index)
             {
                 IndexSelected.Invoke(this, index);
             }
         }
     }
 }
+

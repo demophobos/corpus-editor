@@ -23,6 +23,12 @@ namespace Document
 
         private ChunkModel _chunk;
 
+        public event EventHandler<ChunkModel> ChunkAdded;
+
+        public event EventHandler<ChunkModel> ChunkUpdated;
+
+        public event EventHandler<ChunkModel> ChunkDeleted;
+
         public ChunkContainer(IndexModel index)
         {
             _index = index;
@@ -33,8 +39,6 @@ namespace Document
 
             Text = index.Name;
         }
-
-
 
         private async void btnAddChunk_Click(object sender, EventArgs e)
         {
@@ -53,6 +57,8 @@ namespace Document
                 _chunkExplorer = new ChunkExplorer(_chunk);
 
                 _chunkExplorer.Show(dockPanel1, DockState.Document);
+
+                ChunkAdded.Invoke(this, _chunk);
             }
         }
 
@@ -87,6 +93,8 @@ namespace Document
                 _chunkExplorer = new ChunkExplorer(_chunk);
 
                 _chunkExplorer.Show(dockPanel1, DockState.Document);
+
+                ChunkUpdated.Invoke(this, _chunk);
             }
         }
 
@@ -101,6 +109,8 @@ namespace Document
                 btnAddChunk.Enabled = true;
 
                 btnDeleteChunk.Enabled = btnEditChunk.Enabled = btnMorphAnalysis.Enabled = false;
+
+                ChunkDeleted.Invoke(this, _chunk);
             }
         }
     }

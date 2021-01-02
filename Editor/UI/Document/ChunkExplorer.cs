@@ -26,6 +26,7 @@ namespace Document
 
         private async void ChunkExplorer_Load(object sender, EventArgs e)
         {
+
             flowLayoutPanel1.Controls.Clear();
 
             var elements = await ElementProcess.GetElements(_chunk.Id).ConfigureAwait(true);
@@ -109,6 +110,7 @@ namespace Document
                     //}
                 }
             }
+
         }
 
         private void Label_MouseLeave(object sender, EventArgs e)

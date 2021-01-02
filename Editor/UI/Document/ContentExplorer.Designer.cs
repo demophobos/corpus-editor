@@ -39,6 +39,8 @@ namespace Document
             this.btnAddSubsection = new System.Windows.Forms.ToolStripMenuItem();
             this.btnEditSection = new System.Windows.Forms.ToolStripMenuItem();
             this.btnRemoveSection = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnOpenEditor = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip2.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -58,7 +60,8 @@ namespace Document
             this.treeView1.Size = new System.Drawing.Size(366, 450);
             this.treeView1.TabIndex = 9;
             this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
-            this.treeView1.DoubleClick += new System.EventHandler(this.treeView1_DoubleClick);
+            this.treeView1.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView1_NodeMouseClick);
+            this.treeView1.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView1_NodeMouseDoubleClick);
             // 
             // imageList1
             // 
@@ -96,9 +99,11 @@ namespace Document
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnAddSubsection,
             this.btnEditSection,
-            this.btnRemoveSection});
+            this.btnRemoveSection,
+            this.toolStripMenuItem1,
+            this.btnOpenEditor});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(250, 70);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(250, 120);
             // 
             // btnAddSubsection
             // 
@@ -126,6 +131,19 @@ namespace Document
             this.btnRemoveSection.Size = new System.Drawing.Size(249, 22);
             this.btnRemoveSection.Text = "Удалить раздел";
             this.btnRemoveSection.Click += new System.EventHandler(this.BtnRemoveSection_ClickAsync);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(246, 6);
+            // 
+            // btnOpenEditor
+            // 
+            this.btnOpenEditor.Image = ((System.Drawing.Image)(resources.GetObject("btnOpenEditor.Image")));
+            this.btnOpenEditor.Name = "btnOpenEditor";
+            this.btnOpenEditor.Size = new System.Drawing.Size(249, 22);
+            this.btnOpenEditor.Text = "Open editor";
+            this.btnOpenEditor.Click += new System.EventHandler(this.btnOpenEditor_Click);
             // 
             // ContentExplorer
             // 
@@ -157,5 +175,7 @@ namespace Document
         private System.Windows.Forms.ToolStripMenuItem btnAddSubsection;
         private System.Windows.Forms.ToolStripMenuItem btnEditSection;
         private System.Windows.Forms.ToolStripMenuItem btnRemoveSection;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem btnOpenEditor;
     }
 }
