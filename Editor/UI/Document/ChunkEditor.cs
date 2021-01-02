@@ -14,7 +14,6 @@ namespace Document
 {
     public partial class ChunkEditor : Form
     {
-        //private ChunkModel _chunkModel;
         public ChunkEditor(IndexModel _index, ChunkModel chunkModel)
         {
             InitializeComponent();
