@@ -1,5 +1,6 @@
 ﻿using Common.Process;
 using Document;
+using Model;
 using Process;
 using Project;
 using System;
@@ -14,7 +15,7 @@ namespace Editor
     {
         private ProjectExplorer _projectExplorer;
 
-        private List<DocumentContainer> _openedDocuments = new List<DocumentContainer>();
+        //private List<DocumentContainer> _openedDocuments = new List<DocumentContainer>();
 
         public MainForm()
         {
@@ -52,6 +53,8 @@ namespace Editor
                 _projectExplorer.HeaderUpdated += ProjectExplorer_HeaderUpdated;
 
                 _projectExplorer.HeaderDeleted += ProjectExplorer_HeaderDeleted;
+
+                _projectExplorer.ProjectDeleted += ProjectExplorer_ProjectDeleted;
             }
 
             _projectExplorer.LoadData();
@@ -59,11 +62,13 @@ namespace Editor
             _projectExplorer.Show(dockPanel1, DockState.DockLeft);
         }
 
-        private void ProjectExplorer_HeaderDeleted(object sender, Model.HeaderModel header)
+        private void ProjectExplorer_ProjectDeleted(object sender, ProjectModel project)
         {
-            var deleted = _openedDocuments.FirstOrDefault(i => i.DocumentProcess.Header.Id == header.Id);
+            var docs = dockPanel1.DocumentsToArray();
 
-            if (deleted != null)
+            var deletedDocuments = docs.Where(i => ((DocumentContainer)i).DocumentProcess.Header.ProjectId == project.Id).Select(i=>i as DocumentContainer);
+
+            foreach (var deleted in deletedDocuments)
             {
                 foreach (Control ctrl in deleted.Controls)
                 {
@@ -72,23 +77,41 @@ namespace Editor
 
                 deleted.Close();
 
-                _openedDocuments.Remove(deleted);
+                docs.ToList().Remove(deleted);
             }
         }
 
-        private void ProjectExplorer_HeaderUpdated(object sender, Model.HeaderModel e)
+        private void ProjectExplorer_HeaderDeleted(object sender, HeaderModel header)
+        {
+            var docs = dockPanel1.DocumentsToArray();
+
+            var deleted = docs.FirstOrDefault(i => ((DocumentContainer)i).DocumentProcess.Header.Id == header.Id) as DocumentContainer;
+
+            foreach (Control ctrl in deleted.Controls)
+            {
+                ctrl.Dispose();
+            }
+
+            deleted.Close();
+
+            docs.ToList().Remove(deleted);
+        }
+
+        private void ProjectExplorer_HeaderUpdated(object sender, HeaderModel e)
         {
             //throw new NotImplementedException();
         }
 
-        private void ProjectExplorer_HeaderAdded(object sender, Model.HeaderModel e)
+        private void ProjectExplorer_HeaderAdded(object sender, HeaderModel e)
         {
             //throw new NotImplementedException();
         }
 
-        private void ProjectExplorer_HeaderSelected(object sender, Model.HeaderModel header)
+        private void ProjectExplorer_HeaderSelected(object sender, HeaderModel header)
         {
-            var exsitingDocument = _openedDocuments.FirstOrDefault(i => i.DocumentProcess.Header.Id == header.Id);
+            var docs = dockPanel1.DocumentsToArray();
+
+            var exsitingDocument = docs.FirstOrDefault(i => ((DocumentContainer)i).DocumentProcess.Header.Id == header.Id) as DocumentContainer;
 
             if (exsitingDocument != null)
             {
@@ -100,7 +123,7 @@ namespace Editor
 
                 documentForm.Show(dockPanel1, DockState.Document);
 
-                _openedDocuments.Add(documentForm);
+                //_openedDocuments.Add(documentForm);
             }
         }
     }

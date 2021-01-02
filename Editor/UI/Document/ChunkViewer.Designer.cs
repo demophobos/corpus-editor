@@ -39,14 +39,16 @@ namespace Document
             this.lblChunk.Location = new System.Drawing.Point(0, 0);
             this.lblChunk.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
             this.lblChunk.Name = "lblChunk";
-            this.lblChunk.Size = new System.Drawing.Size(407, 313);
+            this.lblChunk.Size = new System.Drawing.Size(582, 332);
             this.lblChunk.TabIndex = 0;
             // 
             // ChunkViewer
             // 
+            this.AllowEndUserDocking = false;
+            this.AutoHidePortion = 0.5D;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(407, 313);
+            this.ClientSize = new System.Drawing.Size(582, 332);
             this.CloseButton = false;
             this.CloseButtonVisible = false;
             this.Controls.Add(this.lblChunk);

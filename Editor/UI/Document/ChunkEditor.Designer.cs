@@ -31,16 +31,16 @@ namespace Document
         {
             this.components = new System.ComponentModel.Container();
             this.txtChunk = new System.Windows.Forms.RichTextBox();
+            this.chunkSource = new System.Windows.Forms.BindingSource(this.components);
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.chunkSource = new System.Windows.Forms.BindingSource(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.chunkSource)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chunkSource)).BeginInit();
             this.SuspendLayout();
             // 
             // txtChunk
@@ -54,6 +54,10 @@ namespace Document
             this.txtChunk.TabIndex = 1;
             this.txtChunk.Text = "";
             this.txtChunk.TextChanged += new System.EventHandler(this.txtChunk_TextChanged);
+            // 
+            // chunkSource
+            // 
+            this.chunkSource.DataSource = typeof(Model.ChunkModel);
             // 
             // flowLayoutPanel1
             // 
@@ -112,10 +116,6 @@ namespace Document
             this.panel1.Size = new System.Drawing.Size(578, 322);
             this.panel1.TabIndex = 2;
             // 
-            // chunkSource
-            // 
-            this.chunkSource.DataSource = typeof(Model.ChunkModel);
-            // 
             // ChunkEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -124,11 +124,11 @@ namespace Document
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "ChunkEditor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Редактор текста";
+            this.Text = "Редактор фрагмента";
+            ((System.ComponentModel.ISupportInitialize)(this.chunkSource)).EndInit();
             this.flowLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.chunkSource)).EndInit();
             this.ResumeLayout(false);
 
         }

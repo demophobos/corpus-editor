@@ -103,7 +103,7 @@ namespace Document
             this.toolStripMenuItem1,
             this.btnOpenEditor});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(250, 120);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(250, 98);
             // 
             // btnAddSubsection
             // 
@@ -142,7 +142,7 @@ namespace Document
             this.btnOpenEditor.Image = ((System.Drawing.Image)(resources.GetObject("btnOpenEditor.Image")));
             this.btnOpenEditor.Name = "btnOpenEditor";
             this.btnOpenEditor.Size = new System.Drawing.Size(249, 22);
-            this.btnOpenEditor.Text = "Open editor";
+            this.btnOpenEditor.Text = "Открыть редактор фрагмента";
             this.btnOpenEditor.Click += new System.EventHandler(this.btnOpenEditor_Click);
             // 
             // ContentExplorer

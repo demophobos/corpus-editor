@@ -38,9 +38,9 @@ namespace Document
             this.btnAddChunk = new System.Windows.Forms.ToolStripButton();
             this.btnEditChunk = new System.Windows.Forms.ToolStripButton();
             this.btnDeleteChunk = new System.Windows.Forms.ToolStripButton();
-            this.dockPanel1 = new WeifenLuo.WinFormsUI.Docking.DockPanel();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.btnMorphAnalysis = new System.Windows.Forms.ToolStripButton();
+            this.dockPanel1 = new WeifenLuo.WinFormsUI.Docking.DockPanel();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -115,7 +115,7 @@ namespace Document
             this.btnAddChunk.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnAddChunk.Name = "btnAddChunk";
             this.btnAddChunk.Size = new System.Drawing.Size(23, 22);
-            this.btnAddChunk.Text = "Добавить текст";
+            this.btnAddChunk.Text = "Добавить фрагмент";
             this.btnAddChunk.Click += new System.EventHandler(this.btnAddChunk_Click);
             // 
             // btnEditChunk
@@ -125,7 +125,7 @@ namespace Document
             this.btnEditChunk.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnEditChunk.Name = "btnEditChunk";
             this.btnEditChunk.Size = new System.Drawing.Size(23, 22);
-            this.btnEditChunk.Text = "Редактировать текст";
+            this.btnEditChunk.Text = "Редактировать фрагмент";
             this.btnEditChunk.Click += new System.EventHandler(this.btnEditChunk_Click);
             // 
             // btnDeleteChunk
@@ -135,17 +135,8 @@ namespace Document
             this.btnDeleteChunk.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnDeleteChunk.Name = "btnDeleteChunk";
             this.btnDeleteChunk.Size = new System.Drawing.Size(23, 22);
-            this.btnDeleteChunk.Text = "Удалить текст";
+            this.btnDeleteChunk.Text = "Удалить фрагмент";
             this.btnDeleteChunk.Click += new System.EventHandler(this.btnDeleteChunk_Click);
-            // 
-            // dockPanel1
-            // 
-            this.dockPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dockPanel1.DocumentStyle = WeifenLuo.WinFormsUI.Docking.DocumentStyle.DockingSdi;
-            this.dockPanel1.Location = new System.Drawing.Point(0, 25);
-            this.dockPanel1.Name = "dockPanel1";
-            this.dockPanel1.Size = new System.Drawing.Size(797, 459);
-            this.dockPanel1.TabIndex = 3;
             // 
             // toolStripSeparator1
             // 
@@ -160,6 +151,15 @@ namespace Document
             this.btnMorphAnalysis.Name = "btnMorphAnalysis";
             this.btnMorphAnalysis.Size = new System.Drawing.Size(23, 22);
             this.btnMorphAnalysis.Text = "Выполнить морфологический анализ";
+            // 
+            // dockPanel1
+            // 
+            this.dockPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dockPanel1.DocumentStyle = WeifenLuo.WinFormsUI.Docking.DocumentStyle.DockingSdi;
+            this.dockPanel1.Location = new System.Drawing.Point(0, 25);
+            this.dockPanel1.Name = "dockPanel1";
+            this.dockPanel1.Size = new System.Drawing.Size(797, 459);
+            this.dockPanel1.TabIndex = 3;
             // 
             // ChunkContainer
             // 

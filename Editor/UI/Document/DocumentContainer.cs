@@ -52,7 +52,7 @@ namespace Document
 
             _chunkViewer = new ChunkViewer();
 
-            _chunkViewer.Show(_contentExplorer.Pane, DockAlignment.Bottom, 0.2);
+            _chunkViewer.Show(_contentExplorer.Pane, DockAlignment.Bottom, 0.25);
         }
 
         private void ContentExplorer_IndexPreviewSelected(object sender, IndexModel index)

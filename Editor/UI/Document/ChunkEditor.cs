@@ -14,12 +14,12 @@ namespace Document
 {
     public partial class ChunkEditor : Form
     {
-        private ChunkModel _chunkModel;
-        public ChunkEditor(ChunkModel chunkModel)
+        //private ChunkModel _chunkModel;
+        public ChunkEditor(IndexModel _index, ChunkModel chunkModel)
         {
             InitializeComponent();
 
-            _chunkModel = chunkModel;
+            Text = $"{Text} [{_index.Name}]";
 
             chunkSource.DataSource = chunkModel;
         }
@@ -30,7 +30,7 @@ namespace Document
 
             var chunk = chunkSource.DataSource as ChunkModel;
 
-            _chunkModel = await ChunkProcess.SaveChunkAndElements(chunk).ConfigureAwait(true);
+            await ChunkProcess.SaveChunkAndElements(chunk).ConfigureAwait(true);
 
             DialogResult = DialogResult.OK;
         }

@@ -10,6 +10,7 @@ namespace Project
 {
     public partial class ProjectExplorer : DockContent
     {
+        public event EventHandler<ProjectModel> ProjectDeleted;
         public event EventHandler<HeaderModel> HeaderDeleted;
         public event EventHandler<HeaderModel> HeaderSelected;
         public event EventHandler<HeaderModel> HeaderUpdated;
@@ -80,14 +81,14 @@ namespace Project
 
         private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
         {
-            mnuCreateHeader.Visible = btnEdit.Enabled = btnDelete.Enabled = treeView1.SelectedNode != null && treeView1.SelectedNode.Tag is Model.ProjectModel;
+            mnuCreateHeader.Visible = btnEdit.Enabled = btnDelete.Enabled = treeView1.SelectedNode != null && treeView1.SelectedNode.Tag is ProjectModel;
 
-            mnuDeleteHeader.Visible = mnuEditHeader.Visible = treeView1.SelectedNode != null && treeView1.SelectedNode.Tag is Model.HeaderModel;
+            mnuDeleteHeader.Visible = mnuEditHeader.Visible = treeView1.SelectedNode != null && treeView1.SelectedNode.Tag is HeaderModel;
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            var dialog = new ProjectEditor(new Model.ProjectModel { });
+            var dialog = new ProjectEditor(new ProjectModel { });
 
             if (dialog.ShowDialog() == DialogResult.OK)
             {
@@ -97,7 +98,7 @@ namespace Project
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            if (treeView1.SelectedNode != null && treeView1.SelectedNode.Tag is Model.ProjectModel project)
+            if (treeView1.SelectedNode != null && treeView1.SelectedNode.Tag is ProjectModel project)
             {
                 var dialog = new ProjectEditor(project);
 
@@ -123,6 +124,10 @@ namespace Project
                     treeView1.Nodes.Remove(node);
 
                     treeView1.EndUpdate();
+
+                    mnuCreateHeader.Visible = btnEdit.Enabled = btnDelete.Enabled = treeView1.Nodes.Count != 0;
+
+                    ProjectDeleted.Invoke(this, project);
                 }
             }
         }
