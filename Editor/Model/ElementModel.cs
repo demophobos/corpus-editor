@@ -17,5 +17,7 @@ namespace Model
         public int Type { get; set; }
         [JsonProperty("order")]
         public int Order { get; set; }
+        [JsonProperty("morphId", NullValueHandling = NullValueHandling.Include)]
+        public string MorphId { get; set; }
     }
 }

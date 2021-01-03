@@ -74,6 +74,7 @@ namespace Document
             this.btnShowHideMorphologyPane.Size = new System.Drawing.Size(23, 22);
             this.btnShowHideMorphologyPane.Tag = "show";
             this.btnShowHideMorphologyPane.Text = "Показать морфологию";
+            this.btnShowHideMorphologyPane.Click += new System.EventHandler(this.btnShowHideMorphologyPane_Click);
             // 
             // btnShowHideCommentPane
             // 

@@ -85,6 +85,12 @@
     <Compile Include="ContentExplorer.Designer.cs">
       <DependentUpon>ContentExplorer.cs</DependentUpon>
     </Compile>
+    <Compile Include="ElementMorphSelector.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ElementMorphSelector.Designer.cs">
+      <DependentUpon>ElementMorphSelector.cs</DependentUpon>
+    </Compile>
     <Compile Include="IndexEditor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -100,6 +106,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\Model.MorphModel.datasource" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="ChunkContainer.resx">
@@ -119,6 +126,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DocumentContainer.resx">
       <DependentUpon>DocumentContainer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ElementMorphSelector.resx">
+      <DependentUpon>ElementMorphSelector.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="IndexEditor.resx">
       <DependentUpon>IndexEditor.cs</DependentUpon>

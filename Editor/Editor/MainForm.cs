@@ -1,6 +1,7 @@
 ﻿using Common.Process;
 using Document;
 using Model;
+using Morph;
 using Process;
 using Project;
 using System;
@@ -15,7 +16,7 @@ namespace Editor
     {
         private ProjectExplorer _projectExplorer;
 
-        //private List<DocumentContainer> _openedDocuments = new List<DocumentContainer>();
+        private MorphExplorer _morphExplorer;
 
         public MainForm()
         {
@@ -29,6 +30,8 @@ namespace Editor
             if (Login())
             {
                 Text = $"Editor [{AuthProcess.User.Email }]";
+
+                btnShowMorphExplorer.Visible = true;
 
                 LoadItems();
             }
@@ -59,7 +62,7 @@ namespace Editor
 
             _projectExplorer.LoadData();
 
-            _projectExplorer.Show(dockPanel1, DockState.DockLeft);
+            _projectExplorer.Show(dockPanel1, DockState.DockLeftAutoHide);
         }
 
         private void ProjectExplorer_ProjectDeleted(object sender, ProjectModel project)
@@ -125,6 +128,13 @@ namespace Editor
 
                 //_openedDocuments.Add(documentForm);
             }
+        }
+
+        private void btnShowMorphExplorer_Click(object sender, EventArgs e)
+        {
+            _morphExplorer = new MorphExplorer();
+
+            _morphExplorer.Show(dockPanel1, DockState.Document);
         }
     }
 }

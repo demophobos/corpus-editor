@@ -16,7 +16,11 @@ namespace Document
 {
     public partial class ChunkExplorer : DockContent
     {
+
+        public event EventHandler<ElementModel> ElementSelected;
+
         private ChunkModel _chunk;
+
         public ChunkExplorer(ChunkModel chunk)
         {
             _chunk = chunk;
@@ -65,24 +69,17 @@ namespace Document
 
                     if (!string.IsNullOrWhiteSpace(element.Value) && element.Type != (int)ElementTypeEnum.Punctuation)
                     {
-                        //var selectedAnalyses = _analyses.Where(i => i.ElementGuid == element.Guid).ToList();
-
-                        //if (selectedAnalyses.Count > 0)
-                        //{
-                        //    if (selectedAnalyses.FirstOrDefault().Status == ElementAnalysisStatusEnum.Accepted)
-                        //    {
-                        //        label.ForeColor = Color.Black;
-                        //    }
-                        //    if (selectedAnalyses.FirstOrDefault().Status == ElementAnalysisStatusEnum.Proposed)
-                        //    {
-                        //        label.ForeColor = Color.Blue;
-                        //    }
-                        //}
-                        //else
-                        //{
-                        //    label.ForeColor = Color.Red;
-                        //}
+                        if (!string.IsNullOrEmpty(element.MorphId))
+                        {
+                            label.ForeColor = Color.Black;
+                        }
+                        else
+                        {
+                            label.ForeColor = Color.Blue;
+                        }
                     }
+
+                    label.Click += Label_Click;
 
                     flowLayoutPanel1.Controls.Add(label);
 
@@ -113,6 +110,29 @@ namespace Document
 
         }
 
+        private void Label_Click(object sender, EventArgs e)
+        {
+            MarkSelectedLabel(sender);
+        }
+
+        private void MarkSelectedLabel(object sender)
+        {
+            if (sender is Label selectedLabel &&
+                selectedLabel.Tag is ElementModel selectedElement &&
+                selectedElement.Type == (int)ElementTypeEnum.Word)
+            {
+
+                var labels = flowLayoutPanel1.Controls.OfType<Label>();
+
+                foreach (var label in labels)
+                {
+                    label.BackColor = Color.White;
+                }
+
+                ElementSelected.Invoke(this, selectedElement);
+            }
+        }
+
         private void Label_MouseLeave(object sender, EventArgs e)
         {
             Cursor = Cursors.Default;
@@ -132,6 +152,27 @@ namespace Document
             }
 
             base.OnMouseMove(e);
+        }
+
+        internal void MarkElement(ElementModel e)
+        {
+            var labels = flowLayoutPanel1.Controls.OfType<Label>();
+
+            foreach (Label label in labels)
+            {
+                if (label.Tag is ElementModel element && element.Id == e.Id)
+                {
+                    if (!string.IsNullOrEmpty(e.MorphId))
+                    {
+                        label.ForeColor = Color.Black;
+                    }
+                    else
+                    {
+                        label.ForeColor = Color.Blue;
+                    }
+                }
+            }
+
         }
     }
 }

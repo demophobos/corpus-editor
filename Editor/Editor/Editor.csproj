@@ -140,6 +140,10 @@
       <Project>{df2e0071-e09f-4c01-a1f2-152b1a903a72}</Project>
       <Name>Document</Name>
     </ProjectReference>
+    <ProjectReference Include="..\UI\Morph\Morph.csproj">
+      <Project>{e3850395-8afd-498e-8603-6180bbfbfa6b}</Project>
+      <Name>Morph</Name>
+    </ProjectReference>
     <ProjectReference Include="..\UI\Project\Project.csproj">
       <Project>{7e8ebd62-ea6c-403e-9b52-b9538273224a}</Project>
       <Name>Project</Name>

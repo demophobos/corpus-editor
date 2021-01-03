@@ -21,6 +21,8 @@ namespace Document
 
         private ChunkExplorer _chunkExplorer;
 
+        private ElementMorphSelector _morphSelector;
+
         private ChunkModel _chunk;
 
         public event EventHandler<ChunkModel> ChunkAdded;
@@ -56,6 +58,8 @@ namespace Document
 
                 _chunkExplorer = new ChunkExplorer(_chunk);
 
+                _chunkExplorer.ElementSelected += ChunkExplorer_ElementSelected;
+
                 _chunkExplorer.Show(dockPanel1, DockState.Document);
 
                 ChunkAdded.Invoke(this, _chunk);
@@ -73,6 +77,8 @@ namespace Document
             if (_chunk != null)
             {
                 _chunkExplorer = new ChunkExplorer(_chunk);
+
+                _chunkExplorer.ElementSelected += ChunkExplorer_ElementSelected;
 
                 _chunkExplorer.Show(dockPanel1, DockState.Document);
             }
@@ -94,7 +100,17 @@ namespace Document
 
                 _chunkExplorer.Show(dockPanel1, DockState.Document);
 
+                _chunkExplorer.ElementSelected += ChunkExplorer_ElementSelected;
+
                 ChunkUpdated.Invoke(this, _chunk);
+            }
+        }
+
+        private async void ChunkExplorer_ElementSelected(object sender, ElementModel e)
+        {
+            if (_morphSelector != null)
+            {
+                await _morphSelector.LoadDataAsync(e);
             }
         }
 
@@ -112,6 +128,56 @@ namespace Document
 
                 ChunkDeleted.Invoke(this, _chunk);
             }
+        }
+
+        private void btnShowHideMorphologyPane_Click(object sender, EventArgs e)
+        {
+            btnShowHideMorphologyPane.Checked = btnShowHideMorphologyPane.Tag.ToString() == "show";
+
+            if (_morphSelector == null || _morphSelector.IsDisposed)
+            {
+                _morphSelector = new ElementMorphSelector();
+
+                _morphSelector.ElementMorphAccepted += MorphSelector_ElementMorphAccepted;
+
+                _morphSelector.ElementMorphRejected += MorphSelector_ElementMorphRejected;
+
+                _morphSelector.Show(_chunkExplorer.Pane, DockAlignment.Bottom, 0.3);
+
+                btnShowHideMorphologyPane.ToolTipText = "Cкрыть морфологию";
+
+                btnShowHideMorphologyPane.Tag = "hide";
+            }
+            else
+            {
+
+                if (btnShowHideMorphologyPane.Tag.ToString() == "hide")
+                {
+                    _morphSelector.Hide();
+
+                    btnShowHideMorphologyPane.ToolTipText = "Показать морфологию";
+
+                    btnShowHideMorphologyPane.Tag = "show";
+                }
+                else
+                {
+                    _morphSelector.Show();
+
+                    btnShowHideMorphologyPane.ToolTipText = "Cкрыть морфологию";
+
+                    btnShowHideMorphologyPane.Tag = "hide";
+                }
+            }
+        }
+
+        private void MorphSelector_ElementMorphRejected(object sender, ElementModel e)
+        {
+            _chunkExplorer.MarkElement(e);
+        }
+
+        private void MorphSelector_ElementMorphAccepted(object sender, ElementModel e)
+        {
+            _chunkExplorer.MarkElement(e);
         }
     }
 }

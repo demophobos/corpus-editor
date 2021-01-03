@@ -16,5 +16,10 @@ namespace Process
 
             return await API.ElementAPI.GetElements(query);
         }
+
+        public static async Task<ElementModel> SaveModel(ElementModel element)
+        {
+            return await API.ElementAPI.Save(element);
+        }
     }
 }

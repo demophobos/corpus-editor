@@ -35,6 +35,7 @@ namespace Editor
             this.mnuLogin = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuExit = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnShowMorphExplorer = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -61,6 +62,7 @@ namespace Editor
             // 
             this.mnuFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuLogin,
+            this.btnShowMorphExplorer,
             this.toolStripSeparator1,
             this.mnuExit});
             this.mnuFile.Name = "mnuFile";
@@ -70,20 +72,28 @@ namespace Editor
             // mnuLogin
             // 
             this.mnuLogin.Name = "mnuLogin";
-            this.mnuLogin.Size = new System.Drawing.Size(109, 22);
+            this.mnuLogin.Size = new System.Drawing.Size(180, 22);
             this.mnuLogin.Text = "Войти";
             this.mnuLogin.Click += new System.EventHandler(this.mnuLogin_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(106, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
             // 
             // mnuExit
             // 
             this.mnuExit.Name = "mnuExit";
-            this.mnuExit.Size = new System.Drawing.Size(109, 22);
+            this.mnuExit.Size = new System.Drawing.Size(180, 22);
             this.mnuExit.Text = "Выйти";
+            // 
+            // btnShowMorphExplorer
+            // 
+            this.btnShowMorphExplorer.Name = "btnShowMorphExplorer";
+            this.btnShowMorphExplorer.Size = new System.Drawing.Size(180, 22);
+            this.btnShowMorphExplorer.Text = "Морфология";
+            this.btnShowMorphExplorer.Visible = false;
+            this.btnShowMorphExplorer.Click += new System.EventHandler(this.btnShowMorphExplorer_Click);
             // 
             // MainForm
             // 
@@ -93,7 +103,7 @@ namespace Editor
             this.Controls.Add(this.dockPanel1);
             this.Controls.Add(this.menuStrip1);
             this.Name = "MainForm";
-            this.Text = "Editor";
+            this.Text = "Редактор";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -110,6 +120,7 @@ namespace Editor
         private System.Windows.Forms.ToolStripMenuItem mnuLogin;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem mnuExit;
+        private System.Windows.Forms.ToolStripMenuItem btnShowMorphExplorer;
     }
 }
 

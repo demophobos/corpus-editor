@@ -64,6 +64,7 @@
     <Compile Include="Enum\TextAnalysisStatusEnum.cs" />
     <Compile Include="HeaderModel.cs" />
     <Compile Include="IndexModel.cs" />
+    <Compile Include="MorphModel.cs" />
     <Compile Include="ProjectModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="AuthResponseModel.cs" />
@@ -74,6 +75,7 @@
     <Compile Include="Query\IndexByHeaderQuery.cs" />
     <Compile Include="Query\IndexByParentQuery.cs" />
     <Compile Include="Query\IQuery.cs" />
+    <Compile Include="Query\MorphQuery.cs" />
     <Compile Include="Query\ProjectQuery.cs" />
     <Compile Include="TaxonomyItem.cs" />
     <Compile Include="UserModel.cs" />

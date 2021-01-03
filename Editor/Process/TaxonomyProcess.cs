@@ -102,13 +102,11 @@ namespace Process
                                                     "pron",
                                                     "verb"});
                 case MorphCategoryEnum.Gender:
-                    return CatList(new string[] { string.Empty,
-                                                    "fem",
+                    return CatList(new string[] { "fem",
                                                     "masc",
                                                     "neut" });
                 case MorphCategoryEnum.Case:
-                    return CatList(new string[] { string.Empty,
-                                                    "abl",
+                    return CatList(new string[] {  "abl",
                                                     "acc",
                                                     "dat",
                                                     "gen",
@@ -117,31 +115,31 @@ namespace Process
                 case MorphCategoryEnum.Dialect:
                     return CatList(new string[] { string.Empty, "poetic" });
                 case MorphCategoryEnum.Person:
-                    return CatList(new string[] { string.Empty,"1st",
+                    return CatList(new string[] { "1st",
                                                     "2nd",
                                                     "3rd" });
                 case MorphCategoryEnum.Number:
-                    return CatList(new string[] { string.Empty,"sg",
+                    return CatList(new string[] { "sg",
                                                     "pl" });
                 case MorphCategoryEnum.Tense:
-                    return CatList(new string[] { string.Empty, "fut",
+                    return CatList(new string[] { "fut",
                                                     "futperf",
                                                     "imperf",
                                                     "perf",
                                                     "plup",
                                                     "pres" });
                 case MorphCategoryEnum.Mood:
-                    return CatList(new string[] { string.Empty, "gerundive",
+                    return CatList(new string[] { "gerundive",
                                                     "imperat",
                                                     "ind",
                                                     "inf",
                                                     "subj",
                                                     "supine" });
                 case MorphCategoryEnum.Voice:
-                    return CatList(new string[] { string.Empty,"act",
+                    return CatList(new string[] { "act",
                                                     "pass" });
                 case MorphCategoryEnum.Degree:
-                    return CatList(new string[] { string.Empty, "comp",
+                    return CatList(new string[] { "comp",
                                                     "superl" });
                 case MorphCategoryEnum.Lang:
                     return CatList(new string[] { "lat",
