@@ -54,7 +54,7 @@ namespace Document
 
                 btnAddChunk.Enabled = false;
 
-                btnDeleteChunk.Enabled = btnEditChunk.Enabled = btnMorphAnalysis.Enabled = true;
+                btnDeleteChunk.Enabled = btnEditChunk.Enabled = true;
 
                 _chunkExplorer = new ChunkExplorer(_chunk);
 
@@ -72,7 +72,7 @@ namespace Document
 
             btnAddChunk.Enabled = _chunk == null;
 
-            btnDeleteChunk.Enabled = btnEditChunk.Enabled = btnMorphAnalysis.Enabled = _chunk != null;
+            btnDeleteChunk.Enabled = btnEditChunk.Enabled = _chunk != null;
 
             if (_chunk != null)
             {
@@ -124,7 +124,7 @@ namespace Document
 
                 btnAddChunk.Enabled = true;
 
-                btnDeleteChunk.Enabled = btnEditChunk.Enabled = btnMorphAnalysis.Enabled = false;
+                btnDeleteChunk.Enabled = btnEditChunk.Enabled = false;
 
                 ChunkDeleted.Invoke(this, _chunk);
             }
