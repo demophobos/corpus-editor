@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Model.Query
 {
-    public class IndexByParentQuery : BaseQuery
+    public class ChunkQuery: BaseQuery
     {
-        public string parentId { get; set; }
+        public string indexId { get; set; }
     }
 }

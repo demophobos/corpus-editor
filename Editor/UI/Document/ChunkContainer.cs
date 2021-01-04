@@ -142,7 +142,7 @@ namespace Document
 
                 _morphSelector.ElementMorphRejected += MorphSelector_ElementMorphRejected;
 
-                _morphSelector.Show(_chunkExplorer.Pane, DockAlignment.Bottom, 0.3);
+                _morphSelector.Show(dockPanel1, DockState.DockBottom);
 
                 btnShowHideMorphologyPane.ToolTipText = "Cкрыть морфологию";
 

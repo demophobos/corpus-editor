@@ -52,6 +52,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MorphEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MorphEditor.Designer.cs">
+      <DependentUpon>MorphEditor.cs</DependentUpon>
+    </Compile>
     <Compile Include="MorphExplorer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -66,6 +72,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="MorphEditor.resx">
+      <DependentUpon>MorphEditor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MorphExplorer.resx">
       <DependentUpon>MorphExplorer.cs</DependentUpon>
     </EmbeddedResource>
@@ -75,6 +84,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

@@ -18,14 +18,14 @@ namespace Process
 
         public async Task<List<IndexModel>> GetIndecesByHeader()
         {
-            var query = new IndexByHeaderQuery { headerId = Header.Id };
+            var query = new IndexQuery { headerId = Header.Id };
 
             return await API.IndexAPI.GetIndeces(query);
         }
 
         public async Task<List<IndexModel>> GetIndecesByParent(string parentId)
         {
-            var query = new IndexByParentQuery { parentId = parentId };
+            var query = new IndexQuery { parentId = parentId };
 
             return await API.IndexAPI.GetIndeces(query);
         }

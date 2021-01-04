@@ -1,5 +1,6 @@
 ﻿using Model;
 using Model.Enum;
+using Model.Query;
 using Process;
 using System;
 using System.Collections.Generic;
@@ -19,11 +20,11 @@ namespace Document
 
         public event EventHandler<ElementModel> ElementSelected;
 
-        private ChunkModel _chunk;
+        public ChunkModel Chunk { get; private set; }
 
         public ChunkExplorer(ChunkModel chunk)
         {
-            _chunk = chunk;
+            Chunk = chunk;
 
             InitializeComponent();
         }
@@ -33,7 +34,9 @@ namespace Document
 
             flowLayoutPanel1.Controls.Clear();
 
-            var elements = await ElementProcess.GetElements(_chunk.Id).ConfigureAwait(true);
+            var query = new ElementQuery { chunkId = Chunk.Id };
+
+            var elements = await ElementProcess.GetElements(query).ConfigureAwait(true);
 
             foreach (var element in elements)
             {

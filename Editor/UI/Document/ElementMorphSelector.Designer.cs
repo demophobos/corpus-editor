@@ -31,44 +31,44 @@ namespace Document
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ElementMorphSelector));
-            this.btnCreateRule = new System.Windows.Forms.ToolStripButton();
             this.btnAcceptDefinition = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.btnUndoAccept = new System.Windows.Forms.ToolStripButton();
+            this.btnAcceptDefinitionForAllCases = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnCancelDefinition = new System.Windows.Forms.ToolStripButton();
+            this.btnCancelDefinitionForAllCases = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnMorphServices = new System.Windows.Forms.ToolStripSplitButton();
+            this.btnMorpheusLat = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnMorpheusGrc = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.btnAdd = new System.Windows.Forms.ToolStripButton();
             this.btnEdit = new System.Windows.Forms.ToolStripButton();
             this.btnDelete = new System.Windows.Forms.ToolStripButton();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Form = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lemmaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.formDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.posDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.genderDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.caseDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dialectDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.featureDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.personDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.numberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tenseDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.moodDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.voiceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.degreeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.featureDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dialectDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.langDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.morphId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.morphSource = new System.Windows.Forms.BindingSource(this.components);
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.lblStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.morphSource)).BeginInit();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // btnCreateRule
-            // 
-            this.btnCreateRule.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnCreateRule.Image = ((System.Drawing.Image)(resources.GetObject("btnCreateRule.Image")));
-            this.btnCreateRule.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnCreateRule.Name = "btnCreateRule";
-            this.btnCreateRule.Size = new System.Drawing.Size(23, 22);
-            this.btnCreateRule.Text = "Создать правило";
             // 
             // btnAcceptDefinition
             // 
@@ -85,33 +85,93 @@ namespace Document
             this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnAcceptDefinition,
-            this.btnUndoAccept,
-            this.btnCreateRule,
+            this.btnAcceptDefinitionForAllCases,
+            this.toolStripSeparator2,
+            this.btnCancelDefinition,
+            this.btnCancelDefinitionForAllCases,
             this.toolStripSeparator1,
+            this.btnMorphServices,
+            this.toolStripSeparator3,
             this.btnAdd,
             this.btnEdit,
             this.btnDelete});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.toolStrip1.Size = new System.Drawing.Size(990, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(1104, 25);
             this.toolStrip1.TabIndex = 17;
             this.toolStrip1.Text = "toolStrip1";
             // 
-            // btnUndoAccept
+            // btnAcceptDefinitionForAllCases
             // 
-            this.btnUndoAccept.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnUndoAccept.Image = ((System.Drawing.Image)(resources.GetObject("btnUndoAccept.Image")));
-            this.btnUndoAccept.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnUndoAccept.Name = "btnUndoAccept";
-            this.btnUndoAccept.Size = new System.Drawing.Size(23, 22);
-            this.btnUndoAccept.ToolTipText = "Отменить";
-            this.btnUndoAccept.Click += new System.EventHandler(this.btnUndoAccept_Click);
+            this.btnAcceptDefinitionForAllCases.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnAcceptDefinitionForAllCases.Image = ((System.Drawing.Image)(resources.GetObject("btnAcceptDefinitionForAllCases.Image")));
+            this.btnAcceptDefinitionForAllCases.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnAcceptDefinitionForAllCases.Name = "btnAcceptDefinitionForAllCases";
+            this.btnAcceptDefinitionForAllCases.Size = new System.Drawing.Size(23, 22);
+            this.btnAcceptDefinitionForAllCases.Text = "Принять для всего текста";
+            this.btnAcceptDefinitionForAllCases.Click += new System.EventHandler(this.btnAcceptDefinitionForAllCases_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+            // 
+            // btnCancelDefinition
+            // 
+            this.btnCancelDefinition.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnCancelDefinition.Image = ((System.Drawing.Image)(resources.GetObject("btnCancelDefinition.Image")));
+            this.btnCancelDefinition.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnCancelDefinition.Name = "btnCancelDefinition";
+            this.btnCancelDefinition.Size = new System.Drawing.Size(23, 22);
+            this.btnCancelDefinition.ToolTipText = "Отменить";
+            this.btnCancelDefinition.Click += new System.EventHandler(this.btnUndoAccept_Click);
+            // 
+            // btnCancelDefinitionForAllCases
+            // 
+            this.btnCancelDefinitionForAllCases.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnCancelDefinitionForAllCases.Image = ((System.Drawing.Image)(resources.GetObject("btnCancelDefinitionForAllCases.Image")));
+            this.btnCancelDefinitionForAllCases.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnCancelDefinitionForAllCases.Name = "btnCancelDefinitionForAllCases";
+            this.btnCancelDefinitionForAllCases.Size = new System.Drawing.Size(23, 22);
+            this.btnCancelDefinitionForAllCases.Text = "Отменить для всего текста";
+            this.btnCancelDefinitionForAllCases.Click += new System.EventHandler(this.btnCancelDefinitionForAllCases_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
+            // btnMorphServices
+            // 
+            this.btnMorphServices.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnMorphServices.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnMorpheusLat,
+            this.btnMorpheusGrc});
+            this.btnMorphServices.Image = ((System.Drawing.Image)(resources.GetObject("btnMorphServices.Image")));
+            this.btnMorphServices.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnMorphServices.Name = "btnMorphServices";
+            this.btnMorphServices.Size = new System.Drawing.Size(32, 22);
+            this.btnMorphServices.Text = "Поиск определения в морфологическом сервисе";
+            // 
+            // btnMorpheusLat
+            // 
+            this.btnMorpheusLat.Name = "btnMorpheusLat";
+            this.btnMorpheusLat.Size = new System.Drawing.Size(156, 22);
+            this.btnMorpheusLat.Text = "Morpheus [lat]";
+            this.btnMorpheusLat.Click += new System.EventHandler(this.btnMorpheusLat_Click);
+            // 
+            // btnMorpheusGrc
+            // 
+            this.btnMorpheusGrc.Enabled = false;
+            this.btnMorpheusGrc.Name = "btnMorpheusGrc";
+            this.btnMorpheusGrc.Size = new System.Drawing.Size(156, 22);
+            this.btnMorpheusGrc.Text = "Morpheus [grc]";
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
             // 
             // btnAdd
             // 
@@ -121,6 +181,7 @@ namespace Document
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(23, 22);
             this.btnAdd.ToolTipText = "Добавить";
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnEdit
             // 
@@ -130,6 +191,7 @@ namespace Document
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(23, 22);
             this.btnEdit.ToolTipText = "Редактировать";
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // btnDelete
             // 
@@ -139,6 +201,7 @@ namespace Document
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(23, 22);
             this.btnDelete.Text = "Удалить";
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_ClickAsync);
             // 
             // dataGridView1
             // 
@@ -149,21 +212,21 @@ namespace Document
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Form,
             this.lemmaDataGridViewTextBoxColumn,
-            this.formDataGridViewTextBoxColumn,
             this.posDataGridViewTextBoxColumn,
             this.genderDataGridViewTextBoxColumn,
             this.caseDataGridViewTextBoxColumn,
-            this.dialectDataGridViewTextBoxColumn,
-            this.featureDataGridViewTextBoxColumn,
             this.personDataGridViewTextBoxColumn,
             this.numberDataGridViewTextBoxColumn,
             this.tenseDataGridViewTextBoxColumn,
             this.moodDataGridViewTextBoxColumn,
             this.voiceDataGridViewTextBoxColumn,
             this.degreeDataGridViewTextBoxColumn,
+            this.featureDataGridViewTextBoxColumn,
+            this.dialectDataGridViewTextBoxColumn,
             this.langDataGridViewTextBoxColumn,
-            this.idDataGridViewTextBoxColumn});
+            this.morphId});
             this.dataGridView1.DataSource = this.morphSource;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 25);
@@ -173,161 +236,196 @@ namespace Document
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(990, 368);
+            this.dataGridView1.Size = new System.Drawing.Size(1104, 402);
             this.dataGridView1.TabIndex = 18;
+            this.dataGridView1.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridView1_CellFormatting);
+            // 
+            // Form
+            // 
+            this.Form.DataPropertyName = "Form";
+            this.Form.HeaderText = "Форма";
+            this.Form.Name = "Form";
+            this.Form.ReadOnly = true;
             // 
             // lemmaDataGridViewTextBoxColumn
             // 
             this.lemmaDataGridViewTextBoxColumn.DataPropertyName = "Lemma";
-            this.lemmaDataGridViewTextBoxColumn.HeaderText = "Lemma";
+            this.lemmaDataGridViewTextBoxColumn.HeaderText = "Лемма";
             this.lemmaDataGridViewTextBoxColumn.Name = "lemmaDataGridViewTextBoxColumn";
             this.lemmaDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // formDataGridViewTextBoxColumn
-            // 
-            this.formDataGridViewTextBoxColumn.DataPropertyName = "Form";
-            this.formDataGridViewTextBoxColumn.HeaderText = "Form";
-            this.formDataGridViewTextBoxColumn.Name = "formDataGridViewTextBoxColumn";
-            this.formDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // posDataGridViewTextBoxColumn
             // 
             this.posDataGridViewTextBoxColumn.DataPropertyName = "Pos";
-            this.posDataGridViewTextBoxColumn.HeaderText = "Pos";
+            this.posDataGridViewTextBoxColumn.HeaderText = "Часть речи";
             this.posDataGridViewTextBoxColumn.Name = "posDataGridViewTextBoxColumn";
             this.posDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // genderDataGridViewTextBoxColumn
             // 
             this.genderDataGridViewTextBoxColumn.DataPropertyName = "Gender";
-            this.genderDataGridViewTextBoxColumn.HeaderText = "Gender";
+            this.genderDataGridViewTextBoxColumn.HeaderText = "Род";
             this.genderDataGridViewTextBoxColumn.Name = "genderDataGridViewTextBoxColumn";
             this.genderDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // caseDataGridViewTextBoxColumn
             // 
             this.caseDataGridViewTextBoxColumn.DataPropertyName = "Case";
-            this.caseDataGridViewTextBoxColumn.HeaderText = "Case";
+            this.caseDataGridViewTextBoxColumn.HeaderText = "Падеж";
             this.caseDataGridViewTextBoxColumn.Name = "caseDataGridViewTextBoxColumn";
             this.caseDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // dialectDataGridViewTextBoxColumn
-            // 
-            this.dialectDataGridViewTextBoxColumn.DataPropertyName = "Dialect";
-            this.dialectDataGridViewTextBoxColumn.HeaderText = "Dialect";
-            this.dialectDataGridViewTextBoxColumn.Name = "dialectDataGridViewTextBoxColumn";
-            this.dialectDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // featureDataGridViewTextBoxColumn
-            // 
-            this.featureDataGridViewTextBoxColumn.DataPropertyName = "Feature";
-            this.featureDataGridViewTextBoxColumn.HeaderText = "Feature";
-            this.featureDataGridViewTextBoxColumn.Name = "featureDataGridViewTextBoxColumn";
-            this.featureDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // personDataGridViewTextBoxColumn
             // 
             this.personDataGridViewTextBoxColumn.DataPropertyName = "Person";
-            this.personDataGridViewTextBoxColumn.HeaderText = "Person";
+            this.personDataGridViewTextBoxColumn.HeaderText = "Лицо";
             this.personDataGridViewTextBoxColumn.Name = "personDataGridViewTextBoxColumn";
             this.personDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // numberDataGridViewTextBoxColumn
             // 
             this.numberDataGridViewTextBoxColumn.DataPropertyName = "Number";
-            this.numberDataGridViewTextBoxColumn.HeaderText = "Number";
+            this.numberDataGridViewTextBoxColumn.HeaderText = "Число";
             this.numberDataGridViewTextBoxColumn.Name = "numberDataGridViewTextBoxColumn";
             this.numberDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // tenseDataGridViewTextBoxColumn
             // 
             this.tenseDataGridViewTextBoxColumn.DataPropertyName = "Tense";
-            this.tenseDataGridViewTextBoxColumn.HeaderText = "Tense";
+            this.tenseDataGridViewTextBoxColumn.HeaderText = "Время";
             this.tenseDataGridViewTextBoxColumn.Name = "tenseDataGridViewTextBoxColumn";
             this.tenseDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // moodDataGridViewTextBoxColumn
             // 
             this.moodDataGridViewTextBoxColumn.DataPropertyName = "Mood";
-            this.moodDataGridViewTextBoxColumn.HeaderText = "Mood";
+            this.moodDataGridViewTextBoxColumn.HeaderText = "Наклонение";
             this.moodDataGridViewTextBoxColumn.Name = "moodDataGridViewTextBoxColumn";
             this.moodDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // voiceDataGridViewTextBoxColumn
             // 
             this.voiceDataGridViewTextBoxColumn.DataPropertyName = "Voice";
-            this.voiceDataGridViewTextBoxColumn.HeaderText = "Voice";
+            this.voiceDataGridViewTextBoxColumn.HeaderText = "Залог";
             this.voiceDataGridViewTextBoxColumn.Name = "voiceDataGridViewTextBoxColumn";
             this.voiceDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // degreeDataGridViewTextBoxColumn
             // 
             this.degreeDataGridViewTextBoxColumn.DataPropertyName = "Degree";
-            this.degreeDataGridViewTextBoxColumn.HeaderText = "Degree";
+            this.degreeDataGridViewTextBoxColumn.HeaderText = "Степень";
             this.degreeDataGridViewTextBoxColumn.Name = "degreeDataGridViewTextBoxColumn";
             this.degreeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // featureDataGridViewTextBoxColumn
+            // 
+            this.featureDataGridViewTextBoxColumn.DataPropertyName = "Feature";
+            this.featureDataGridViewTextBoxColumn.HeaderText = "Особенность";
+            this.featureDataGridViewTextBoxColumn.Name = "featureDataGridViewTextBoxColumn";
+            this.featureDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // dialectDataGridViewTextBoxColumn
+            // 
+            this.dialectDataGridViewTextBoxColumn.DataPropertyName = "Dialect";
+            this.dialectDataGridViewTextBoxColumn.HeaderText = "Стиль";
+            this.dialectDataGridViewTextBoxColumn.Name = "dialectDataGridViewTextBoxColumn";
+            this.dialectDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // langDataGridViewTextBoxColumn
             // 
             this.langDataGridViewTextBoxColumn.DataPropertyName = "Lang";
-            this.langDataGridViewTextBoxColumn.HeaderText = "Lang";
+            this.langDataGridViewTextBoxColumn.HeaderText = "Язык";
             this.langDataGridViewTextBoxColumn.Name = "langDataGridViewTextBoxColumn";
             this.langDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // idDataGridViewTextBoxColumn
+            // morphId
             // 
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            this.idDataGridViewTextBoxColumn.ReadOnly = true;
+            this.morphId.DataPropertyName = "Id";
+            this.morphId.HeaderText = "Id";
+            this.morphId.Name = "morphId";
+            this.morphId.ReadOnly = true;
+            this.morphId.Visible = false;
             // 
             // morphSource
             // 
             this.morphSource.DataSource = typeof(Model.MorphModel);
+            this.morphSource.CurrentChanged += new System.EventHandler(this.morphSource_CurrentChanged);
+            this.morphSource.ListChanged += new System.ComponentModel.ListChangedEventHandler(this.morphSource_ListChanged);
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.lblStatus});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 427);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(1104, 22);
+            this.statusStrip1.TabIndex = 19;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // lblStatus
+            // 
+            this.lblStatus.Name = "lblStatus";
+            this.lblStatus.Size = new System.Drawing.Size(0, 17);
             // 
             // ElementMorphSelector
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(990, 393);
+            this.ClientSize = new System.Drawing.Size(1104, 449);
+            this.CloseButton = false;
+            this.CloseButtonVisible = false;
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.toolStrip1);
+            this.Controls.Add(this.statusStrip1);
+            this.Enabled = false;
+            this.HideOnClose = true;
             this.Name = "ElementMorphSelector";
+            this.Text = "Морфология";
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.morphSource)).EndInit();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.ToolStripButton btnCreateRule;
         private System.Windows.Forms.ToolStripButton btnAcceptDefinition;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton btnAdd;
         private System.Windows.Forms.ToolStripButton btnEdit;
         private System.Windows.Forms.ToolStripButton btnDelete;
-        private System.Windows.Forms.ToolStripButton btnUndoAccept;
+        private System.Windows.Forms.ToolStripButton btnCancelDefinition;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn lemmaDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn formDataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource morphSource;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripButton btnAcceptDefinitionForAllCases;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripButton btnCancelDefinitionForAllCases;
+        private System.Windows.Forms.ToolStripSplitButton btnMorphServices;
+        private System.Windows.Forms.ToolStripMenuItem btnMorpheusLat;
+        private System.Windows.Forms.ToolStripMenuItem btnMorpheusGrc;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Form;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lemmaDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn posDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn genderDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn caseDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dialectDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn featureDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn personDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn numberDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn tenseDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn moodDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn voiceDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn degreeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn featureDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dialectDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn langDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
-        private System.Windows.Forms.BindingSource morphSource;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn morphId;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel lblStatus;
     }
 }

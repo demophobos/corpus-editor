@@ -38,8 +38,6 @@ namespace Document
             this.btnAddChunk = new System.Windows.Forms.ToolStripButton();
             this.btnEditChunk = new System.Windows.Forms.ToolStripButton();
             this.btnDeleteChunk = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.btnMorphAnalysis = new System.Windows.Forms.ToolStripButton();
             this.dockPanel1 = new WeifenLuo.WinFormsUI.Docking.DockPanel();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -54,9 +52,7 @@ namespace Document
             this.btnShowHideContextPane,
             this.btnAddChunk,
             this.btnEditChunk,
-            this.btnDeleteChunk,
-            this.toolStripSeparator1,
-            this.btnMorphAnalysis});
+            this.btnDeleteChunk});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
@@ -139,20 +135,6 @@ namespace Document
             this.btnDeleteChunk.Text = "Удалить фрагмент";
             this.btnDeleteChunk.Click += new System.EventHandler(this.btnDeleteChunk_Click);
             // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
-            // 
-            // btnMorphAnalysis
-            // 
-            this.btnMorphAnalysis.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnMorphAnalysis.Image = ((System.Drawing.Image)(resources.GetObject("btnMorphAnalysis.Image")));
-            this.btnMorphAnalysis.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnMorphAnalysis.Name = "btnMorphAnalysis";
-            this.btnMorphAnalysis.Size = new System.Drawing.Size(23, 22);
-            this.btnMorphAnalysis.Text = "Выполнить морфологический анализ";
-            // 
             // dockPanel1
             // 
             this.dockPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -189,7 +171,5 @@ namespace Document
         private WeifenLuo.WinFormsUI.Docking.DockPanel dockPanel1;
         private System.Windows.Forms.ToolStripButton btnEditChunk;
         private System.Windows.Forms.ToolStripButton btnDeleteChunk;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripButton btnMorphAnalysis;
     }
 }

@@ -10,10 +10,8 @@ namespace Process
 {
     public class ElementProcess
     {
-        public static async Task<List<ElementModel>> GetElements(string chunkId)
+        public static async Task<List<ElementModel>> GetElements(ElementQuery query)
         {
-            var query = new ElementByChunkQuery { chunkId = chunkId };
-
             return await API.ElementAPI.GetElements(query);
         }
 

@@ -15,7 +15,7 @@ namespace Process
     {
         public static async Task<ChunkModel> GetChunk(string indextId)
         {
-            var query = new ChunkByIndexQuery { indexId = indextId };
+            var query = new ChunkQuery { indexId = indextId };
 
             return await API.ChunkAPI.GetChunk(query);
         }

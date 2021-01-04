@@ -105,6 +105,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
     <None Include="Properties\DataSources\Model.MorphModel.datasource" />
   </ItemGroup>
@@ -150,6 +151,10 @@
     <ProjectReference Include="..\Common\Common.csproj">
       <Project>{02aefa8a-72f0-4d1f-b055-4c9e9563a2ab}</Project>
       <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Morph\Morph.csproj">
+      <Project>{e3850395-8afd-498e-8603-6180bbfbfa6b}</Project>
+      <Name>Morph</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
