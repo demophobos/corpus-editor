@@ -1,13 +1,8 @@
 ﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Model
 {
-    public class MorphModel: BaseModel
+    public class MorphModel : BaseModel
     {
         [JsonProperty("lemma")]
         public string Lemma { get; set; }
@@ -37,5 +32,7 @@ namespace Model
         public string Degree { get; set; }
         [JsonProperty("lang")]
         public string Lang { get; set; }
+        [JsonProperty("isRule")]
+        public bool IsRule { get; set; }
     }
 }

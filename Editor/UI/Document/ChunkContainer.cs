@@ -2,13 +2,6 @@
 using Model;
 using Process;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using WeifenLuo.WinFormsUI.Docking;
 
@@ -17,7 +10,7 @@ namespace Document
     public partial class ChunkContainer : DockContent
     {
 
-        private IndexModel _index;
+        public IndexModel Index { get; private set; }
 
         private ChunkExplorer _chunkExplorer;
 
@@ -33,7 +26,7 @@ namespace Document
 
         public ChunkContainer(IndexModel index)
         {
-            _index = index;
+            Index = index;
 
             InitializeComponent();
 
@@ -44,13 +37,13 @@ namespace Document
 
         private async void btnAddChunk_Click(object sender, EventArgs e)
         {
-            _chunk = new ChunkModel { IndexId = _index.Id };
+            _chunk = new ChunkModel { IndexId = Index.Id };
 
-            var editor = new ChunkEditor(_index, _chunk);
+            var editor = new ChunkEditor(Index, _chunk);
 
             if (editor.ShowDialog() == DialogResult.OK)
             {
-                _chunk = await ChunkProcess.GetChunk(_index.Id).ConfigureAwait(true);
+                _chunk = await ChunkProcess.GetChunk(Index.Id).ConfigureAwait(true);
 
                 btnAddChunk.Enabled = false;
 
@@ -68,7 +61,7 @@ namespace Document
 
         private async void ChunkContainer_LoadAsync(object sender, EventArgs e)
         {
-            _chunk = await ChunkProcess.GetChunk(_index.Id).ConfigureAwait(true);
+            _chunk = await ChunkProcess.GetChunk(Index.Id).ConfigureAwait(true);
 
             btnAddChunk.Enabled = _chunk == null;
 
@@ -86,7 +79,7 @@ namespace Document
 
         private async void btnEditChunk_Click(object sender, EventArgs e)
         {
-            var editor = new ChunkEditor(_index, _chunk);
+            var editor = new ChunkEditor(Index, _chunk);
 
             if (editor.ShowDialog() == DialogResult.OK)
             {
@@ -94,7 +87,7 @@ namespace Document
 
                 _chunkExplorer.Close();
 
-                _chunk = await ChunkProcess.GetChunk(_index.Id).ConfigureAwait(true);
+                _chunk = await ChunkProcess.GetChunk(Index.Id).ConfigureAwait(true);
 
                 _chunkExplorer = new ChunkExplorer(_chunk);
 
@@ -136,7 +129,7 @@ namespace Document
 
             if (_morphSelector == null || _morphSelector.IsDisposed)
             {
-                _morphSelector = new ElementMorphSelector();
+                _morphSelector = new ElementMorphSelector(Index);
 
                 _morphSelector.ElementMorphAccepted += MorphSelector_ElementMorphAccepted;
 

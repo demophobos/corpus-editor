@@ -4,17 +4,7 @@ using Model.Query;
 using Process;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Data.OleDb;
-using System.Drawing;
-using System.Globalization;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 using WeifenLuo.WinFormsUI.Docking;
 
 namespace Morph
@@ -86,6 +76,11 @@ namespace Morph
                 Form = txtForm.Text.Trim().Length > 0 ? txtForm.Text.Trim() : null
             };
 
+            if (btnIsRule.Checked)
+            {
+                query.IsRule = true;
+            }
+
             _morphItems = await _morphProcess.GetMorphItems(query);
 
             morphSource.DataSource = _morphItems;
@@ -100,6 +95,21 @@ namespace Morph
         private async void btnRunFilter_Click(object sender, EventArgs e)
         {
             await ApplyFilterAsync();
+        }
+
+        private void btnIsRule_Click(object sender, EventArgs e)
+        {
+            btnIsRule.Tag = btnIsRule.Checked;
+        }
+
+        private async void morphSource_CurrentChanged(object sender, EventArgs e)
+        {
+            if (morphSource.Current != null && morphSource.Current is MorphModel morph) {
+
+                var elements = await ElementProcess.GetElements(new ElementQuery { morphId = morph.Id }).ConfigureAwait(true);
+
+                lblUsageStat.Text = $"'{morph.Form}': {elements.Count}";
+            }
         }
     }
 }

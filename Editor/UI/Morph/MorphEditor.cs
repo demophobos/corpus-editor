@@ -2,13 +2,7 @@
 using Model.Enum;
 using Process;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Morph
@@ -60,6 +54,7 @@ namespace Morph
         private async void btnSave_Click(object sender, EventArgs e)
         {
             var morph = morphSource.DataSource as MorphModel;
+
             var model = new MorphModel
             {
                 Case = !string.IsNullOrEmpty(morph.Case) ? morph.Case : null,
@@ -75,7 +70,8 @@ namespace Morph
                 Person = !string.IsNullOrEmpty(morph.Person) ? morph.Person : null,
                 Pos = morph.Pos,
                 Tense = !string.IsNullOrEmpty(morph.Tense) ? morph.Tense : null,
-                Voice = !string.IsNullOrEmpty(morph.Voice) ? morph.Voice : null
+                Voice = !string.IsNullOrEmpty(morph.Voice) ? morph.Voice : null,
+                Id = morph.Id
             };
             morph = await _morphProcess.SaveMorph(model);
         }

@@ -32,22 +32,7 @@ namespace Morph
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MorphExplorer));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.morphSource = new System.Windows.Forms.BindingSource(this.components);
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.cmbPos = new System.Windows.Forms.ToolStripComboBox();
-            this.txtLemma = new System.Windows.Forms.ToolStripTextBox();
-            this.txtForm = new System.Windows.Forms.ToolStripTextBox();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripLabel();
-            this.cmbGender = new System.Windows.Forms.ToolStripComboBox();
-            this.cmbCase = new System.Windows.Forms.ToolStripComboBox();
-            this.cmbPerson = new System.Windows.Forms.ToolStripComboBox();
-            this.cmbNumber = new System.Windows.Forms.ToolStripComboBox();
-            this.cmbTense = new System.Windows.Forms.ToolStripComboBox();
-            this.cmbMood = new System.Windows.Forms.ToolStripComboBox();
-            this.cmbVoice = new System.Windows.Forms.ToolStripComboBox();
-            this.cmbDegree = new System.Windows.Forms.ToolStripComboBox();
-            this.btnRunFilter = new System.Windows.Forms.ToolStripButton();
-            this.loader1 = new Common.Control.Loader();
+            this.IsRule = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.posDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lemmaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.formDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -63,10 +48,31 @@ namespace Morph
             this.featureDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.langDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.morphSource = new System.Windows.Forms.BindingSource(this.components);
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.btnIsRule = new System.Windows.Forms.ToolStripButton();
+            this.cmbPos = new System.Windows.Forms.ToolStripComboBox();
+            this.txtLemma = new System.Windows.Forms.ToolStripTextBox();
+            this.txtForm = new System.Windows.Forms.ToolStripTextBox();
+            this.cmbGender = new System.Windows.Forms.ToolStripComboBox();
+            this.cmbCase = new System.Windows.Forms.ToolStripComboBox();
+            this.cmbPerson = new System.Windows.Forms.ToolStripComboBox();
+            this.cmbNumber = new System.Windows.Forms.ToolStripComboBox();
+            this.cmbTense = new System.Windows.Forms.ToolStripComboBox();
+            this.cmbMood = new System.Windows.Forms.ToolStripComboBox();
+            this.cmbVoice = new System.Windows.Forms.ToolStripComboBox();
+            this.cmbDegree = new System.Windows.Forms.ToolStripComboBox();
+            this.btnRunFilter = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripLabel();
             this.lblResult = new System.Windows.Forms.ToolStripLabel();
+            this.loader1 = new Common.Control.Loader();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.lblUsageStat = new System.Windows.Forms.ToolStripStatusLabel();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.morphSource)).BeginInit();
             this.toolStrip1.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -77,6 +83,7 @@ namespace Morph
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.IsRule,
             this.posDataGridViewTextBoxColumn,
             this.lemmaDataGridViewTextBoxColumn,
             this.formDataGridViewTextBoxColumn,
@@ -95,143 +102,23 @@ namespace Morph
             this.dataGridView1.DataSource = this.morphSource;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 25);
+            this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1338, 425);
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.Size = new System.Drawing.Size(1338, 403);
             this.dataGridView1.TabIndex = 0;
             // 
-            // morphSource
+            // IsRule
             // 
-            this.morphSource.DataSource = typeof(Model.MorphModel);
-            // 
-            // toolStrip1
-            // 
-            this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.cmbPos,
-            this.txtLemma,
-            this.txtForm,
-            this.cmbGender,
-            this.cmbCase,
-            this.cmbPerson,
-            this.cmbNumber,
-            this.cmbTense,
-            this.cmbMood,
-            this.cmbVoice,
-            this.cmbDegree,
-            this.btnRunFilter,
-            this.toolStripButton1,
-            this.lblResult});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.toolStrip1.Size = new System.Drawing.Size(1338, 25);
-            this.toolStrip1.TabIndex = 1;
-            this.toolStrip1.Text = "toolStrip1";
-            // 
-            // cmbPos
-            // 
-            this.cmbPos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbPos.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.cmbPos.Name = "cmbPos";
-            this.cmbPos.Size = new System.Drawing.Size(99, 25);
-            // 
-            // txtLemma
-            // 
-            this.txtLemma.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtLemma.Name = "txtLemma";
-            this.txtLemma.Size = new System.Drawing.Size(98, 25);
-            // 
-            // txtForm
-            // 
-            this.txtForm.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtForm.Name = "txtForm";
-            this.txtForm.Size = new System.Drawing.Size(98, 25);
-            // 
-            // toolStripButton1
-            // 
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(58, 22);
-            this.toolStripButton1.Text = "Найдено:";
-            // 
-            // cmbGender
-            // 
-            this.cmbGender.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbGender.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.cmbGender.Name = "cmbGender";
-            this.cmbGender.Size = new System.Drawing.Size(98, 25);
-            // 
-            // cmbCase
-            // 
-            this.cmbCase.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbCase.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.cmbCase.Name = "cmbCase";
-            this.cmbCase.Size = new System.Drawing.Size(98, 25);
-            // 
-            // cmbPerson
-            // 
-            this.cmbPerson.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbPerson.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.cmbPerson.Name = "cmbPerson";
-            this.cmbPerson.Size = new System.Drawing.Size(98, 25);
-            // 
-            // cmbNumber
-            // 
-            this.cmbNumber.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbNumber.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.cmbNumber.Name = "cmbNumber";
-            this.cmbNumber.Size = new System.Drawing.Size(98, 25);
-            // 
-            // cmbTense
-            // 
-            this.cmbTense.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbTense.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.cmbTense.Name = "cmbTense";
-            this.cmbTense.Size = new System.Drawing.Size(98, 25);
-            // 
-            // cmbMood
-            // 
-            this.cmbMood.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbMood.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.cmbMood.Name = "cmbMood";
-            this.cmbMood.Size = new System.Drawing.Size(98, 25);
-            // 
-            // cmbVoice
-            // 
-            this.cmbVoice.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbVoice.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.cmbVoice.Name = "cmbVoice";
-            this.cmbVoice.Size = new System.Drawing.Size(98, 25);
-            // 
-            // cmbDegree
-            // 
-            this.cmbDegree.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbDegree.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.cmbDegree.Name = "cmbDegree";
-            this.cmbDegree.Size = new System.Drawing.Size(98, 25);
-            // 
-            // btnRunFilter
-            // 
-            this.btnRunFilter.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnRunFilter.Image = ((System.Drawing.Image)(resources.GetObject("btnRunFilter.Image")));
-            this.btnRunFilter.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnRunFilter.Name = "btnRunFilter";
-            this.btnRunFilter.Size = new System.Drawing.Size(23, 22);
-            this.btnRunFilter.Text = "Найти";
-            this.btnRunFilter.Click += new System.EventHandler(this.btnRunFilter_Click);
-            // 
-            // loader1
-            // 
-            this.loader1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.loader1.Location = new System.Drawing.Point(0, 25);
-            this.loader1.Name = "loader1";
-            this.loader1.Size = new System.Drawing.Size(1338, 425);
-            this.loader1.TabIndex = 2;
+            this.IsRule.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.IsRule.DataPropertyName = "IsRule";
+            this.IsRule.HeaderText = "";
+            this.IsRule.MinimumWidth = 24;
+            this.IsRule.Name = "IsRule";
+            this.IsRule.ReadOnly = true;
+            this.IsRule.Width = 24;
             // 
             // posDataGridViewTextBoxColumn
             // 
@@ -357,11 +244,177 @@ namespace Morph
             this.idDataGridViewTextBoxColumn.ReadOnly = true;
             this.idDataGridViewTextBoxColumn.Visible = false;
             // 
+            // morphSource
+            // 
+            this.morphSource.DataSource = typeof(Model.MorphModel);
+            this.morphSource.CurrentChanged += new System.EventHandler(this.morphSource_CurrentChanged);
+            // 
+            // toolStrip1
+            // 
+            this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnIsRule,
+            this.cmbPos,
+            this.txtLemma,
+            this.txtForm,
+            this.cmbGender,
+            this.cmbCase,
+            this.cmbPerson,
+            this.cmbNumber,
+            this.cmbTense,
+            this.cmbMood,
+            this.cmbVoice,
+            this.cmbDegree,
+            this.btnRunFilter,
+            this.toolStripButton1,
+            this.lblResult});
+            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+            this.toolStrip1.Size = new System.Drawing.Size(1338, 25);
+            this.toolStrip1.TabIndex = 1;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
+            // btnIsRule
+            // 
+            this.btnIsRule.CheckOnClick = true;
+            this.btnIsRule.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnIsRule.Image = ((System.Drawing.Image)(resources.GetObject("btnIsRule.Image")));
+            this.btnIsRule.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnIsRule.Name = "btnIsRule";
+            this.btnIsRule.Size = new System.Drawing.Size(23, 22);
+            this.btnIsRule.Text = "toolStripButton2";
+            this.btnIsRule.Click += new System.EventHandler(this.btnIsRule_Click);
+            // 
+            // cmbPos
+            // 
+            this.cmbPos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbPos.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.cmbPos.Name = "cmbPos";
+            this.cmbPos.Size = new System.Drawing.Size(99, 25);
+            // 
+            // txtLemma
+            // 
+            this.txtLemma.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtLemma.Name = "txtLemma";
+            this.txtLemma.Size = new System.Drawing.Size(98, 25);
+            // 
+            // txtForm
+            // 
+            this.txtForm.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtForm.Name = "txtForm";
+            this.txtForm.Size = new System.Drawing.Size(98, 25);
+            // 
+            // cmbGender
+            // 
+            this.cmbGender.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbGender.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.cmbGender.Name = "cmbGender";
+            this.cmbGender.Size = new System.Drawing.Size(98, 25);
+            // 
+            // cmbCase
+            // 
+            this.cmbCase.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbCase.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.cmbCase.Name = "cmbCase";
+            this.cmbCase.Size = new System.Drawing.Size(98, 25);
+            // 
+            // cmbPerson
+            // 
+            this.cmbPerson.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbPerson.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.cmbPerson.Name = "cmbPerson";
+            this.cmbPerson.Size = new System.Drawing.Size(98, 25);
+            // 
+            // cmbNumber
+            // 
+            this.cmbNumber.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbNumber.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.cmbNumber.Name = "cmbNumber";
+            this.cmbNumber.Size = new System.Drawing.Size(98, 25);
+            // 
+            // cmbTense
+            // 
+            this.cmbTense.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbTense.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.cmbTense.Name = "cmbTense";
+            this.cmbTense.Size = new System.Drawing.Size(98, 25);
+            // 
+            // cmbMood
+            // 
+            this.cmbMood.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbMood.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.cmbMood.Name = "cmbMood";
+            this.cmbMood.Size = new System.Drawing.Size(98, 25);
+            // 
+            // cmbVoice
+            // 
+            this.cmbVoice.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbVoice.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.cmbVoice.Name = "cmbVoice";
+            this.cmbVoice.Size = new System.Drawing.Size(98, 25);
+            // 
+            // cmbDegree
+            // 
+            this.cmbDegree.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbDegree.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.cmbDegree.Name = "cmbDegree";
+            this.cmbDegree.Size = new System.Drawing.Size(98, 25);
+            // 
+            // btnRunFilter
+            // 
+            this.btnRunFilter.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnRunFilter.Image = ((System.Drawing.Image)(resources.GetObject("btnRunFilter.Image")));
+            this.btnRunFilter.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnRunFilter.Name = "btnRunFilter";
+            this.btnRunFilter.Size = new System.Drawing.Size(23, 22);
+            this.btnRunFilter.Text = "Найти";
+            this.btnRunFilter.Click += new System.EventHandler(this.btnRunFilter_Click);
+            // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(58, 22);
+            this.toolStripButton1.Text = "Найдено:";
+            // 
             // lblResult
             // 
             this.lblResult.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.lblResult.Name = "lblResult";
             this.lblResult.Size = new System.Drawing.Size(0, 22);
+            // 
+            // loader1
+            // 
+            this.loader1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.loader1.Location = new System.Drawing.Point(0, 25);
+            this.loader1.Name = "loader1";
+            this.loader1.Size = new System.Drawing.Size(1338, 403);
+            this.loader1.TabIndex = 2;
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel1,
+            this.lblUsageStat});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 428);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(1338, 22);
+            this.statusStrip1.TabIndex = 3;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(155, 17);
+            this.toolStripStatusLabel1.Text = "Статистика использования";
+            // 
+            // lblUsageStat
+            // 
+            this.lblUsageStat.Name = "lblUsageStat";
+            this.lblUsageStat.Size = new System.Drawing.Size(0, 17);
             // 
             // MorphExplorer
             // 
@@ -371,6 +424,7 @@ namespace Morph
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.loader1);
             this.Controls.Add(this.toolStrip1);
+            this.Controls.Add(this.statusStrip1);
             this.Name = "MorphExplorer";
             this.Text = "Морфология";
             this.Load += new System.EventHandler(this.MorphExplorer_LoadAsync);
@@ -378,6 +432,8 @@ namespace Morph
             ((System.ComponentModel.ISupportInitialize)(this.morphSource)).EndInit();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -402,6 +458,8 @@ namespace Morph
         private System.Windows.Forms.ToolStripComboBox cmbDegree;
         private System.Windows.Forms.ToolStripComboBox cmbCase;
         private System.Windows.Forms.ToolStripButton btnRunFilter;
+        private System.Windows.Forms.ToolStripLabel lblResult;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn IsRule;
         private System.Windows.Forms.DataGridViewTextBoxColumn posDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn lemmaDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn formDataGridViewTextBoxColumn;
@@ -417,6 +475,9 @@ namespace Morph
         private System.Windows.Forms.DataGridViewTextBoxColumn featureDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn langDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
-        private System.Windows.Forms.ToolStripLabel lblResult;
+        private System.Windows.Forms.ToolStripButton btnIsRule;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.ToolStripStatusLabel lblUsageStat;
     }
 }

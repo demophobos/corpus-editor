@@ -32,8 +32,10 @@ namespace Morph
             this.components = new System.ComponentModel.Container();
             this.table = new System.Windows.Forms.TableLayoutPanel();
             this.txtFeature = new System.Windows.Forms.TextBox();
+            this.morphSource = new System.Windows.Forms.BindingSource(this.components);
             this.label14 = new System.Windows.Forms.Label();
             this.cmbDialect = new System.Windows.Forms.ComboBox();
+            this.dictSource = new System.Windows.Forms.BindingSource(this.components);
             this.label13 = new System.Windows.Forms.Label();
             this.cmbDegree = new System.Windows.Forms.ComboBox();
             this.label12 = new System.Windows.Forms.Label();
@@ -62,12 +64,10 @@ namespace Morph
             this.label1 = new System.Windows.Forms.Label();
             this.cmbLang = new System.Windows.Forms.ComboBox();
             this.txtLemma = new System.Windows.Forms.TextBox();
-            this.morphSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dictSource = new System.Windows.Forms.BindingSource(this.components);
             this.table.SuspendLayout();
-            this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.morphSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dictSource)).BeginInit();
+            this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // table
@@ -123,6 +123,7 @@ namespace Morph
             this.table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
             this.table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
             this.table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.table.Size = new System.Drawing.Size(354, 413);
             this.table.TabIndex = 6;
             // 
@@ -134,6 +135,10 @@ namespace Morph
             this.txtFeature.Name = "txtFeature";
             this.txtFeature.Size = new System.Drawing.Size(248, 20);
             this.txtFeature.TabIndex = 28;
+            // 
+            // morphSource
+            // 
+            this.morphSource.DataSource = typeof(Model.MorphModel);
             // 
             // label14
             // 
@@ -159,6 +164,10 @@ namespace Morph
             this.cmbDialect.TabIndex = 26;
             this.cmbDialect.Tag = "Dialect";
             this.cmbDialect.ValueMember = "Name";
+            // 
+            // dictSource
+            // 
+            this.dictSource.DataSource = typeof(Model.TaxonomyItem);
             // 
             // label13
             // 
@@ -492,14 +501,6 @@ namespace Morph
             this.txtLemma.Size = new System.Drawing.Size(248, 20);
             this.txtLemma.TabIndex = 4;
             // 
-            // morphSource
-            // 
-            this.morphSource.DataSource = typeof(Model.MorphModel);
-            // 
-            // dictSource
-            // 
-            this.dictSource.DataSource = typeof(Model.TaxonomyItem);
-            // 
             // MorphEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -513,9 +514,9 @@ namespace Morph
             this.Text = "Редактор определения";
             this.table.ResumeLayout(false);
             this.table.PerformLayout();
-            this.flowLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.morphSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dictSource)).EndInit();
+            this.flowLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

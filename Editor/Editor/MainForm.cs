@@ -5,7 +5,6 @@ using Morph;
 using Process;
 using Project;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using WeifenLuo.WinFormsUI.Docking;
@@ -69,7 +68,7 @@ namespace Editor
         {
             var docs = dockPanel1.DocumentsToArray();
 
-            var deletedDocuments = docs.Where(i => ((DocumentContainer)i).DocumentProcess.Header.ProjectId == project.Id).Select(i=>i as DocumentContainer);
+            var deletedDocuments = docs.Where(i => ((DocumentContainer)i).DocumentProcess.Header.ProjectId == project.Id).Select(i => i as DocumentContainer);
 
             foreach (var deleted in deletedDocuments)
             {

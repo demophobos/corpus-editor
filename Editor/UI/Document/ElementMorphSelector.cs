@@ -5,12 +5,10 @@ using Model.Query;
 using Morph;
 using Process;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WeifenLuo.WinFormsUI.Docking;
@@ -23,12 +21,16 @@ namespace Document
 
         ElementModel _element;
 
+        IndexModel _index;
+
         public event EventHandler<ElementModel> ElementMorphAccepted;
 
         public event EventHandler<ElementModel> ElementMorphRejected;
 
-        public ElementMorphSelector()
+        public ElementMorphSelector(IndexModel index)
         {
+            _index = index;
+
             _morphProcess = new MorphProcess();
 
             InitializeComponent();
@@ -176,11 +178,17 @@ namespace Document
             btnEdit.Enabled = btnDelete.Enabled = morphSource.Current != null;
 
             btnCancelDefinition.Enabled = morphSource.Current != null && morphSource.Current is MorphModel model && model.Id == _element.MorphId;
+
+            btnAcceptDefinition.Enabled = morphSource.Current != null && morphSource.Current is MorphModel && _element.MorphId == null;
+
+            btnCreateRule.Enabled = morphSource.List.Count == 1 && morphSource.Current != null && morphSource.Current is MorphModel model1 && model1.IsRule == false;
+
+            btnRemoveRule.Enabled = morphSource.List.Count == 1 && morphSource.Current != null && morphSource.Current is MorphModel model2 && model2.IsRule == true;
         }
 
         private void morphSource_ListChanged(object sender, ListChangedEventArgs e)
         {
-            btnAcceptDefinitionForAllCases.Enabled = btnCancelDefinitionForAllCases.Enabled = morphSource.List.Count == 1;
+
         }
 
         private void dataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -250,6 +258,38 @@ namespace Document
 
                 lblStatus.Text = $"Определение отменено для {elements.Count} элементов";
 
+            }
+        }
+
+        private async void btnCreateRule_Click(object sender, EventArgs e)
+        {
+            if (morphSource.Current != null && morphSource.Current is MorphModel morph)
+            {
+                morph.IsRule = true;
+
+                await _morphProcess.SaveMorph(morph).ConfigureAwait(true);
+
+                morphSource.ResetCurrentItem();
+
+                btnCreateRule.Enabled = false;
+
+                btnRemoveRule.Enabled = true;
+            }
+        }
+
+        private async void btnRemoveRule_Click(object sender, EventArgs e)
+        {
+            if (morphSource.Current != null && morphSource.Current is MorphModel morph)
+            {
+                morph.IsRule = false;
+
+                await _morphProcess.SaveMorph(morph).ConfigureAwait(true);
+
+                morphSource.ResetCurrentItem();
+
+                btnRemoveRule.Enabled = false;
+
+                btnCreateRule.Enabled = true;
             }
         }
     }

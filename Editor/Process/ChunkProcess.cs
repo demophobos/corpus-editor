@@ -5,7 +5,6 @@ using Process.Helper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
@@ -38,7 +37,8 @@ namespace Process
         {
             var elements = ParseTextElements(chunk);
 
-            foreach (var element in elements) {
+            foreach (var element in elements)
+            {
 
                 await API.ElementAPI.Save(element).ConfigureAwait(true);
             }

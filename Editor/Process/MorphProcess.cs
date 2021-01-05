@@ -5,9 +5,6 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Xml;
@@ -16,6 +13,7 @@ namespace Process
 {
     public class MorphProcess
     {
+        #region Morph
         public async Task<List<MorphModel>> GetMorphItems(MorphQuery query)
         {
             return await MorphAPI.GetMorphItems(query);
@@ -35,6 +33,7 @@ namespace Process
         {
             return await MorphAPI.Remove(morph);
         }
+        #endregion
 
         public async Task<List<MorpheusAnalysisModel>> GetMorpheusAnalysis(string value)
         {

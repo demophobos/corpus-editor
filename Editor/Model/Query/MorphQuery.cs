@@ -1,13 +1,8 @@
 ﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Model.Query
 {
-    public class MorphQuery: BaseQuery
+    public class MorphQuery : BaseQuery
     {
         [JsonProperty("lemma", NullValueHandling = NullValueHandling.Ignore)]
         public string Lemma { get; set; }
@@ -37,5 +32,7 @@ namespace Model.Query
         public string Degree { get; set; }
         [JsonProperty("lang", NullValueHandling = NullValueHandling.Ignore)]
         public string Lang { get; set; }
+        [JsonProperty("isRule", NullValueHandling = NullValueHandling.Ignore)]
+        public bool? IsRule { get; set; }
     }
 }
