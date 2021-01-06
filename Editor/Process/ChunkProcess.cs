@@ -37,8 +37,16 @@ namespace Process
         {
             var elements = ParseTextElements(chunk);
 
+            var morphRules = await API.MorphAPI.GetMorphItems(new MorphQuery { IsRule = true }).ConfigureAwait(true);
+
             foreach (var element in elements)
             {
+                var rules = morphRules.Where(i => i.Form.ToLower() == element.Value.ToLower()).ToList();
+
+                if (rules.Count == 1) {
+
+                    element.MorphId = rules[0].Id;
+                }
 
                 await API.ElementAPI.Save(element).ConfigureAwait(true);
             }

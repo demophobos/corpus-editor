@@ -35,7 +35,7 @@ namespace Editor
                 LoadItems();
             }
         }
-        private bool Login()
+        public bool Login()
         {
             var loginForm = new LoginForm();
 

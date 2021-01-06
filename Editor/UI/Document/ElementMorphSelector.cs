@@ -53,31 +53,6 @@ namespace Document
             morphSource.DataSource = await _morphProcess.GetMorphItems(query).ConfigureAwait(true);
         }
 
-        private async void btnAcceptDefinition_ClickAsync(object sender, EventArgs e)
-        {
-            if (morphSource.Current != null && morphSource.Current is MorphModel morph)
-            {
-                _element.MorphId = morph.Id;
-
-                _element = await ElementProcess.SaveModel(_element).ConfigureAwait(true);
-
-                await LoadDataAsync(_element);
-
-                ElementMorphAccepted.Invoke(this, _element);
-            }
-        }
-
-        private async void btnUndoAccept_Click(object sender, EventArgs e)
-        {
-            _element.MorphId = null;
-
-            _element = await ElementProcess.SaveModel(_element).ConfigureAwait(true);
-
-            await LoadDataAsync(_element);
-
-            ElementMorphRejected.Invoke(this, _element);
-        }
-
         private async void btnMorpheusLat_Click(object sender, EventArgs e)
         {
             if (_element != null)
@@ -186,16 +161,11 @@ namespace Document
             btnRemoveRule.Enabled = morphSource.List.Count == 1 && morphSource.Current != null && morphSource.Current is MorphModel model2 && model2.IsRule == true;
         }
 
-        private void morphSource_ListChanged(object sender, ListChangedEventArgs e)
-        {
-
-        }
-
         private void dataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             foreach (DataGridViewRow row in dataGridView1.Rows)
             {
-                if (row.Cells["morphId"].Value.ToString() == _element.MorphId)
+                if (row.Cells["morphId"].Value != null && row.Cells["morphId"].Value.ToString() == _element.MorphId)
                 {
                     row.DefaultCellStyle.Font = new Font(dataGridView1.Font, FontStyle.Underline);
                 }
@@ -203,61 +173,6 @@ namespace Document
                 {
                     row.DefaultCellStyle.Font = new Font(dataGridView1.Font, FontStyle.Regular);
                 }
-            }
-        }
-
-        private async void btnAcceptDefinitionForAllCases_Click(object sender, EventArgs e)
-        {
-            if (morphSource.Current != null && morphSource.Current is MorphModel morph)
-            {
-                var result = await ElementProcess.GetElements(new ElementQuery { value = _element.Value }).ConfigureAwait(true);
-
-                var elements = result.Where(i => string.IsNullOrEmpty(i.MorphId)).ToList();
-
-                foreach (var element in elements)
-                {
-                    element.MorphId = morph.Id;
-
-                    var savedElement = await ElementProcess.SaveModel(element).ConfigureAwait(true);
-
-                    if (savedElement.Id == _element.Id)
-                    {
-                        _element = savedElement;
-                    }
-
-                    ElementMorphAccepted.Invoke(this, savedElement);
-                }
-
-                await LoadDataAsync(_element).ConfigureAwait(true);
-
-                lblStatus.Text = $"Определение применено для {elements.Count} элементов";
-            }
-        }
-
-        private async void btnCancelDefinitionForAllCases_Click(object sender, EventArgs e)
-        {
-            if (morphSource.Current != null && morphSource.Current is MorphModel morph)
-            {
-                var elements = await ElementProcess.GetElements(new ElementQuery { morphId = morph.Id }).ConfigureAwait(true);
-
-                foreach (var element in elements)
-                {
-                    element.MorphId = null;
-
-                    var savedElement = await ElementProcess.SaveModel(element).ConfigureAwait(true);
-
-                    if (savedElement.Id == _element.Id)
-                    {
-                        _element = savedElement;
-                    }
-
-                    ElementMorphRejected.Invoke(this, savedElement);
-                }
-
-                await LoadDataAsync(_element).ConfigureAwait(true);
-
-                lblStatus.Text = $"Определение отменено для {elements.Count} элементов";
-
             }
         }
 
@@ -291,6 +206,31 @@ namespace Document
 
                 btnCreateRule.Enabled = true;
             }
+        }
+
+        private async void btnAcceptDefinition_ClickAsync(object sender, EventArgs e)
+        {
+            if (morphSource.Current != null && morphSource.Current is MorphModel morph)
+            {
+                _element.MorphId = morph.Id;
+
+                _element = await ElementProcess.SaveModel(_element).ConfigureAwait(true);
+
+                await LoadDataAsync(_element);
+
+                ElementMorphAccepted.Invoke(this, _element);
+            }
+        }
+
+        private async void btnUndoAccept_Click(object sender, EventArgs e)
+        {
+            _element.MorphId = null;
+
+            _element = await ElementProcess.SaveModel(_element).ConfigureAwait(true);
+
+            await LoadDataAsync(_element);
+
+            ElementMorphRejected.Invoke(this, _element);
         }
     }
 }

@@ -26,6 +26,7 @@ namespace Document
 
         private async void ChunkExplorer_Load(object sender, EventArgs e)
         {
+            loader1.BringToFront();
 
             flowLayoutPanel1.Controls.Clear();
 
@@ -34,6 +35,7 @@ namespace Document
             var elements = await ElementProcess.GetElements(query).ConfigureAwait(true);
 
             foreach (var element in elements)
+            
             {
                 if (element.Type == (int)ElementTypeEnum.NewLine)
                 {
@@ -80,32 +82,9 @@ namespace Document
                     label.Click += Label_Click;
 
                     flowLayoutPanel1.Controls.Add(label);
-
-                    //var comments = _elementComments.Where(i => i.ElementGuid == element.Guid);
-
-                    //foreach (var comment in comments)
-                    //{
-                    //    var commentLabel = new Label
-                    //    {
-                    //        AutoSize = true,
-                    //        Text = comment.Type.Value == 0 ? $"{comment.CommentOrder}" : $"{comment.CommentOrder}*",
-                    //        Tag = comment,
-                    //        Padding = new Padding(1, 1, 1, 1),
-                    //        FlatStyle = FlatStyle.Flat,
-                    //        Font = new Font("Palatino Linotype", 9),
-                    //        TextAlign = ContentAlignment.TopLeft
-                    //    };
-
-                    //    flowLayoutPanel1.Controls.Add(commentLabel);
-                    //}
-
-                    //if (!string.IsNullOrEmpty(_selectedElementGuid) && _selectedElementGuid == element.Guid)
-                    //{
-                    //    label.BackColor = SystemColors.ActiveCaption;
-                    //}
                 }
             }
-
+            loader1.SendToBack();
         }
 
         private void Label_Click(object sender, EventArgs e)
@@ -124,7 +103,14 @@ namespace Document
 
                 foreach (var label in labels)
                 {
-                    label.BackColor = Color.White;
+                    if (label.Tag is ElementModel element && element.Id == selectedElement.Id)
+                    {
+                        label.BackColor = SystemColors.GradientActiveCaption;
+                    }
+                    else
+                    {
+                        label.BackColor = SystemColors.Window;
+                    }
                 }
 
                 ElementSelected.Invoke(this, selectedElement);

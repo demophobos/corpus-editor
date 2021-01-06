@@ -40,7 +40,11 @@ namespace Document
             this.btnAdd = new System.Windows.Forms.ToolStripButton();
             this.btnEdit = new System.Windows.Forms.ToolStripButton();
             this.btnDelete = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.btnCancelDefinition = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnCreateRule = new System.Windows.Forms.ToolStripButton();
+            this.btnRemoveRule = new System.Windows.Forms.ToolStripButton();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.IsRule = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Form = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -61,10 +65,6 @@ namespace Document
             this.morphSource = new System.Windows.Forms.BindingSource(this.components);
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.lblStatus = new System.Windows.Forms.ToolStripStatusLabel();
-            this.btnCreateRule = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.btnRemoveRule = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.morphSource)).BeginInit();
@@ -118,7 +118,7 @@ namespace Document
             // btnMorpheusLat
             // 
             this.btnMorpheusLat.Name = "btnMorpheusLat";
-            this.btnMorpheusLat.Size = new System.Drawing.Size(180, 22);
+            this.btnMorpheusLat.Size = new System.Drawing.Size(156, 22);
             this.btnMorpheusLat.Text = "Morpheus [lat]";
             this.btnMorpheusLat.Click += new System.EventHandler(this.btnMorpheusLat_Click);
             // 
@@ -126,7 +126,7 @@ namespace Document
             // 
             this.btnMorpheusGrc.Enabled = false;
             this.btnMorpheusGrc.Name = "btnMorpheusGrc";
-            this.btnMorpheusGrc.Size = new System.Drawing.Size(180, 22);
+            this.btnMorpheusGrc.Size = new System.Drawing.Size(156, 22);
             this.btnMorpheusGrc.Text = "Morpheus [grc]";
             // 
             // toolStripSeparator2
@@ -164,6 +164,11 @@ namespace Document
             this.btnDelete.Text = "Удалить";
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_ClickAsync);
             // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
             // btnCancelDefinition
             // 
             this.btnCancelDefinition.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -173,6 +178,31 @@ namespace Document
             this.btnCancelDefinition.Size = new System.Drawing.Size(23, 22);
             this.btnCancelDefinition.ToolTipText = "Отменить";
             this.btnCancelDefinition.Click += new System.EventHandler(this.btnUndoAccept_Click);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
+            // 
+            // btnCreateRule
+            // 
+            this.btnCreateRule.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnCreateRule.Image = ((System.Drawing.Image)(resources.GetObject("btnCreateRule.Image")));
+            this.btnCreateRule.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnCreateRule.Name = "btnCreateRule";
+            this.btnCreateRule.Size = new System.Drawing.Size(23, 22);
+            this.btnCreateRule.Text = "Содать правило";
+            this.btnCreateRule.Click += new System.EventHandler(this.btnCreateRule_Click);
+            // 
+            // btnRemoveRule
+            // 
+            this.btnRemoveRule.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnRemoveRule.Image = ((System.Drawing.Image)(resources.GetObject("btnRemoveRule.Image")));
+            this.btnRemoveRule.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnRemoveRule.Name = "btnRemoveRule";
+            this.btnRemoveRule.Size = new System.Drawing.Size(23, 22);
+            this.btnRemoveRule.Text = "Удалить правило";
+            this.btnRemoveRule.Click += new System.EventHandler(this.btnRemoveRule_Click);
             // 
             // dataGridView1
             // 
@@ -333,7 +363,6 @@ namespace Document
             // 
             this.morphSource.DataSource = typeof(Model.MorphModel);
             this.morphSource.CurrentChanged += new System.EventHandler(this.morphSource_CurrentChanged);
-            this.morphSource.ListChanged += new System.ComponentModel.ListChangedEventHandler(this.morphSource_ListChanged);
             // 
             // statusStrip1
             // 
@@ -349,36 +378,6 @@ namespace Document
             // 
             this.lblStatus.Name = "lblStatus";
             this.lblStatus.Size = new System.Drawing.Size(0, 17);
-            // 
-            // btnCreateRule
-            // 
-            this.btnCreateRule.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnCreateRule.Image = ((System.Drawing.Image)(resources.GetObject("btnCreateRule.Image")));
-            this.btnCreateRule.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnCreateRule.Name = "btnCreateRule";
-            this.btnCreateRule.Size = new System.Drawing.Size(23, 22);
-            this.btnCreateRule.Text = "toolStripButton2";
-            this.btnCreateRule.Click += new System.EventHandler(this.btnCreateRule_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
-            // 
-            // btnRemoveRule
-            // 
-            this.btnRemoveRule.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnRemoveRule.Image = ((System.Drawing.Image)(resources.GetObject("btnRemoveRule.Image")));
-            this.btnRemoveRule.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnRemoveRule.Name = "btnRemoveRule";
-            this.btnRemoveRule.Size = new System.Drawing.Size(23, 22);
-            this.btnRemoveRule.Text = "toolStripButton1";
-            this.btnRemoveRule.Click += new System.EventHandler(this.btnRemoveRule_Click);
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
             // 
             // ElementMorphSelector
             // 

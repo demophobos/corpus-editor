@@ -142,7 +142,7 @@ namespace Document
             this.btnOpenEditor.Image = ((System.Drawing.Image)(resources.GetObject("btnOpenEditor.Image")));
             this.btnOpenEditor.Name = "btnOpenEditor";
             this.btnOpenEditor.Size = new System.Drawing.Size(249, 22);
-            this.btnOpenEditor.Text = "Открыть редактор фрагмента";
+            this.btnOpenEditor.Text = "Редактор фрагмента";
             this.btnOpenEditor.Click += new System.EventHandler(this.btnOpenEditor_Click);
             // 
             // ContentExplorer

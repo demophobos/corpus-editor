@@ -120,4 +120,29 @@
   <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAA
+        AAD29vb/9vb2//b29v/29vb/9vb2//b29v/29vb/9vb2//b29v8AAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAA9vb2/0JCQv9CQkL/QkJC/0JCQv9CQkL/QkJC/0JCQv/29vb/AAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAPb29v9CQkL/QkJC/0JCQv9CQkL/QkJC/0JCQv9CQkL/9vb2/wAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAD29vb/QkJC/0JCQv9CQkL/QkJC/0JCQv9CQkL/QkJC//b29v/29vb/9vb2//b2
+        9v/29vb/9vb2//b29v8AAAAA9vb2/0JCQv9CQkL/QkJC/4aGhv9CQkL/QkJC/0JCQv/29vb/QkJC/0JC
+        Qv9CQkL/QkJC/0JCQv/29vb/AAAAAPb29v9CQkL/QkJC/5GRkf/29vb/kZGR/0JCQv9CQkL/9vb2//Hv
+        8P/x7/D/8e/w//Hv8P9CQkL/9vb2/wAAAAD29vb/9vb2//b29v/29vb/9vb2//b29v/29vb/9vb2//b2
+        9v9CQkL/8e/w//Hv8P/x7/D/QkJC//b29v8AAAAAAAAAAPb29o/Jycn/TU1N/0JCQv9NTU3/ycnJ//Lw
+        8f/x7/D/8e/w//Hv8P/x7/D/8e/w/0JCQv/29vb/AAAAAAAAAAD29vb/TU1N/0JCQv9CQkL/QkJC/01N
+        Tf++vr7/QkJC/0JCQv9CQkL/8e/w//Hv8P9CQkL/9vb2/wAAAAAAAAAA9vb2/0JCQv9CQkL/QkJC/0JC
+        Qv9CQkL/9fT1//Hv8P/x7/D/8e/w//Hv8P/x7/D/QkJC//b29v8AAAAAAAAAAPb29v9NTU3/QkJC/0JC
+        Qv9CQkL/TU1N/76+vv9CQkL/QkJC//Hv8P9CQkL/8e/w/0JCQv/29vb/AAAAAAAAAAD29vaPvr6+/01N
+        Tf9CQkL/TU1N/729vf/y8PH/8e/w//Hv8P/x7/D/8e/w//Hv8P9CQkL/9vb2/wAAAAAAAAAAAAAAAPb2
+        9o/29vb/9vb2/76+vv/y8PH/QkJC/0JCQv9CQkL/QkJC/0JCQv/x7/D/QkJC//b29v8AAAAAAAAAAAAA
+        AAAAAAAAAAAAAPb29v9CQkL/8e/w//Hv8P/x7/D/8e/w//Hv8P/x7/D/8e/w/0JCQv/29vb/AAAAAAAA
+        AAAAAAAAAAAAAAAAAAD29vb/QkJC/0JCQv9CQkL/QkJC/0JCQv9CQkL/QkJC/0JCQv9CQkL/9vb2/wAA
+        AAAAAAAAAAAAAAAAAAAAAAAA9vb2//b29v/29vb/9vb2//b29v/29vb/9vb2//b29v/29vb/9vb2//b2
+        9v8AAAAAAH8AAAB/AAAAfwAAAAEAAAABAAAAAQAAAAEAAIABAACAAQAAgAEAAIABAACAAQAAwAEAAPAB
+        AADwAQAA8AEAAA==
+</value>
+  </data>
 </root>

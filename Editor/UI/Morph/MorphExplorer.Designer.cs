@@ -67,8 +67,9 @@ namespace Morph
             this.lblResult = new System.Windows.Forms.ToolStripLabel();
             this.loader1 = new Common.Control.Loader();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.lblUsageStat = new System.Windows.Forms.ToolStripStatusLabel();
+            this.btnApplyRule = new System.Windows.Forms.ToolStripButton();
+            this.btnUndoRule = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.morphSource)).BeginInit();
             this.toolStrip1.SuspendLayout();
@@ -267,7 +268,9 @@ namespace Morph
             this.cmbDegree,
             this.btnRunFilter,
             this.toolStripButton1,
-            this.lblResult});
+            this.lblResult,
+            this.btnUndoRule,
+            this.btnApplyRule});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
@@ -295,13 +298,11 @@ namespace Morph
             // 
             // txtLemma
             // 
-            this.txtLemma.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtLemma.Name = "txtLemma";
             this.txtLemma.Size = new System.Drawing.Size(98, 25);
             // 
             // txtForm
             // 
-            this.txtForm.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtForm.Name = "txtForm";
             this.txtForm.Size = new System.Drawing.Size(98, 25);
             // 
@@ -397,7 +398,6 @@ namespace Morph
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel1,
             this.lblUsageStat});
             this.statusStrip1.Location = new System.Drawing.Point(0, 428);
             this.statusStrip1.Name = "statusStrip1";
@@ -405,16 +405,34 @@ namespace Morph
             this.statusStrip1.TabIndex = 3;
             this.statusStrip1.Text = "statusStrip1";
             // 
-            // toolStripStatusLabel1
-            // 
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(155, 17);
-            this.toolStripStatusLabel1.Text = "Статистика использования";
-            // 
             // lblUsageStat
             // 
             this.lblUsageStat.Name = "lblUsageStat";
             this.lblUsageStat.Size = new System.Drawing.Size(0, 17);
+            // 
+            // btnApplyRule
+            // 
+            this.btnApplyRule.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.btnApplyRule.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnApplyRule.Enabled = false;
+            this.btnApplyRule.Image = ((System.Drawing.Image)(resources.GetObject("btnApplyRule.Image")));
+            this.btnApplyRule.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnApplyRule.Name = "btnApplyRule";
+            this.btnApplyRule.Size = new System.Drawing.Size(23, 22);
+            this.btnApplyRule.Text = "Применить правило";
+            this.btnApplyRule.Click += new System.EventHandler(this.btnApplyRule_Click);
+            // 
+            // btnUndoRule
+            // 
+            this.btnUndoRule.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.btnUndoRule.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnUndoRule.Enabled = false;
+            this.btnUndoRule.Image = ((System.Drawing.Image)(resources.GetObject("btnUndoRule.Image")));
+            this.btnUndoRule.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnUndoRule.Name = "btnUndoRule";
+            this.btnUndoRule.Size = new System.Drawing.Size(23, 22);
+            this.btnUndoRule.Text = "Отменить правило";
+            this.btnUndoRule.Click += new System.EventHandler(this.btnUndoRule_Click);
             // 
             // MorphExplorer
             // 
@@ -477,7 +495,8 @@ namespace Morph
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.ToolStripButton btnIsRule;
         private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.ToolStripStatusLabel lblUsageStat;
+        private System.Windows.Forms.ToolStripButton btnUndoRule;
+        private System.Windows.Forms.ToolStripButton btnApplyRule;
     }
 }

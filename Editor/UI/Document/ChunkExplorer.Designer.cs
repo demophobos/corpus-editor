@@ -31,11 +31,13 @@ namespace Document
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.loader1 = new Common.Control.Loader();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.loader1);
             this.panel1.Controls.Add(this.flowLayoutPanel1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -46,13 +48,21 @@ namespace Document
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.AutoScroll = true;
-            this.flowLayoutPanel1.BackColor = System.Drawing.SystemColors.Info;
+            this.flowLayoutPanel1.BackColor = System.Drawing.SystemColors.Window;
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(659, 325);
             this.flowLayoutPanel1.TabIndex = 1;
+            // 
+            // loader1
+            // 
+            this.loader1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.loader1.Location = new System.Drawing.Point(0, 0);
+            this.loader1.Name = "loader1";
+            this.loader1.Size = new System.Drawing.Size(659, 325);
+            this.loader1.TabIndex = 0;
             // 
             // ChunkExplorer
             // 
@@ -70,5 +80,6 @@ namespace Document
         #endregion
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private Common.Control.Loader loader1;
     }
 }

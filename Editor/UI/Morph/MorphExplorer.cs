@@ -4,6 +4,7 @@ using Model.Query;
 using Process;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using WeifenLuo.WinFormsUI.Docking;
 
@@ -99,17 +100,62 @@ namespace Morph
 
         private void btnIsRule_Click(object sender, EventArgs e)
         {
-            btnIsRule.Tag = btnIsRule.Checked;
+            btnApplyRule.Enabled = btnUndoRule.Enabled = btnIsRule.Checked;
         }
 
         private async void morphSource_CurrentChanged(object sender, EventArgs e)
         {
-            if (morphSource.Current != null && morphSource.Current is MorphModel morph) {
+            if (morphSource.Current != null && morphSource.Current is MorphModel morph)
+            {
 
                 var elements = await ElementProcess.GetElements(new ElementQuery { morphId = morph.Id }).ConfigureAwait(true);
 
-                lblUsageStat.Text = $"'{morph.Form}': {elements.Count}";
+                lblUsageStat.Text = $"Статистика использования '{morph.Form}': {elements.Count}";
             }
+        }
+
+        private async void btnApplyRule_Click(object sender, EventArgs e)
+        {
+            int count = 0;
+
+            foreach (MorphModel morph in morphSource.List)
+            {
+                var result = await ElementProcess.GetElements(new ElementQuery { value = morph.Form }).ConfigureAwait(true);
+
+                var elements = result.Where(i => string.IsNullOrEmpty(i.MorphId)).ToList();
+
+                foreach (var element in elements)
+                {
+                    element.MorphId = morph.Id;
+
+                    await ElementProcess.SaveModel(element).ConfigureAwait(true);
+                }
+
+                count += elements.Count;
+            }
+
+            lblUsageStat.Text = $"Определение применено для {count} элементов";
+        }
+
+        private async void btnUndoRule_Click(object sender, EventArgs e)
+        {
+            int count = 0;
+
+            foreach (MorphModel morph in morphSource.List)
+            {
+                var elements = await ElementProcess.GetElements(new ElementQuery { morphId = morph.Id }).ConfigureAwait(true);
+
+                foreach (var element in elements)
+                {
+                    element.MorphId = null;
+
+                    await ElementProcess.SaveModel(element).ConfigureAwait(true);
+                }
+
+                count += elements.Count;
+            }
+
+            lblUsageStat.Text = $"Определение отменено для {count} элементов";
         }
     }
 }
