@@ -9,12 +9,14 @@ namespace Document
 {
     public partial class ChunkContainer : DockContent
     {
-
+        private DocumentProcess _documentProcess;
         public IndexModel Index { get; private set; }
 
         private ChunkExplorer _chunkExplorer;
 
         private ElementMorphSelector _morphSelector;
+
+        private InterpContainer _interpContainer;
 
         private ChunkModel _chunk;
 
@@ -24,8 +26,10 @@ namespace Document
 
         public event EventHandler<ChunkModel> ChunkDeleted;
 
-        public ChunkContainer(IndexModel index)
+        public ChunkContainer(IndexModel index, DocumentProcess documentProcess)
         {
+            _documentProcess = documentProcess;
+
             Index = index;
 
             InitializeComponent();
@@ -171,6 +175,50 @@ namespace Document
         private void MorphSelector_ElementMorphAccepted(object sender, ElementModel e)
         {
             _chunkExplorer.MarkElement(e);
+        }
+
+        private void btnShowHideTranslationPane_Click(object sender, EventArgs e)
+        {
+            btnShowHideTranslationPane.Checked = btnShowHideTranslationPane.Tag.ToString() == "show";
+
+            if (_interpContainer == null || _interpContainer.IsDisposed)
+            {
+                ShowInterpretationContainer();
+            }
+            else
+            {
+
+                if (btnShowHideTranslationPane.Tag.ToString() == "hide")
+                {
+                    _interpContainer.Hide();
+
+                    btnShowHideTranslationPane.ToolTipText = "Показать переводы";
+
+                    btnShowHideTranslationPane.Tag = "show";
+                }
+                else
+                {
+                    _interpContainer.Show();
+
+                    btnShowHideTranslationPane.ToolTipText = "Cкрыть переводы";
+
+                    btnShowHideTranslationPane.Tag = "hide";
+                }
+            }
+        }
+
+        private void ShowInterpretationContainer()
+        {
+
+            _interpContainer = new InterpContainer(_documentProcess, Index, _chunk);
+
+            _interpContainer.Show(dockPanel1, DockState.DockBottom);
+
+            btnShowHideTranslationPane.ToolTipText = "Cкрыть переводы";
+
+            btnShowHideTranslationPane.Tag = "hide";
+
+            btnShowHideTranslationPane.Checked = true;
         }
     }
 }

@@ -63,7 +63,7 @@ namespace Document
             {
                 if (!(_chunkContainers.FirstOrDefault(p => p.Tag.ToString() == index.Id) is ChunkContainer existingControl))
                 {
-                    _chunkContainer = new ChunkContainer(index)
+                    _chunkContainer = new ChunkContainer(index, DocumentProcess)
                     {
                         Tag = index.Id
                     };

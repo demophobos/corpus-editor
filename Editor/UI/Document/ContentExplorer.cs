@@ -31,6 +31,8 @@ namespace Document
             _documentProcess = documentProcess;
 
             InitializeComponent();
+
+            btnBindInterp.Visible = documentProcess.Header.EditionType == EditionTypeStringEnum.Original;
         }
 
         private async void ContentExplorer_LoadAsync(object sender, EventArgs e)
@@ -217,54 +219,24 @@ namespace Document
             }
         }
 
-        private async void btnImportChunks_Click(object sender, EventArgs e)
+        private async void btnBindInterp_Click(object sender, EventArgs e)
+        {
+            var boundInterps = await _documentProcess.BindInterps();
+
+            MessageBox.Show($"Связано переводов: {boundInterps.Count}");
+        }
+
+        private async void jSONToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var fileDialog = new OpenFileDialog();
 
-            var chunks = new List<ChunkModel>();
-
             if (fileDialog.ShowDialog() == DialogResult.OK)
             {
-
-                JObject data = JObject.Parse(File.ReadAllText(fileDialog.FileName));
-
-                foreach (var row in data["rows"])
-                {
-                    var indeces = await _documentProcess.GetIndecesByName(row[1].ToString()).ConfigureAwait(true);
-
-                    if (indeces.Count == 1)
-                    {
-                        var index = indeces[0];
-
-                        var chunk = await ChunkProcess.GetChunk(index.Id);
-
-                        if (chunk == null)
-                        {
-                            var newChunk = new ChunkModel
-                            {
-                                IndexId = index.Id,
-                                Value = row[2].ToString()
-                            };
-
-                            var savedChunk = await ChunkProcess.SaveChunkAndElements(newChunk).ConfigureAwait(true);
-
-                            chunks.Add(savedChunk);
-                        }
-                        else
-                        {
-                            continue;
-                        }
-                    }
-                    else
-                    {
-                        continue;
-                    }
-                }
+                var chunks = await _documentProcess.LoadJsonChunks(fileDialog.FileName).ConfigureAwait(true);
 
                 MessageBox.Show($"Импортировано фрагментов: {chunks.Count}");
             }
         }
-
     }
 }
 

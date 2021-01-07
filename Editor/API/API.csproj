@@ -54,6 +54,7 @@
     <Compile Include="ElementAPI.cs" />
     <Compile Include="HeaderAPI.cs" />
     <Compile Include="IndexAPI.cs" />
+    <Compile Include="InterpAPI.cs" />
     <Compile Include="MorphAPI.cs" />
     <Compile Include="MorpheusAPI.cs" />
     <Compile Include="ProjectAPI.cs" />

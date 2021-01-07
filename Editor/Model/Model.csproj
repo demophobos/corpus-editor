@@ -64,6 +64,7 @@
     <Compile Include="Enum\TextAnalysisStatusEnum.cs" />
     <Compile Include="HeaderModel.cs" />
     <Compile Include="IndexModel.cs" />
+    <Compile Include="InterpModel.cs" />
     <Compile Include="MorpheusAnalysisModel.cs" />
     <Compile Include="MorphModel.cs" />
     <Compile Include="ProjectModel.cs" />
@@ -74,6 +75,7 @@
     <Compile Include="Query\ElementQuery.cs" />
     <Compile Include="Query\HeaderQuery.cs" />
     <Compile Include="Query\IndexQuery.cs" />
+    <Compile Include="Query\InterpQuery.cs" />
     <Compile Include="Query\IQuery.cs" />
     <Compile Include="Query\MorphQuery.cs" />
     <Compile Include="Query\ProjectQuery.cs" />

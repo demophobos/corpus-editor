@@ -36,13 +36,15 @@ namespace Document
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.btnAddFirstLevelSection = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.btnImportChunks = new System.Windows.Forms.ToolStripButton();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.btnAddSubsection = new System.Windows.Forms.ToolStripMenuItem();
             this.btnEditSection = new System.Windows.Forms.ToolStripMenuItem();
             this.btnRemoveSection = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.btnOpenEditor = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnBindInterp = new System.Windows.Forms.ToolStripButton();
+            this.btnImportChunks = new System.Windows.Forms.ToolStripSplitButton();
+            this.btnLoadJSON = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip2.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -80,7 +82,8 @@ namespace Document
             this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnAddFirstLevelSection,
             this.toolStripSeparator1,
-            this.btnImportChunks});
+            this.btnImportChunks,
+            this.btnBindInterp});
             this.toolStrip2.Location = new System.Drawing.Point(0, 0);
             this.toolStrip2.Name = "toolStrip2";
             this.toolStrip2.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
@@ -102,16 +105,6 @@ namespace Document
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
-            // 
-            // btnImportChunks
-            // 
-            this.btnImportChunks.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnImportChunks.Image = ((System.Drawing.Image)(resources.GetObject("btnImportChunks.Image")));
-            this.btnImportChunks.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnImportChunks.Name = "btnImportChunks";
-            this.btnImportChunks.Size = new System.Drawing.Size(23, 22);
-            this.btnImportChunks.Text = "Импортировать фрагменты";
-            this.btnImportChunks.Click += new System.EventHandler(this.btnImportChunks_Click);
             // 
             // contextMenuStrip1
             // 
@@ -164,6 +157,35 @@ namespace Document
             this.btnOpenEditor.Text = "Редактор фрагмента";
             this.btnOpenEditor.Click += new System.EventHandler(this.btnOpenEditor_Click);
             // 
+            // btnBindInterp
+            // 
+            this.btnBindInterp.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnBindInterp.Image = ((System.Drawing.Image)(resources.GetObject("btnBindInterp.Image")));
+            this.btnBindInterp.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnBindInterp.Name = "btnBindInterp";
+            this.btnBindInterp.Size = new System.Drawing.Size(23, 22);
+            this.btnBindInterp.Text = "Связать с переводом";
+            this.btnBindInterp.Click += new System.EventHandler(this.btnBindInterp_Click);
+            // 
+            // btnImportChunks
+            // 
+            this.btnImportChunks.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnImportChunks.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnLoadJSON});
+            this.btnImportChunks.Image = ((System.Drawing.Image)(resources.GetObject("btnImportChunks.Image")));
+            this.btnImportChunks.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnImportChunks.Name = "btnImportChunks";
+            this.btnImportChunks.Size = new System.Drawing.Size(32, 22);
+            this.btnImportChunks.Text = "Импортировать фрагменты";
+            // 
+            // btnLoadJSON
+            // 
+            this.btnLoadJSON.Image = ((System.Drawing.Image)(resources.GetObject("btnLoadJSON.Image")));
+            this.btnLoadJSON.Name = "btnLoadJSON";
+            this.btnLoadJSON.Size = new System.Drawing.Size(286, 22);
+            this.btnLoadJSON.Text = "Загрузить фрагменты в JSON формате";
+            this.btnLoadJSON.Click += new System.EventHandler(this.jSONToolStripMenuItem_Click);
+            // 
             // ContentExplorer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -197,6 +219,8 @@ namespace Document
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem btnOpenEditor;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripButton btnImportChunks;
+        private System.Windows.Forms.ToolStripButton btnBindInterp;
+        private System.Windows.Forms.ToolStripSplitButton btnImportChunks;
+        private System.Windows.Forms.ToolStripMenuItem btnLoadJSON;
     }
 }

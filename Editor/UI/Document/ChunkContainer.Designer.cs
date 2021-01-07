@@ -31,10 +31,8 @@ namespace Document
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ChunkContainer));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.btnShowHideMorphologyPane = new System.Windows.Forms.ToolStripButton();
-            this.btnShowHideCommentPane = new System.Windows.Forms.ToolStripButton();
             this.btnShowHideTranslationPane = new System.Windows.Forms.ToolStripButton();
-            this.btnShowHideContextPane = new System.Windows.Forms.ToolStripButton();
+            this.btnShowHideMorphologyPane = new System.Windows.Forms.ToolStripButton();
             this.btnAddChunk = new System.Windows.Forms.ToolStripButton();
             this.btnEditChunk = new System.Windows.Forms.ToolStripButton();
             this.btnDeleteChunk = new System.Windows.Forms.ToolStripButton();
@@ -46,10 +44,8 @@ namespace Document
             // 
             this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnShowHideMorphologyPane,
-            this.btnShowHideCommentPane,
             this.btnShowHideTranslationPane,
-            this.btnShowHideContextPane,
+            this.btnShowHideMorphologyPane,
             this.btnAddChunk,
             this.btnEditChunk,
             this.btnDeleteChunk});
@@ -60,29 +56,6 @@ namespace Document
             this.toolStrip1.TabIndex = 2;
             this.toolStrip1.Text = "toolStrip1";
             // 
-            // btnShowHideMorphologyPane
-            // 
-            this.btnShowHideMorphologyPane.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.btnShowHideMorphologyPane.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnShowHideMorphologyPane.Image = ((System.Drawing.Image)(resources.GetObject("btnShowHideMorphologyPane.Image")));
-            this.btnShowHideMorphologyPane.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnShowHideMorphologyPane.Name = "btnShowHideMorphologyPane";
-            this.btnShowHideMorphologyPane.Size = new System.Drawing.Size(23, 22);
-            this.btnShowHideMorphologyPane.Tag = "show";
-            this.btnShowHideMorphologyPane.Text = "Показать морфологию";
-            this.btnShowHideMorphologyPane.Click += new System.EventHandler(this.btnShowHideMorphologyPane_Click);
-            // 
-            // btnShowHideCommentPane
-            // 
-            this.btnShowHideCommentPane.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.btnShowHideCommentPane.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnShowHideCommentPane.Image = ((System.Drawing.Image)(resources.GetObject("btnShowHideCommentPane.Image")));
-            this.btnShowHideCommentPane.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnShowHideCommentPane.Name = "btnShowHideCommentPane";
-            this.btnShowHideCommentPane.Size = new System.Drawing.Size(23, 22);
-            this.btnShowHideCommentPane.Tag = "show";
-            this.btnShowHideCommentPane.Text = "Показать комментарий";
-            // 
             // btnShowHideTranslationPane
             // 
             this.btnShowHideTranslationPane.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
@@ -92,18 +65,20 @@ namespace Document
             this.btnShowHideTranslationPane.Name = "btnShowHideTranslationPane";
             this.btnShowHideTranslationPane.Size = new System.Drawing.Size(23, 22);
             this.btnShowHideTranslationPane.Tag = "show";
-            this.btnShowHideTranslationPane.Text = "Показать перевод";
+            this.btnShowHideTranslationPane.Text = "Перевод";
+            this.btnShowHideTranslationPane.Click += new System.EventHandler(this.btnShowHideTranslationPane_Click);
             // 
-            // btnShowHideContextPane
+            // btnShowHideMorphologyPane
             // 
-            this.btnShowHideContextPane.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.btnShowHideContextPane.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnShowHideContextPane.Image = ((System.Drawing.Image)(resources.GetObject("btnShowHideContextPane.Image")));
-            this.btnShowHideContextPane.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnShowHideContextPane.Name = "btnShowHideContextPane";
-            this.btnShowHideContextPane.Size = new System.Drawing.Size(23, 22);
-            this.btnShowHideContextPane.Tag = "show";
-            this.btnShowHideContextPane.Text = "Показать контекст";
+            this.btnShowHideMorphologyPane.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.btnShowHideMorphologyPane.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnShowHideMorphologyPane.Image = ((System.Drawing.Image)(resources.GetObject("btnShowHideMorphologyPane.Image")));
+            this.btnShowHideMorphologyPane.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnShowHideMorphologyPane.Name = "btnShowHideMorphologyPane";
+            this.btnShowHideMorphologyPane.Size = new System.Drawing.Size(23, 22);
+            this.btnShowHideMorphologyPane.Tag = "show";
+            this.btnShowHideMorphologyPane.Text = "Морфология";
+            this.btnShowHideMorphologyPane.Click += new System.EventHandler(this.btnShowHideMorphologyPane_Click);
             // 
             // btnAddChunk
             // 
@@ -164,9 +139,7 @@ namespace Document
 
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton btnShowHideMorphologyPane;
-        private System.Windows.Forms.ToolStripButton btnShowHideCommentPane;
         private System.Windows.Forms.ToolStripButton btnShowHideTranslationPane;
-        private System.Windows.Forms.ToolStripButton btnShowHideContextPane;
         private System.Windows.Forms.ToolStripButton btnAddChunk;
         private WeifenLuo.WinFormsUI.Docking.DockPanel dockPanel1;
         private System.Windows.Forms.ToolStripButton btnEditChunk;
