@@ -20,11 +20,26 @@ namespace Document
 
             InitializeComponent();
 
-            txtName.Text = index.Name;
-
             txtPrefix.Visible = prefix != null;
 
             txtPrefix.Text = prefix;
+
+            if (string.IsNullOrEmpty(index.Id))
+            {
+                txtName.Text = "1~";
+            }
+            else
+            {
+                txtName.Text = index.Name;
+            }
+
+            ActiveControl = txtName;
+
+            txtName.Focus();
+
+            txtName.SelectionStart = txtName.Text.Length;
+
+            txtName.Select(txtName.Text.Length, 0);
         }
 
         IEnumerable<int> Sequence(int n1, int n2)

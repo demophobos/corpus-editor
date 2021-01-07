@@ -1,9 +1,14 @@
 ﻿using Common.Process;
 using Model;
+using Model.Enum;
+using Newtonsoft.Json.Linq;
 using Process;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.OleDb;
+using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -211,6 +216,55 @@ namespace Document
                 IndexSelected.Invoke(this, index);
             }
         }
+
+        private async void btnImportChunks_Click(object sender, EventArgs e)
+        {
+            var fileDialog = new OpenFileDialog();
+
+            var chunks = new List<ChunkModel>();
+
+            if (fileDialog.ShowDialog() == DialogResult.OK)
+            {
+
+                JObject data = JObject.Parse(File.ReadAllText(fileDialog.FileName));
+
+                foreach (var row in data["rows"])
+                {
+                    var indeces = await _documentProcess.GetIndecesByName(row[1].ToString()).ConfigureAwait(true);
+
+                    if (indeces.Count == 1)
+                    {
+                        var index = indeces[0];
+
+                        var chunk = await ChunkProcess.GetChunk(index.Id);
+
+                        if (chunk == null)
+                        {
+                            var newChunk = new ChunkModel
+                            {
+                                IndexId = index.Id,
+                                Value = row[2].ToString()
+                            };
+
+                            var savedChunk = await ChunkProcess.SaveChunkAndElements(newChunk).ConfigureAwait(true);
+
+                            chunks.Add(savedChunk);
+                        }
+                        else
+                        {
+                            continue;
+                        }
+                    }
+                    else
+                    {
+                        continue;
+                    }
+                }
+
+                MessageBox.Show($"Импортировано фрагментов: {chunks.Count}");
+            }
+        }
+
     }
 }
 

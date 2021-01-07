@@ -33,9 +33,9 @@ namespace Document
             this.btnSave = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.txtName = new System.Windows.Forms.TextBox();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.txtPrefix = new System.Windows.Forms.TextBox();
+            this.txtName = new System.Windows.Forms.TextBox();
             this.flowLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
@@ -88,15 +88,6 @@ namespace Document
             this.tableLayoutPanel1.Size = new System.Drawing.Size(585, 67);
             this.tableLayoutPanel1.TabIndex = 5;
             // 
-            // txtName
-            // 
-            this.txtName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtName.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtName.Location = new System.Drawing.Point(71, 3);
-            this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(502, 20);
-            this.txtName.TabIndex = 1;
-            // 
             // flowLayoutPanel2
             // 
             this.flowLayoutPanel2.Controls.Add(this.txtPrefix);
@@ -116,6 +107,16 @@ namespace Document
             this.txtPrefix.ReadOnly = true;
             this.txtPrefix.Size = new System.Drawing.Size(62, 20);
             this.txtPrefix.TabIndex = 2;
+            this.txtPrefix.TabStop = false;
+            // 
+            // txtName
+            // 
+            this.txtName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtName.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtName.Location = new System.Drawing.Point(71, 3);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(502, 20);
+            this.txtName.TabIndex = 0;
             // 
             // IndexEditor
             // 

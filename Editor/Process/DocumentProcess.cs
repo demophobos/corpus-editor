@@ -1,5 +1,6 @@
 ﻿using Model;
 using Model.Query;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -11,6 +12,13 @@ namespace Process
         public DocumentProcess(HeaderModel header)
         {
             Header = header;
+        }
+
+        public async Task<List<IndexModel>> GetIndecesByName(string name)
+        {
+            var query = new IndexQuery { headerId = Header.Id, name = name };
+
+            return await API.IndexAPI.GetIndeces(query);
         }
 
         public async Task<List<IndexModel>> GetIndecesByHeader()
@@ -36,5 +44,6 @@ namespace Process
         {
             return await API.IndexAPI.Remove(index);
         }
+
     }
 }
