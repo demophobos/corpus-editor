@@ -60,6 +60,7 @@ namespace Document
             // 
             this.btnShowHideTranslationPane.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.btnShowHideTranslationPane.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnShowHideTranslationPane.Enabled = false;
             this.btnShowHideTranslationPane.Image = ((System.Drawing.Image)(resources.GetObject("btnShowHideTranslationPane.Image")));
             this.btnShowHideTranslationPane.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnShowHideTranslationPane.Name = "btnShowHideTranslationPane";
@@ -72,6 +73,7 @@ namespace Document
             // 
             this.btnShowHideMorphologyPane.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.btnShowHideMorphologyPane.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnShowHideMorphologyPane.Enabled = false;
             this.btnShowHideMorphologyPane.Image = ((System.Drawing.Image)(resources.GetObject("btnShowHideMorphologyPane.Image")));
             this.btnShowHideMorphologyPane.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnShowHideMorphologyPane.Name = "btnShowHideMorphologyPane";

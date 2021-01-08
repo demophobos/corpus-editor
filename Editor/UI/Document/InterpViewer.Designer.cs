@@ -84,9 +84,16 @@ namespace Document
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(512, 271);
+            this.CloseButton = false;
+            this.CloseButtonVisible = false;
+            this.ControlBox = false;
             this.Controls.Add(this.loader1);
             this.Controls.Add(this.txtContainer);
             this.Controls.Add(this.toolStrip1);
+            this.DockAreas = ((WeifenLuo.WinFormsUI.Docking.DockAreas)(((((WeifenLuo.WinFormsUI.Docking.DockAreas.DockLeft | WeifenLuo.WinFormsUI.Docking.DockAreas.DockRight) 
+            | WeifenLuo.WinFormsUI.Docking.DockAreas.DockTop) 
+            | WeifenLuo.WinFormsUI.Docking.DockAreas.DockBottom) 
+            | WeifenLuo.WinFormsUI.Docking.DockAreas.Document)));
             this.Name = "InterpViewer";
             this.Load += new System.EventHandler(this.InterpViewer_Load);
             this.toolStrip1.ResumeLayout(false);

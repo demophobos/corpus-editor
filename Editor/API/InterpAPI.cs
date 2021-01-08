@@ -1,5 +1,6 @@
 ﻿using Model;
 using Model.Query;
+using Model.View;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,17 +17,17 @@ namespace API
 
         }
 
-        public static async Task<List<InterpModel>> GetInterps(IQuery query)
+        public static async Task<List<InterpViewModel>> GetInterps(IQuery query)
         {
             try
             {
-                List<InterpModel> report = null;
+                List<InterpViewModel> report = null;
 
                 HttpResponseMessage response = await Client.GetAsync($"interps?params={query}").ConfigureAwait(true);
 
                 if (response.IsSuccessStatusCode)
                 {
-                    report = await response.Content.ReadAsAsync<List<InterpModel>>().ConfigureAwait(true);
+                    report = await response.Content.ReadAsAsync<List<InterpViewModel>>().ConfigureAwait(true);
                 }
                 else
                 {

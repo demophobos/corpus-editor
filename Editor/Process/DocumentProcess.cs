@@ -1,6 +1,7 @@
 ﻿using Model;
 using Model.Enum;
 using Model.Query;
+using Model.View;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -56,14 +57,14 @@ namespace Process
             return await API.IndexAPI.Remove(index);
         }
 
-        public async Task<List<InterpModel>> GetInterpsBySource(string chunkId) {
+        public async Task<List<InterpViewModel>> GetInterpsBySource(string chunkId) {
 
             var query = new InterpQuery { sourceId = chunkId };
 
             return await API.InterpAPI.GetInterps(query);
         }
 
-        public async Task<List<InterpModel>> GetInterpsByInterp(string chunkId)
+        public async Task<List<InterpViewModel>> GetInterpsByInterp(string chunkId)
         {
 
             var query = new InterpQuery { interpId = chunkId };

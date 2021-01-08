@@ -37,6 +37,8 @@ namespace Document
 
         private async Task LoadFilterData()
         {
+            
+
             var list = await HeaderProcess.GetHeaders(_documentProcess.Header.ProjectId).ConfigureAwait(true);
 
             var interps = list.Where(i => i.EditionType != _documentProcess.Header.EditionType);

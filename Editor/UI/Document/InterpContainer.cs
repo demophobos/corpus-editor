@@ -1,4 +1,5 @@
-﻿using Model;
+﻿using Common.Process;
+using Model;
 using Model.Enum;
 using Process;
 using System;
@@ -31,6 +32,8 @@ namespace Document
             _documentProcess = documentProcess;
 
             InitializeComponent();
+
+            dockPanel1.Theme = UIProcess.DockPanelTheme;
         }
 
         private async void btnAdd_Click(object sender, EventArgs e)

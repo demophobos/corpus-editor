@@ -59,6 +59,8 @@ namespace Document
 
                 _chunkExplorer.Show(dockPanel1, DockState.Document);
 
+                btnShowHideMorphologyPane.Enabled = btnShowHideTranslationPane.Enabled = _chunk != null;
+
                 ChunkAdded.Invoke(this, _chunk);
             }
         }
@@ -78,11 +80,13 @@ namespace Document
                 _chunkExplorer.ElementSelected += ChunkExplorer_ElementSelected;
 
                 _chunkExplorer.Show(dockPanel1, DockState.Document);
+
+                btnShowHideMorphologyPane.Enabled = btnShowHideTranslationPane.Enabled = true;
+
+                btnShowHideTranslationPane.PerformClick();
+
+                btnShowHideTranslationPane.Checked = true;
             }
-
-            btnShowHideTranslationPane.PerformClick();
-
-            btnShowHideTranslationPane.Checked = true;
         }
 
         private async void btnEditChunk_Click(object sender, EventArgs e)
@@ -125,7 +129,7 @@ namespace Document
 
                 btnAddChunk.Enabled = true;
 
-                btnDeleteChunk.Enabled = btnEditChunk.Enabled = false;
+                btnDeleteChunk.Enabled = btnEditChunk.Enabled = btnShowHideMorphologyPane.Enabled = btnShowHideTranslationPane.Enabled = false;
 
                 ChunkDeleted.Invoke(this, _chunk);
             }
@@ -213,7 +217,6 @@ namespace Document
 
         private void ShowInterpretationContainer()
         {
-
             _interpContainer = new InterpContainer(_documentProcess, Index, _chunk);
 
             _interpContainer.Show(dockPanel1, DockState.DockBottom);

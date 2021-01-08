@@ -1,6 +1,7 @@
 ﻿using Model;
 using Model.Enum;
 using Model.Query;
+using Model.View;
 using Process;
 using System;
 using System.Collections.Generic;
@@ -17,11 +18,11 @@ namespace Document
 {
     public partial class InterpViewer : DockContent
     {
-        private InterpModel _interp;
+        private InterpViewModel _interp;
 
         private EditionTypeEnum _typeToShow;
 
-        public InterpViewer(InterpModel interp, EditionTypeEnum typeToShow)
+        public InterpViewer(InterpViewModel interp, EditionTypeEnum typeToShow)
         {
             _interp = interp;
 
@@ -40,10 +41,18 @@ namespace Document
             if (_typeToShow == EditionTypeEnum.Original)
             {
                 query.chunkId = _interp.SourceId;
+
+                Text = $"{_interp.SourceIndexName} [{_interp.SourceHeaderCode}]";
+
+                ToolTipText = _interp.SourceHeaderDesc;
             }
             else
             {
                 query.chunkId = _interp.InterpId;
+
+                Text = $"{_interp.InterpIndexName} [{_interp.InterpHeaderCode}]";
+
+                ToolTipText = _interp.InterpHeaderDesc;
             }
 
             var elements = await ElementProcess.GetElements(query).ConfigureAwait(true);
