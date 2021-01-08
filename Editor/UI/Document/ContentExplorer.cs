@@ -44,6 +44,8 @@ namespace Document
 
         private async Task LoadDataAsync()
         {
+            loader1.BringToFront();
+
             treeView1.BeginUpdate();
 
             treeView1.Nodes.Clear();
@@ -68,6 +70,8 @@ namespace Document
             }
 
             treeView1.EndUpdate();
+
+            loader1.SendToBack();
         }
 
         private void PopulateTree(TreeNode root, List<IndexModel> indices)

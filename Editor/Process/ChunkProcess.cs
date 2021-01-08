@@ -12,11 +12,16 @@ namespace Process
 {
     public class ChunkProcess
     {
-        public static async Task<ChunkModel> GetChunk(string indextId)
+        public static async Task<ChunkModel> GetChunkByIndex(string indextId)
         {
             var query = new ChunkQuery { indexId = indextId };
 
-            return await API.ChunkAPI.GetChunk(query);
+            return await API.ChunkAPI.GetChunkByQuery(query);
+        }
+
+        public static async Task<ChunkModel> GetChunk(string chunkId)
+        {
+            return await API.ChunkAPI.GetChunk(chunkId);
         }
 
         public static async Task<ChunkModel> RemoveChunk(ChunkModel chunk)

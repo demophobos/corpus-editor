@@ -67,9 +67,12 @@ namespace Document
 
                 var original = origs.FirstOrDefault();
 
-                var viewer = new InterpViewer(original, EditionTypeEnum.Original);
+                if (original != null)
+                {
+                    var viewer = new InterpViewer(original, EditionTypeEnum.Original);
 
-                viewer.Show(dockPanel1, DockState.Document);
+                    viewer.Show(dockPanel1, DockState.Document);
+                }
             }
         }
     }

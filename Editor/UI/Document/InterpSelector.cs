@@ -60,7 +60,7 @@ namespace Document
         {
             if (indexSource.Current is IndexModel index)
             {
-                _chunk = await ChunkProcess.GetChunk(index.Id).ConfigureAwait(true);
+                _chunk = await ChunkProcess.GetChunkByIndex(index.Id).ConfigureAwait(true);
 
                 txtChunk.Text = _chunk.Value;
             }

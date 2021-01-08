@@ -1,25 +1,78 @@
 ﻿using Model;
+using Model.Enum;
+using Model.Query;
 using Process;
+using System;
+using System.Linq;
+using System.Text;
 using WeifenLuo.WinFormsUI.Docking;
 
 namespace Document
 {
     public partial class ChunkViewer : DockContent
     {
-        public ChunkViewer()
+        private DocumentProcess _documentProcess;
+        public ChunkViewer(DocumentProcess documentProcess)
         {
+            _documentProcess = documentProcess;
+
             InitializeComponent();
         }
 
         public async void LoadData(IndexModel index)
         {
+            var sb = new StringBuilder();
+
             Text = index.Name;
 
-            var chunk = await ChunkProcess.GetChunk(index.Id).ConfigureAwait(true);
+            var chunk = await ChunkProcess.GetChunkByIndex(index.Id).ConfigureAwait(true);
 
             if (chunk != null)
             {
-                lblChunk.Text = chunk.Value;
+                sb.AppendLine(chunk.Value);
+
+                var elements = await ElementProcess.GetElements(new ElementQuery { chunkId = chunk.Id, type = (int)ElementTypeEnum.Word });
+
+                sb.AppendLine($"Слов без определения: {elements.Count(i => i.MorphId == null)}");
+
+                if (_documentProcess.Header.EditionType == EditionTypeStringEnum.Original)
+                {
+                    var interps = await _documentProcess.GetInterpsBySource(chunk.Id);
+
+                    if (interps.Count > 0)
+                    {
+                        foreach (var interp in interps)
+                        {
+                            var intChunk = await ChunkProcess.GetChunk(interp.InterpId).ConfigureAwait(true);
+
+                            sb.AppendLine(intChunk.Value);
+                        }
+                    }
+                    else
+                    {
+                        sb.AppendLine("Ссылка на перевод отсутствует");
+                    }
+                }
+                else
+                {
+                    var interps = await _documentProcess.GetInterpsByInterp(chunk.Id);
+
+                    var orig = interps.FirstOrDefault();
+
+                    if (orig != null)
+                    {
+                        var intChunk = await ChunkProcess.GetChunk(orig.SourceId).ConfigureAwait(true);
+
+                        sb.AppendLine(intChunk.Value);
+                    }
+                    else
+                    {
+                        sb.AppendLine("Ссылка на оригинал отсутствует");
+                    }
+                }
+
+                lblChunk.Text = sb.ToString();
+
             }
             else
             {

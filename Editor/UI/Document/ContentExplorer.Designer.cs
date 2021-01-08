@@ -36,15 +36,16 @@ namespace Document
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.btnAddFirstLevelSection = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnImportChunks = new System.Windows.Forms.ToolStripSplitButton();
+            this.btnLoadJSON = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnBindInterp = new System.Windows.Forms.ToolStripButton();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.btnAddSubsection = new System.Windows.Forms.ToolStripMenuItem();
             this.btnEditSection = new System.Windows.Forms.ToolStripMenuItem();
             this.btnRemoveSection = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.btnOpenEditor = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnBindInterp = new System.Windows.Forms.ToolStripButton();
-            this.btnImportChunks = new System.Windows.Forms.ToolStripSplitButton();
-            this.btnLoadJSON = new System.Windows.Forms.ToolStripMenuItem();
+            this.loader1 = new Common.Control.Loader();
             this.toolStrip2.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -106,6 +107,35 @@ namespace Document
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
+            // btnImportChunks
+            // 
+            this.btnImportChunks.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnImportChunks.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnLoadJSON});
+            this.btnImportChunks.Image = ((System.Drawing.Image)(resources.GetObject("btnImportChunks.Image")));
+            this.btnImportChunks.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnImportChunks.Name = "btnImportChunks";
+            this.btnImportChunks.Size = new System.Drawing.Size(32, 22);
+            this.btnImportChunks.Text = "Импортировать фрагменты";
+            // 
+            // btnLoadJSON
+            // 
+            this.btnLoadJSON.Image = ((System.Drawing.Image)(resources.GetObject("btnLoadJSON.Image")));
+            this.btnLoadJSON.Name = "btnLoadJSON";
+            this.btnLoadJSON.Size = new System.Drawing.Size(286, 22);
+            this.btnLoadJSON.Text = "Загрузить фрагменты в JSON формате";
+            this.btnLoadJSON.Click += new System.EventHandler(this.jSONToolStripMenuItem_Click);
+            // 
+            // btnBindInterp
+            // 
+            this.btnBindInterp.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnBindInterp.Image = ((System.Drawing.Image)(resources.GetObject("btnBindInterp.Image")));
+            this.btnBindInterp.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnBindInterp.Name = "btnBindInterp";
+            this.btnBindInterp.Size = new System.Drawing.Size(23, 22);
+            this.btnBindInterp.Text = "Связать с переводом";
+            this.btnBindInterp.Click += new System.EventHandler(this.btnBindInterp_Click);
+            // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -157,34 +187,13 @@ namespace Document
             this.btnOpenEditor.Text = "Редактор фрагмента";
             this.btnOpenEditor.Click += new System.EventHandler(this.btnOpenEditor_Click);
             // 
-            // btnBindInterp
+            // loader1
             // 
-            this.btnBindInterp.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnBindInterp.Image = ((System.Drawing.Image)(resources.GetObject("btnBindInterp.Image")));
-            this.btnBindInterp.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnBindInterp.Name = "btnBindInterp";
-            this.btnBindInterp.Size = new System.Drawing.Size(23, 22);
-            this.btnBindInterp.Text = "Связать с переводом";
-            this.btnBindInterp.Click += new System.EventHandler(this.btnBindInterp_Click);
-            // 
-            // btnImportChunks
-            // 
-            this.btnImportChunks.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnImportChunks.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnLoadJSON});
-            this.btnImportChunks.Image = ((System.Drawing.Image)(resources.GetObject("btnImportChunks.Image")));
-            this.btnImportChunks.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnImportChunks.Name = "btnImportChunks";
-            this.btnImportChunks.Size = new System.Drawing.Size(32, 22);
-            this.btnImportChunks.Text = "Импортировать фрагменты";
-            // 
-            // btnLoadJSON
-            // 
-            this.btnLoadJSON.Image = ((System.Drawing.Image)(resources.GetObject("btnLoadJSON.Image")));
-            this.btnLoadJSON.Name = "btnLoadJSON";
-            this.btnLoadJSON.Size = new System.Drawing.Size(286, 22);
-            this.btnLoadJSON.Text = "Загрузить фрагменты в JSON формате";
-            this.btnLoadJSON.Click += new System.EventHandler(this.jSONToolStripMenuItem_Click);
+            this.loader1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.loader1.Location = new System.Drawing.Point(0, 25);
+            this.loader1.Name = "loader1";
+            this.loader1.Size = new System.Drawing.Size(366, 450);
+            this.loader1.TabIndex = 10;
             // 
             // ContentExplorer
             // 
@@ -193,6 +202,7 @@ namespace Document
             this.ClientSize = new System.Drawing.Size(366, 475);
             this.CloseButton = false;
             this.CloseButtonVisible = false;
+            this.Controls.Add(this.loader1);
             this.Controls.Add(this.treeView1);
             this.Controls.Add(this.toolStrip2);
             this.Name = "ContentExplorer";
@@ -222,5 +232,6 @@ namespace Document
         private System.Windows.Forms.ToolStripButton btnBindInterp;
         private System.Windows.Forms.ToolStripSplitButton btnImportChunks;
         private System.Windows.Forms.ToolStripMenuItem btnLoadJSON;
+        private Common.Control.Loader loader1;
     }
 }

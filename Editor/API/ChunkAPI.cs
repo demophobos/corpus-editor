@@ -9,7 +9,7 @@ namespace API
 {
     public class ChunkAPI : BaseAPI
     {
-        public static async Task<ChunkModel> GetChunk(IQuery query)
+        public static async Task<ChunkModel> GetChunkByQuery(IQuery query)
         {
             try
             {
@@ -27,6 +27,31 @@ namespace API
                 }
 
                 return report.Count > 0 ? report[0] : null;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public static async Task<ChunkModel> GetChunk(string chunkId)
+        {
+            try
+            {
+                ChunkModel report = null;
+
+                HttpResponseMessage response = await Client.GetAsync($"chunks/{chunkId}").ConfigureAwait(true);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    report = await response.Content.ReadAsAsync<ChunkModel>().ConfigureAwait(true);
+                }
+                else
+                {
+                    throw new Exception(response.StatusCode.ToString());
+                }
+
+                return report;
             }
             catch (Exception ex)
             {

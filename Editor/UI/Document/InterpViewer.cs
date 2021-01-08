@@ -79,6 +79,8 @@ namespace Document
                     txtContainer.Controls.Add(label);
                 }
             }
+
+            
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -89,6 +91,8 @@ namespace Document
         private async void InterpViewer_Load(object sender, EventArgs e)
         {
             await LoadData().ConfigureAwait(true);
+
+            loader1.SendToBack();
         }
     }
 }

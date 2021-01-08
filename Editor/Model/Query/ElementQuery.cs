@@ -12,5 +12,8 @@ namespace Model.Query
 
         [JsonProperty("value", NullValueHandling = NullValueHandling.Ignore)]
         public string value { get; set; }
+
+        [JsonProperty("type", NullValueHandling = NullValueHandling.Ignore)]
+        public int? type { get; set; }
     }
 }

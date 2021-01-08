@@ -33,6 +33,7 @@ namespace Document
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.btnDelete = new System.Windows.Forms.ToolStripButton();
             this.txtContainer = new System.Windows.Forms.FlowLayoutPanel();
+            this.loader1 = new Common.Control.Loader();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -70,11 +71,20 @@ namespace Document
             this.txtContainer.Size = new System.Drawing.Size(512, 246);
             this.txtContainer.TabIndex = 19;
             // 
+            // loader1
+            // 
+            this.loader1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.loader1.Location = new System.Drawing.Point(0, 25);
+            this.loader1.Name = "loader1";
+            this.loader1.Size = new System.Drawing.Size(512, 246);
+            this.loader1.TabIndex = 0;
+            // 
             // InterpViewer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(512, 271);
+            this.Controls.Add(this.loader1);
             this.Controls.Add(this.txtContainer);
             this.Controls.Add(this.toolStrip1);
             this.Name = "InterpViewer";
@@ -91,5 +101,6 @@ namespace Document
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton btnDelete;
         private System.Windows.Forms.FlowLayoutPanel txtContainer;
+        private Common.Control.Loader loader1;
     }
 }

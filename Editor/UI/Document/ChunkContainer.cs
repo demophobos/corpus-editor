@@ -47,7 +47,7 @@ namespace Document
 
             if (editor.ShowDialog() == DialogResult.OK)
             {
-                _chunk = await ChunkProcess.GetChunk(Index.Id).ConfigureAwait(true);
+                _chunk = await ChunkProcess.GetChunkByIndex(Index.Id).ConfigureAwait(true);
 
                 btnAddChunk.Enabled = false;
 
@@ -65,7 +65,7 @@ namespace Document
 
         private async void ChunkContainer_LoadAsync(object sender, EventArgs e)
         {
-            _chunk = await ChunkProcess.GetChunk(Index.Id).ConfigureAwait(true);
+            _chunk = await ChunkProcess.GetChunkByIndex(Index.Id).ConfigureAwait(true);
 
             btnAddChunk.Enabled = _chunk == null;
 
@@ -79,6 +79,10 @@ namespace Document
 
                 _chunkExplorer.Show(dockPanel1, DockState.Document);
             }
+
+            btnShowHideTranslationPane.PerformClick();
+
+            btnShowHideTranslationPane.Checked = true;
         }
 
         private async void btnEditChunk_Click(object sender, EventArgs e)
@@ -91,7 +95,7 @@ namespace Document
 
                 _chunkExplorer.Close();
 
-                _chunk = await ChunkProcess.GetChunk(Index.Id).ConfigureAwait(true);
+                _chunk = await ChunkProcess.GetChunkByIndex(Index.Id).ConfigureAwait(true);
 
                 _chunkExplorer = new ChunkExplorer(_chunk);
 

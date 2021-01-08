@@ -45,7 +45,7 @@ namespace Document
 
             _chunkContainers = new List<ChunkContainer>();
 
-            _chunkViewer = new ChunkViewer();
+            _chunkViewer = new ChunkViewer(DocumentProcess);
 
             _chunkViewer.Show(_contentExplorer.Pane, DockAlignment.Bottom, 0.25);
         }
