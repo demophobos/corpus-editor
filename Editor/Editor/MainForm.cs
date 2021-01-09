@@ -13,9 +13,10 @@ namespace Editor
 {
     public partial class MainForm : Form
     {
-        private ProjectExplorer _projectExplorer;
 
         private MorphExplorer _morphExplorer;
+
+        private ProjectContainer _projectContainer;
 
         public MainForm()
         {
@@ -35,6 +36,25 @@ namespace Editor
                 LoadItems();
             }
         }
+
+        private void LoadItems()
+        {
+            if (_projectContainer == null || _projectContainer.IsDisposed)
+            {
+                _projectContainer = new ProjectContainer();
+
+                _projectContainer.HeaderDeleted += ProjectExplorer_HeaderDeleted;
+
+                _projectContainer.ProjectDeleted += ProjectExplorer_ProjectDeleted;
+
+                _projectContainer.HeaderSelected += ProjectExplorer_HeaderSelected;
+            }
+
+            _projectContainer.LoadItems();
+
+            _projectContainer.Show(dockPanel1, DockState.DockLeftAutoHide);
+        }
+
         public bool Login()
         {
             var loginForm = new LoginForm();
@@ -42,26 +62,11 @@ namespace Editor
             return loginForm.ShowDialog() == DialogResult.OK;
         }
 
-        private void LoadItems()
+        private void btnShowMorphExplorer_Click(object sender, EventArgs e)
         {
-            if (_projectExplorer == null || _projectExplorer.IsDisposed)
-            {
-                _projectExplorer = new ProjectExplorer();
+            _morphExplorer = new MorphExplorer();
 
-                _projectExplorer.HeaderSelected += ProjectExplorer_HeaderSelected;
-
-                _projectExplorer.HeaderAdded += ProjectExplorer_HeaderAdded;
-
-                _projectExplorer.HeaderUpdated += ProjectExplorer_HeaderUpdated;
-
-                _projectExplorer.HeaderDeleted += ProjectExplorer_HeaderDeleted;
-
-                _projectExplorer.ProjectDeleted += ProjectExplorer_ProjectDeleted;
-            }
-
-            _projectExplorer.LoadData();
-
-            _projectExplorer.Show(dockPanel1, DockState.DockLeftAutoHide);
+            _morphExplorer.Show(dockPanel1, DockState.Document);
         }
 
         private void ProjectExplorer_ProjectDeleted(object sender, ProjectModel project)
@@ -89,7 +94,8 @@ namespace Editor
 
             var deleted = docs.FirstOrDefault(i => ((DocumentContainer)i).DocumentProcess.Header.Id == header.Id) as DocumentContainer;
 
-            if (deleted != null) {
+            if (deleted != null)
+            {
                 foreach (Control ctrl in deleted.Controls)
                 {
                     ctrl.Dispose();
@@ -99,16 +105,6 @@ namespace Editor
 
                 docs.ToList().Remove(deleted);
             }
-        }
-
-        private void ProjectExplorer_HeaderUpdated(object sender, HeaderModel e)
-        {
-            //throw new NotImplementedException();
-        }
-
-        private void ProjectExplorer_HeaderAdded(object sender, HeaderModel e)
-        {
-            //throw new NotImplementedException();
         }
 
         private void ProjectExplorer_HeaderSelected(object sender, HeaderModel header)
@@ -123,10 +119,11 @@ namespace Editor
                 {
                     exsitingDocument.Show();
                 }
-                else {
+                else
+                {
                     OpenDocument(header);
                 }
-                
+
             }
             else
             {
@@ -139,13 +136,6 @@ namespace Editor
             var documentForm = new DocumentContainer(header);
 
             documentForm.Show(dockPanel1, DockState.Document);
-        }
-
-        private void btnShowMorphExplorer_Click(object sender, EventArgs e)
-        {
-            _morphExplorer = new MorphExplorer();
-
-            _morphExplorer.Show(dockPanel1, DockState.Document);
         }
     }
 }

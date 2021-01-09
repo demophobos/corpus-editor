@@ -41,6 +41,9 @@ namespace Project
             this.btnAdd = new System.Windows.Forms.ToolStripButton();
             this.btnEdit = new System.Windows.Forms.ToolStripButton();
             this.btnDelete = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnPublish = new System.Windows.Forms.ToolStripButton();
+            this.btnUnpublish = new System.Windows.Forms.ToolStripButton();
             this.loader1 = new Common.Control.Loader();
             this.panel1 = new System.Windows.Forms.Panel();
             this.mnuHeader.SuspendLayout();
@@ -52,8 +55,9 @@ namespace Project
             // 
             this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList1.Images.SetKeyName(0, "ApplicationConnectionDiagram_16x.png");
+            this.imageList1.Images.SetKeyName(0, "Cloud");
             this.imageList1.Images.SetKeyName(1, "Text_16x.png");
+            this.imageList1.Images.SetKeyName(2, "Local");
             // 
             // treeView1
             // 
@@ -116,7 +120,10 @@ namespace Project
             this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnAdd,
             this.btnEdit,
-            this.btnDelete});
+            this.btnDelete,
+            this.toolStripSeparator1,
+            this.btnPublish,
+            this.btnUnpublish});
             this.toolStrip2.Location = new System.Drawing.Point(0, 0);
             this.toolStrip2.Name = "toolStrip2";
             this.toolStrip2.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
@@ -156,6 +163,33 @@ namespace Project
             this.btnDelete.Text = "Удалить";
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
+            // btnPublish
+            // 
+            this.btnPublish.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.btnPublish.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnPublish.Image = ((System.Drawing.Image)(resources.GetObject("btnPublish.Image")));
+            this.btnPublish.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnPublish.Name = "btnPublish";
+            this.btnPublish.Size = new System.Drawing.Size(23, 22);
+            this.btnPublish.Text = "Опубликовать";
+            this.btnPublish.Click += new System.EventHandler(this.btnPublish_Click);
+            // 
+            // btnUnpublish
+            // 
+            this.btnUnpublish.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.btnUnpublish.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnUnpublish.Image = ((System.Drawing.Image)(resources.GetObject("btnUnpublish.Image")));
+            this.btnUnpublish.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnUnpublish.Name = "btnUnpublish";
+            this.btnUnpublish.Size = new System.Drawing.Size(23, 22);
+            this.btnUnpublish.Text = "Снять с публикации";
+            this.btnUnpublish.Click += new System.EventHandler(this.btnUnpublish_Click);
+            // 
             // loader1
             // 
             this.loader1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -181,10 +215,14 @@ namespace Project
             this.ClientSize = new System.Drawing.Size(314, 326);
             this.CloseButton = false;
             this.CloseButtonVisible = false;
+            this.ControlBox = false;
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.toolStrip2);
+            this.DockAreas = ((WeifenLuo.WinFormsUI.Docking.DockAreas)(((((WeifenLuo.WinFormsUI.Docking.DockAreas.DockLeft | WeifenLuo.WinFormsUI.Docking.DockAreas.DockRight) 
+            | WeifenLuo.WinFormsUI.Docking.DockAreas.DockTop) 
+            | WeifenLuo.WinFormsUI.Docking.DockAreas.DockBottom) 
+            | WeifenLuo.WinFormsUI.Docking.DockAreas.Document)));
             this.Name = "ProjectExplorer";
-            this.Text = "Проекты";
             this.mnuHeader.ResumeLayout(false);
             this.toolStrip2.ResumeLayout(false);
             this.toolStrip2.PerformLayout();
@@ -208,5 +246,8 @@ namespace Project
         private System.Windows.Forms.ToolStripMenuItem mnuCreateHeader;
         private System.Windows.Forms.ToolStripMenuItem mnuEditHeader;
         private System.Windows.Forms.ToolStripMenuItem mnuDeleteHeader;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripButton btnPublish;
+        private System.Windows.Forms.ToolStripButton btnUnpublish;
     }
 }

@@ -14,7 +14,8 @@ namespace Model
         public string EditionType { get; set; }
         [JsonProperty("projectId", NullValueHandling = NullValueHandling.Ignore)]
         public string ProjectId { get; set; }
-
+        [JsonProperty("status", NullValueHandling = NullValueHandling.Ignore)]
+        public string Status { get; set; }
         public override string ToString()
         {
             return Code;

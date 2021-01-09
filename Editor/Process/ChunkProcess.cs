@@ -52,7 +52,8 @@ namespace Process
             {
                 var rules = morphRules.Where(i => i.Form.ToLower() == element.Value.ToLower()).ToList();
 
-                if (rules.Count == 1) {
+                if (rules.Count == 1)
+                {
 
                     element.MorphId = rules[0].Id;
                 }

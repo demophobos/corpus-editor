@@ -1,4 +1,5 @@
 ﻿using Model;
+using Model.Query;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -6,9 +7,9 @@ namespace Process
 {
     public class ProjectProcess
     {
-        public static async Task<List<ProjectModel>> GetProjects()
+        public static async Task<List<ProjectModel>> GetProjects(ProjectQuery query)
         {
-            return await API.ProjectAPI.FindByQuery();
+            return await API.ProjectAPI.FindByQuery(query);
         }
 
         public static async Task<ProjectModel> RemoveProject(ProjectModel project)

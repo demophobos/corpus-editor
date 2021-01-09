@@ -14,13 +14,15 @@ namespace API
 
         }
 
-        public static async Task<List<ProjectModel>> FindByQuery()
+        public static async Task<List<ProjectModel>> FindByQuery(ProjectQuery query)
         {
             try
             {
+                query.CreatorId = AuthAPI.User.Id;
+
                 List<ProjectModel> report = null;
 
-                HttpResponseMessage response = await Client.GetAsync($"projects?params={new ProjectQuery { creatorId = AuthAPI.User.Id }}").ConfigureAwait(true);
+                HttpResponseMessage response = await Client.GetAsync($"projects?params={query}").ConfigureAwait(true);
 
                 if (response.IsSuccessStatusCode)
                 {

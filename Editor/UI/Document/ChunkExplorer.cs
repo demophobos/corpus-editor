@@ -35,7 +35,7 @@ namespace Document
             var elements = await ElementProcess.GetElements(query).ConfigureAwait(true);
 
             foreach (var element in elements)
-            
+
             {
                 if (element.Type == (int)ElementTypeEnum.NewLine)
                 {

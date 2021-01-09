@@ -50,6 +50,7 @@
     <Compile Include="Enum\CommentType.cs" />
     <Compile Include="Enum\ConditionOperator.cs" />
     <Compile Include="Enum\EditionTypeEnum.cs" />
+    <Compile Include="Enum\ProjectStatusStringEnum.cs" />
     <Compile Include="Enum\EditionTypeStringEnum.cs" />
     <Compile Include="Enum\ElementAnalysisStatusEnum.cs" />
     <Compile Include="Enum\ElementTypeEnum.cs" />

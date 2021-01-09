@@ -13,5 +13,7 @@ namespace Model
         public string CreatorId { get; set; }
         [JsonProperty("created")]
         public DateTime Created { get; set; }
+        [JsonProperty("status", NullValueHandling = NullValueHandling.Ignore)]
+        public string Status { get; set; }
     }
 }

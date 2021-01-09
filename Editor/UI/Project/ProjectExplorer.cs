@@ -1,5 +1,7 @@
 ﻿using Common.Process;
 using Model;
+using Model.Enum;
+using Model.Query;
 using Process;
 using System;
 using System.Linq;
@@ -11,8 +13,10 @@ namespace Project
     public partial class ProjectExplorer : DockContent
     {
         public event EventHandler<ProjectModel> ProjectDeleted;
+        public event EventHandler<ProjectModel> ProjectViewProperty;
         public event EventHandler<HeaderModel> HeaderDeleted;
         public event EventHandler<HeaderModel> HeaderSelected;
+        public event EventHandler<HeaderModel> HeaderViewProperty;
         public event EventHandler<HeaderModel> HeaderUpdated;
         public event EventHandler<HeaderModel> HeaderAdded;
 
@@ -28,7 +32,11 @@ namespace Project
 
             loader1.BringToFront();
 
-            var projects = await ProjectProcess.GetProjects();
+            var query = new ProjectQuery();
+
+            var projects = await ProjectProcess.GetProjects(query).ConfigureAwait(true);
+
+            var notDeletedProjects = projects.Where(i => i.Status != ProjectStatusStringEnum.Deleted);
 
             treeView1.Nodes.Clear();
 
@@ -57,12 +65,14 @@ namespace Project
 
         private static TreeNode CreateNode(ProjectModel project)
         {
+            int imageIndex = project.Status == ProjectStatusStringEnum.Published ? 0 : 2;
+
             return new TreeNode
             {
                 Name = project.Id,
                 Text = $"{project.Code} [{project.Desc}]",
-                ImageIndex = 0,
-                SelectedImageIndex = 0,
+                ImageIndex = imageIndex,
+                SelectedImageIndex = imageIndex,
                 Tag = project
             };
         }
@@ -81,14 +91,33 @@ namespace Project
 
         private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
         {
-            mnuCreateHeader.Visible = btnEdit.Enabled = btnDelete.Enabled = treeView1.SelectedNode != null && treeView1.SelectedNode.Tag is ProjectModel;
+            if (treeView1.SelectedNode != null && treeView1.SelectedNode.Tag is ProjectModel project)
+            {
+                mnuCreateHeader.Visible = btnEdit.Enabled = true;
+
+                btnPublish.Visible = project.Status != ProjectStatusStringEnum.Published;
+
+                btnUnpublish.Visible = project.Status == ProjectStatusStringEnum.Published;
+
+                ProjectViewProperty.Invoke(this, project);
+            }
+            else
+            {
+                mnuCreateHeader.Visible = btnEdit.Enabled = btnPublish.Visible = btnUnpublish.Visible = false;
+            }
 
             mnuDeleteHeader.Visible = mnuEditHeader.Visible = treeView1.SelectedNode != null && treeView1.SelectedNode.Tag is HeaderModel;
+
+            if (treeView1.SelectedNode != null && treeView1.SelectedNode.Tag is HeaderModel header)
+            {
+
+                HeaderViewProperty.Invoke(this, header);
+            }
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            var dialog = new ProjectEditor(new ProjectModel { });
+            var dialog = new ProjectEditor(new ProjectModel());
 
             if (dialog.ShowDialog() == DialogResult.OK)
             {
@@ -195,6 +224,60 @@ namespace Project
             if (treeView1.SelectedNode != null && treeView1.SelectedNode.Tag is HeaderModel header)
             {
                 HeaderSelected.Invoke(this, header);
+            }
+        }
+
+        private async void btnPublish_Click(object sender, EventArgs e)
+        {
+            if (treeView1.SelectedNode != null && treeView1.SelectedNode.Tag is ProjectModel project)
+            {
+                project.Status = ProjectStatusStringEnum.Published;
+
+                var savedProject = await ProjectProcess.Save(project).ConfigureAwait(true);
+
+                var headers = await HeaderProcess.GetHeaders(project.Id).ConfigureAwait(true);
+
+                if (savedProject.Status == ProjectStatusStringEnum.Published)
+                {
+                    treeView1.SelectedNode.ImageIndex = treeView1.SelectedNode.SelectedImageIndex = 0;
+
+                    btnUnpublish.Visible = true;
+
+                    btnPublish.Visible = false;
+
+                    foreach (var header in headers)
+                    {
+                        header.Status = savedProject.Status;
+                        await HeaderProcess.SaveHeader(header).ConfigureAwait(true);
+                    }
+                }
+            }
+        }
+
+        private async void btnUnpublish_Click(object sender, EventArgs e)
+        {
+            if (treeView1.SelectedNode != null && treeView1.SelectedNode.Tag is ProjectModel project)
+            {
+                project.Status = ProjectStatusStringEnum.Edited;
+
+                var savedProject = await ProjectProcess.Save(project).ConfigureAwait(true);
+
+                var headers = await HeaderProcess.GetHeaders(project.Id).ConfigureAwait(true);
+
+                if (savedProject.Status == ProjectStatusStringEnum.Edited)
+                {
+                    treeView1.SelectedNode.ImageIndex = treeView1.SelectedNode.SelectedImageIndex = 2;
+
+                    btnUnpublish.Visible = false;
+
+                    btnPublish.Visible = true;
+
+                    foreach (var header in headers)
+                    {
+                        header.Status = savedProject.Status;
+                        await HeaderProcess.SaveHeader(header).ConfigureAwait(true);
+                    }
+                }
             }
         }
     }
