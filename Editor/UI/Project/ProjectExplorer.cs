@@ -13,6 +13,7 @@ namespace Project
     public partial class ProjectExplorer : DockContent
     {
         public event EventHandler<ProjectModel> ProjectDeleted;
+        public event EventHandler<ProjectModel> ProjectUpdated;
         public event EventHandler<ProjectModel> ProjectViewProperty;
         public event EventHandler<HeaderModel> HeaderDeleted;
         public event EventHandler<HeaderModel> HeaderSelected;
@@ -99,7 +100,7 @@ namespace Project
 
                 btnUnpublish.Visible = project.Status == ProjectStatusStringEnum.Published;
 
-                ProjectViewProperty.Invoke(this, project);
+                ProjectViewProperty?.Invoke(this, project);
             }
             else
             {
@@ -111,7 +112,7 @@ namespace Project
             if (treeView1.SelectedNode != null && treeView1.SelectedNode.Tag is HeaderModel header)
             {
 
-                HeaderViewProperty.Invoke(this, header);
+                HeaderViewProperty?.Invoke(this, header);
             }
         }
 
@@ -134,6 +135,8 @@ namespace Project
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
                     treeView1.SelectedNode = CreateNode(project);
+
+                    ProjectUpdated?.Invoke(this, project);
                 }
             }
         }
@@ -156,14 +159,9 @@ namespace Project
 
                     mnuCreateHeader.Visible = btnEdit.Enabled = btnDelete.Enabled = treeView1.Nodes.Count != 0;
 
-                    ProjectDeleted.Invoke(this, project);
+                    ProjectDeleted?.Invoke(this, project);
                 }
             }
-        }
-
-        private void btnRefresh_Click(object sender, EventArgs e)
-        {
-            LoadData();
         }
 
         private void mnuCreateHeader_Click(object sender, EventArgs e)
@@ -178,7 +176,7 @@ namespace Project
                 {
                     LoadData();
 
-                    HeaderAdded.Invoke(this, header);
+                    HeaderAdded?.Invoke(this, header);
                 }
             }
         }
@@ -193,7 +191,7 @@ namespace Project
                 {
                     LoadData();
 
-                    HeaderUpdated.Invoke(this, header);
+                    HeaderUpdated?.Invoke(this, header);
                 }
             }
         }
@@ -214,7 +212,7 @@ namespace Project
 
                     treeView1.EndUpdate();
 
-                    HeaderDeleted.Invoke(this, header);
+                    HeaderDeleted?.Invoke(this, header);
                 }
             }
         }
@@ -223,7 +221,7 @@ namespace Project
         {
             if (treeView1.SelectedNode != null && treeView1.SelectedNode.Tag is HeaderModel header)
             {
-                HeaderSelected.Invoke(this, header);
+                HeaderSelected?.Invoke(this, header);
             }
         }
 
@@ -251,6 +249,8 @@ namespace Project
                         await HeaderProcess.SaveHeader(header).ConfigureAwait(true);
                     }
                 }
+
+                ProjectUpdated?.Invoke(this, project);
             }
         }
 
@@ -278,6 +278,8 @@ namespace Project
                         await HeaderProcess.SaveHeader(header).ConfigureAwait(true);
                     }
                 }
+
+                ProjectUpdated?.Invoke(this, project);
             }
         }
     }

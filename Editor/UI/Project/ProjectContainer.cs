@@ -30,7 +30,11 @@ namespace Project
 
             _projectExplorer.HeaderSelected += _projectExplorer_HeaderSelected;
 
-            _projectExplorer.HeaderDeleted += _projectExplorer_HeaderDeleted; ;
+            _projectExplorer.HeaderDeleted += _projectExplorer_HeaderDeleted;
+
+            _projectExplorer.HeaderUpdated += _projectExplorer_HeaderUpdated;
+
+            _projectExplorer.ProjectUpdated += _projectExplorer_ProjectUpdated;
 
             _projectExplorer.ProjectDeleted += _projectExplorer_ProjectDeleted;
 
@@ -45,6 +49,16 @@ namespace Project
             _projectProperty = new ProjectProperty();
 
             _projectProperty.Show(dockPanel1, DockState.DockBottom);
+        }
+
+        private void _projectExplorer_ProjectUpdated(object sender, ProjectModel e)
+        {
+            _projectProperty.LoadData(e);
+        }
+
+        private void _projectExplorer_HeaderUpdated(object sender, HeaderModel e)
+        {
+            _projectProperty.LoadData(e);
         }
 
         private void _projectExplorer_ProjectViewProperty(object sender, ProjectModel e)

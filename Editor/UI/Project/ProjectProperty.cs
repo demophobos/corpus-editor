@@ -1,4 +1,7 @@
-﻿using WeifenLuo.WinFormsUI.Docking;
+﻿using Model;
+using Model.Property;
+using Process;
+using WeifenLuo.WinFormsUI.Docking;
 
 namespace Project
 {
@@ -9,9 +12,17 @@ namespace Project
             InitializeComponent();
         }
 
-        public void LoadData(object obj)
+        public void LoadData(object selectedObject)
         {
-            propertyGrid1.SelectedObject = obj;
+            switch (selectedObject)
+            {
+                case ProjectModel projecModel:
+                    propertyGrid1.SelectedObject = new ProjectPropertyModel(projecModel, AuthProcess.User);
+                    break;
+                case HeaderModel headerModel:
+                    propertyGrid1.SelectedObject = new HeaderPropertyModel(headerModel);
+                    break;
+            }
         }
     }
 }

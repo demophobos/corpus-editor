@@ -35,7 +35,10 @@
       <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -71,6 +74,9 @@
     <Compile Include="ProjectModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="AuthResponseModel.cs" />
+    <Compile Include="Property\ChunkStatePropertyModel.cs" />
+    <Compile Include="Property\HeaderPropertyModel.cs" />
+    <Compile Include="Property\ProjectPropertyModel.cs" />
     <Compile Include="Query\BaseQuery.cs" />
     <Compile Include="Query\ChunkQuery.cs" />
     <Compile Include="Query\ElementQuery.cs" />

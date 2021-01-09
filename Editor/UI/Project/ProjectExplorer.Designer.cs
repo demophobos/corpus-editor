@@ -41,7 +41,6 @@ namespace Project
             this.btnAdd = new System.Windows.Forms.ToolStripButton();
             this.btnEdit = new System.Windows.Forms.ToolStripButton();
             this.btnDelete = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.btnPublish = new System.Windows.Forms.ToolStripButton();
             this.btnUnpublish = new System.Windows.Forms.ToolStripButton();
             this.loader1 = new Common.Control.Loader();
@@ -121,7 +120,6 @@ namespace Project
             this.btnAdd,
             this.btnEdit,
             this.btnDelete,
-            this.toolStripSeparator1,
             this.btnPublish,
             this.btnUnpublish});
             this.toolStrip2.Location = new System.Drawing.Point(0, 0);
@@ -163,11 +161,6 @@ namespace Project
             this.btnDelete.Text = "Удалить";
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
-            // 
             // btnPublish
             // 
             this.btnPublish.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
@@ -177,6 +170,7 @@ namespace Project
             this.btnPublish.Name = "btnPublish";
             this.btnPublish.Size = new System.Drawing.Size(23, 22);
             this.btnPublish.Text = "Опубликовать";
+            this.btnPublish.Visible = false;
             this.btnPublish.Click += new System.EventHandler(this.btnPublish_Click);
             // 
             // btnUnpublish
@@ -188,6 +182,7 @@ namespace Project
             this.btnUnpublish.Name = "btnUnpublish";
             this.btnUnpublish.Size = new System.Drawing.Size(23, 22);
             this.btnUnpublish.Text = "Снять с публикации";
+            this.btnUnpublish.Visible = false;
             this.btnUnpublish.Click += new System.EventHandler(this.btnUnpublish_Click);
             // 
             // loader1
@@ -246,7 +241,6 @@ namespace Project
         private System.Windows.Forms.ToolStripMenuItem mnuCreateHeader;
         private System.Windows.Forms.ToolStripMenuItem mnuEditHeader;
         private System.Windows.Forms.ToolStripMenuItem mnuDeleteHeader;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripButton btnPublish;
         private System.Windows.Forms.ToolStripButton btnUnpublish;
     }
