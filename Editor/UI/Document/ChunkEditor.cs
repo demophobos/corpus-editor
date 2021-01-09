@@ -20,9 +20,11 @@ namespace Document
         {
             chunkSource.EndEdit();
 
-            var chunk = chunkSource.DataSource as ChunkModel;
+            var chunk = (ChunkModel)chunkSource.DataSource;
 
-            await ChunkProcess.SaveChunkAndElements(chunk).ConfigureAwait(true);
+            var chunkBase = new ChunkModel { Id = chunk.Id, IndexId = chunk.IndexId, Value = chunk.Value };
+
+            await ChunkProcess.SaveChunkAndElements(chunkBase).ConfigureAwait(true);
 
             DialogResult = DialogResult.OK;
         }

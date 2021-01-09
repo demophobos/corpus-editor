@@ -1,6 +1,7 @@
 ﻿using Common.Process;
 using Model;
 using Model.Enum;
+using Model.Query;
 using Process;
 using System;
 using System.Collections.Generic;
@@ -53,30 +54,61 @@ namespace Document
 
         private async Task LoadData()
         {
+            foreach (IDockContent document in dockPanel1.DocumentsToArray())
+            {
+                document.DockHandler.DockPanel = null;
+                document.DockHandler.Close();
+            }
+
             if (_documentProcess.Header.EditionType == EditionTypeStringEnum.Original)
             {
-                var interps = await _documentProcess.GetInterpsBySource(_chunk.Id).ConfigureAwait(true);
+                var interps = await _documentProcess.GetInterpsByQuery(new InterpQuery { sourceId = _chunk.Id }).ConfigureAwait(true);
 
                 foreach (var interp in interps)
                 {
-                    var viewer = new InterpViewer(interp, EditionTypeEnum.Interpretation);
+                    var viewer = new InterpViewer(_documentProcess, interp, EditionTypeEnum.Interpretation);
+
+                    viewer.InterpDeleted += Viewer_InterpDeleted;
 
                     viewer.Show(dockPanel1, DockState.Document);
                 }
             }
             else
             {
-                var origs = await _documentProcess.GetInterpsByInterp(_chunk.Id).ConfigureAwait(true);
+                var origs = await _documentProcess.GetInterpsByQuery(new InterpQuery { interpId = _chunk.Id }).ConfigureAwait(true);
 
                 var original = origs.FirstOrDefault();
 
                 if (original != null)
                 {
-                    var viewer = new InterpViewer(original, EditionTypeEnum.Original);
+                    var viewer = new InterpViewer(_documentProcess, original, EditionTypeEnum.Original);
+
+                    viewer.InterpDeleted += Viewer_InterpDeleted;
 
                     viewer.Show(dockPanel1, DockState.Document);
                 }
             }
+        }
+
+        private void Viewer_InterpDeleted(object sender, InterpModel interp)
+        {
+            var docs = dockPanel1.DocumentsToArray();
+
+            var deleted = docs.FirstOrDefault(i => ((InterpViewer)i).Interp.Id == interp.Id) as InterpViewer;
+
+            foreach (Control ctrl in deleted.Controls)
+            {
+                ctrl.Dispose();
+            }
+
+            deleted.Close();
+
+            docs.ToList().Remove(deleted);
+        }
+
+        private async void btnRefresh_Click(object sender, EventArgs e)
+        {
+            await LoadData();
         }
     }
 }

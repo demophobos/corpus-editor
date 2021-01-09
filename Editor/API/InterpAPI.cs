@@ -67,13 +67,13 @@ namespace API
             }
         }
 
-        public static async Task<InterpModel> Remove(InterpModel header)
+        public static async Task<InterpModel> Remove(InterpModel interp)
         {
             try
             {
                 InterpModel report = null;
 
-                HttpResponseMessage response = await Client.DeleteAsync("interps/" + header.Id).ConfigureAwait(true);
+                HttpResponseMessage response = await Client.DeleteAsync("interps/" + interp.Id).ConfigureAwait(true);
 
                 if (response.IsSuccessStatusCode)
                 {

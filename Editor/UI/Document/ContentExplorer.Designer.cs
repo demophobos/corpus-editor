@@ -38,7 +38,6 @@ namespace Document
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.btnImportChunks = new System.Windows.Forms.ToolStripSplitButton();
             this.btnLoadJSON = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnBindInterp = new System.Windows.Forms.ToolStripButton();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.btnAddSubsection = new System.Windows.Forms.ToolStripMenuItem();
             this.btnEditSection = new System.Windows.Forms.ToolStripMenuItem();
@@ -83,8 +82,7 @@ namespace Document
             this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnAddFirstLevelSection,
             this.toolStripSeparator1,
-            this.btnImportChunks,
-            this.btnBindInterp});
+            this.btnImportChunks});
             this.toolStrip2.Location = new System.Drawing.Point(0, 0);
             this.toolStrip2.Name = "toolStrip2";
             this.toolStrip2.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
@@ -125,16 +123,6 @@ namespace Document
             this.btnLoadJSON.Size = new System.Drawing.Size(286, 22);
             this.btnLoadJSON.Text = "Загрузить фрагменты в JSON формате";
             this.btnLoadJSON.Click += new System.EventHandler(this.jSONToolStripMenuItem_Click);
-            // 
-            // btnBindInterp
-            // 
-            this.btnBindInterp.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnBindInterp.Image = ((System.Drawing.Image)(resources.GetObject("btnBindInterp.Image")));
-            this.btnBindInterp.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnBindInterp.Name = "btnBindInterp";
-            this.btnBindInterp.Size = new System.Drawing.Size(23, 22);
-            this.btnBindInterp.Text = "Связать с переводом";
-            this.btnBindInterp.Click += new System.EventHandler(this.btnBindInterp_Click);
             // 
             // contextMenuStrip1
             // 
@@ -229,7 +217,6 @@ namespace Document
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem btnOpenEditor;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripButton btnBindInterp;
         private System.Windows.Forms.ToolStripSplitButton btnImportChunks;
         private System.Windows.Forms.ToolStripMenuItem btnLoadJSON;
         private Common.Control.Loader loader1;

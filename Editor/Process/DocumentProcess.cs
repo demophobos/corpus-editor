@@ -57,24 +57,19 @@ namespace Process
             return await API.IndexAPI.Remove(index);
         }
 
-        public async Task<List<InterpViewModel>> GetInterpsBySource(string chunkId) {
-
-            var query = new InterpQuery { sourceId = chunkId };
-
-            return await API.InterpAPI.GetInterps(query);
-        }
-
-        public async Task<List<InterpViewModel>> GetInterpsByInterp(string chunkId)
+        public async Task<List<InterpViewModel>> GetInterpsByQuery(InterpQuery query)
         {
-
-            var query = new InterpQuery { interpId = chunkId };
-
             return await API.InterpAPI.GetInterps(query);
         }
 
         public async Task<InterpModel> SaveInterp(InterpModel interp)
         {
             return await API.InterpAPI.Save(interp);
+        }
+
+        public async Task<InterpModel> DeleteInterp(InterpModel interp)
+        {
+            return await API.InterpAPI.Remove(interp);
         }
 
         public async Task<List<ChunkModel>> LoadJsonChunks(string fileName)
@@ -119,22 +114,6 @@ namespace Process
             return chunks;
         }
 
-        public async Task<List<InterpModel>> BindInterps()
-        {
-            var projectHeaders = await HeaderProcess.GetHeaders(Header.ProjectId).ConfigureAwait(true);
 
-            var interps = projectHeaders.Where(i => i.EditionType == EditionTypeStringEnum.Interpretation);
-
-            foreach (var header in interps)
-            {
-                var query = new IndexQuery { headerId = header.Id };
-
-                var indeces = await API.IndexAPI.GetIndeces(query).ConfigureAwait(true);
-
-
-            }
-
-            return new List<InterpModel>();
-        }
     }
 }

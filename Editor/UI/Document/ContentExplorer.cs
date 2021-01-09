@@ -31,8 +31,6 @@ namespace Document
             _documentProcess = documentProcess;
 
             InitializeComponent();
-
-            btnBindInterp.Visible = documentProcess.Header.EditionType == EditionTypeStringEnum.Original;
         }
 
         private async void ContentExplorer_LoadAsync(object sender, EventArgs e)
@@ -221,13 +219,6 @@ namespace Document
             {
                 IndexSelected.Invoke(this, index);
             }
-        }
-
-        private async void btnBindInterp_Click(object sender, EventArgs e)
-        {
-            var boundInterps = await _documentProcess.BindInterps();
-
-            MessageBox.Show($"Связано переводов: {boundInterps.Count}");
         }
 
         private async void jSONToolStripMenuItem_Click(object sender, EventArgs e)

@@ -43,7 +43,17 @@ namespace Document
 
             var interps = list.Where(i => i.EditionType != _documentProcess.Header.EditionType);
 
-            headerSource.DataSource = interps;
+            if (interps.Count() == 0)
+            {
+                txtChunk.Text = "Перевод не найден.";
+                txtChunk.ForeColor = Color.Red;
+                btnSelect.Enabled = false;
+                cmbHeader.Enabled = false;
+            }
+            else
+            {
+                headerSource.DataSource = interps;
+            }
         }
 
         private async void headerSource_CurrentChanged(object sender, EventArgs e)
@@ -93,8 +103,12 @@ namespace Document
                 interp.InterpId = _inputChunk.Id;
             }
 
-            await _documentProcess.SaveInterp(interp).ConfigureAwait(true);
+            var existing = await _documentProcess.GetInterpsByQuery(new InterpQuery { sourceId = interp.SourceId, interpId = interp.InterpId }).ConfigureAwait(true);
 
+            if (existing.Count == 0)
+            {
+                await _documentProcess.SaveInterp(interp).ConfigureAwait(true);
+            }
         }
     }
 }

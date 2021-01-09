@@ -37,7 +37,7 @@ namespace Document
 
                 if (_documentProcess.Header.EditionType == EditionTypeStringEnum.Original)
                 {
-                    var interps = await _documentProcess.GetInterpsBySource(chunk.Id);
+                    var interps = await _documentProcess.GetInterpsByQuery(new InterpQuery { sourceId = chunk.Id });
 
                     if (interps.Count > 0)
                     {
@@ -55,7 +55,7 @@ namespace Document
                 }
                 else
                 {
-                    var interps = await _documentProcess.GetInterpsByInterp(chunk.Id);
+                    var interps = await _documentProcess.GetInterpsByQuery(new InterpQuery { interpId = chunk.Id });
 
                     var orig = interps.FirstOrDefault();
 

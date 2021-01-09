@@ -1,4 +1,5 @@
-﻿using Model;
+﻿using Common.Process;
+using Model;
 using Model.Enum;
 using Model.Query;
 using Model.View;
@@ -18,13 +19,19 @@ namespace Document
 {
     public partial class InterpViewer : DockContent
     {
-        private InterpViewModel _interp;
+        public InterpViewModel Interp { get; private set; }
 
         private EditionTypeEnum _typeToShow;
 
-        public InterpViewer(InterpViewModel interp, EditionTypeEnum typeToShow)
+        private DocumentProcess _documentProcess;
+
+        public event EventHandler<InterpModel> InterpDeleted;
+
+        public InterpViewer(DocumentProcess documentProcess, InterpViewModel interp, EditionTypeEnum typeToShow)
         {
-            _interp = interp;
+            _documentProcess = documentProcess;
+
+            Interp = interp;
 
             _typeToShow = typeToShow;
 
@@ -40,19 +47,19 @@ namespace Document
 
             if (_typeToShow == EditionTypeEnum.Original)
             {
-                query.chunkId = _interp.SourceId;
+                query.chunkId = Interp.SourceId;
 
-                Text = $"{_interp.SourceIndexName} [{_interp.SourceHeaderCode}]";
+                Text = $"{Interp.SourceIndexName} [{Interp.SourceHeaderCode}]";
 
-                ToolTipText = _interp.SourceHeaderDesc;
+                ToolTipText = Interp.SourceHeaderDesc;
             }
             else
             {
-                query.chunkId = _interp.InterpId;
+                query.chunkId = Interp.InterpId;
 
-                Text = $"{_interp.InterpIndexName} [{_interp.InterpHeaderCode}]";
+                Text = $"{Interp.InterpIndexName} [{Interp.InterpHeaderCode}]";
 
-                ToolTipText = _interp.InterpHeaderDesc;
+                ToolTipText = Interp.InterpHeaderDesc;
             }
 
             var elements = await ElementProcess.GetElements(query).ConfigureAwait(true);
@@ -89,12 +96,17 @@ namespace Document
                 }
             }
 
-            
+
         }
 
-        private void btnDelete_Click(object sender, EventArgs e)
+        private async void btnDelete_Click(object sender, EventArgs e)
         {
+            if (DialogProcess.DeleteWarning(Interp) == DialogResult.Yes)
+            {
+                await _documentProcess.DeleteInterp(Interp).ConfigureAwait(true);
 
+                InterpDeleted.Invoke(this, Interp);
+            }
         }
 
         private async void InterpViewer_Load(object sender, EventArgs e)

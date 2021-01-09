@@ -89,14 +89,16 @@ namespace Editor
 
             var deleted = docs.FirstOrDefault(i => ((DocumentContainer)i).DocumentProcess.Header.Id == header.Id) as DocumentContainer;
 
-            foreach (Control ctrl in deleted.Controls)
-            {
-                ctrl.Dispose();
+            if (deleted != null) {
+                foreach (Control ctrl in deleted.Controls)
+                {
+                    ctrl.Dispose();
+                }
+
+                deleted.Close();
+
+                docs.ToList().Remove(deleted);
             }
-
-            deleted.Close();
-
-            docs.ToList().Remove(deleted);
         }
 
         private void ProjectExplorer_HeaderUpdated(object sender, HeaderModel e)
