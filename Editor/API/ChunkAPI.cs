@@ -1,5 +1,6 @@
 ﻿using Model;
 using Model.Query;
+using Model.View;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -9,17 +10,17 @@ namespace API
 {
     public class ChunkAPI : BaseAPI
     {
-        public static async Task<ChunkModel> GetChunkByQuery(IQuery query)
+        public static async Task<ChunkViewModel> GetChunkByQuery(IQuery query)
         {
             try
             {
-                List<ChunkModel> report = null;
+                List<ChunkViewModel> report = null;
 
                 HttpResponseMessage response = await Client.GetAsync($"chunks?params={query}").ConfigureAwait(true);
 
                 if (response.IsSuccessStatusCode)
                 {
-                    report = await response.Content.ReadAsAsync<List<ChunkModel>>().ConfigureAwait(true);
+                    report = await response.Content.ReadAsAsync<List<ChunkViewModel>>().ConfigureAwait(true);
                 }
                 else
                 {
@@ -27,6 +28,31 @@ namespace API
                 }
 
                 return report.Count > 0 ? report[0] : null;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public static async Task<List<ChunkViewModel>> GetChunksByQuery(ChunkQuery query)
+        {
+            try
+            {
+                List<ChunkViewModel> report = null;
+
+                HttpResponseMessage response = await Client.GetAsync($"chunks?params={query}").ConfigureAwait(true);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    report = await response.Content.ReadAsAsync<List<ChunkViewModel>>().ConfigureAwait(true);
+                }
+                else
+                {
+                    throw new Exception(response.StatusCode.ToString());
+                }
+
+                return report;
             }
             catch (Exception ex)
             {

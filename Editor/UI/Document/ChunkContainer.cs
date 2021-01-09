@@ -1,5 +1,6 @@
 ﻿using Common.Process;
 using Model;
+using Model.Query;
 using Process;
 using System;
 using System.Windows.Forms;
@@ -47,7 +48,9 @@ namespace Document
 
             if (editor.ShowDialog() == DialogResult.OK)
             {
-                _chunk = await ChunkProcess.GetChunkByIndex(Index.Id).ConfigureAwait(true);
+                var query = new ChunkQuery { indexId = Index.Id };
+
+                _chunk = await ChunkProcess.GetChunkByQuery(query).ConfigureAwait(true);
 
                 btnAddChunk.Enabled = false;
 
@@ -67,7 +70,9 @@ namespace Document
 
         private async void ChunkContainer_LoadAsync(object sender, EventArgs e)
         {
-            _chunk = await ChunkProcess.GetChunkByIndex(Index.Id).ConfigureAwait(true);
+            var query = new ChunkQuery { indexId = Index.Id };
+
+            _chunk = await ChunkProcess.GetChunkByQuery(query).ConfigureAwait(true);
 
             btnAddChunk.Enabled = _chunk == null;
 
@@ -84,8 +89,6 @@ namespace Document
                 btnShowHideMorphologyPane.Enabled = btnShowHideTranslationPane.Enabled = true;
 
                 btnShowHideTranslationPane.PerformClick();
-
-                btnShowHideTranslationPane.Checked = true;
             }
         }
 
@@ -99,7 +102,9 @@ namespace Document
 
                 _chunkExplorer.Close();
 
-                _chunk = await ChunkProcess.GetChunkByIndex(Index.Id).ConfigureAwait(true);
+                var query = new ChunkQuery { indexId = Index.Id };
+
+                _chunk = await ChunkProcess.GetChunkByQuery(query).ConfigureAwait(true);
 
                 _chunkExplorer = new ChunkExplorer(_chunk);
 
@@ -226,6 +231,8 @@ namespace Document
             btnShowHideTranslationPane.Tag = "hide";
 
             btnShowHideTranslationPane.Checked = true;
+
+            _interpContainer.Activate();
         }
     }
 }

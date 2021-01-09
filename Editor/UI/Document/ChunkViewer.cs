@@ -25,7 +25,7 @@ namespace Document
 
             Text = index.Name;
 
-            var chunk = await ChunkProcess.GetChunkByIndex(index.Id).ConfigureAwait(true);
+            var chunk = await ChunkProcess.GetChunkByQuery(new ChunkQuery { indexId = index.Id }).ConfigureAwait(true);
 
             if (chunk != null)
             {

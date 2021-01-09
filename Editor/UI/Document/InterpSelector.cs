@@ -1,5 +1,7 @@
 ﻿using Model;
 using Model.Enum;
+using Model.Query;
+using Model.View;
 using Process;
 using System;
 using System.Collections.Generic;
@@ -18,7 +20,7 @@ namespace Document
     {
         private IndexModel _index;
 
-        private ChunkModel _chunk;
+        private ChunkViewModel _chunk;
 
         private ChunkModel _inputChunk;
 
@@ -37,8 +39,6 @@ namespace Document
 
         private async Task LoadFilterData()
         {
-            
-
             var list = await HeaderProcess.GetHeaders(_documentProcess.Header.ProjectId).ConfigureAwait(true);
 
             var interps = list.Where(i => i.EditionType != _documentProcess.Header.EditionType);
@@ -50,21 +50,19 @@ namespace Document
         {
             if (headerSource.Current is HeaderModel header)
             {
-                var list = await _documentProcess.GetIndecesByHeader(header.Id).ConfigureAwait(true);
+                _chunk = await ChunkProcess.GetChunkByQuery(new ChunkQuery { headerId = header.Id, indexName = _index.Name }).ConfigureAwait(true);
 
-                indexSource.DataSource = list;
+                if (_chunk != null)
+                {
+                    txtChunk.Text = $"{_chunk.IndexName}. {_chunk.Value}";
+                }
+                else
+                {
+                    txtChunk.Text = "Перевод не найден.";
+                    txtChunk.ForeColor = Color.Red;
+                    btnSelect.Enabled = false;
+                }
 
-                cmbIndex.Text = _index.Name;
-            }
-        }
-
-        private async void indexSource_CurrentChanged(object sender, EventArgs e)
-        {
-            if (indexSource.Current is IndexModel index)
-            {
-                _chunk = await ChunkProcess.GetChunkByIndex(index.Id).ConfigureAwait(true);
-
-                txtChunk.Text = _chunk.Value;
             }
         }
 

@@ -113,20 +113,30 @@ namespace Editor
         {
             var docs = dockPanel1.DocumentsToArray();
 
-            var exsitingDocument = docs.FirstOrDefault(i => ((DocumentContainer)i).DocumentProcess.Header.Id == header.Id) as DocumentContainer;
+            var exsitingDocuments = docs.Where(i => i is DocumentContainer).ToList();
 
-            if (exsitingDocument != null)
+            if (exsitingDocuments.Count > 0)
             {
-                exsitingDocument.Show();
+                if (exsitingDocuments.FirstOrDefault(i => ((DocumentContainer)i).DocumentProcess.Header.Id == header.Id) is DocumentContainer exsitingDocument)
+                {
+                    exsitingDocument.Show();
+                }
+                else {
+                    OpenDocument(header);
+                }
+                
             }
             else
             {
-                var documentForm = new DocumentContainer(header);
-
-                documentForm.Show(dockPanel1, DockState.Document);
-
-                //_openedDocuments.Add(documentForm);
+                OpenDocument(header);
             }
+        }
+
+        private void OpenDocument(HeaderModel header)
+        {
+            var documentForm = new DocumentContainer(header);
+
+            documentForm.Show(dockPanel1, DockState.Document);
         }
 
         private void btnShowMorphExplorer_Click(object sender, EventArgs e)

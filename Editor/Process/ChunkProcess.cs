@@ -1,6 +1,7 @@
 ﻿using Model;
 using Model.Enum;
 using Model.Query;
+using Model.View;
 using Process.Helper;
 using System;
 using System.Collections.Generic;
@@ -12,11 +13,14 @@ namespace Process
 {
     public class ChunkProcess
     {
-        public static async Task<ChunkModel> GetChunkByIndex(string indextId)
+        public static async Task<ChunkViewModel> GetChunkByQuery(ChunkQuery query)
         {
-            var query = new ChunkQuery { indexId = indextId };
-
             return await API.ChunkAPI.GetChunkByQuery(query);
+        }
+
+        public static async Task<List<ChunkViewModel>> GetChunksByQuery(ChunkQuery query)
+        {
+            return await API.ChunkAPI.GetChunksByQuery(query);
         }
 
         public static async Task<ChunkModel> GetChunk(string chunkId)

@@ -36,14 +36,11 @@ namespace Document
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.cmbHeader = new System.Windows.Forms.ComboBox();
             this.headerSource = new System.Windows.Forms.BindingSource(this.components);
-            this.cmbIndex = new System.Windows.Forms.ComboBox();
-            this.indexSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtChunk = new System.Windows.Forms.RichTextBox();
             this.flowLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.headerSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.indexSource)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -90,7 +87,6 @@ namespace Document
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel1, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.cmbHeader, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.cmbIndex, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
@@ -104,6 +100,7 @@ namespace Document
             // 
             // cmbHeader
             // 
+            this.tableLayoutPanel1.SetColumnSpan(this.cmbHeader, 2);
             this.cmbHeader.DataSource = this.headerSource;
             this.cmbHeader.DisplayMember = "Code";
             this.cmbHeader.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -111,7 +108,7 @@ namespace Document
             this.cmbHeader.FormattingEnabled = true;
             this.cmbHeader.Location = new System.Drawing.Point(3, 3);
             this.cmbHeader.Name = "cmbHeader";
-            this.cmbHeader.Size = new System.Drawing.Size(422, 21);
+            this.cmbHeader.Size = new System.Drawing.Size(536, 21);
             this.cmbHeader.TabIndex = 2;
             this.cmbHeader.ValueMember = "Id";
             // 
@@ -119,26 +116,6 @@ namespace Document
             // 
             this.headerSource.DataSource = typeof(Model.HeaderModel);
             this.headerSource.CurrentChanged += new System.EventHandler(this.headerSource_CurrentChanged);
-            // 
-            // cmbIndex
-            // 
-            this.cmbIndex.DataSource = this.indexSource;
-            this.cmbIndex.DisplayMember = "Name";
-            this.cmbIndex.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cmbIndex.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbIndex.Enabled = false;
-            this.cmbIndex.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.cmbIndex.FormattingEnabled = true;
-            this.cmbIndex.Location = new System.Drawing.Point(431, 3);
-            this.cmbIndex.Name = "cmbIndex";
-            this.cmbIndex.Size = new System.Drawing.Size(108, 21);
-            this.cmbIndex.TabIndex = 3;
-            this.cmbIndex.ValueMember = "Id";
-            // 
-            // indexSource
-            // 
-            this.indexSource.DataSource = typeof(Model.IndexModel);
-            this.indexSource.CurrentChanged += new System.EventHandler(this.indexSource_CurrentChanged);
             // 
             // panel1
             // 
@@ -178,7 +155,6 @@ namespace Document
             this.flowLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.headerSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.indexSource)).EndInit();
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -189,11 +165,9 @@ namespace Document
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.ComboBox cmbHeader;
-        private System.Windows.Forms.ComboBox cmbIndex;
         private System.Windows.Forms.Button btnSelect;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.BindingSource headerSource;
-        private System.Windows.Forms.BindingSource indexSource;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.RichTextBox txtChunk;
     }

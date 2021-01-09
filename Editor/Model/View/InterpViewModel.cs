@@ -23,6 +23,8 @@ namespace Model.View
         public string SourceIndexId { get; set; }
         [JsonProperty("sourceHeaderEditionType")]
         public string SourceHeaderEditionType { get; set; }
+        [JsonProperty("sourceHeaderId")]
+        public string SourceHeaderId { get; set; }
         [JsonProperty("sourceProjectId")]
         public string SourceProjectId { get; set; }
         [JsonProperty("sourceProjectCode")]
@@ -45,6 +47,8 @@ namespace Model.View
         public string InterpIndexId { get; set; }
         [JsonProperty("interpHeaderEditionType")]
         public string InterpHeaderEditionType { get; set; }
+        [JsonProperty("interpHeaderId")]
+        public string InterpHeaderId { get; set; }
         [JsonProperty("interpProjectId")]
         public string InterpProjectId { get; set; }
         [JsonProperty("interpProjectCode")]

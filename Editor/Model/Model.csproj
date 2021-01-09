@@ -81,6 +81,7 @@
     <Compile Include="Query\ProjectQuery.cs" />
     <Compile Include="TaxonomyItem.cs" />
     <Compile Include="UserModel.cs" />
+    <Compile Include="View\ChunkViewModel.cs" />
     <Compile Include="View\InterpViewModel.cs" />
   </ItemGroup>
   <ItemGroup>

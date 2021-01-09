@@ -91,7 +91,7 @@ namespace Process
                 {
                     var index = indeces[0];
 
-                    var chunk = await ChunkProcess.GetChunkByIndex(index.Id);
+                    var chunk = await ChunkProcess.GetChunkByQuery(new ChunkQuery { indexId = index.Id });
 
                     if (chunk == null)
                     {
