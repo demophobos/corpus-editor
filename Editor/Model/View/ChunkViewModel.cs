@@ -18,8 +18,6 @@ namespace Model.View
         public string ProjectId { get; set; }
         [JsonProperty("projectCode")]
         public string ProjectCode { get; set; }
-        [JsonProperty("headerId")]
-        public string HeaderId { get; set; }
         [JsonProperty("headerCode")]
         public string HeaderCode { get; set; }
         [JsonProperty("headerLang")]

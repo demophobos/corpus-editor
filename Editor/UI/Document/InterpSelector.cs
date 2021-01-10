@@ -91,12 +91,20 @@ namespace Document
                 interp.InterpId = _chunk.Id;
 
                 interp.SourceId = _inputChunk.Id;
+
+                interp.InterpHeaderId = _chunk.HeaderId;
+
+                interp.SourceHeaderId = _inputChunk.HeaderId;
             }
             else
             {
                 interp.SourceId = _chunk.Id;
 
                 interp.InterpId = _inputChunk.Id;
+
+                interp.InterpHeaderId = _inputChunk.HeaderId;
+
+                interp.SourceHeaderId = _chunk.HeaderId;
             }
 
             var existing = await _documentProcess.GetInterpsByQuery(new InterpQuery { sourceId = interp.SourceId, interpId = interp.InterpId }).ConfigureAwait(true);

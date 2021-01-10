@@ -227,6 +227,68 @@ namespace Document
                 MessageBox.Show($"Импортировано фрагментов: {chunks.Count}");
             }
         }
+
+        private async void btnUpdateHeaderId_Click(object sender, EventArgs e)
+        {
+            loader1.BringToFront();
+
+            int count = 0;
+
+            var chunks = await ChunkProcess.GetChunksByQuery(new Model.Query.ChunkQuery { headerId = _documentProcess.Header.Id }).ConfigureAwait(true);
+
+            foreach (var chunkView in chunks)
+            {
+                var chunk = new ChunkModel { HeaderId = _documentProcess.Header.Id, Id = chunkView.Id, IndexId = chunkView.IndexId, Value = chunkView.Value };
+
+                await ChunkProcess.SaveChunkAndElements(chunk).ConfigureAwait(true);
+
+                count += 1;
+
+                loader1.SetStatus(count.ToString());
+            }
+
+            var interps = await _documentProcess.GetInterpsByQuery(new Model.Query.InterpQuery { interpHeaderId = _documentProcess.Header.Id }).ConfigureAwait(true);
+
+            foreach (var interpView in interps)
+            {
+                var interp = new InterpModel
+                {
+                    InterpHeaderId = interpView.InterpHeaderId,
+                    Id = interpView.Id,
+                    SourceHeaderId = interpView.SourceHeaderId,
+                    InterpId = interpView.InterpId,
+                    SourceId = interpView.SourceId
+                };
+
+                await _documentProcess.SaveInterp(interp).ConfigureAwait(true);
+
+                count += 1;
+
+                loader1.SetStatus(count.ToString());
+            }
+
+            var sources = await _documentProcess.GetInterpsByQuery(new Model.Query.InterpQuery { sourceHeaderId = _documentProcess.Header.Id }).ConfigureAwait(true);
+
+            foreach (var interpView in sources)
+            {
+                var interp = new InterpModel
+                {
+                    InterpHeaderId = interpView.InterpHeaderId,
+                    Id = interpView.Id,
+                    SourceHeaderId = interpView.SourceHeaderId,
+                    InterpId = interpView.InterpId,
+                    SourceId = interpView.SourceId
+                };
+
+                await _documentProcess.SaveInterp(interp).ConfigureAwait(true);
+
+                count += 1;
+
+                loader1.SetStatus(count.ToString());
+            }
+
+            loader1.SendToBack();
+        }
     }
 }
 

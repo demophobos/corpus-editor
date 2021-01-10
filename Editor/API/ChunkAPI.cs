@@ -110,6 +110,31 @@ namespace API
             }
         }
 
+        public static async Task<ChunkModel> RemoveByQuery(ChunkQuery query)
+        {
+            try
+            {
+                ChunkModel report = null;
+
+                HttpResponseMessage response = await Client.DeleteAsync($"chunks/{0}?params={query}").ConfigureAwait(true);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    report = await response.Content.ReadAsAsync<ChunkModel>().ConfigureAwait(true);
+                }
+                else
+                {
+                    throw new Exception(response.StatusCode.ToString());
+                }
+
+                return report;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
         public static async Task<ChunkModel> Save(ChunkModel chunk)
         {
             try

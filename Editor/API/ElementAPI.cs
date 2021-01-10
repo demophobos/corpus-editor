@@ -68,5 +68,30 @@ namespace API
                 throw new Exception(ex.Message);
             }
         }
+
+        public static async Task<ElementModel> RemoveByQuery(ElementQuery query)
+        {
+            try
+            {
+                ElementModel report = null;
+
+                HttpResponseMessage response = await Client.DeleteAsync($"elements/{0}?params={query}").ConfigureAwait(true);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    report = await response.Content.ReadAsAsync<ElementModel>().ConfigureAwait(true);
+                }
+                else
+                {
+                    throw new Exception(response.StatusCode.ToString());
+                }
+
+                return report;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }

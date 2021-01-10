@@ -54,9 +54,10 @@ namespace Process
 
                 if (rules.Count == 1)
                 {
-
                     element.MorphId = rules[0].Id;
                 }
+
+                element.HeaderId = chunk.HeaderId;
 
                 await API.ElementAPI.Save(element).ConfigureAwait(true);
             }

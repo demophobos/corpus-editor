@@ -5,6 +5,7 @@ using Model.Query;
 using Process;
 using System;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using WeifenLuo.WinFormsUI.Docking;
 
@@ -94,7 +95,7 @@ namespace Project
         {
             if (treeView1.SelectedNode != null && treeView1.SelectedNode.Tag is ProjectModel project)
             {
-                mnuCreateHeader.Visible = btnEdit.Enabled = true;
+                mnuCreateHeader.Visible = btnEdit.Enabled = btnDelete.Enabled = true;
 
                 btnPublish.Visible = project.Status != ProjectStatusStringEnum.Published;
 
@@ -104,7 +105,7 @@ namespace Project
             }
             else
             {
-                mnuCreateHeader.Visible = btnEdit.Enabled = btnPublish.Visible = btnUnpublish.Visible = false;
+                mnuCreateHeader.Visible = btnEdit.Enabled = btnPublish.Visible = btnUnpublish.Visible = btnDelete.Enabled = false;
             }
 
             mnuDeleteHeader.Visible = mnuEditHeader.Visible = treeView1.SelectedNode != null && treeView1.SelectedNode.Tag is HeaderModel;
@@ -145,7 +146,18 @@ namespace Project
         {
             if (treeView1.SelectedNode != null && treeView1.SelectedNode.Tag is ProjectModel project && DialogProcess.DeleteWarning(project) == DialogResult.Yes)
             {
-                await ProjectProcess.RemoveProject(project).ConfigureAwait(true);
+                loader1.BringToFront();
+
+                var headers = await HeaderProcess.GetHeaders(project.Id).ConfigureAwait(true);
+
+                var status = string.Empty;
+
+                foreach (var header in headers)
+                {
+                    await RemoveProjectItemsByHeader(header);
+                }
+
+                await ProjectProcess.RemoveProject(project);
 
                 var node = treeView1.Nodes.Find(treeView1.SelectedNode.Name, true).FirstOrDefault();
 
@@ -161,6 +173,8 @@ namespace Project
 
                     ProjectDeleted?.Invoke(this, project);
                 }
+
+                loader1.SendToBack();
             }
         }
 
@@ -200,7 +214,9 @@ namespace Project
         {
             if (treeView1.SelectedNode != null && treeView1.SelectedNode.Tag is HeaderModel header && DialogProcess.DeleteWarning(header) == DialogResult.Yes)
             {
-                await HeaderProcess.RemoveHeader(header).ConfigureAwait(true);
+                loader1.BringToFront();
+
+                await RemoveProjectItemsByHeader(header);
 
                 var node = treeView1.Nodes.Find(treeView1.SelectedNode.Name, true).FirstOrDefault();
 
@@ -214,7 +230,26 @@ namespace Project
 
                     HeaderDeleted?.Invoke(this, header);
                 }
+
+                loader1.SendToBack();
             }
+        }
+
+        private static async Task RemoveProjectItemsByHeader(HeaderModel header)
+        {
+            var documentProcess = new DocumentProcess(header);
+
+            await documentProcess.DeleteInterpsByQuery(new InterpQuery { interpHeaderId = documentProcess.Header.Id }).ConfigureAwait(true);
+
+            await documentProcess.DeleteInterpsByQuery(new InterpQuery { sourceHeaderId = documentProcess.Header.Id }).ConfigureAwait(true);
+
+            await documentProcess.DeleteElementsByQuery(new ElementQuery { headerId = documentProcess.Header.Id }).ConfigureAwait(true);
+
+            await documentProcess.DeleteChunksByQuery(new ChunkQuery { headerId = documentProcess.Header.Id }).ConfigureAwait(true);
+
+            await documentProcess.DeleteIndecesByQuery(new IndexQuery { headerId = documentProcess.Header.Id }).ConfigureAwait(true);
+
+            await documentProcess.DeleteHeader(header);
         }
 
         private void treeView1_DoubleClick(object sender, EventArgs e)
@@ -229,28 +264,7 @@ namespace Project
         {
             if (treeView1.SelectedNode != null && treeView1.SelectedNode.Tag is ProjectModel project)
             {
-                project.Status = ProjectStatusStringEnum.Published;
-
-                var savedProject = await ProjectProcess.Save(project).ConfigureAwait(true);
-
-                var headers = await HeaderProcess.GetHeaders(project.Id).ConfigureAwait(true);
-
-                if (savedProject.Status == ProjectStatusStringEnum.Published)
-                {
-                    treeView1.SelectedNode.ImageIndex = treeView1.SelectedNode.SelectedImageIndex = 0;
-
-                    btnUnpublish.Visible = true;
-
-                    btnPublish.Visible = false;
-
-                    foreach (var header in headers)
-                    {
-                        header.Status = savedProject.Status;
-                        await HeaderProcess.SaveHeader(header).ConfigureAwait(true);
-                    }
-                }
-
-                ProjectUpdated?.Invoke(this, project);
+                await UpdateProjectStatus(project, ProjectStatusStringEnum.Published);
             }
         }
 
@@ -258,29 +272,35 @@ namespace Project
         {
             if (treeView1.SelectedNode != null && treeView1.SelectedNode.Tag is ProjectModel project)
             {
-                project.Status = ProjectStatusStringEnum.Edited;
-
-                var savedProject = await ProjectProcess.Save(project).ConfigureAwait(true);
-
-                var headers = await HeaderProcess.GetHeaders(project.Id).ConfigureAwait(true);
-
-                if (savedProject.Status == ProjectStatusStringEnum.Edited)
-                {
-                    treeView1.SelectedNode.ImageIndex = treeView1.SelectedNode.SelectedImageIndex = 2;
-
-                    btnUnpublish.Visible = false;
-
-                    btnPublish.Visible = true;
-
-                    foreach (var header in headers)
-                    {
-                        header.Status = savedProject.Status;
-                        await HeaderProcess.SaveHeader(header).ConfigureAwait(true);
-                    }
-                }
-
-                ProjectUpdated?.Invoke(this, project);
+                await UpdateProjectStatus(project, ProjectStatusStringEnum.Edited);
             }
+        }
+
+        private async Task UpdateProjectStatus(ProjectModel project, string status)
+        {
+            project.Status = status;
+
+            var savedProject = await ProjectProcess.Save(project).ConfigureAwait(true);
+
+            var headers = await HeaderProcess.GetHeaders(project.Id).ConfigureAwait(true);
+
+            foreach (var header in headers)
+            {
+                header.Status = savedProject.Status;
+
+                await HeaderProcess.SaveHeader(header).ConfigureAwait(true);
+            }
+
+            if (savedProject.Status == ProjectStatusStringEnum.Published)
+            {
+                treeView1.SelectedNode.ImageIndex = treeView1.SelectedNode.SelectedImageIndex = 0;
+
+                btnUnpublish.Visible = true;
+
+                btnPublish.Visible = false;
+            }
+
+            ProjectUpdated?.Invoke(this, project);
         }
     }
 }

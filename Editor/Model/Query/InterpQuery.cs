@@ -9,5 +9,9 @@ namespace Model.Query
 
         [JsonProperty("interpId", NullValueHandling = NullValueHandling.Ignore)]
         public string interpId { get; set; }
+        [JsonProperty("sourceHeaderId", NullValueHandling = NullValueHandling.Ignore)]
+        public string sourceHeaderId { get; set; }
+        [JsonProperty("interpHeaderId", NullValueHandling = NullValueHandling.Ignore)]
+        public string interpHeaderId { get; set; }
     }
 }

@@ -46,7 +46,17 @@ namespace API
             {
                 InterpModel report = null;
 
-                HttpResponseMessage response = await Client.PostAsJsonAsync("interps/", interp).ConfigureAwait(true);
+                HttpResponseMessage response;
+
+                if (string.IsNullOrEmpty(interp.Id))
+                {
+
+                    response = await Client.PostAsJsonAsync("interps/", interp).ConfigureAwait(true);
+                }
+                else
+                {
+                    response = await Client.PutAsJsonAsync($"interps/{interp.Id}", interp).ConfigureAwait(true);
+                }
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -72,6 +82,31 @@ namespace API
                 InterpModel report = null;
 
                 HttpResponseMessage response = await Client.DeleteAsync("interps/" + interp.Id).ConfigureAwait(true);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    report = await response.Content.ReadAsAsync<InterpModel>().ConfigureAwait(true);
+                }
+                else
+                {
+                    throw new Exception(response.StatusCode.ToString());
+                }
+
+                return report;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public static async Task<InterpModel> RemoveByQuery(InterpQuery query)
+        {
+            try
+            {
+                InterpModel report = null;
+
+                HttpResponseMessage response = await Client.DeleteAsync($"interps/{0}?params={query}").ConfigureAwait(true);
 
                 if (response.IsSuccessStatusCode)
                 {

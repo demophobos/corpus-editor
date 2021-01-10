@@ -8,5 +8,9 @@ namespace Common.Control
         {
             InitializeComponent();
         }
+
+        public void SetStatus(string status) {
+            lblStatus.Text = status;
+        }
     }
 }

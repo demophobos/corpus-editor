@@ -54,6 +54,11 @@ namespace Process
             return await API.IndexAPI.Remove(index);
         }
 
+        public async Task<HeaderModel> DeleteHeader(HeaderModel header)
+        {
+            return await API.HeaderAPI.Remove(header);
+        }
+
         public async Task<List<InterpViewModel>> GetInterpsByQuery(InterpQuery query)
         {
             return await API.InterpAPI.GetInterps(query);
@@ -111,6 +116,26 @@ namespace Process
             return chunks;
         }
 
+
+        public async Task<ChunkModel> DeleteChunksByQuery(ChunkQuery query)
+        {
+            return await API.ChunkAPI.RemoveByQuery(query);
+        }
+
+        public async Task<ElementModel> DeleteElementsByQuery(ElementQuery query)
+        {
+            return await API.ElementAPI.RemoveByQuery(query);
+        }
+
+        public async Task<InterpModel> DeleteInterpsByQuery(InterpQuery query)
+        {
+            return await API.InterpAPI.RemoveByQuery(query);
+        }
+
+        public async Task<IndexModel> DeleteIndecesByQuery(IndexQuery query)
+        {
+            return await API.IndexAPI.RemoveByQuery(query);
+        }
 
     }
 }

@@ -8,5 +8,7 @@ namespace Model
         public string Value { get; set; }
         [JsonProperty("indexId")]
         public string IndexId { get; set; }
+        [JsonProperty("headerId")]
+        public string HeaderId { get; set; }
     }
 }

@@ -45,6 +45,7 @@ namespace Document
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.btnOpenEditor = new System.Windows.Forms.ToolStripMenuItem();
             this.loader1 = new Common.Control.Loader();
+            this.btnUpdateHeaderId = new System.Windows.Forms.ToolStripButton();
             this.toolStrip2.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -82,7 +83,8 @@ namespace Document
             this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnAddFirstLevelSection,
             this.toolStripSeparator1,
-            this.btnImportChunks});
+            this.btnImportChunks,
+            this.btnUpdateHeaderId});
             this.toolStrip2.Location = new System.Drawing.Point(0, 0);
             this.toolStrip2.Name = "toolStrip2";
             this.toolStrip2.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
@@ -183,6 +185,16 @@ namespace Document
             this.loader1.Size = new System.Drawing.Size(366, 450);
             this.loader1.TabIndex = 10;
             // 
+            // btnUpdateHeaderId
+            // 
+            this.btnUpdateHeaderId.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnUpdateHeaderId.Image = ((System.Drawing.Image)(resources.GetObject("btnUpdateHeaderId.Image")));
+            this.btnUpdateHeaderId.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnUpdateHeaderId.Name = "btnUpdateHeaderId";
+            this.btnUpdateHeaderId.Size = new System.Drawing.Size(23, 22);
+            this.btnUpdateHeaderId.Text = "toolStripButton1";
+            this.btnUpdateHeaderId.Click += new System.EventHandler(this.btnUpdateHeaderId_Click);
+            // 
             // ContentExplorer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -220,5 +232,6 @@ namespace Document
         private System.Windows.Forms.ToolStripSplitButton btnImportChunks;
         private System.Windows.Forms.ToolStripMenuItem btnLoadJSON;
         private Common.Control.Loader loader1;
+        private System.Windows.Forms.ToolStripButton btnUpdateHeaderId;
     }
 }

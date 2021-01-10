@@ -7,8 +7,11 @@ namespace Document
 {
     public partial class ChunkEditor : Form
     {
-        public ChunkEditor(IndexModel _index, ChunkModel chunkModel)
+        private IndexModel _index;
+        public ChunkEditor(IndexModel index, ChunkModel chunkModel)
         {
+            _index = index;
+
             InitializeComponent();
 
             Text = $"{Text} [{_index.Name}]";
@@ -22,7 +25,7 @@ namespace Document
 
             var chunk = (ChunkModel)chunkSource.DataSource;
 
-            var chunkBase = new ChunkModel { Id = chunk.Id, IndexId = chunk.IndexId, Value = chunk.Value };
+            var chunkBase = new ChunkModel { Id = chunk.Id, IndexId = chunk.IndexId, Value = chunk.Value, HeaderId = _index.HeaderId };
 
             await ChunkProcess.SaveChunkAndElements(chunkBase).ConfigureAwait(true);
 
