@@ -53,16 +53,10 @@
     <Compile Include="Enum\EditionTypeEnum.cs" />
     <Compile Include="Enum\ProjectStatusStringEnum.cs" />
     <Compile Include="Enum\EditionTypeStringEnum.cs" />
-    <Compile Include="Enum\ElementAnalysisStatusEnum.cs" />
     <Compile Include="Enum\ElementTypeEnum.cs" />
     <Compile Include="Enum\ExceptionCodeEnum.cs" />
     <Compile Include="Enum\LangStringEnum.cs" />
-    <Compile Include="Enum\MorphCategoryEnum.cs" />
-    <Compile Include="Enum\PosStringEnum.cs" />
-    <Compile Include="Enum\ReportTypeEnum.cs" />
-    <Compile Include="Enum\SystemActionStringEnum.cs" />
     <Compile Include="Enum\TaxonomyCategoryEnum.cs" />
-    <Compile Include="Enum\TextAnalysisStatusEnum.cs" />
     <Compile Include="HeaderModel.cs" />
     <Compile Include="IndexModel.cs" />
     <Compile Include="InterpModel.cs" />
