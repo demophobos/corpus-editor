@@ -30,7 +30,6 @@ namespace Project
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.codeSource = new System.Windows.Forms.BindingSource(this.components);
             this.langSource = new System.Windows.Forms.BindingSource(this.components);
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label5 = new System.Windows.Forms.Label();
@@ -48,17 +47,12 @@ namespace Project
             this.editionTypeSource = new System.Windows.Forms.BindingSource(this.components);
             this.lblCode = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.codeSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.langSource)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.headerSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.editionTypeSource)).BeginInit();
             this.SuspendLayout();
-            // 
-            // codeSource
-            // 
-            this.codeSource.DataSource = typeof(Model.TaxonomyItem);
             // 
             // langSource
             // 
@@ -280,7 +274,6 @@ namespace Project
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Редактор заголовка";
             this.Load += new System.EventHandler(this.HeaderEditor_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.codeSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.langSource)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
@@ -292,7 +285,6 @@ namespace Project
         }
 
         #endregion
-        private System.Windows.Forms.BindingSource codeSource;
         private System.Windows.Forms.BindingSource langSource;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Label label5;

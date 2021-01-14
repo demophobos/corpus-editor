@@ -43,8 +43,8 @@ namespace Project
             this.btnPublish = new System.Windows.Forms.ToolStripButton();
             this.btnUnpublish = new System.Windows.Forms.ToolStripButton();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.loader1 = new Common.Control.Loader();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.loader1 = new Common.Control.Loader();
             this.mnuHeader.SuspendLayout();
             this.toolStrip2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -85,14 +85,14 @@ namespace Project
             this.mnuEditHeader,
             this.mnuDeleteHeader});
             this.mnuHeader.Name = "mnuHeader";
-            this.mnuHeader.Size = new System.Drawing.Size(150, 70);
+            this.mnuHeader.Size = new System.Drawing.Size(210, 70);
             // 
             // mnuCreateHeader
             // 
             this.mnuCreateHeader.Image = ((System.Drawing.Image)(resources.GetObject("mnuCreateHeader.Image")));
             this.mnuCreateHeader.Name = "mnuCreateHeader";
-            this.mnuCreateHeader.Size = new System.Drawing.Size(149, 22);
-            this.mnuCreateHeader.Text = "Create Header";
+            this.mnuCreateHeader.Size = new System.Drawing.Size(209, 22);
+            this.mnuCreateHeader.Text = "Добавить документ";
             this.mnuCreateHeader.Visible = false;
             this.mnuCreateHeader.Click += new System.EventHandler(this.mnuCreateHeader_Click);
             // 
@@ -100,8 +100,8 @@ namespace Project
             // 
             this.mnuEditHeader.Image = ((System.Drawing.Image)(resources.GetObject("mnuEditHeader.Image")));
             this.mnuEditHeader.Name = "mnuEditHeader";
-            this.mnuEditHeader.Size = new System.Drawing.Size(149, 22);
-            this.mnuEditHeader.Text = "Edit Header";
+            this.mnuEditHeader.Size = new System.Drawing.Size(209, 22);
+            this.mnuEditHeader.Text = "Редактировать документ";
             this.mnuEditHeader.Visible = false;
             this.mnuEditHeader.Click += new System.EventHandler(this.mnuEditHeader_Click);
             // 
@@ -109,8 +109,8 @@ namespace Project
             // 
             this.mnuDeleteHeader.Image = ((System.Drawing.Image)(resources.GetObject("mnuDeleteHeader.Image")));
             this.mnuDeleteHeader.Name = "mnuDeleteHeader";
-            this.mnuDeleteHeader.Size = new System.Drawing.Size(149, 22);
-            this.mnuDeleteHeader.Text = "Delete Header";
+            this.mnuDeleteHeader.Size = new System.Drawing.Size(209, 22);
+            this.mnuDeleteHeader.Text = "Удалить документ";
             this.mnuDeleteHeader.Visible = false;
             this.mnuDeleteHeader.Click += new System.EventHandler(this.mnuDeleteHeader_Click);
             // 
@@ -185,6 +185,11 @@ namespace Project
             this.panel1.Size = new System.Drawing.Size(471, 477);
             this.panel1.TabIndex = 13;
             // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
             // loader1
             // 
             this.loader1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -193,11 +198,6 @@ namespace Project
             this.loader1.Name = "loader1";
             this.loader1.Size = new System.Drawing.Size(471, 477);
             this.loader1.TabIndex = 12;
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
             // ProjectExplorer
             // 

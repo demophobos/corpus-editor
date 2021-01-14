@@ -50,8 +50,6 @@
     <Compile Include="BaseModel.cs" />
     <Compile Include="ChunkModel.cs" />
     <Compile Include="ElementModel.cs" />
-    <Compile Include="Enum\CommentType.cs" />
-    <Compile Include="Enum\ConditionOperator.cs" />
     <Compile Include="Enum\EditionTypeEnum.cs" />
     <Compile Include="Enum\ProjectStatusStringEnum.cs" />
     <Compile Include="Enum\EditionTypeStringEnum.cs" />
@@ -60,8 +58,6 @@
     <Compile Include="Enum\ExceptionCodeEnum.cs" />
     <Compile Include="Enum\LangStringEnum.cs" />
     <Compile Include="Enum\MorphCategoryEnum.cs" />
-    <Compile Include="Enum\MorphRuleAction.cs" />
-    <Compile Include="Enum\MorphRuleMatchType.cs" />
     <Compile Include="Enum\PosStringEnum.cs" />
     <Compile Include="Enum\ReportTypeEnum.cs" />
     <Compile Include="Enum\SystemActionStringEnum.cs" />
@@ -88,7 +84,6 @@
     <Compile Include="Query\MorphQuery.cs" />
     <Compile Include="Query\ProjectQuery.cs" />
     <Compile Include="Query\TaxonomyQuery.cs" />
-    <Compile Include="TaxonomyItem.cs" />
     <Compile Include="TaxonomyModel.cs" />
     <Compile Include="UserModel.cs" />
     <Compile Include="View\ChunkViewModel.cs" />
