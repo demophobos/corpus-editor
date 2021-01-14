@@ -3,6 +3,7 @@ using Model.Enum;
 using Process;
 using System;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Morph
@@ -10,29 +11,39 @@ namespace Morph
     public partial class MorphEditor : Form
     {
         MorphProcess _morphProcess;
+
+        private MorphModel _morphModel;
+
         public MorphEditor(MorphModel morphModel)
         {
             _morphProcess = new MorphProcess();
 
+            _morphModel = morphModel;
+
             InitializeComponent();
-
-            LoadMorphCategoryItems();
-
-            morphSource.DataSource = morphModel;
-
-            Subscribe();
         }
 
-        private void LoadMorphCategoryItems()
+        private async void MorphEditor_Load(object sender, EventArgs e)
+        {
+            loader1.BringToFront();
+
+            await LoadData().ConfigureAwait(true);
+
+            loader1.SendToBack();
+        }
+
+        private async Task LoadData()
         {
             var cmbs = table.Controls.OfType<ComboBox>();
 
             foreach (var cmb in cmbs)
             {
-                var value = (MorphCategoryEnum)Enum.Parse(typeof(MorphCategoryEnum), cmb.Tag.ToString());
-
-                cmb.DataSource = TaxonomyProcess.GetMorphCategoryItems(value);
+                cmb.DataSource = await TaxonomyProcess.GetPosAttributeValues(cmb.Tag.ToString()).ConfigureAwait(true);
             }
+
+            morphSource.DataSource = _morphModel;
+
+            Subscribe();
         }
 
         private void Subscribe()

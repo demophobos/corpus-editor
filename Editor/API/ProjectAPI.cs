@@ -41,6 +41,32 @@ namespace API
             }
 
         }
+
+        public static async Task<List<ProjectModel>> GetAll()
+        {
+            try
+            {
+                List<ProjectModel> report = null;
+
+                HttpResponseMessage response = await Client.GetAsync($"projects").ConfigureAwait(true);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    report = await response.Content.ReadAsAsync<List<ProjectModel>>().ConfigureAwait(true);
+                }
+                else
+                {
+                    throw new Exception(response.StatusCode.ToString());
+                }
+
+                return report;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+
+        }
         public static async Task<ProjectModel> FindOne(string id)
         {
             try

@@ -65,6 +65,7 @@
     <Compile Include="Enum\PosStringEnum.cs" />
     <Compile Include="Enum\ReportTypeEnum.cs" />
     <Compile Include="Enum\SystemActionStringEnum.cs" />
+    <Compile Include="Enum\TaxonomyCategoryEnum.cs" />
     <Compile Include="Enum\TextAnalysisStatusEnum.cs" />
     <Compile Include="HeaderModel.cs" />
     <Compile Include="IndexModel.cs" />
@@ -86,10 +87,13 @@
     <Compile Include="Query\IQuery.cs" />
     <Compile Include="Query\MorphQuery.cs" />
     <Compile Include="Query\ProjectQuery.cs" />
+    <Compile Include="Query\TaxonomyQuery.cs" />
     <Compile Include="TaxonomyItem.cs" />
+    <Compile Include="TaxonomyModel.cs" />
     <Compile Include="UserModel.cs" />
     <Compile Include="View\ChunkViewModel.cs" />
     <Compile Include="View\InterpViewModel.cs" />
+    <Compile Include="View\TaxonomyViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

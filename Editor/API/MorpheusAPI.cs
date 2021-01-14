@@ -47,7 +47,7 @@ namespace API
         {
             string betaCodeLexema = new BetaCodeConverter().UnicodeToGreekBetaCode(lexema);
 
-            
+
 
             using (var httpClient = new HttpClient())
             {

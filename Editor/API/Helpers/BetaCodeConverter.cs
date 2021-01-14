@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace API.Helpers
 {
@@ -289,7 +287,8 @@ namespace API.Helpers
                 _map.Add("ῼ", "*|w");
                 _map.Add("—", "_");
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
 
                 var test = ex;
             }

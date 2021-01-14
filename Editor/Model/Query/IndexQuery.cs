@@ -5,10 +5,10 @@ namespace Model.Query
     public class IndexQuery : BaseQuery
     {
         [JsonProperty("headerId", NullValueHandling = NullValueHandling.Ignore)]
-        public string headerId { get; set; }
+        public string HeaderId { get; set; }
         [JsonProperty("parentId", NullValueHandling = NullValueHandling.Ignore)]
-        public string parentId { get; set; }
+        public string ParentId { get; set; }
         [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
-        public string name { get; set; }
+        public string Name { get; set; }
     }
 }

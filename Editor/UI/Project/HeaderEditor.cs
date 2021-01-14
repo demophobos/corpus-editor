@@ -18,11 +18,11 @@ namespace Project
 
         private async void HeaderEditor_Load(object sender, EventArgs e)
         {
-            langSource.DataSource = TaxonomyProcess.GetLanguages();
+            langSource.DataSource = await TaxonomyProcess.GetLanguages().ConfigureAwait(true);
 
-            editionTypeSource.DataSource = TaxonomyProcess.GetEditionTypesString();
+            editionTypeSource.DataSource = await TaxonomyProcess.GetEditionTypes().ConfigureAwait(true);
 
-            var project = await ProjectProcess.GetProject(_header.ProjectId);
+            var project = await ProjectProcess.GetProject(_header.ProjectId).ConfigureAwait(true);
 
             if (project != null)
             {

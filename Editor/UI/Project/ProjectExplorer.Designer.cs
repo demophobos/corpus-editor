@@ -39,12 +39,12 @@ namespace Project
             this.mnuDeleteHeader = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.btnAdd = new System.Windows.Forms.ToolStripButton();
-            this.btnEdit = new System.Windows.Forms.ToolStripButton();
             this.btnDelete = new System.Windows.Forms.ToolStripButton();
             this.btnPublish = new System.Windows.Forms.ToolStripButton();
             this.btnUnpublish = new System.Windows.Forms.ToolStripButton();
-            this.loader1 = new Common.Control.Loader();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.loader1 = new Common.Control.Loader();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuHeader.SuspendLayout();
             this.toolStrip2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -54,9 +54,9 @@ namespace Project
             // 
             this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList1.Images.SetKeyName(0, "Cloud");
-            this.imageList1.Images.SetKeyName(1, "Text_16x.png");
-            this.imageList1.Images.SetKeyName(2, "Local");
+            this.imageList1.Images.SetKeyName(0, "published");
+            this.imageList1.Images.SetKeyName(1, "text");
+            this.imageList1.Images.SetKeyName(2, "edited");
             // 
             // treeView1
             // 
@@ -69,10 +69,11 @@ namespace Project
             this.treeView1.ImageIndex = 0;
             this.treeView1.ImageList = this.imageList1;
             this.treeView1.Location = new System.Drawing.Point(0, 0);
+            this.treeView1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.treeView1.Name = "treeView1";
             this.treeView1.SelectedImageIndex = 0;
             this.treeView1.ShowNodeToolTips = true;
-            this.treeView1.Size = new System.Drawing.Size(314, 301);
+            this.treeView1.Size = new System.Drawing.Size(471, 477);
             this.treeView1.TabIndex = 10;
             this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
             this.treeView1.DoubleClick += new System.EventHandler(this.treeView1_DoubleClick);
@@ -118,14 +119,15 @@ namespace Project
             this.toolStrip2.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnAdd,
-            this.btnEdit,
             this.btnDelete,
+            this.toolStripSeparator1,
             this.btnPublish,
             this.btnUnpublish});
             this.toolStrip2.Location = new System.Drawing.Point(0, 0);
             this.toolStrip2.Name = "toolStrip2";
+            this.toolStrip2.Padding = new System.Windows.Forms.Padding(0, 0, 2, 0);
             this.toolStrip2.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.toolStrip2.Size = new System.Drawing.Size(314, 25);
+            this.toolStrip2.Size = new System.Drawing.Size(471, 25);
             this.toolStrip2.TabIndex = 11;
             this.toolStrip2.Text = "toolStrip2";
             // 
@@ -138,17 +140,6 @@ namespace Project
             this.btnAdd.Size = new System.Drawing.Size(23, 22);
             this.btnAdd.Text = "Создать";
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-            // 
-            // btnEdit
-            // 
-            this.btnEdit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnEdit.Enabled = false;
-            this.btnEdit.Image = ((System.Drawing.Image)(resources.GetObject("btnEdit.Image")));
-            this.btnEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(23, 22);
-            this.btnEdit.Text = "Редактировать";
-            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // btnDelete
             // 
@@ -163,7 +154,6 @@ namespace Project
             // 
             // btnPublish
             // 
-            this.btnPublish.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.btnPublish.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.btnPublish.Image = ((System.Drawing.Image)(resources.GetObject("btnPublish.Image")));
             this.btnPublish.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -175,7 +165,6 @@ namespace Project
             // 
             // btnUnpublish
             // 
-            this.btnUnpublish.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.btnUnpublish.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.btnUnpublish.Image = ((System.Drawing.Image)(resources.GetObject("btnUnpublish.Image")));
             this.btnUnpublish.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -185,29 +174,36 @@ namespace Project
             this.btnUnpublish.Visible = false;
             this.btnUnpublish.Click += new System.EventHandler(this.btnUnpublish_Click);
             // 
-            // loader1
-            // 
-            this.loader1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.loader1.Location = new System.Drawing.Point(0, 0);
-            this.loader1.Name = "loader1";
-            this.loader1.Size = new System.Drawing.Size(314, 301);
-            this.loader1.TabIndex = 12;
-            // 
             // panel1
             // 
             this.panel1.Controls.Add(this.loader1);
             this.panel1.Controls.Add(this.treeView1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 25);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(314, 301);
+            this.panel1.Size = new System.Drawing.Size(471, 477);
             this.panel1.TabIndex = 13;
+            // 
+            // loader1
+            // 
+            this.loader1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.loader1.Location = new System.Drawing.Point(0, 0);
+            this.loader1.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
+            this.loader1.Name = "loader1";
+            this.loader1.Size = new System.Drawing.Size(471, 477);
+            this.loader1.TabIndex = 12;
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
             // ProjectExplorer
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(314, 326);
+            this.ClientSize = new System.Drawing.Size(471, 502);
             this.CloseButton = false;
             this.CloseButtonVisible = false;
             this.ControlBox = false;
@@ -217,6 +213,7 @@ namespace Project
             | WeifenLuo.WinFormsUI.Docking.DockAreas.DockTop) 
             | WeifenLuo.WinFormsUI.Docking.DockAreas.DockBottom) 
             | WeifenLuo.WinFormsUI.Docking.DockAreas.Document)));
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "ProjectExplorer";
             this.mnuHeader.ResumeLayout(false);
             this.toolStrip2.ResumeLayout(false);
@@ -233,7 +230,6 @@ namespace Project
         private System.Windows.Forms.TreeView treeView1;
         private System.Windows.Forms.ToolStrip toolStrip2;
         private System.Windows.Forms.ToolStripButton btnAdd;
-        private System.Windows.Forms.ToolStripButton btnEdit;
         private System.Windows.Forms.ToolStripButton btnDelete;
         private Common.Control.Loader loader1;
         private System.Windows.Forms.Panel panel1;
@@ -243,5 +239,6 @@ namespace Project
         private System.Windows.Forms.ToolStripMenuItem mnuDeleteHeader;
         private System.Windows.Forms.ToolStripButton btnPublish;
         private System.Windows.Forms.ToolStripButton btnUnpublish;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
     }
 }

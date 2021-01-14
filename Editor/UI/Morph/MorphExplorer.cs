@@ -1,5 +1,6 @@
 ﻿using Common.Process;
 using Model;
+using Model.Enum;
 using Model.Query;
 using Process;
 using System;
@@ -24,25 +25,43 @@ namespace Morph
             _morphProcess = new MorphProcess();
         }
 
-        private void MorphExplorer_LoadAsync(object sender, EventArgs e)
+        private async void MorphExplorer_LoadAsync(object sender, EventArgs e)
         {
-            ComboProcess.CreateNullableSelect(cmbPos, TaxonomyProcess.GetMorphCategoryItems(Model.Enum.MorphCategoryEnum.Pos).ToArray());
+            var pos = await TaxonomyProcess.GetPos().ConfigureAwait(true);
 
-            ComboProcess.CreateNullableSelect(cmbCase, TaxonomyProcess.GetMorphCategoryItems(Model.Enum.MorphCategoryEnum.Case).ToArray());
+            ComboProcess.CreateNullableSelect(cmbPos, pos.ToArray());
 
-            ComboProcess.CreateNullableSelect(cmbDegree, TaxonomyProcess.GetMorphCategoryItems(Model.Enum.MorphCategoryEnum.Degree).ToArray());
+            var cases = await TaxonomyProcess.GetPosAttributeValues(TaxonomyCategoryEnum.Case).ConfigureAwait(true);
 
-            ComboProcess.CreateNullableSelect(cmbGender, TaxonomyProcess.GetMorphCategoryItems(Model.Enum.MorphCategoryEnum.Gender).ToArray());
+            ComboProcess.CreateNullableSelect(cmbCase, cases.ToArray());
 
-            ComboProcess.CreateNullableSelect(cmbMood, TaxonomyProcess.GetMorphCategoryItems(Model.Enum.MorphCategoryEnum.Mood).ToArray());
+            var degrees = await TaxonomyProcess.GetPosAttributeValues(TaxonomyCategoryEnum.Degree).ConfigureAwait(true);
 
-            ComboProcess.CreateNullableSelect(cmbNumber, TaxonomyProcess.GetMorphCategoryItems(Model.Enum.MorphCategoryEnum.Number).ToArray());
+            ComboProcess.CreateNullableSelect(cmbDegree, degrees.ToArray());
 
-            ComboProcess.CreateNullableSelect(cmbPerson, TaxonomyProcess.GetMorphCategoryItems(Model.Enum.MorphCategoryEnum.Person).ToArray());
+            var genders = await TaxonomyProcess.GetPosAttributeValues(TaxonomyCategoryEnum.Gender).ConfigureAwait(true);
 
-            ComboProcess.CreateNullableSelect(cmbTense, TaxonomyProcess.GetMorphCategoryItems(Model.Enum.MorphCategoryEnum.Tense).ToArray());
+            ComboProcess.CreateNullableSelect(cmbGender, genders.ToArray());
 
-            ComboProcess.CreateNullableSelect(cmbVoice, TaxonomyProcess.GetMorphCategoryItems(Model.Enum.MorphCategoryEnum.Voice).ToArray());
+            var moods = await TaxonomyProcess.GetPosAttributeValues(TaxonomyCategoryEnum.Mood).ConfigureAwait(true);
+
+            ComboProcess.CreateNullableSelect(cmbMood, moods.ToArray());
+
+            var numbers = await TaxonomyProcess.GetPosAttributeValues(TaxonomyCategoryEnum.Number).ConfigureAwait(true);
+
+            ComboProcess.CreateNullableSelect(cmbNumber, numbers.ToArray());
+
+            var persons = await TaxonomyProcess.GetPosAttributeValues(TaxonomyCategoryEnum.Person).ConfigureAwait(true);
+
+            ComboProcess.CreateNullableSelect(cmbPerson, persons.ToArray());
+
+            var tenses = await TaxonomyProcess.GetPosAttributeValues(TaxonomyCategoryEnum.Tense).ConfigureAwait(true);
+
+            ComboProcess.CreateNullableSelect(cmbTense, tenses.ToArray());
+
+            var voices = await TaxonomyProcess.GetPosAttributeValues(TaxonomyCategoryEnum.Voice).ConfigureAwait(true);
+
+            ComboProcess.CreateNullableSelect(cmbVoice, voices.ToArray());
 
         }
 

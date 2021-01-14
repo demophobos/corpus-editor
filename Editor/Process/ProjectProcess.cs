@@ -12,6 +12,11 @@ namespace Process
             return await API.ProjectAPI.FindByQuery(query);
         }
 
+        public static async Task<List<ProjectModel>> GetProjects()
+        {
+            return await API.ProjectAPI.GetAll();
+        }
+
         public static async Task<ProjectModel> RemoveProject(ProjectModel project)
         {
             return await API.ProjectAPI.Remove(project);

@@ -95,7 +95,7 @@ namespace Project
         {
             if (treeView1.SelectedNode != null && treeView1.SelectedNode.Tag is ProjectModel project)
             {
-                mnuCreateHeader.Visible = btnEdit.Enabled = btnDelete.Enabled = true;
+                mnuCreateHeader.Visible = btnDelete.Enabled = true;
 
                 btnPublish.Visible = project.Status != ProjectStatusStringEnum.Published;
 
@@ -105,7 +105,7 @@ namespace Project
             }
             else
             {
-                mnuCreateHeader.Visible = btnEdit.Enabled = btnPublish.Visible = btnUnpublish.Visible = btnDelete.Enabled = false;
+                mnuCreateHeader.Visible = btnPublish.Visible = btnUnpublish.Visible = btnDelete.Enabled = false;
             }
 
             mnuDeleteHeader.Visible = mnuEditHeader.Visible = treeView1.SelectedNode != null && treeView1.SelectedNode.Tag is HeaderModel;
@@ -167,7 +167,7 @@ namespace Project
 
                     treeView1.EndUpdate();
 
-                    mnuCreateHeader.Visible = btnEdit.Enabled = btnDelete.Enabled = treeView1.Nodes.Count != 0;
+                    mnuCreateHeader.Visible = btnDelete.Enabled = treeView1.Nodes.Count != 0;
 
                     ProjectDeleted?.Invoke(this, project);
                 }
@@ -245,7 +245,7 @@ namespace Project
 
             await documentProcess.DeleteChunksByQuery(new ChunkQuery { headerId = documentProcess.Header.Id }).ConfigureAwait(true);
 
-            await documentProcess.DeleteIndecesByQuery(new IndexQuery { headerId = documentProcess.Header.Id }).ConfigureAwait(true);
+            await documentProcess.DeleteIndecesByQuery(new IndexQuery { HeaderId = documentProcess.Header.Id }).ConfigureAwait(true);
 
             await documentProcess.DeleteHeader(header);
         }
@@ -262,7 +262,13 @@ namespace Project
         {
             if (treeView1.SelectedNode != null && treeView1.SelectedNode.Tag is ProjectModel project)
             {
-                await UpdateProjectStatus(project, ProjectStatusStringEnum.Published);
+                await UpdateProjectStatus(project, ProjectStatusStringEnum.Published).ConfigureAwait(true);
+
+                treeView1.SelectedNode.ImageKey = treeView1.SelectedNode.SelectedImageKey = ProjectStatusStringEnum.Published;
+
+                btnPublish.Visible = false;
+
+                btnUnpublish.Visible = true;
             }
         }
 
@@ -270,7 +276,13 @@ namespace Project
         {
             if (treeView1.SelectedNode != null && treeView1.SelectedNode.Tag is ProjectModel project)
             {
-                await UpdateProjectStatus(project, ProjectStatusStringEnum.Edited);
+                await UpdateProjectStatus(project, ProjectStatusStringEnum.Edited).ConfigureAwait(true);
+
+                treeView1.SelectedNode.ImageKey = treeView1.SelectedNode.SelectedImageKey = ProjectStatusStringEnum.Edited;
+
+                btnPublish.Visible = true;
+
+                btnUnpublish.Visible = false;
             }
         }
 

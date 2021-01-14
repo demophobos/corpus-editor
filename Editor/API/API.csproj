@@ -61,6 +61,7 @@
     <Compile Include="ProjectAPI.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="APIRegister.cs" />
+    <Compile Include="TaxonomyAPI.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

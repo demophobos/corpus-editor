@@ -29,6 +29,12 @@ namespace Editor
         {
             if (Login())
             {
+                foreach (IDockContent document in dockPanel1.DocumentsToArray())
+                {
+                    document.DockHandler.DockPanel = null;
+                    document.DockHandler.Close();
+                }
+
                 Text = $"Editor [{AuthProcess.User.Email }]";
 
                 btnShowMorphExplorer.Visible = true;
