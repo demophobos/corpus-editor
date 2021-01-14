@@ -10,5 +10,10 @@ namespace Model
         public string IndexId { get; set; }
         [JsonProperty("headerId")]
         public string HeaderId { get; set; }
+
+        public override string ToString()
+        {
+            return Value.Substring(0, 150);
+        }
     }
 }

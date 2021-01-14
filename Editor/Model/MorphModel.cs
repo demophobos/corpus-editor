@@ -34,5 +34,10 @@ namespace Model
         public string Lang { get; set; }
         [JsonProperty("isRule")]
         public bool IsRule { get; set; }
+
+        public override string ToString()
+        {
+            return Form;
+        }
     }
 }

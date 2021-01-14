@@ -1,7 +1,7 @@
 ﻿
-namespace Project
+namespace Common.Control
 {
-    partial class ProjectProperty
+    partial class PropertyViewer
     {
         /// <summary> 
         /// Обязательная переменная конструктора.
@@ -35,15 +35,12 @@ namespace Project
             // propertyGrid1
             // 
             this.propertyGrid1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.propertyGrid1.HelpVisible = false;
             this.propertyGrid1.Location = new System.Drawing.Point(0, 0);
             this.propertyGrid1.Name = "propertyGrid1";
-            this.propertyGrid1.PropertySort = System.Windows.Forms.PropertySort.NoSort;
             this.propertyGrid1.Size = new System.Drawing.Size(284, 261);
             this.propertyGrid1.TabIndex = 0;
-            this.propertyGrid1.ToolbarVisible = false;
             // 
-            // ProjectProperty
+            // PropertyViewer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -52,7 +49,7 @@ namespace Project
             this.CloseButtonVisible = false;
             this.ControlBox = false;
             this.Controls.Add(this.propertyGrid1);
-            this.Name = "ProjectProperty";
+            this.Name = "PropertyViewer";
             this.Text = "Свойства";
             this.ResumeLayout(false);
 

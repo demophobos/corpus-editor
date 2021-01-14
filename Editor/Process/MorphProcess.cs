@@ -1,5 +1,6 @@
 ﻿using API;
 using Model;
+using Model.Enum;
 using Model.Query;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -35,7 +36,7 @@ namespace Process
         }
         #endregion
 
-        public async Task<List<MorpheusAnalysisModel>> GetMorpheusAnalysis(string value)
+        public async Task<List<MorpheusAnalysisModel>> GetMorpheusAnalysis(string value, string lang)
         {
             var result = new List<MorpheusAnalysisModel>();
 
@@ -48,7 +49,7 @@ namespace Process
                 //Perseus mapping
                 if (Regex.IsMatch(value, "^v", RegexOptions.IgnoreCase))
                 {
-                    jsonText = await GetMorpheusResultAsJson(value).ConfigureAwait(true);
+                    jsonText = await GetMorpheusResultAsJson(value, lang).ConfigureAwait(true);
 
                     jObject = JObject.Parse(jsonText);
 
@@ -56,12 +57,12 @@ namespace Process
                     {
                         value = Regex.Replace(value, "^v", "u", RegexOptions.IgnoreCase);
 
-                        jsonText = await GetMorpheusResultAsJson(value).ConfigureAwait(true);
+                        jsonText = await GetMorpheusResultAsJson(value, lang).ConfigureAwait(true);
                     }
                 }
                 else
                 {
-                    jsonText = await GetMorpheusResultAsJson(value).ConfigureAwait(true);
+                    jsonText = await GetMorpheusResultAsJson(value, lang).ConfigureAwait(true);
                 }
             }
             catch (Exception ex)
@@ -101,9 +102,20 @@ namespace Process
             return result;
         }
 
-        private async Task<string> GetMorpheusResultAsJson(string token)
+        private async Task<string> GetMorpheusResultAsJson(string token, string lang)
         {
-            var xmlString = await MorpheusAPI.GetLatinWordAnalysis(token).ConfigureAwait(true);
+            var xmlString = string.Empty;
+
+            switch (lang)
+            {
+                case LangStringEnum.Latin:
+                    xmlString = await MorpheusAPI.GetLatinWordAnalysis(token).ConfigureAwait(true);
+                    break;
+                case LangStringEnum.Greek:
+                    xmlString = await MorpheusAPI.GetGreekWordAnalysis(token).ConfigureAwait(true);
+                    break;
+
+            }
 
             XmlDocument doc = new XmlDocument();
 

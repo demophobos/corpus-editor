@@ -116,6 +116,8 @@ namespace Morph
 
         private async void btnApplyRule_Click(object sender, EventArgs e)
         {
+            loader1.BringToFront();
+
             int count = 0;
 
             foreach (MorphModel morph in morphSource.List)
@@ -132,7 +134,11 @@ namespace Morph
                 }
 
                 count += elements.Count;
+
+                loader1.SetStatus(count.ToString());
             }
+
+            loader1.SendToBack();
 
             lblUsageStat.Text = $"Определение применено для {count} элементов";
         }

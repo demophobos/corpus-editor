@@ -118,16 +118,16 @@ namespace Document
             // btnMorpheusLat
             // 
             this.btnMorpheusLat.Name = "btnMorpheusLat";
-            this.btnMorpheusLat.Size = new System.Drawing.Size(156, 22);
+            this.btnMorpheusLat.Size = new System.Drawing.Size(180, 22);
             this.btnMorpheusLat.Text = "Morpheus [lat]";
             this.btnMorpheusLat.Click += new System.EventHandler(this.btnMorpheusLat_Click);
             // 
             // btnMorpheusGrc
             // 
-            this.btnMorpheusGrc.Enabled = false;
             this.btnMorpheusGrc.Name = "btnMorpheusGrc";
-            this.btnMorpheusGrc.Size = new System.Drawing.Size(156, 22);
+            this.btnMorpheusGrc.Size = new System.Drawing.Size(180, 22);
             this.btnMorpheusGrc.Text = "Morpheus [grc]";
+            this.btnMorpheusGrc.Click += new System.EventHandler(this.btnMorpheusGrc_Click);
             // 
             // toolStripSeparator2
             // 

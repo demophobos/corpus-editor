@@ -50,47 +50,6 @@ namespace Document
             morphSource.DataSource = await _morphProcess.GetMorphItems(query).ConfigureAwait(true);
         }
 
-        private async void btnMorpheusLat_Click(object sender, EventArgs e)
-        {
-            if (_element != null)
-            {
-
-                var results = await _morphProcess.GetMorpheusAnalysis(_element.Value).ConfigureAwait(true);
-
-                foreach (var result in results)
-                {
-                    var model = new MorphModel
-                    {
-                        Case = !string.IsNullOrEmpty(result.Case) ? result.Case : null,
-                        Degree = !string.IsNullOrEmpty(result.Degree) ? result.Degree : null,
-                        Dialect = !string.IsNullOrEmpty(result.Dialect) ? result.Dialect : null,
-                        Feature = !string.IsNullOrEmpty(result.Feature) ? result.Feature : null,
-                        Form = result.ExpandedForm,
-                        Gender = !string.IsNullOrEmpty(result.Gender) ? result.Gender : null,
-                        Lang = LangStringEnum.Latin,
-                        Lemma = result.Lemma,
-                        Mood = !string.IsNullOrEmpty(result.Mood) ? result.Mood : null,
-                        Number = !string.IsNullOrEmpty(result.Number) ? result.Number : null,
-                        Person = !string.IsNullOrEmpty(result.Person) ? result.Person : null,
-                        Pos = result.Pos,
-                        Tense = !string.IsNullOrEmpty(result.Tense) ? result.Tense : null,
-                        Voice = !string.IsNullOrEmpty(result.Voice) ? result.Voice : null
-                    };
-
-                    model = await _morphProcess.SaveMorph(model).ConfigureAwait(true);
-
-                    if (model != null)
-                    {
-                        morphSource.List.Add(model);
-                    }
-                    morphSource.ResetBindings(false);
-
-                }
-
-                lblStatus.Text = $"Morpheus: найдено новых определений для '{_element.Value}': {results.Count}";
-            }
-        }
-
         private async void btnDelete_ClickAsync(object sender, EventArgs e)
         {
             if (morphSource.Current is MorphModel model)
@@ -228,6 +187,77 @@ namespace Document
             await LoadDataAsync(_element);
 
             ElementMorphRejected.Invoke(this, _element);
+        }
+
+        private async void btnMorpheusLat_Click(object sender, EventArgs e)
+        {
+            if (_element != null)
+            {
+
+                var results = await _morphProcess.GetMorpheusAnalysis(_element.Value, LangStringEnum.Latin).ConfigureAwait(true);
+
+                foreach (var result in results)
+                {
+                    var model = CreateMorphModel(result, LangStringEnum.Latin);
+
+                    model = await _morphProcess.SaveMorph(model).ConfigureAwait(true);
+
+                    if (model != null)
+                    {
+                        morphSource.List.Add(model);
+                    }
+                    morphSource.ResetBindings(false);
+
+                }
+
+                lblStatus.Text = $"Morpheus: найдено новых определений для '{_element.Value}': {results.Count}";
+            }
+        }
+
+        private async void btnMorpheusGrc_Click(object sender, EventArgs e)
+        {
+            if (_element != null)
+            {
+
+                var results = await _morphProcess.GetMorpheusAnalysis(_element.Value, LangStringEnum.Greek).ConfigureAwait(true);
+
+                foreach (var result in results)
+                {
+                    var model = CreateMorphModel(result, LangStringEnum.Greek);
+
+                    model = await _morphProcess.SaveMorph(model).ConfigureAwait(true);
+
+                    if (model != null)
+                    {
+                        morphSource.List.Add(model);
+                    }
+                    morphSource.ResetBindings(false);
+
+                }
+
+                lblStatus.Text = $"Morpheus: найдено новых определений для '{_element.Value}': {results.Count}";
+            }
+        }
+
+        private static MorphModel CreateMorphModel(MorpheusAnalysisModel result, string lang)
+        {
+            return new MorphModel
+            {
+                Case = !string.IsNullOrEmpty(result.Case) ? result.Case : null,
+                Degree = !string.IsNullOrEmpty(result.Degree) ? result.Degree : null,
+                Dialect = !string.IsNullOrEmpty(result.Dialect) ? result.Dialect : null,
+                Feature = !string.IsNullOrEmpty(result.Feature) ? result.Feature : null,
+                Form = result.ExpandedForm,
+                Gender = !string.IsNullOrEmpty(result.Gender) ? result.Gender : null,
+                Lang = lang,
+                Lemma = result.Lemma,
+                Mood = !string.IsNullOrEmpty(result.Mood) ? result.Mood : null,
+                Number = !string.IsNullOrEmpty(result.Number) ? result.Number : null,
+                Person = !string.IsNullOrEmpty(result.Person) ? result.Person : null,
+                Pos = result.Pos,
+                Tense = !string.IsNullOrEmpty(result.Tense) ? result.Tense : null,
+                Voice = !string.IsNullOrEmpty(result.Voice) ? result.Voice : null
+            };
         }
     }
 }

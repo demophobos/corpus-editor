@@ -53,6 +53,7 @@
     <Compile Include="ChunkAPI.cs" />
     <Compile Include="ElementAPI.cs" />
     <Compile Include="HeaderAPI.cs" />
+    <Compile Include="Helpers\BetaCodeConverter.cs" />
     <Compile Include="IndexAPI.cs" />
     <Compile Include="InterpAPI.cs" />
     <Compile Include="MorphAPI.cs" />

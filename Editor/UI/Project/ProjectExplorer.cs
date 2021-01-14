@@ -150,8 +150,6 @@ namespace Project
 
                 var headers = await HeaderProcess.GetHeaders(project.Id).ConfigureAwait(true);
 
-                var status = string.Empty;
-
                 foreach (var header in headers)
                 {
                     await RemoveProjectItemsByHeader(header);

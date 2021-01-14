@@ -55,6 +55,12 @@
     <Compile Include="Control\Loader.Designer.cs">
       <DependentUpon>Loader.cs</DependentUpon>
     </Compile>
+    <Compile Include="Control\PropertyViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Control\PropertyViewer.Designer.cs">
+      <DependentUpon>PropertyViewer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Helper\RichTextBoxExtensions.cs" />
     <Compile Include="Helper\TreeViewExtensions.cs" />
     <Compile Include="Process\ComboProcess.cs" />
@@ -70,6 +76,19 @@
     <EmbeddedResource Include="Control\Loader.resx">
       <DependentUpon>Loader.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Control\PropertyViewer.resx">
+      <DependentUpon>PropertyViewer.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Model\Model.csproj">
+      <Project>{454c026e-e4c9-4062-8228-f43ec83adbd1}</Project>
+      <Name>Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Process\Process.csproj">
+      <Project>{69ccd921-43e3-4b07-8510-1660b21d9774}</Project>
+      <Name>Process</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

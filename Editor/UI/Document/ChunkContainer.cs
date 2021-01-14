@@ -88,7 +88,7 @@ namespace Document
 
                 btnShowHideMorphologyPane.Enabled = btnShowHideTranslationPane.Enabled = true;
 
-                btnShowHideTranslationPane.PerformClick();
+                btnShowHideMorphologyPane.PerformClick();
             }
         }
 

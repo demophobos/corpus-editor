@@ -1,4 +1,5 @@
-﻿using Common.Process;
+﻿using Common.Control;
+using Common.Process;
 using Model;
 using System;
 using WeifenLuo.WinFormsUI.Docking;
@@ -9,7 +10,7 @@ namespace Project
     {
         private ProjectExplorer _projectExplorer;
 
-        private ProjectProperty _projectProperty;
+        private PropertyViewer _propertyViewer;
 
         public event EventHandler<HeaderModel> HeaderSelected;
 
@@ -46,29 +47,29 @@ namespace Project
 
             _projectExplorer.Show(dockPanel1, DockState.Document);
 
-            _projectProperty = new ProjectProperty();
+            _propertyViewer = new PropertyViewer();
 
-            _projectProperty.Show(dockPanel1, DockState.DockBottom);
+            _propertyViewer.Show(dockPanel1, DockState.DockBottom);
         }
 
         private void _projectExplorer_ProjectUpdated(object sender, ProjectModel e)
         {
-            _projectProperty.LoadData(e);
+            _propertyViewer.LoadData(e);
         }
 
         private void _projectExplorer_HeaderUpdated(object sender, HeaderModel e)
         {
-            _projectProperty.LoadData(e);
+            _propertyViewer.LoadData(e);
         }
 
         private void _projectExplorer_ProjectViewProperty(object sender, ProjectModel e)
         {
-            _projectProperty.LoadData(e);
+            _propertyViewer.LoadData(e);
         }
 
         private void _projectExplorer_HeaderViewProperty(object sender, HeaderModel e)
         {
-            _projectProperty.LoadData(e);
+            _propertyViewer.LoadData(e);
         }
 
         private void _projectExplorer_ProjectDeleted(object sender, ProjectModel e)

@@ -15,5 +15,10 @@ namespace Model
         public DateTime Created { get; set; }
         [JsonProperty("status", NullValueHandling = NullValueHandling.Ignore)]
         public string Status { get; set; }
+
+        public override string ToString()
+        {
+            return Code;
+        }
     }
 }

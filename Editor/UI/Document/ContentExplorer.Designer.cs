@@ -38,6 +38,7 @@ namespace Document
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.btnImportChunks = new System.Windows.Forms.ToolStripSplitButton();
             this.btnLoadJSON = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnUpdateHeaderId = new System.Windows.Forms.ToolStripButton();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.btnAddSubsection = new System.Windows.Forms.ToolStripMenuItem();
             this.btnEditSection = new System.Windows.Forms.ToolStripMenuItem();
@@ -45,7 +46,6 @@ namespace Document
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.btnOpenEditor = new System.Windows.Forms.ToolStripMenuItem();
             this.loader1 = new Common.Control.Loader();
-            this.btnUpdateHeaderId = new System.Windows.Forms.ToolStripButton();
             this.toolStrip2.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -126,6 +126,17 @@ namespace Document
             this.btnLoadJSON.Text = "Загрузить фрагменты в JSON формате";
             this.btnLoadJSON.Click += new System.EventHandler(this.jSONToolStripMenuItem_Click);
             // 
+            // btnUpdateHeaderId
+            // 
+            this.btnUpdateHeaderId.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnUpdateHeaderId.Image = ((System.Drawing.Image)(resources.GetObject("btnUpdateHeaderId.Image")));
+            this.btnUpdateHeaderId.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnUpdateHeaderId.Name = "btnUpdateHeaderId";
+            this.btnUpdateHeaderId.Size = new System.Drawing.Size(23, 22);
+            this.btnUpdateHeaderId.Text = "toolStripButton1";
+            this.btnUpdateHeaderId.Visible = false;
+            this.btnUpdateHeaderId.Click += new System.EventHandler(this.btnUpdateHeaderId_Click);
+            // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -184,16 +195,6 @@ namespace Document
             this.loader1.Name = "loader1";
             this.loader1.Size = new System.Drawing.Size(366, 450);
             this.loader1.TabIndex = 10;
-            // 
-            // btnUpdateHeaderId
-            // 
-            this.btnUpdateHeaderId.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnUpdateHeaderId.Image = ((System.Drawing.Image)(resources.GetObject("btnUpdateHeaderId.Image")));
-            this.btnUpdateHeaderId.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnUpdateHeaderId.Name = "btnUpdateHeaderId";
-            this.btnUpdateHeaderId.Size = new System.Drawing.Size(23, 22);
-            this.btnUpdateHeaderId.Text = "toolStripButton1";
-            this.btnUpdateHeaderId.Click += new System.EventHandler(this.btnUpdateHeaderId_Click);
             // 
             // ContentExplorer
             // 

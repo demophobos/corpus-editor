@@ -12,5 +12,10 @@ namespace Model
         public string ParentId { get; set; }
         [JsonProperty("headerId")]
         public string HeaderId { get; set; }
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

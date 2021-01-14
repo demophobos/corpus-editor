@@ -127,7 +127,8 @@ namespace Process
                                                     "imperf",
                                                     "perf",
                                                     "plup",
-                                                    "pres" });
+                                                    "pres",
+                                                    "aor"});
                 case MorphCategoryEnum.Mood:
                     return CatList(new string[] { "gerundive",
                                                     "imperat",
