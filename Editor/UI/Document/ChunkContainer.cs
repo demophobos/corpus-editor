@@ -62,7 +62,7 @@ namespace Document
 
                 _chunkExplorer.Show(dockPanel1, DockState.Document);
 
-                btnShowHideMorphologyPane.Enabled = btnShowHideTranslationPane.Enabled = _chunk != null;
+                btnShowHideMorphologyPane.Enabled = btnShowHideTranslationPane.Enabled = btnMorphServices.Enabled = _chunk != null;
 
                 ChunkAdded.Invoke(this, _chunk);
             }
@@ -76,7 +76,7 @@ namespace Document
 
             btnAddChunk.Enabled = _chunk == null;
 
-            btnDeleteChunk.Enabled = btnEditChunk.Enabled = _chunk != null;
+            btnDeleteChunk.Enabled = btnEditChunk.Enabled = btnMorphServices.Enabled = _chunk != null;
 
             if (_chunk != null)
             {
@@ -182,12 +182,12 @@ namespace Document
 
         private void MorphSelector_ElementMorphRejected(object sender, ElementModel e)
         {
-            _chunkExplorer.MarkElement(e);
+            _chunkExplorer.MarkSelectedElement(e);
         }
 
         private void MorphSelector_ElementMorphAccepted(object sender, ElementModel e)
         {
-            _chunkExplorer.MarkElement(e);
+            _chunkExplorer.MarkSelectedElement(e);
         }
 
         private void btnShowHideTranslationPane_Click(object sender, EventArgs e)
@@ -233,6 +233,11 @@ namespace Document
             btnShowHideTranslationPane.Checked = true;
 
             _interpContainer.Activate();
+        }
+
+        private void btnMorpheusLat_Click(object sender, EventArgs e)
+        {
+            _chunkExplorer.RunMorphService();
         }
     }
 }

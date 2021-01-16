@@ -9,6 +9,16 @@ namespace Common.Process
             return MessageBox.Show($"Вы действительно хотите удалить {type}?", "Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
         }
 
+        public static DialogResult UndoWarning()
+        {
+            return MessageBox.Show($"Отменить определение?", "Определение", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+        }
+
+        public static DialogResult RuleRemovingWarning()
+        {
+            return MessageBox.Show($"Удалить правило?", "Правило", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+        }
+
         public static DialogResult DeleteBulkWarning(string message)
         {
             return MessageBox.Show(message, "Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);

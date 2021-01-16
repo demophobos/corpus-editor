@@ -12,15 +12,17 @@ namespace API
 
         private static HttpClient _anonymousClient;
 
-        private static void createAnonymousClient()
+        private static void CreateAnonymousClient()
         {
             if (_anonymousClient == null)
             {
                 _anonymousClient = new HttpClient
                 {
-                    BaseAddress = new Uri("http://localhost:3000/")
+                    BaseAddress = new Uri(Properties.Settings.Default.APIAuthUrl)
                 };
+
                 _anonymousClient.DefaultRequestHeaders.Accept.Clear();
+
                 _anonymousClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             }
 
@@ -29,7 +31,7 @@ namespace API
         public static async Task<AuthResponseModel> LoginAsync(UserModel user)
         {
 
-            createAnonymousClient();
+            CreateAnonymousClient();
 
             try
             {
@@ -44,7 +46,9 @@ namespace API
                     if (report.status == 200)
                     {
                         User = report.user;
+
                         User.Token = report.token;
+
                         APIRegister.InitAPIs();
                     }
                 }

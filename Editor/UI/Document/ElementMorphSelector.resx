@@ -168,6 +168,16 @@
         BPDKWTJg9v4BXwVc8XpAVyLNtFQ5YFRjjaq1MTsWORRS0BQujwAAAABJRU5ErkJggg==
 </value>
   </data>
+  <data name="btnCopyForm.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADwSURBVDhPY8AGvnz5YvD169cD3759+w/CQPYDkBhUmjAA
+        aZgzZ85/JycnMAaxgQZ9eP/+vQBUCXbw/ft3B5itII3Jycn/W1tbwez79++DxUFqoMpRAUwjTDO6ASCM
+        rAaqDQGQNRLCeA2A2YALE2UAzCZ0TLQB+LCvry+YhmpDAJAgsi3IGBSYkzed/a9buPb/8TMXCBuAjmfu
+        vPKfIXjO/5gJ++BiUG0IABKEGYBuM7pmZAzVjtsFfLELwQZgwyB5qHbcLth/7g7YELJdAMInrj/FMASq
+        DQFAgjCb0THMJbbVm/4/f/MBtwGkYIguBgYAyoku9pvt/GkAAAAASUVORK5CYII=
+</value>
+  </data>
   <data name="btnCancelDefinition.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8

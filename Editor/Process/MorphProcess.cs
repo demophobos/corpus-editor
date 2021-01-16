@@ -27,14 +27,44 @@ namespace Process
 
         public async Task<MorphModel> SaveMorph(MorphModel morph)
         {
-            return await MorphAPI.Save(morph);
+            try
+            {
+                return await MorphAPI.Save(morph);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public async Task<MorphModel> DeleteMorph(MorphModel morph)
         {
             return await MorphAPI.Remove(morph);
         }
+
+        public MorphModel CreateMorphModel(MorpheusAnalysisModel result, string lang)
+        {
+            return new MorphModel
+            {
+                Case = !string.IsNullOrEmpty(result.Case) ? result.Case : null,
+                Degree = !string.IsNullOrEmpty(result.Degree) ? result.Degree : null,
+                Dialect = !string.IsNullOrEmpty(result.Dialect) ? result.Dialect : null,
+                Feature = !string.IsNullOrEmpty(result.Feature) ? result.Feature : null,
+                Form = result.ExpandedForm,
+                Gender = !string.IsNullOrEmpty(result.Gender) ? result.Gender : null,
+                Lang = lang,
+                Lemma = result.Lemma,
+                Mood = !string.IsNullOrEmpty(result.Mood) ? result.Mood : null,
+                Number = !string.IsNullOrEmpty(result.Number) ? result.Number : null,
+                Person = !string.IsNullOrEmpty(result.Person) ? result.Person : null,
+                Pos = result.Pos,
+                Tense = !string.IsNullOrEmpty(result.Tense) ? result.Tense : null,
+                Voice = !string.IsNullOrEmpty(result.Voice) ? result.Voice : null
+            };
+        }
         #endregion
+
+
 
         public async Task<List<MorpheusAnalysisModel>> GetMorpheusAnalysis(string value, string lang)
         {

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Editor.Properties {
+namespace API.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
@@ -25,25 +25,25 @@ namespace Editor.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("igor@mail.com")]
-        public string Email {
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:3000/")]
+        public string APIAuthUrl {
             get {
-                return ((string)(this["Email"]));
+                return ((string)(this["APIAuthUrl"]));
             }
             set {
-                this["Email"] = value;
+                this["APIAuthUrl"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("igor")]
-        public string Pwd {
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:3000/v1/")]
+        public string APIBaseUrl {
             get {
-                return ((string)(this["Pwd"]));
+                return ((string)(this["APIBaseUrl"]));
             }
             set {
-                this["Pwd"] = value;
+                this["APIBaseUrl"] = value;
             }
         }
     }

@@ -52,7 +52,7 @@ namespace Document
 
         private async void btnDelete_ClickAsync(object sender, EventArgs e)
         {
-            if (morphSource.Current is MorphModel model)
+            if (morphSource.Current is MorphModel model && DialogProcess.DeleteWarning(model) == DialogResult.Yes)
             {
                 var results = await ElementProcess.GetElements(new ElementQuery { morphId = model.Id }).ConfigureAwait(true);
 
@@ -106,7 +106,7 @@ namespace Document
 
         private void morphSource_CurrentChanged(object sender, EventArgs e)
         {
-            btnEdit.Enabled = btnDelete.Enabled = morphSource.Current != null;
+            btnEdit.Enabled = btnDelete.Enabled = btnCopyForm.Enabled = morphSource.Current != null;
 
             btnCancelDefinition.Enabled = morphSource.Current != null && morphSource.Current is MorphModel model && model.Id == _element.MorphId;
 
@@ -150,7 +150,7 @@ namespace Document
 
         private async void btnRemoveRule_Click(object sender, EventArgs e)
         {
-            if (morphSource.Current != null && morphSource.Current is MorphModel morph)
+            if (morphSource.Current != null && morphSource.Current is MorphModel morph && DialogProcess.RuleRemovingWarning() == DialogResult.Yes)
             {
                 morph.IsRule = false;
 
@@ -180,13 +180,16 @@ namespace Document
 
         private async void btnUndoAccept_Click(object sender, EventArgs e)
         {
-            _element.MorphId = null;
+            if (DialogProcess.UndoWarning() == DialogResult.Yes)
+            {
+                _element.MorphId = null;
 
-            _element = await ElementProcess.SaveModel(_element).ConfigureAwait(true);
+                _element = await ElementProcess.SaveModel(_element).ConfigureAwait(true);
 
-            await LoadDataAsync(_element);
+                await LoadDataAsync(_element);
 
-            ElementMorphRejected.Invoke(this, _element);
+                ElementMorphRejected.Invoke(this, _element);
+            }
         }
 
         private async void btnMorpheusLat_Click(object sender, EventArgs e)
@@ -198,7 +201,7 @@ namespace Document
 
                 foreach (var result in results)
                 {
-                    var model = CreateMorphModel(result, LangStringEnum.Latin);
+                    var model = _morphProcess.CreateMorphModel(result, LangStringEnum.Latin);
 
                     model = await _morphProcess.SaveMorph(model).ConfigureAwait(true);
 
@@ -223,7 +226,7 @@ namespace Document
 
                 foreach (var result in results)
                 {
-                    var model = CreateMorphModel(result, LangStringEnum.Greek);
+                    var model = _morphProcess.CreateMorphModel(result, LangStringEnum.Greek);
 
                     model = await _morphProcess.SaveMorph(model).ConfigureAwait(true);
 
@@ -239,25 +242,12 @@ namespace Document
             }
         }
 
-        private static MorphModel CreateMorphModel(MorpheusAnalysisModel result, string lang)
+        private void btnCopyForm_Click(object sender, EventArgs e)
         {
-            return new MorphModel
+            if (morphSource.Current != null && morphSource.Current is MorphModel model)
             {
-                Case = !string.IsNullOrEmpty(result.Case) ? result.Case : null,
-                Degree = !string.IsNullOrEmpty(result.Degree) ? result.Degree : null,
-                Dialect = !string.IsNullOrEmpty(result.Dialect) ? result.Dialect : null,
-                Feature = !string.IsNullOrEmpty(result.Feature) ? result.Feature : null,
-                Form = result.ExpandedForm,
-                Gender = !string.IsNullOrEmpty(result.Gender) ? result.Gender : null,
-                Lang = lang,
-                Lemma = result.Lemma,
-                Mood = !string.IsNullOrEmpty(result.Mood) ? result.Mood : null,
-                Number = !string.IsNullOrEmpty(result.Number) ? result.Number : null,
-                Person = !string.IsNullOrEmpty(result.Person) ? result.Person : null,
-                Pos = result.Pos,
-                Tense = !string.IsNullOrEmpty(result.Tense) ? result.Tense : null,
-                Voice = !string.IsNullOrEmpty(result.Voice) ? result.Voice : null
-            };
+                Clipboard.SetText(model.Form);
+            }
         }
     }
 }

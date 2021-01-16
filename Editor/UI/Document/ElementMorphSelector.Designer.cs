@@ -65,6 +65,7 @@ namespace Document
             this.morphSource = new System.Windows.Forms.BindingSource(this.components);
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.lblStatus = new System.Windows.Forms.ToolStripStatusLabel();
+            this.btnCopyForm = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.morphSource)).BeginInit();
@@ -78,7 +79,7 @@ namespace Document
             this.btnAcceptDefinition.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnAcceptDefinition.Name = "btnAcceptDefinition";
             this.btnAcceptDefinition.Size = new System.Drawing.Size(23, 22);
-            this.btnAcceptDefinition.ToolTipText = "Принять";
+            this.btnAcceptDefinition.ToolTipText = "Принять определение";
             this.btnAcceptDefinition.Click += new System.EventHandler(this.btnAcceptDefinition_ClickAsync);
             // 
             // toolStrip1
@@ -90,6 +91,7 @@ namespace Document
             this.btnAdd,
             this.btnEdit,
             this.btnDelete,
+            this.btnCopyForm,
             this.toolStripSeparator1,
             this.btnAcceptDefinition,
             this.btnCancelDefinition,
@@ -98,8 +100,9 @@ namespace Document
             this.btnRemoveRule});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Padding = new System.Windows.Forms.Padding(0, 0, 2, 0);
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.toolStrip1.Size = new System.Drawing.Size(924, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(1386, 25);
             this.toolStrip1.TabIndex = 17;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -141,7 +144,7 @@ namespace Document
             this.btnAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(23, 22);
-            this.btnAdd.ToolTipText = "Добавить";
+            this.btnAdd.ToolTipText = "Добавить определение";
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnEdit
@@ -151,7 +154,7 @@ namespace Document
             this.btnEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(23, 22);
-            this.btnEdit.ToolTipText = "Редактировать";
+            this.btnEdit.ToolTipText = "Редактировать определение";
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // btnDelete
@@ -161,7 +164,7 @@ namespace Document
             this.btnDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(23, 22);
-            this.btnDelete.Text = "Удалить";
+            this.btnDelete.Text = "Удалить определение";
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_ClickAsync);
             // 
             // toolStripSeparator1
@@ -176,7 +179,7 @@ namespace Document
             this.btnCancelDefinition.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnCancelDefinition.Name = "btnCancelDefinition";
             this.btnCancelDefinition.Size = new System.Drawing.Size(23, 22);
-            this.btnCancelDefinition.ToolTipText = "Отменить";
+            this.btnCancelDefinition.ToolTipText = "Отменить определение";
             this.btnCancelDefinition.Click += new System.EventHandler(this.btnUndoAccept_Click);
             // 
             // toolStripSeparator3
@@ -232,13 +235,13 @@ namespace Document
             this.dataGridView1.DataSource = this.morphSource;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 25);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 15, 4, 5);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(924, 397);
+            this.dataGridView1.Size = new System.Drawing.Size(1386, 636);
             this.dataGridView1.TabIndex = 18;
             this.dataGridView1.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridView1_CellFormatting);
             // 
@@ -251,7 +254,7 @@ namespace Document
             this.IsRule.Name = "IsRule";
             this.IsRule.ReadOnly = true;
             this.IsRule.ToolTipText = "Принимать по умолчанию";
-            this.IsRule.Width = 24;
+            this.IsRule.Width = 27;
             // 
             // Form
             // 
@@ -368,9 +371,10 @@ namespace Document
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.lblStatus});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 422);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 661);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(924, 22);
+            this.statusStrip1.Padding = new System.Windows.Forms.Padding(2, 0, 21, 0);
+            this.statusStrip1.Size = new System.Drawing.Size(1386, 22);
             this.statusStrip1.TabIndex = 19;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -379,11 +383,21 @@ namespace Document
             this.lblStatus.Name = "lblStatus";
             this.lblStatus.Size = new System.Drawing.Size(0, 17);
             // 
+            // btnCopyForm
+            // 
+            this.btnCopyForm.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnCopyForm.Image = ((System.Drawing.Image)(resources.GetObject("btnCopyForm.Image")));
+            this.btnCopyForm.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnCopyForm.Name = "btnCopyForm";
+            this.btnCopyForm.Size = new System.Drawing.Size(23, 22);
+            this.btnCopyForm.Text = "Скопировать форму в буфер обмена";
+            this.btnCopyForm.Click += new System.EventHandler(this.btnCopyForm_Click);
+            // 
             // ElementMorphSelector
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(924, 444);
+            this.ClientSize = new System.Drawing.Size(1386, 683);
             this.CloseButton = false;
             this.CloseButtonVisible = false;
             this.ControlBox = false;
@@ -396,6 +410,7 @@ namespace Document
             | WeifenLuo.WinFormsUI.Docking.DockAreas.Document)));
             this.Enabled = false;
             this.HideOnClose = true;
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "ElementMorphSelector";
             this.Text = "Морфология";
             this.toolStrip1.ResumeLayout(false);
@@ -445,5 +460,6 @@ namespace Document
         private System.Windows.Forms.ToolStripButton btnCreateRule;
         private System.Windows.Forms.ToolStripButton btnRemoveRule;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripButton btnCopyForm;
     }
 }

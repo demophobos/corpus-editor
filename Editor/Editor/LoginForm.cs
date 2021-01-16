@@ -10,6 +10,10 @@ namespace Editor
         public LoginForm()
         {
             InitializeComponent();
+
+            txtEmail.Text = Properties.Settings.Default.Email;
+
+            txtPassword.Text = Properties.Settings.Default.Pwd;
         }
 
         private async void btnLogin_ClickAsync(object sender, EventArgs e)

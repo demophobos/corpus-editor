@@ -141,7 +141,7 @@ namespace Morph
 
             foreach (MorphModel morph in morphSource.List)
             {
-                var result = await ElementProcess.GetElements(new ElementQuery { value = morph.Form }).ConfigureAwait(true);
+                var result = await ElementProcess.GetElements(new ElementQuery { value = morph.Form.ToLower() }).ConfigureAwait(true);
 
                 var elements = result.Where(i => string.IsNullOrEmpty(i.MorphId)).ToList();
 

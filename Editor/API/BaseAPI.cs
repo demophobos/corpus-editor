@@ -13,10 +13,13 @@ namespace API
             {
                 Client = new HttpClient
                 {
-                    BaseAddress = new Uri(@"http://localhost:3000/v1/")
+                    BaseAddress = new Uri(Properties.Settings.Default.APIBaseUrl)
                 };
+
                 Client.DefaultRequestHeaders.Accept.Clear();
+
                 Client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
                 Client.DefaultRequestHeaders.Add("x-access-token", AuthAPI.User.Token);
             }
         }
