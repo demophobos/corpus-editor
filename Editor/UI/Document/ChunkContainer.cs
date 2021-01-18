@@ -15,7 +15,7 @@ namespace Document
 
         private ChunkExplorer _chunkExplorer;
 
-        private ElementMorphSelector _morphSelector;
+        private MorphSelector _morphSelector;
 
         private InterpContainer _interpContainer;
 
@@ -146,7 +146,7 @@ namespace Document
 
             if (_morphSelector == null || _morphSelector.IsDisposed)
             {
-                _morphSelector = new ElementMorphSelector(Index);
+                _morphSelector = new MorphSelector(Index);
 
                 _morphSelector.ElementMorphAccepted += MorphSelector_ElementMorphAccepted;
 
@@ -182,12 +182,12 @@ namespace Document
 
         private void MorphSelector_ElementMorphRejected(object sender, ElementModel e)
         {
-            _chunkExplorer.MarkSelectedElement(e);
+            _chunkExplorer.CheckMorphStatus(e);
         }
 
         private void MorphSelector_ElementMorphAccepted(object sender, ElementModel e)
         {
-            _chunkExplorer.MarkSelectedElement(e);
+            _chunkExplorer.CheckMorphStatus(e);
         }
 
         private void btnShowHideTranslationPane_Click(object sender, EventArgs e)

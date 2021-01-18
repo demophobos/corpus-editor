@@ -65,11 +65,11 @@ namespace Morph
             this.btnRunFilter = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripLabel();
             this.lblResult = new System.Windows.Forms.ToolStripLabel();
+            this.btnUndoRule = new System.Windows.Forms.ToolStripButton();
+            this.btnApplyRule = new System.Windows.Forms.ToolStripButton();
             this.loader1 = new Common.Control.Loader();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.lblUsageStat = new System.Windows.Forms.ToolStripStatusLabel();
-            this.btnApplyRule = new System.Windows.Forms.ToolStripButton();
-            this.btnUndoRule = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.morphSource)).BeginInit();
             this.toolStrip1.SuspendLayout();
@@ -103,13 +103,14 @@ namespace Morph
             this.dataGridView1.DataSource = this.morphSource;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 25);
-            this.dataGridView1.MultiSelect = false;
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1338, 403);
+            this.dataGridView1.Size = new System.Drawing.Size(2007, 645);
             this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
             // 
             // IsRule
             // 
@@ -273,8 +274,9 @@ namespace Morph
             this.btnApplyRule});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Padding = new System.Windows.Forms.Padding(0, 0, 2, 0);
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.toolStrip1.Size = new System.Drawing.Size(1338, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(2007, 25);
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -294,73 +296,75 @@ namespace Morph
             this.cmbPos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbPos.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.cmbPos.Name = "cmbPos";
-            this.cmbPos.Size = new System.Drawing.Size(99, 25);
+            this.cmbPos.Size = new System.Drawing.Size(146, 25);
             // 
             // txtLemma
             // 
+            this.txtLemma.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtLemma.Name = "txtLemma";
-            this.txtLemma.Size = new System.Drawing.Size(98, 25);
+            this.txtLemma.Size = new System.Drawing.Size(145, 25);
             // 
             // txtForm
             // 
+            this.txtForm.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtForm.Name = "txtForm";
-            this.txtForm.Size = new System.Drawing.Size(98, 25);
+            this.txtForm.Size = new System.Drawing.Size(145, 25);
             // 
             // cmbGender
             // 
             this.cmbGender.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbGender.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.cmbGender.Name = "cmbGender";
-            this.cmbGender.Size = new System.Drawing.Size(98, 25);
+            this.cmbGender.Size = new System.Drawing.Size(145, 25);
             // 
             // cmbCase
             // 
             this.cmbCase.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCase.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.cmbCase.Name = "cmbCase";
-            this.cmbCase.Size = new System.Drawing.Size(98, 25);
+            this.cmbCase.Size = new System.Drawing.Size(145, 25);
             // 
             // cmbPerson
             // 
             this.cmbPerson.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbPerson.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.cmbPerson.Name = "cmbPerson";
-            this.cmbPerson.Size = new System.Drawing.Size(98, 25);
+            this.cmbPerson.Size = new System.Drawing.Size(145, 25);
             // 
             // cmbNumber
             // 
             this.cmbNumber.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbNumber.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.cmbNumber.Name = "cmbNumber";
-            this.cmbNumber.Size = new System.Drawing.Size(98, 25);
+            this.cmbNumber.Size = new System.Drawing.Size(145, 25);
             // 
             // cmbTense
             // 
             this.cmbTense.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbTense.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.cmbTense.Name = "cmbTense";
-            this.cmbTense.Size = new System.Drawing.Size(98, 25);
+            this.cmbTense.Size = new System.Drawing.Size(145, 25);
             // 
             // cmbMood
             // 
             this.cmbMood.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbMood.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.cmbMood.Name = "cmbMood";
-            this.cmbMood.Size = new System.Drawing.Size(98, 25);
+            this.cmbMood.Size = new System.Drawing.Size(145, 25);
             // 
             // cmbVoice
             // 
             this.cmbVoice.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbVoice.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.cmbVoice.Name = "cmbVoice";
-            this.cmbVoice.Size = new System.Drawing.Size(98, 25);
+            this.cmbVoice.Size = new System.Drawing.Size(145, 25);
             // 
             // cmbDegree
             // 
             this.cmbDegree.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbDegree.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.cmbDegree.Name = "cmbDegree";
-            this.cmbDegree.Size = new System.Drawing.Size(98, 25);
+            this.cmbDegree.Size = new System.Drawing.Size(145, 25);
             // 
             // btnRunFilter
             // 
@@ -387,28 +391,17 @@ namespace Morph
             this.lblResult.Name = "lblResult";
             this.lblResult.Size = new System.Drawing.Size(0, 22);
             // 
-            // loader1
+            // btnUndoRule
             // 
-            this.loader1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.loader1.Location = new System.Drawing.Point(0, 25);
-            this.loader1.Name = "loader1";
-            this.loader1.Size = new System.Drawing.Size(1338, 403);
-            this.loader1.TabIndex = 2;
-            // 
-            // statusStrip1
-            // 
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.lblUsageStat});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 428);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1338, 22);
-            this.statusStrip1.TabIndex = 3;
-            this.statusStrip1.Text = "statusStrip1";
-            // 
-            // lblUsageStat
-            // 
-            this.lblUsageStat.Name = "lblUsageStat";
-            this.lblUsageStat.Size = new System.Drawing.Size(0, 17);
+            this.btnUndoRule.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.btnUndoRule.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnUndoRule.Enabled = false;
+            this.btnUndoRule.Image = ((System.Drawing.Image)(resources.GetObject("btnUndoRule.Image")));
+            this.btnUndoRule.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnUndoRule.Name = "btnUndoRule";
+            this.btnUndoRule.Size = new System.Drawing.Size(23, 22);
+            this.btnUndoRule.Text = "Отменить правило";
+            this.btnUndoRule.Click += new System.EventHandler(this.btnUndoRule_Click);
             // 
             // btnApplyRule
             // 
@@ -422,27 +415,41 @@ namespace Morph
             this.btnApplyRule.Text = "Применить правило";
             this.btnApplyRule.Click += new System.EventHandler(this.btnApplyRule_Click);
             // 
-            // btnUndoRule
+            // loader1
             // 
-            this.btnUndoRule.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.btnUndoRule.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnUndoRule.Enabled = false;
-            this.btnUndoRule.Image = ((System.Drawing.Image)(resources.GetObject("btnUndoRule.Image")));
-            this.btnUndoRule.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnUndoRule.Name = "btnUndoRule";
-            this.btnUndoRule.Size = new System.Drawing.Size(23, 22);
-            this.btnUndoRule.Text = "Отменить правило";
-            this.btnUndoRule.Click += new System.EventHandler(this.btnUndoRule_Click);
+            this.loader1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.loader1.Location = new System.Drawing.Point(0, 25);
+            this.loader1.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
+            this.loader1.Name = "loader1";
+            this.loader1.Size = new System.Drawing.Size(2007, 645);
+            this.loader1.TabIndex = 2;
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.lblUsageStat});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 670);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Padding = new System.Windows.Forms.Padding(2, 0, 21, 0);
+            this.statusStrip1.Size = new System.Drawing.Size(2007, 22);
+            this.statusStrip1.TabIndex = 3;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // lblUsageStat
+            // 
+            this.lblUsageStat.Name = "lblUsageStat";
+            this.lblUsageStat.Size = new System.Drawing.Size(0, 17);
             // 
             // MorphExplorer
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1338, 450);
+            this.ClientSize = new System.Drawing.Size(2007, 692);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.loader1);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.statusStrip1);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "MorphExplorer";
             this.Text = "Морфология";
             this.Load += new System.EventHandler(this.MorphExplorer_LoadAsync);

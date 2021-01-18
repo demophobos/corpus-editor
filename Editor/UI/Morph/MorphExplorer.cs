@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using WeifenLuo.WinFormsUI.Docking;
 
 namespace Morph
@@ -139,22 +140,28 @@ namespace Morph
 
             int count = 0;
 
-            foreach (MorphModel morph in morphSource.List)
+            foreach (DataGridViewRow row in dataGridView1.SelectedRows)
             {
-                var result = await ElementProcess.GetElements(new ElementQuery { value = morph.Form.ToLower() }).ConfigureAwait(true);
 
-                var elements = result.Where(i => string.IsNullOrEmpty(i.MorphId)).ToList();
+                var morph = row.DataBoundItem as MorphModel;
 
-                foreach (var element in elements)
+                if (morph != null)
                 {
-                    element.MorphId = morph.Id;
+                    var result = await ElementProcess.GetElements(new ElementQuery { value = morph.Form.ToLower() }).ConfigureAwait(true);
 
-                    await ElementProcess.SaveModel(element).ConfigureAwait(true);
+                    var elements = result.Where(i => string.IsNullOrEmpty(i.MorphId)).ToList();
+
+                    foreach (var element in elements)
+                    {
+                        element.MorphId = morph.Id;
+
+                        await ElementProcess.SaveModel(element).ConfigureAwait(true);
+                    }
+
+                    count += elements.Count;
+
+                    loader1.SetStatus(count.ToString());
                 }
-
-                count += elements.Count;
-
-                loader1.SetStatus(count.ToString());
             }
 
             loader1.SendToBack();
@@ -164,23 +171,32 @@ namespace Morph
 
         private async void btnUndoRule_Click(object sender, EventArgs e)
         {
-            int count = 0;
+            if (DialogProcess.UndoWarning() == DialogResult.Yes) {
+                int count = 0;
 
-            foreach (MorphModel morph in morphSource.List)
-            {
-                var elements = await ElementProcess.GetElements(new ElementQuery { morphId = morph.Id }).ConfigureAwait(true);
-
-                foreach (var element in elements)
+                foreach (DataGridViewRow row in dataGridView1.SelectedRows)
                 {
-                    element.MorphId = null;
+                    var morph = row.DataBoundItem as MorphModel;
+                    var elements = await ElementProcess.GetElements(new ElementQuery { morphId = morph.Id }).ConfigureAwait(true);
 
-                    await ElementProcess.SaveModel(element).ConfigureAwait(true);
+                    foreach (var element in elements)
+                    {
+                        element.MorphId = null;
+
+                        await ElementProcess.SaveModel(element).ConfigureAwait(true);
+                    }
+
+                    count += elements.Count;
                 }
 
-                count += elements.Count;
+                lblUsageStat.Text = $"Определение отменено для {count} элементов";
             }
 
-            lblUsageStat.Text = $"Определение отменено для {count} элементов";
+        }
+
+        private void dataGridView1_SelectionChanged(object sender, EventArgs e)
+        {
+            btnApplyRule.Enabled = btnUndoRule.Enabled = dataGridView1.SelectedRows.Count > 0;
         }
     }
 }

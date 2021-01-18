@@ -1,7 +1,7 @@
 ﻿
 namespace Document
 {
-    partial class ElementMorphSelector
+    partial class MorphSelector
     {
         /// <summary> 
         /// Обязательная переменная конструктора.
@@ -30,7 +30,7 @@ namespace Document
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ElementMorphSelector));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MorphSelector));
             this.btnAcceptDefinition = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.btnMorphServices = new System.Windows.Forms.ToolStripSplitButton();
@@ -40,8 +40,11 @@ namespace Document
             this.btnAdd = new System.Windows.Forms.ToolStripButton();
             this.btnEdit = new System.Windows.Forms.ToolStripButton();
             this.btnDelete = new System.Windows.Forms.ToolStripButton();
+            this.btnCopyForm = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnAcceptForAllCases = new System.Windows.Forms.ToolStripButton();
             this.btnCancelDefinition = new System.Windows.Forms.ToolStripButton();
+            this.btnCancelAllCases = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.btnCreateRule = new System.Windows.Forms.ToolStripButton();
             this.btnRemoveRule = new System.Windows.Forms.ToolStripButton();
@@ -65,7 +68,6 @@ namespace Document
             this.morphSource = new System.Windows.Forms.BindingSource(this.components);
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.lblStatus = new System.Windows.Forms.ToolStripStatusLabel();
-            this.btnCopyForm = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.morphSource)).BeginInit();
@@ -75,6 +77,7 @@ namespace Document
             // btnAcceptDefinition
             // 
             this.btnAcceptDefinition.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnAcceptDefinition.Enabled = false;
             this.btnAcceptDefinition.Image = ((System.Drawing.Image)(resources.GetObject("btnAcceptDefinition.Image")));
             this.btnAcceptDefinition.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnAcceptDefinition.Name = "btnAcceptDefinition";
@@ -95,8 +98,10 @@ namespace Document
             this.toolStripSeparator1,
             this.btnAcceptDefinition,
             this.btnCancelDefinition,
-            this.toolStripSeparator3,
+            this.btnAcceptForAllCases,
+            this.btnCancelAllCases,
             this.btnCreateRule,
+            this.toolStripSeparator3,
             this.btnRemoveRule});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
@@ -121,14 +126,14 @@ namespace Document
             // btnMorpheusLat
             // 
             this.btnMorpheusLat.Name = "btnMorpheusLat";
-            this.btnMorpheusLat.Size = new System.Drawing.Size(180, 22);
+            this.btnMorpheusLat.Size = new System.Drawing.Size(156, 22);
             this.btnMorpheusLat.Text = "Morpheus [lat]";
             this.btnMorpheusLat.Click += new System.EventHandler(this.btnMorpheusLat_Click);
             // 
             // btnMorpheusGrc
             // 
             this.btnMorpheusGrc.Name = "btnMorpheusGrc";
-            this.btnMorpheusGrc.Size = new System.Drawing.Size(180, 22);
+            this.btnMorpheusGrc.Size = new System.Drawing.Size(156, 22);
             this.btnMorpheusGrc.Text = "Morpheus [grc]";
             this.btnMorpheusGrc.Click += new System.EventHandler(this.btnMorpheusGrc_Click);
             // 
@@ -150,6 +155,7 @@ namespace Document
             // btnEdit
             // 
             this.btnEdit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnEdit.Enabled = false;
             this.btnEdit.Image = ((System.Drawing.Image)(resources.GetObject("btnEdit.Image")));
             this.btnEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnEdit.Name = "btnEdit";
@@ -160,6 +166,7 @@ namespace Document
             // btnDelete
             // 
             this.btnDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnDelete.Enabled = false;
             this.btnDelete.Image = ((System.Drawing.Image)(resources.GetObject("btnDelete.Image")));
             this.btnDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnDelete.Name = "btnDelete";
@@ -167,20 +174,54 @@ namespace Document
             this.btnDelete.Text = "Удалить определение";
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_ClickAsync);
             // 
+            // btnCopyForm
+            // 
+            this.btnCopyForm.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnCopyForm.Enabled = false;
+            this.btnCopyForm.Image = ((System.Drawing.Image)(resources.GetObject("btnCopyForm.Image")));
+            this.btnCopyForm.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnCopyForm.Name = "btnCopyForm";
+            this.btnCopyForm.Size = new System.Drawing.Size(23, 22);
+            this.btnCopyForm.Text = "Скопировать форму в буфер обмена";
+            this.btnCopyForm.Click += new System.EventHandler(this.btnCopyForm_Click);
+            // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
+            // btnAcceptForAllCases
+            // 
+            this.btnAcceptForAllCases.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnAcceptForAllCases.Enabled = false;
+            this.btnAcceptForAllCases.Image = ((System.Drawing.Image)(resources.GetObject("btnAcceptForAllCases.Image")));
+            this.btnAcceptForAllCases.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnAcceptForAllCases.Name = "btnAcceptForAllCases";
+            this.btnAcceptForAllCases.Size = new System.Drawing.Size(23, 22);
+            this.btnAcceptForAllCases.Text = "Применить ко всем случаям";
+            this.btnAcceptForAllCases.Click += new System.EventHandler(this.btnAcceptForAllCases_Click);
+            // 
             // btnCancelDefinition
             // 
             this.btnCancelDefinition.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnCancelDefinition.Enabled = false;
             this.btnCancelDefinition.Image = ((System.Drawing.Image)(resources.GetObject("btnCancelDefinition.Image")));
             this.btnCancelDefinition.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnCancelDefinition.Name = "btnCancelDefinition";
             this.btnCancelDefinition.Size = new System.Drawing.Size(23, 22);
             this.btnCancelDefinition.ToolTipText = "Отменить определение";
             this.btnCancelDefinition.Click += new System.EventHandler(this.btnUndoAccept_Click);
+            // 
+            // btnCancelAllCases
+            // 
+            this.btnCancelAllCases.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnCancelAllCases.Enabled = false;
+            this.btnCancelAllCases.Image = ((System.Drawing.Image)(resources.GetObject("btnCancelAllCases.Image")));
+            this.btnCancelAllCases.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnCancelAllCases.Name = "btnCancelAllCases";
+            this.btnCancelAllCases.Size = new System.Drawing.Size(23, 22);
+            this.btnCancelAllCases.Text = "Отменить для всех случаев";
+            this.btnCancelAllCases.Click += new System.EventHandler(this.btnCancelAllCases_Click);
             // 
             // toolStripSeparator3
             // 
@@ -190,6 +231,7 @@ namespace Document
             // btnCreateRule
             // 
             this.btnCreateRule.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnCreateRule.Enabled = false;
             this.btnCreateRule.Image = ((System.Drawing.Image)(resources.GetObject("btnCreateRule.Image")));
             this.btnCreateRule.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnCreateRule.Name = "btnCreateRule";
@@ -200,6 +242,7 @@ namespace Document
             // btnRemoveRule
             // 
             this.btnRemoveRule.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnRemoveRule.Enabled = false;
             this.btnRemoveRule.Image = ((System.Drawing.Image)(resources.GetObject("btnRemoveRule.Image")));
             this.btnRemoveRule.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnRemoveRule.Name = "btnRemoveRule";
@@ -365,6 +408,7 @@ namespace Document
             // morphSource
             // 
             this.morphSource.DataSource = typeof(Model.MorphModel);
+            this.morphSource.DataSourceChanged += new System.EventHandler(this.morphSource_DataSourceChanged);
             this.morphSource.CurrentChanged += new System.EventHandler(this.morphSource_CurrentChanged);
             // 
             // statusStrip1
@@ -383,17 +427,7 @@ namespace Document
             this.lblStatus.Name = "lblStatus";
             this.lblStatus.Size = new System.Drawing.Size(0, 17);
             // 
-            // btnCopyForm
-            // 
-            this.btnCopyForm.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnCopyForm.Image = ((System.Drawing.Image)(resources.GetObject("btnCopyForm.Image")));
-            this.btnCopyForm.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnCopyForm.Name = "btnCopyForm";
-            this.btnCopyForm.Size = new System.Drawing.Size(23, 22);
-            this.btnCopyForm.Text = "Скопировать форму в буфер обмена";
-            this.btnCopyForm.Click += new System.EventHandler(this.btnCopyForm_Click);
-            // 
-            // ElementMorphSelector
+            // MorphSelector
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -411,7 +445,7 @@ namespace Document
             this.Enabled = false;
             this.HideOnClose = true;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.Name = "ElementMorphSelector";
+            this.Name = "MorphSelector";
             this.Text = "Морфология";
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
@@ -461,5 +495,7 @@ namespace Document
         private System.Windows.Forms.ToolStripButton btnRemoveRule;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripButton btnCopyForm;
+        private System.Windows.Forms.ToolStripButton btnAcceptForAllCases;
+        private System.Windows.Forms.ToolStripButton btnCancelAllCases;
     }
 }

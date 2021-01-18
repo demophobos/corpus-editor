@@ -23,6 +23,10 @@ namespace Document
 
         private List<ElementModel> _definedWords = new List<ElementModel>();
 
+        private List<ElementModel> _undefinedWords = new List<ElementModel>();
+
+        private List<ElementModel> _oneDefWords = new List<ElementModel>();
+
         private List<ElementModel> _multyDefWords = new List<ElementModel>();
 
         private List<ElementModel> _noDefWords = new List<ElementModel>();
@@ -54,7 +58,6 @@ namespace Document
             _elements = await ElementProcess.GetElements(query).ConfigureAwait(true);
 
             foreach (var element in _elements)
-
             {
                 if (element.Type == (int)ElementTypeEnum.NewLine)
                 {
@@ -86,18 +89,6 @@ namespace Document
 
                     label.MouseLeave += Label_MouseLeave;
 
-                    if (!string.IsNullOrWhiteSpace(element.Value) && element.Type != (int)ElementTypeEnum.Punctuation)
-                    {
-                        if (!string.IsNullOrEmpty(element.MorphId))
-                        {
-                            label.ForeColor = Color.Black;
-                        }
-                        else
-                        {
-                            label.ForeColor = Color.Blue;
-                        }
-                    }
-
                     label.Click += Label_Click;
 
                     flowLayoutPanel1.Controls.Add(label);
@@ -111,14 +102,9 @@ namespace Document
 
         private void Label_Click(object sender, EventArgs e)
         {
-            MarkSelectedLabel(sender);
-        }
-
-        private void MarkSelectedLabel(object sender)
-        {
             if (sender is Label selectedLabel &&
-                selectedLabel.Tag is ElementModel selectedElement &&
-                selectedElement.Type == (int)ElementTypeEnum.Word)
+                    selectedLabel.Tag is ElementModel selectedElement &&
+                    selectedElement.Type == (int)ElementTypeEnum.Word)
             {
 
                 var labels = flowLayoutPanel1.Controls.OfType<Label>();
@@ -127,10 +113,12 @@ namespace Document
                 {
                     if (label.Tag is ElementModel element && element.Id == selectedElement.Id)
                     {
-                        label.BackColor = SystemColors.GradientActiveCaption;
+                        label.Font = new Font(label.Font, FontStyle.Underline);
+                        label.BackColor = Color.Gold;
                     }
                     else
                     {
+                        label.Font = new Font(label.Font, FontStyle.Regular);
                         label.BackColor = SystemColors.Window;
                     }
                 }
@@ -158,27 +146,6 @@ namespace Document
             }
 
             base.OnMouseMove(e);
-        }
-
-        internal void MarkSelectedElement(ElementModel e)
-        {
-            var labels = flowLayoutPanel1.Controls.OfType<Label>();
-
-            foreach (Label label in labels)
-            {
-                if (label.Tag is ElementModel element && element.Id == e.Id)
-                {
-                    if (!string.IsNullOrEmpty(e.MorphId))
-                    {
-                        label.ForeColor = Color.Black;
-                    }
-                    else
-                    {
-                        label.ForeColor = Color.Blue;
-                    }
-                }
-            }
-
         }
 
         internal void MarkElementMorphStatus(ElementModel e, Color color)
@@ -232,6 +199,46 @@ namespace Document
             DialogProcess.InfoMessage("Морфологический сервис Morpheus", $"Найдено новых определений {resultsCount}");
         }
 
+        internal void CheckMorphStatus(ElementModel element)
+        {
+            var word = _elements.FirstOrDefault(i => i.Id == element.Id);
+
+            if (word != null)
+            {
+                word = element;
+
+                if (word.MorphId != null)
+                {
+                    MarkElementMorphStatus(word, Color.Black);
+                }
+                else
+                {
+
+                    var noDefWord = _noDefWords.FirstOrDefault(i => i.Id == word.Id);
+
+                    if (noDefWord != null)
+                    {
+                        MarkElementMorphStatus(noDefWord, Color.Red);
+                    }
+
+                    var multyDefWord = _multyDefWords.FirstOrDefault(i => i.Id == word.Id);
+
+                    if (multyDefWord != null)
+                    {
+                        MarkElementMorphStatus(multyDefWord, Color.Blue);
+                    }
+
+                    var oneDefDord = _oneDefWords.FirstOrDefault(i => i.Id == word.Id);
+
+                    if (oneDefDord != null)
+                    {
+
+                        MarkElementMorphStatus(oneDefDord, Color.Green);
+                    }
+                }
+            }
+        }
+
         internal async Task CheckMorphStatus()
         {
             loader1.SetStatus("Проверка морфологии");
@@ -240,19 +247,40 @@ namespace Document
 
             _definedWords = words.Where(i => i.MorphId != null).ToList();
 
+            _undefinedWords = words.Where(i => i.MorphId == null).ToList();
+
             foreach (var word in _definedWords)
             {
                 MarkElementMorphStatus(word, Color.Black);
-            }
 
-            _multyDefWords = words.Where(i => i.MorphId == null).ToList();
-
-            foreach (var word in _multyDefWords)
-            {
                 var results = await _morphProcess.GetMorphItems(new MorphQuery { Form = word.Value.ToLower() }).ConfigureAwait(true);
+
+                if (results.Count > 1)
+                {
+                    _multyDefWords.Add(word);
+                }
 
                 if (results.Count == 1)
                 {
+                    _oneDefWords.Add(word);
+                }
+            }
+
+            foreach (var word in _undefinedWords)
+            {
+                var results = await _morphProcess.GetMorphItems(new MorphQuery { Form = word.Value.ToLower() }).ConfigureAwait(true);
+
+                if (results.Count > 1)
+                {
+                    MarkElementMorphStatus(word, Color.Blue);
+
+                    _multyDefWords.Add(word);
+                }
+
+                if (results.Count == 1)
+                {
+                    _oneDefWords.Add(word);
+
                     MarkElementMorphStatus(word, Color.Green);
                 }
 
@@ -263,6 +291,8 @@ namespace Document
                     MarkElementMorphStatus(word, Color.Red);
                 }
             }
+
+            //_multyDefWords = _multyDefWords.Where(i => !_noDefWords.Select(j => j.Id).Contains(i.Id)).ToList();
 
             loader1.SendToBack();
         }

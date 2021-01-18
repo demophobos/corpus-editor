@@ -88,11 +88,11 @@
     <Compile Include="ContentExplorer.Designer.cs">
       <DependentUpon>ContentExplorer.cs</DependentUpon>
     </Compile>
-    <Compile Include="ElementMorphSelector.cs">
+    <Compile Include="MorphSelector.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ElementMorphSelector.Designer.cs">
-      <DependentUpon>ElementMorphSelector.cs</DependentUpon>
+    <Compile Include="MorphSelector.Designer.cs">
+      <DependentUpon>MorphSelector.cs</DependentUpon>
     </Compile>
     <Compile Include="IndexEditor.cs">
       <SubType>Form</SubType>
@@ -151,8 +151,8 @@
     <EmbeddedResource Include="DocumentContainer.resx">
       <DependentUpon>DocumentContainer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ElementMorphSelector.resx">
-      <DependentUpon>ElementMorphSelector.cs</DependentUpon>
+    <EmbeddedResource Include="MorphSelector.resx">
+      <DependentUpon>MorphSelector.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="IndexEditor.resx">
       <DependentUpon>IndexEditor.cs</DependentUpon>

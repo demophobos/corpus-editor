@@ -9,6 +9,14 @@ namespace Common.Process
             return MessageBox.Show($"Вы действительно хотите удалить {type}?", "Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
         }
 
+        public static DialogResult BulkApplyWarning(int count)
+        {
+            return MessageBox.Show($"Применить определение к {count} случаям?", "Определение", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+        }
+        public static DialogResult BulkUndoWarning(int count)
+        {
+            return MessageBox.Show($"Отменить определение для {count} случаев?", "Определение", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+        }
         public static DialogResult UndoWarning()
         {
             return MessageBox.Show($"Отменить определение?", "Определение", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);

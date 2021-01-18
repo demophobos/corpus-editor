@@ -6,13 +6,14 @@ using Morph;
 using Process;
 using System;
 using System.Drawing;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WeifenLuo.WinFormsUI.Docking;
 
 namespace Document
 {
-    public partial class ElementMorphSelector : DockContent
+    public partial class MorphSelector : DockContent
     {
         MorphProcess _morphProcess;
 
@@ -24,7 +25,7 @@ namespace Document
 
         public event EventHandler<ElementModel> ElementMorphRejected;
 
-        public ElementMorphSelector(IndexModel index)
+        public MorphSelector(IndexModel index)
         {
             _index = index;
 
@@ -40,10 +41,6 @@ namespace Document
             Text = $"Морфология: {element.Value}";
 
             _element = element;
-
-            btnAcceptDefinition.Enabled = string.IsNullOrEmpty(element.MorphId);
-
-            btnCancelDefinition.Enabled = !string.IsNullOrEmpty(element.MorphId);
 
             var query = new MorphQuery { Form = element.Value.ToLower() };
 
@@ -115,6 +112,8 @@ namespace Document
             btnCreateRule.Enabled = morphSource.List.Count == 1 && morphSource.Current != null && morphSource.Current is MorphModel model1 && model1.IsRule == false;
 
             btnRemoveRule.Enabled = morphSource.List.Count == 1 && morphSource.Current != null && morphSource.Current is MorphModel model2 && model2.IsRule == true;
+
+            btnAcceptForAllCases.Enabled = btnCancelAllCases.Enabled = morphSource.List.Count == 1 && morphSource.Current != null;
         }
 
         private void dataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -248,6 +247,71 @@ namespace Document
             {
                 Clipboard.SetText(model.Form);
             }
+        }
+
+        private async void btnAcceptForAllCases_Click(object sender, EventArgs e)
+        {
+            if (morphSource.Current != null && morphSource.Current is MorphModel morph)
+            {
+                var elements = await ElementProcess.GetElements(new ElementQuery { type = (int)ElementTypeEnum.Word, value = morph.Form, headerId = _index.HeaderId }).ConfigureAwait(true);
+
+                var applicableElements = elements.Where(i => i.MorphId == null).ToList();
+
+                foreach (var element in applicableElements)
+                {
+                    if (element.MorphId == null)
+                    {
+                        element.MorphId = morph.Id;
+
+                        var elem = await ElementProcess.SaveModel(element).ConfigureAwait(true);
+
+                        if (_element.Id == elem.Id)
+                        {
+                            _element = elem;
+
+                            await LoadDataAsync(_element);
+
+                            ElementMorphAccepted.Invoke(this, _element);
+                        }
+                    }
+                }
+            }
+        }
+
+        private async void btnCancelAllCases_Click(object sender, EventArgs e)
+        {
+            if (morphSource.Current != null && morphSource.Current is MorphModel morph)
+            {
+                var elements = await ElementProcess.GetElements(new ElementQuery { type = (int)ElementTypeEnum.Word, value = morph.Form, headerId = _index.HeaderId }).ConfigureAwait(true);
+
+                var applicableElements = elements.Where(i => i.MorphId != null).ToList();
+
+                if (DialogProcess.BulkUndoWarning(applicableElements.Count) == DialogResult.Yes) {
+
+                    foreach (var element in applicableElements)
+                    {
+                        element.MorphId = null;
+
+                        var elem = await ElementProcess.SaveModel(element).ConfigureAwait(true);
+
+                        if (_element.Id == elem.Id)
+                        {
+                            _element = elem;
+
+                            await LoadDataAsync(_element);
+
+                            ElementMorphRejected.Invoke(this, _element);
+                        }
+                    }
+                }
+            }
+        }
+
+        private void morphSource_DataSourceChanged(object sender, EventArgs e)
+        {
+            btnAcceptDefinition.Enabled = morphSource.List.Count > 0 && string.IsNullOrEmpty(_element.MorphId);
+
+            btnCancelDefinition.Enabled = !string.IsNullOrEmpty(_element.MorphId);
         }
     }
 }
