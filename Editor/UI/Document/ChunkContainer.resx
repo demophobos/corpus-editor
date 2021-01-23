@@ -137,11 +137,11 @@
   <data name="btnShowHideMorphologyPane.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADZSURBVDhPY0AG379/T3j+5sP/x88+fPzy5YsBVJg4ANLw
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADZSURBVDhPY0AG379/T3j+5sP/x08/fPzy5YsBVJg4ANLw
         7du3/z6tO/7rFq4l3pCvX782wDDQgA8nrj/9zxe7EGwIyDUgQ/FhBhBRveQkCga5giF4DtiQ5Ws2/ndy
         csKK4QbYVm9CwXLpy+EGHD9z4b+vry9uA4D+PABizJkz5//y5cv/I3sBn2YQBhsAAiAGSODL5y/wQARp
         /vD+IxyD5NH5GAaAJJ69fg/GIJvRNaDzMQwAYZBGfM5GxlhdgGwDIT71DSAVU98F6AoI8TEMIBWjGEAe
-        /vYfANk3i7OQxlFVAAAAAElFTkSuQmCC
+        /vYfANGIi7EpAiTmAAAAAElFTkSuQmCC
 </value>
   </data>
   <data name="btnAddChunk.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -156,14 +156,14 @@
   <data name="btnEditChunk.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGHSURBVDhPrZNPSwJRFMUt3PVn04cICloVRpsiWkiLaiEu
-        rKAvELnSWgiSi4KioL2QRAQhZGSGVNAqKgjToiKihTKWqTliM4Kb073DMzNLJTrwmGHe+Z1333t3dPUq
-        n88PqqoaUhQV9EzQsANoENPVpSjKSFSSCkZXAHqzG+3T2ziJRDnILiy/qwh3zHgx4NjD9eMzHJvnWghX
-        Imw/i+GYgBlom9rA6U1MC2k0uTkAwlophiUpXui27WDYdYDXZAbOrQsthCsZXQhyQETYy/UVNi8dIpnK
-        QM5ktRCupJ8CUrKskq9HICV9h9Np+RPmSoow34pASqoF983t/h3m7y+pDLH/DXM30WkmDXYfWic9uHqI
-        V8AczosIpFy5XK4r/JRAy4QH46vH2jVd3kv1wSyatK75wzDOB7SVLStHaB73gJuHm6gqzKLyfSbat2HW
-        hyHnPpos6+i0esHtWxNm0d/1xquNLQax7Avh7E4CbeudYJOwVBcZb2lkqRI/DRu999LB6sV0Del0H+U2
-        wQiurCT5AAAAAElFTkSuQmCC
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGGSURBVDhPrZNPSwJRFMUt3PVn04cICloVRpsiWkiLaiEu
+        rKAvELnSWgiSi4KioL2QRAQhNJEZUkGrqCBMi4qIFspUpjaKzQhtTvcOz8wslejAY4Z553fefe/dMdSq
+        fD7fr2laWFU10DNBwwmgTkxXlqqqQzFZfjd7gjBavWid3MRRNMZBTmH5XQW4bcqPPtcOLu+f4Fo/1UO4
+        EmH7WQzHBcxAy8Qajq/ieki9xcsBENZyMSwT3OnYwqBnDy9JBe6NMz2EKxmeC3FAVNhL9RW2LuwjmVKQ
+        UbJ6CFfSSwGpTEYjX5dAivoOp9OZT5grKcB8KwIpqhrcM7P9d5i/P6cUYv8b5m6i00yanBKax324uHss
+        gzmcFxFIqXK5XEfkIYGmMR9Glw/1azq/lWuDWTRpXwlEYJ4N6ivblg7QOOoDNw83UUWYReVLFtq3aVrC
+        gHsXDbZVtNv94PatCrPo73rl1UbmQ1iUwji5kUHbeiPYIiyVRcZrGlmqJEDDQe/ddLBGMV1FBsMH1LrB
+        APZhcb4AAAAASUVORK5CYII=
 </value>
   </data>
   <data name="btnDeleteChunk.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

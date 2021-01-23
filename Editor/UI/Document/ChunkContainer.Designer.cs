@@ -56,9 +56,8 @@ namespace Document
             this.btnMorphServices});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Padding = new System.Windows.Forms.Padding(0, 0, 2, 0);
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.toolStrip1.Size = new System.Drawing.Size(1196, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(797, 25);
             this.toolStrip1.TabIndex = 2;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -132,13 +131,14 @@ namespace Document
             this.btnMorphServices.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnMorphServices.Name = "btnMorphServices";
             this.btnMorphServices.Size = new System.Drawing.Size(32, 22);
-            this.btnMorphServices.Text = "toolStripSplitButton1";
+            this.btnMorphServices.Text = "Морфологические сервисы";
             // 
             // btnMorpheusLat
             // 
             this.btnMorpheusLat.Name = "btnMorpheusLat";
-            this.btnMorpheusLat.Size = new System.Drawing.Size(152, 22);
+            this.btnMorpheusLat.Size = new System.Drawing.Size(180, 22);
             this.btnMorpheusLat.Text = "Morpheus [lat]";
+            this.btnMorpheusLat.ToolTipText = "Morpheus [lat]";
             this.btnMorpheusLat.Click += new System.EventHandler(this.btnMorpheusLat_Click);
             // 
             // dockPanel1
@@ -146,19 +146,17 @@ namespace Document
             this.dockPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dockPanel1.DocumentStyle = WeifenLuo.WinFormsUI.Docking.DocumentStyle.DockingSdi;
             this.dockPanel1.Location = new System.Drawing.Point(0, 25);
-            this.dockPanel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dockPanel1.Name = "dockPanel1";
-            this.dockPanel1.Size = new System.Drawing.Size(1196, 720);
+            this.dockPanel1.Size = new System.Drawing.Size(797, 459);
             this.dockPanel1.TabIndex = 3;
             // 
             // ChunkContainer
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1196, 745);
+            this.ClientSize = new System.Drawing.Size(797, 484);
             this.Controls.Add(this.dockPanel1);
             this.Controls.Add(this.toolStrip1);
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "ChunkContainer";
             this.Load += new System.EventHandler(this.ChunkContainer_LoadAsync);
             this.toolStrip1.ResumeLayout(false);

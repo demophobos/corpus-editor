@@ -45,7 +45,7 @@ namespace Document
 
             _indeces = await _documentProcess.GetIndecesByHeader();
 
-            var roots = _indeces.Where(i => string.IsNullOrEmpty(i.ParentId)).ToList();
+            var roots = _indeces.Where(i => string.IsNullOrEmpty(i.ParentId)).OrderBy(i=>i.Order).ToList();
 
             foreach (var root in roots)
             {
@@ -69,7 +69,7 @@ namespace Document
 
         private void PopulateTree(TreeNode root, List<IndexModel> indices)
         {
-            var children = indices.Where(t => t.ParentId == ((IndexModel)root.Tag).Id);
+            var children = indices.Where(t => t.ParentId == ((IndexModel)root.Tag).Id).OrderBy(i => i.Order);
 
             foreach (var child in children)
             {
