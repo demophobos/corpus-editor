@@ -13,7 +13,7 @@ namespace Model
 
         public override string ToString()
         {
-            return Value.Substring(0, 150);
+            return Value;
         }
     }
 }
