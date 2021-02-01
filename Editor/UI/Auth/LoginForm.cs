@@ -3,7 +3,7 @@ using Process;
 using System;
 using System.Windows.Forms;
 
-namespace Editor
+namespace Auth
 {
     public partial class LoginForm : Form
     {

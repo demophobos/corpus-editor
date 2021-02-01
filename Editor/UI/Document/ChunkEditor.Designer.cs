@@ -48,9 +48,10 @@ namespace Document
             this.txtChunk.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtChunk.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.chunkSource, "Value", true));
             this.txtChunk.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtChunk.Font = new System.Drawing.Font("Palatino Linotype", 14.25F);
             this.txtChunk.Location = new System.Drawing.Point(0, 0);
             this.txtChunk.Name = "txtChunk";
-            this.txtChunk.Size = new System.Drawing.Size(578, 322);
+            this.txtChunk.Size = new System.Drawing.Size(878, 419);
             this.txtChunk.TabIndex = 1;
             this.txtChunk.Text = "";
             this.txtChunk.TextChanged += new System.EventHandler(this.txtChunk_TextChanged);
@@ -65,15 +66,15 @@ namespace Document
             this.flowLayoutPanel1.Controls.Add(this.btnCancel);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 331);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 428);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(578, 30);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(878, 30);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
             // btnSave
             // 
             this.btnSave.Enabled = false;
-            this.btnSave.Location = new System.Drawing.Point(500, 3);
+            this.btnSave.Location = new System.Drawing.Point(800, 3);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 1;
@@ -84,7 +85,7 @@ namespace Document
             // btnCancel
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(419, 3);
+            this.btnCancel.Location = new System.Drawing.Point(719, 3);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 2;
@@ -104,7 +105,7 @@ namespace Document
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 36F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(584, 364);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(884, 461);
             this.tableLayoutPanel1.TabIndex = 8;
             // 
             // panel1
@@ -113,14 +114,14 @@ namespace Document
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(578, 322);
+            this.panel1.Size = new System.Drawing.Size(878, 419);
             this.panel1.TabIndex = 2;
             // 
             // ChunkEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(584, 364);
+            this.ClientSize = new System.Drawing.Size(884, 461);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "ChunkEditor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;

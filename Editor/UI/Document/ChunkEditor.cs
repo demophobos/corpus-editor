@@ -17,6 +17,8 @@ namespace Document
             Text = $"{Text} [{_index.Name}]";
 
             chunkSource.DataSource = chunkModel;
+
+            txtChunk.Text = txtChunk.Text.ToString();
         }
 
         private async void btnSave_ClickAsync(object sender, EventArgs e)

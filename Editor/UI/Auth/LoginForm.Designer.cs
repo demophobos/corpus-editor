@@ -1,5 +1,5 @@
 ﻿
-namespace Editor
+namespace Auth
 {
     partial class LoginForm
     {

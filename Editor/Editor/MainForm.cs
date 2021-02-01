@@ -1,4 +1,5 @@
-﻿using Common.Process;
+﻿using Auth;
+using Common.Process;
 using Document;
 using Model;
 using Morph;

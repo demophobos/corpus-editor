@@ -180,6 +180,10 @@
       <Project>{69ccd921-43e3-4b07-8510-1660b21d9774}</Project>
       <Name>Process</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Auth\Auth.csproj">
+      <Project>{526b522a-d347-4b63-95cc-e15f886c17e3}</Project>
+      <Name>Auth</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Common\Common.csproj">
       <Project>{02aefa8a-72f0-4d1f-b055-4c9e9563a2ab}</Project>
       <Name>Common</Name>

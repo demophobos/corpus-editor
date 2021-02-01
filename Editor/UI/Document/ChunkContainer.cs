@@ -1,4 +1,5 @@
-﻿using Common.Process;
+﻿using Auth;
+using Common.Process;
 using Model;
 using Model.Query;
 using Process;

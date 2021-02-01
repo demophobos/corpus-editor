@@ -1,4 +1,5 @@
-﻿using Common.Process;
+﻿using Auth;
+using Common.Process;
 using Model;
 using Model.Enum;
 using Model.Query;
@@ -49,7 +50,7 @@ namespace Document
         {
             loader1.BringToFront();
 
-            loader1.SetStatus("Загрузка элементов");
+            loader1.SetStatus("Загрузка элементов ...");
 
             flowLayoutPanel1.Controls.Clear();
 
@@ -93,7 +94,7 @@ namespace Document
 
                     flowLayoutPanel1.Controls.Add(label);
 
-                    loader1.SetStatus($"Загрузка элементов: {flowLayoutPanel1.Controls.Count}");
+                    loader1.SetStatus($"Загрузка элементов ... {flowLayoutPanel1.Controls.Count}");
                 }
             }
 
@@ -166,7 +167,7 @@ namespace Document
         {
             loader1.BringToFront();
 
-            loader1.SetStatus("Получение данных из морфологического сервиса");
+            loader1.SetStatus("Получение данных морфологического сервиса ... ");
 
             var resultsCount = 0;
 
@@ -186,7 +187,7 @@ namespace Document
                         {
                             resultsCount += 1;
 
-                            loader1.SetStatus($"Получение данных из морфологического сервиса: {resultsCount}");
+                            loader1.SetStatus($"Получение данных морфологического сервиса ... {resultsCount}");
                         }
                     }
                 }
@@ -196,7 +197,7 @@ namespace Document
 
             loader1.SendToBack();
 
-            DialogProcess.InfoMessage("Морфологический сервис Morpheus", $"Найдено новых определений {resultsCount}");
+            //DialogProcess.InfoMessage("Морфологический сервис Morpheus", $"Найдено новых определений {resultsCount}");
         }
 
         internal void CheckMorphStatus(ElementModel element)
@@ -241,7 +242,7 @@ namespace Document
 
         internal async Task CheckMorphStatus()
         {
-            loader1.SetStatus("Проверка морфологии");
+            loader1.SetStatus("Проверка морфологии ...");
 
             var words = _elements.Where(i => i.Type == (int)ElementTypeEnum.Word).ToList();
 

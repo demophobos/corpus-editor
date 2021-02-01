@@ -9,19 +9,16 @@ namespace API
         protected static HttpClient Client;
         public BaseAPI()
         {
-            if (Client == null)
+            Client = new HttpClient
             {
-                Client = new HttpClient
-                {
-                    BaseAddress = new Uri(Properties.Settings.Default.APIBaseUrl)
-                };
+                BaseAddress = new Uri(Properties.Settings.Default.APIBaseUrl)
+            };
 
-                Client.DefaultRequestHeaders.Accept.Clear();
+            Client.DefaultRequestHeaders.Accept.Clear();
 
-                Client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            Client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-                Client.DefaultRequestHeaders.Add("x-access-token", AuthAPI.User.Token);
-            }
+            Client.DefaultRequestHeaders.Add("x-access-token", AuthAPI.User.Token);
         }
     }
 }
