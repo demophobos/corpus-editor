@@ -138,7 +138,6 @@ namespace Document
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
-            this.toolStripSeparator2.Visible = false;
             // 
             // btnPublishChunk
             // 
@@ -148,7 +147,6 @@ namespace Document
             this.btnPublishChunk.Name = "btnPublishChunk";
             this.btnPublishChunk.Size = new System.Drawing.Size(106, 22);
             this.btnPublishChunk.Text = "Опубликовать";
-            this.btnPublishChunk.Visible = false;
             this.btnPublishChunk.Click += new System.EventHandler(this.btnPublishChunk_ClickAsync);
             // 
             // dockPanel1
