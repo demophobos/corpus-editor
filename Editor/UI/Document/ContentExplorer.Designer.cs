@@ -39,6 +39,7 @@ namespace Document
             this.btnImportChunks = new System.Windows.Forms.ToolStripSplitButton();
             this.btnLoadJSON = new System.Windows.Forms.ToolStripMenuItem();
             this.btnUpdateHeaderId = new System.Windows.Forms.ToolStripButton();
+            this.btnUpdateChunkValueObj = new System.Windows.Forms.ToolStripButton();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.btnAddSubsection = new System.Windows.Forms.ToolStripMenuItem();
             this.btnEditSection = new System.Windows.Forms.ToolStripMenuItem();
@@ -84,7 +85,8 @@ namespace Document
             this.btnAddFirstLevelSection,
             this.toolStripSeparator1,
             this.btnImportChunks,
-            this.btnUpdateHeaderId});
+            this.btnUpdateHeaderId,
+            this.btnUpdateChunkValueObj});
             this.toolStrip2.Location = new System.Drawing.Point(0, 0);
             this.toolStrip2.Name = "toolStrip2";
             this.toolStrip2.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
@@ -117,6 +119,7 @@ namespace Document
             this.btnImportChunks.Name = "btnImportChunks";
             this.btnImportChunks.Size = new System.Drawing.Size(32, 22);
             this.btnImportChunks.Text = "Импортировать фрагменты";
+            this.btnImportChunks.Visible = false;
             // 
             // btnLoadJSON
             // 
@@ -136,6 +139,17 @@ namespace Document
             this.btnUpdateHeaderId.Text = "toolStripButton1";
             this.btnUpdateHeaderId.Visible = false;
             this.btnUpdateHeaderId.Click += new System.EventHandler(this.btnUpdateHeaderId_Click);
+            // 
+            // btnUpdateChunkValueObj
+            // 
+            this.btnUpdateChunkValueObj.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnUpdateChunkValueObj.Image = ((System.Drawing.Image)(resources.GetObject("btnUpdateChunkValueObj.Image")));
+            this.btnUpdateChunkValueObj.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnUpdateChunkValueObj.Name = "btnUpdateChunkValueObj";
+            this.btnUpdateChunkValueObj.Size = new System.Drawing.Size(23, 22);
+            this.btnUpdateChunkValueObj.Text = "Опубликовать";
+            this.btnUpdateChunkValueObj.ToolTipText = "Опубликовать изменения";
+            this.btnUpdateChunkValueObj.Click += new System.EventHandler(this.btnUpdateChunkValueObj_Click);
             // 
             // contextMenuStrip1
             // 
@@ -192,6 +206,7 @@ namespace Document
             // 
             this.loader1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.loader1.Location = new System.Drawing.Point(0, 25);
+            this.loader1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.loader1.Name = "loader1";
             this.loader1.Size = new System.Drawing.Size(366, 450);
             this.loader1.TabIndex = 10;
@@ -234,5 +249,6 @@ namespace Document
         private System.Windows.Forms.ToolStripMenuItem btnLoadJSON;
         private Common.Control.Loader loader1;
         private System.Windows.Forms.ToolStripButton btnUpdateHeaderId;
+        private System.Windows.Forms.ToolStripButton btnUpdateChunkValueObj;
     }
 }

@@ -37,8 +37,9 @@ namespace Document
             this.btnEditChunk = new System.Windows.Forms.ToolStripButton();
             this.btnDeleteChunk = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.btnMorphServices = new System.Windows.Forms.ToolStripSplitButton();
-            this.btnMorpheusLat = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnMorphServices = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnPublishChunk = new System.Windows.Forms.ToolStripButton();
             this.dockPanel1 = new WeifenLuo.WinFormsUI.Docking.DockPanel();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -53,7 +54,9 @@ namespace Document
             this.btnEditChunk,
             this.btnDeleteChunk,
             this.toolStripSeparator1,
-            this.btnMorphServices});
+            this.btnMorphServices,
+            this.toolStripSeparator2,
+            this.btnPublishChunk});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
@@ -124,22 +127,29 @@ namespace Document
             // 
             // btnMorphServices
             // 
-            this.btnMorphServices.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnMorphServices.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnMorpheusLat});
             this.btnMorphServices.Image = ((System.Drawing.Image)(resources.GetObject("btnMorphServices.Image")));
             this.btnMorphServices.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnMorphServices.Name = "btnMorphServices";
-            this.btnMorphServices.Size = new System.Drawing.Size(32, 22);
-            this.btnMorphServices.Text = "Морфологические сервисы";
+            this.btnMorphServices.Size = new System.Drawing.Size(105, 22);
+            this.btnMorphServices.Text = "Morpheus [lat]";
+            this.btnMorphServices.Click += new System.EventHandler(this.btnMorphServices_Click);
             // 
-            // btnMorpheusLat
+            // toolStripSeparator2
             // 
-            this.btnMorpheusLat.Name = "btnMorpheusLat";
-            this.btnMorpheusLat.Size = new System.Drawing.Size(180, 22);
-            this.btnMorpheusLat.Text = "Morpheus [lat]";
-            this.btnMorpheusLat.ToolTipText = "Morpheus [lat]";
-            this.btnMorpheusLat.Click += new System.EventHandler(this.btnMorpheusLat_Click);
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+            this.toolStripSeparator2.Visible = false;
+            // 
+            // btnPublishChunk
+            // 
+            this.btnPublishChunk.Enabled = false;
+            this.btnPublishChunk.Image = ((System.Drawing.Image)(resources.GetObject("btnPublishChunk.Image")));
+            this.btnPublishChunk.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnPublishChunk.Name = "btnPublishChunk";
+            this.btnPublishChunk.Size = new System.Drawing.Size(106, 22);
+            this.btnPublishChunk.Text = "Опубликовать";
+            this.btnPublishChunk.Visible = false;
+            this.btnPublishChunk.Click += new System.EventHandler(this.btnPublishChunk_ClickAsync);
             // 
             // dockPanel1
             // 
@@ -176,7 +186,8 @@ namespace Document
         private System.Windows.Forms.ToolStripButton btnEditChunk;
         private System.Windows.Forms.ToolStripButton btnDeleteChunk;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripSplitButton btnMorphServices;
-        private System.Windows.Forms.ToolStripMenuItem btnMorpheusLat;
+        private System.Windows.Forms.ToolStripButton btnMorphServices;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripButton btnPublishChunk;
     }
 }

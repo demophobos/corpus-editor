@@ -1,5 +1,6 @@
 ﻿using Common.Process;
 using Model;
+using Model.Query;
 using Process;
 using System;
 using System.Collections.Generic;
@@ -45,7 +46,7 @@ namespace Document
 
             _indeces = await _documentProcess.GetIndecesByHeader();
 
-            var roots = _indeces.Where(i => string.IsNullOrEmpty(i.ParentId)).OrderBy(i=>i.Order).ToList();
+            var roots = _indeces.Where(i => string.IsNullOrEmpty(i.ParentId)).OrderBy(i => i.Order).ToList();
 
             foreach (var root in roots)
             {
@@ -285,6 +286,37 @@ namespace Document
                 count += 1;
 
                 loader1.SetStatus(count.ToString());
+            }
+
+            loader1.SendToBack();
+        }
+
+        private async void btnUpdateChunkValueObj_Click(object sender, EventArgs e)
+        {
+            loader1.BringToFront();
+
+            loader1.SetStatus("Обновление фрагментов");
+
+            var chunks = await ChunkProcess.GetChunksByQuery(new ChunkQuery { headerId = _documentProcess.Header.Id });
+
+            int count = 0;
+
+            foreach (var chunkView in chunks)
+            {
+                var chunk = new ChunkModel { Id = chunkView.Id, HeaderId = chunkView.HeaderId, IndexId = chunkView.IndexId, Value = chunkView.Value, ValueObj = chunkView.ValueObj };
+
+                var elements = await ElementProcess.GetElements(new ElementQuery { chunkId = chunk.Id }).ConfigureAwait(true);
+
+                var newValueObj = await ChunkProcess.CreateChunkValueObjs(elements).ConfigureAwait(true);
+
+                var published = await ChunkProcess.PublishChunkValueObj(chunk, newValueObj).ConfigureAwait(true);
+
+                if (published != null)
+                {
+                    count += 1;
+                }
+
+                loader1.SetStatus($"Обновлено фрагментов: {count} из {chunks.Count}");
             }
 
             loader1.SendToBack();

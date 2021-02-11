@@ -61,12 +61,19 @@ namespace Document
 
                 _chunkExplorer.ElementSelected += ChunkExplorer_ElementSelected;
 
+                _chunkExplorer.EnablePublishing += ChunkExplorer_EnablePublishing;
+
                 _chunkExplorer.Show(dockPanel1, DockState.Document);
 
                 btnShowHideMorphologyPane.Enabled = btnShowHideTranslationPane.Enabled = btnMorphServices.Enabled = _chunk != null;
 
                 ChunkAdded.Invoke(this, _chunk);
             }
+        }
+
+        private void ChunkExplorer_EnablePublishing(object sender, bool e)
+        {
+            btnPublishChunk.Enabled = e;
         }
 
         private async void ChunkContainer_LoadAsync(object sender, EventArgs e)
@@ -84,6 +91,8 @@ namespace Document
                 _chunkExplorer = new ChunkExplorer(_chunk);
 
                 _chunkExplorer.ElementSelected += ChunkExplorer_ElementSelected;
+
+                _chunkExplorer.EnablePublishing += ChunkExplorer_EnablePublishing;
 
                 _chunkExplorer.Show(dockPanel1, DockState.Document);
 
@@ -112,6 +121,8 @@ namespace Document
                 _chunkExplorer.Show(dockPanel1, DockState.Document);
 
                 _chunkExplorer.ElementSelected += ChunkExplorer_ElementSelected;
+
+                _chunkExplorer.EnablePublishing += ChunkExplorer_EnablePublishing;
 
                 ChunkUpdated.Invoke(this, _chunk);
             }
@@ -183,11 +194,15 @@ namespace Document
 
         private void MorphSelector_ElementMorphRejected(object sender, ElementModel e)
         {
+            btnPublishChunk.Enabled = true;
+
             _chunkExplorer.CheckMorphStatus(e);
         }
 
         private void MorphSelector_ElementMorphAccepted(object sender, ElementModel e)
         {
+            btnPublishChunk.Enabled = true;
+
             _chunkExplorer.CheckMorphStatus(e);
         }
 
@@ -236,9 +251,14 @@ namespace Document
             _interpContainer.Activate();
         }
 
-        private void btnMorpheusLat_Click(object sender, EventArgs e)
+        private void btnMorphServices_Click(object sender, EventArgs e)
         {
             _chunkExplorer.RunMorphService();
+        }
+
+        private async void btnPublishChunk_ClickAsync(object sender, EventArgs e)
+        {
+            await _chunkExplorer.PublishChunkAsync();
         }
     }
 }

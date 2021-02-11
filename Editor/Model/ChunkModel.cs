@@ -6,6 +6,8 @@ namespace Model
     {
         [JsonProperty("value")]
         public string Value { get; set; }
+        [JsonProperty("valueObj", NullValueHandling = NullValueHandling.Ignore)]
+        public string ValueObj { get; set; }
         [JsonProperty("indexId")]
         public string IndexId { get; set; }
         [JsonProperty("headerId")]

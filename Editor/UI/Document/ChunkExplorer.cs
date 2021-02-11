@@ -3,6 +3,7 @@ using Common.Process;
 using Model;
 using Model.Enum;
 using Model.Query;
+using Newtonsoft.Json;
 using Process;
 using System;
 using System.Collections.Generic;
@@ -19,6 +20,8 @@ namespace Document
         private MorphProcess _morphProcess = new MorphProcess();
 
         public event EventHandler<ElementModel> ElementSelected;
+
+        public event EventHandler<bool> EnablePublishing;
 
         private List<ElementModel> _elements = new List<ElementModel>();
 
@@ -57,6 +60,12 @@ namespace Document
             var query = new ElementQuery { chunkId = Chunk.Id };
 
             _elements = await ElementProcess.GetElements(query).ConfigureAwait(true);
+
+            var newValueObjs = await ChunkProcess.CreateChunkValueObjs(_elements).ConfigureAwait(true);
+
+            bool equal = ChunkProcess.ChunkValuesEquals(Chunk, newValueObjs);
+
+            EnablePublishing?.Invoke(this, !equal);
 
             foreach (var element in _elements)
             {
@@ -196,8 +205,6 @@ namespace Document
             await LoadElements();
 
             loader1.SendToBack();
-
-            //DialogProcess.InfoMessage("Морфологический сервис Morpheus", $"Найдено новых определений {resultsCount}");
         }
 
         internal void CheckMorphStatus(ElementModel element)
@@ -293,7 +300,34 @@ namespace Document
                 }
             }
 
-            //_multyDefWords = _multyDefWords.Where(i => !_noDefWords.Select(j => j.Id).Contains(i.Id)).ToList();
+            loader1.SendToBack();
+        }
+
+        internal async Task PublishChunkAsync()
+        {
+            loader1.BringToFront();
+
+            loader1.SetStatus("Публикация фрагмента");
+
+            var chunk = new ChunkModel
+            {
+                HeaderId = Chunk.HeaderId,
+                Id = Chunk.Id,
+                IndexId = Chunk.IndexId,
+                Value = Chunk.Value,
+                ValueObj = Chunk.ValueObj
+            };
+
+            var newValueObj = await ChunkProcess.CreateChunkValueObjs(_elements).ConfigureAwait(true);
+
+            var result = await ChunkProcess.PublishChunkValueObj(chunk, newValueObj).ConfigureAwait(true);
+
+            if (result != null) {
+
+                Chunk.ValueObj = result.ValueObj;
+
+                EnablePublishing.Invoke(this, false);
+            }
 
             loader1.SendToBack();
         }
