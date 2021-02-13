@@ -194,16 +194,16 @@ namespace Document
 
         private void MorphSelector_ElementMorphRejected(object sender, ElementModel e)
         {
-            btnPublishChunk.Enabled = true;
-
             _chunkExplorer.CheckMorphStatus(e);
+
+            btnPublishChunk.Enabled = true;
         }
 
         private void MorphSelector_ElementMorphAccepted(object sender, ElementModel e)
         {
-            btnPublishChunk.Enabled = true;
-
             _chunkExplorer.CheckMorphStatus(e);
+
+            btnPublishChunk.Enabled = true;
         }
 
         private void btnShowHideTranslationPane_Click(object sender, EventArgs e)

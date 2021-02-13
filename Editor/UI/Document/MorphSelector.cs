@@ -270,11 +270,11 @@ namespace Document
                             _element = elem;
 
                             await LoadDataAsync(_element);
-
-                            ElementMorphAccepted.Invoke(this, _element);
                         }
                     }
                 }
+
+                ElementMorphAccepted.Invoke(this, _element);
             }
         }
 
@@ -299,10 +299,10 @@ namespace Document
                             _element = elem;
 
                             await LoadDataAsync(_element);
-
-                            ElementMorphRejected.Invoke(this, _element);
                         }
                     }
+
+                    ElementMorphRejected.Invoke(this, _element);
                 }
             }
         }
