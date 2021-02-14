@@ -1,6 +1,7 @@
 ﻿using Common.Process;
 using Model;
 using Model.Query;
+using Model.View;
 using Process;
 using System;
 using System.Collections.Generic;
@@ -293,11 +294,17 @@ namespace Document
 
         private async void btnUpdateChunkValueObj_Click(object sender, EventArgs e)
         {
+            var updatedChunks = new List<ChunkViewModel>();
+
             loader1.BringToFront();
 
             loader1.SetStatus("Обновление фрагментов");
 
+            btnUpdateChunkValueObj.Enabled = btnAddFirstLevelSection.Enabled = false;
+
             var chunks = await ChunkProcess.GetChunksByQuery(new ChunkQuery { headerId = _documentProcess.Header.Id });
+
+            int updatedCount = 0;
 
             int count = 0;
 
@@ -313,13 +320,20 @@ namespace Document
 
                 if (published != null)
                 {
-                    count += 1;
+                    updatedCount += 1;
+                    updatedChunks.Add(chunkView);
                 }
 
-                loader1.SetStatus($"Обновлено фрагментов: {count} из {chunks.Count}");
+                count += 1;
+
+                loader1.SetStatus($"Обновлено фрагментов: {updatedCount} из {chunks.Count}. Обработано: {count}");
             }
 
+            MessageBox.Show($"Обновлено фрагментов: {updatedCount} из {chunks.Count}: {string.Join(", ", updatedChunks.Select(i=>i.IndexName))}");
+
             loader1.SendToBack();
+
+            btnUpdateChunkValueObj.Enabled = btnAddFirstLevelSection.Enabled = true;
         }
     }
 }

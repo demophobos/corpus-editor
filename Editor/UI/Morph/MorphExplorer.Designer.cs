@@ -63,13 +63,16 @@ namespace Morph
             this.cmbVoice = new System.Windows.Forms.ToolStripComboBox();
             this.cmbDegree = new System.Windows.Forms.ToolStripComboBox();
             this.btnRunFilter = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripLabel();
-            this.lblResult = new System.Windows.Forms.ToolStripLabel();
             this.btnUndoRule = new System.Windows.Forms.ToolStripButton();
             this.btnApplyRule = new System.Windows.Forms.ToolStripButton();
             this.loader1 = new Common.Control.Loader();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.lblUsageStat = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnEdit = new System.Windows.Forms.ToolStripButton();
+            this.btnAdd = new System.Windows.Forms.ToolStripButton();
+            this.btnDelete = new System.Windows.Forms.ToolStripButton();
+            this.btnShowUsage = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.morphSource)).BeginInit();
             this.toolStrip1.SuspendLayout();
@@ -268,10 +271,13 @@ namespace Morph
             this.cmbVoice,
             this.cmbDegree,
             this.btnRunFilter,
-            this.toolStripButton1,
-            this.lblResult,
             this.btnUndoRule,
-            this.btnApplyRule});
+            this.btnApplyRule,
+            this.btnShowUsage,
+            this.toolStripSeparator1,
+            this.btnAdd,
+            this.btnEdit,
+            this.btnDelete});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Padding = new System.Windows.Forms.Padding(0, 0, 2, 0);
@@ -376,21 +382,6 @@ namespace Morph
             this.btnRunFilter.Text = "Найти";
             this.btnRunFilter.Click += new System.EventHandler(this.btnRunFilter_Click);
             // 
-            // toolStripButton1
-            // 
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(58, 22);
-            this.toolStripButton1.Text = "Найдено:";
-            // 
-            // lblResult
-            // 
-            this.lblResult.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.lblResult.Name = "lblResult";
-            this.lblResult.Size = new System.Drawing.Size(0, 22);
-            // 
             // btnUndoRule
             // 
             this.btnUndoRule.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
@@ -440,6 +431,51 @@ namespace Morph
             this.lblUsageStat.Name = "lblUsageStat";
             this.lblUsageStat.Size = new System.Drawing.Size(0, 17);
             // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
+            // btnEdit
+            // 
+            this.btnEdit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnEdit.Image = ((System.Drawing.Image)(resources.GetObject("btnEdit.Image")));
+            this.btnEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(23, 22);
+            this.btnEdit.Text = "Редактировать";
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnAdd.Image")));
+            this.btnAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(23, 22);
+            this.btnAdd.Text = "Добавить";
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnDelete.Image = ((System.Drawing.Image)(resources.GetObject("btnDelete.Image")));
+            this.btnDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(23, 22);
+            this.btnDelete.Text = "Удалить";
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // btnShowUsage
+            // 
+            this.btnShowUsage.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnShowUsage.Image = ((System.Drawing.Image)(resources.GetObject("btnShowUsage.Image")));
+            this.btnShowUsage.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnShowUsage.Name = "btnShowUsage";
+            this.btnShowUsage.Size = new System.Drawing.Size(23, 22);
+            this.btnShowUsage.Text = "Случаев использования";
+            this.btnShowUsage.Click += new System.EventHandler(this.btnShowUsage_Click);
+            // 
             // MorphExplorer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -473,7 +509,6 @@ namespace Morph
         private System.Windows.Forms.ToolStripTextBox txtForm;
         private System.Windows.Forms.BindingSource morphSource;
         private Common.Control.Loader loader1;
-        private System.Windows.Forms.ToolStripLabel toolStripButton1;
         private System.Windows.Forms.ToolStripComboBox cmbGender;
         private System.Windows.Forms.ToolStripComboBox cmbPerson;
         private System.Windows.Forms.ToolStripComboBox cmbNumber;
@@ -483,7 +518,6 @@ namespace Morph
         private System.Windows.Forms.ToolStripComboBox cmbDegree;
         private System.Windows.Forms.ToolStripComboBox cmbCase;
         private System.Windows.Forms.ToolStripButton btnRunFilter;
-        private System.Windows.Forms.ToolStripLabel lblResult;
         private System.Windows.Forms.DataGridViewCheckBoxColumn IsRule;
         private System.Windows.Forms.DataGridViewTextBoxColumn posDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn lemmaDataGridViewTextBoxColumn;
@@ -505,5 +539,10 @@ namespace Morph
         private System.Windows.Forms.ToolStripStatusLabel lblUsageStat;
         private System.Windows.Forms.ToolStripButton btnUndoRule;
         private System.Windows.Forms.ToolStripButton btnApplyRule;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripButton btnAdd;
+        private System.Windows.Forms.ToolStripButton btnEdit;
+        private System.Windows.Forms.ToolStripButton btnDelete;
+        private System.Windows.Forms.ToolStripButton btnShowUsage;
     }
 }

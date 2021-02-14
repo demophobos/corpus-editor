@@ -13,8 +13,8 @@ using WeifenLuo.WinFormsUI.Docking;
 namespace Morph
 {
     public partial class MorphExplorer : DockContent
-
     {
+
         List<MorphModel> _morphItems;
 
         MorphProcess _morphProcess;
@@ -106,7 +106,7 @@ namespace Morph
 
             morphSource.DataSource = _morphItems;
 
-            lblResult.Text = _morphItems.Count.ToString();
+            lblUsageStat.Text = $"Всего определений: {_morphItems.Count}";
 
             loader1.SendToBack();
 
@@ -123,15 +123,11 @@ namespace Morph
             btnApplyRule.Enabled = btnUndoRule.Enabled = btnIsRule.Checked;
         }
 
-        private async void morphSource_CurrentChanged(object sender, EventArgs e)
+        private void morphSource_CurrentChanged(object sender, EventArgs e)
         {
-            if (morphSource.Current != null && morphSource.Current is MorphModel morph)
-            {
+            btnShowUsage.Enabled = btnDelete.Enabled = btnEdit.Enabled = morphSource.Current != null;
 
-                var elements = await ElementProcess.GetElements(new ElementQuery { morphId = morph.Id }).ConfigureAwait(true);
-
-                lblUsageStat.Text = $"Статистика использования '{morph.Form}': {elements.Count}";
-            }
+            
         }
 
         private async void btnApplyRule_Click(object sender, EventArgs e)
@@ -197,6 +193,70 @@ namespace Morph
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
         {
             btnApplyRule.Enabled = btnUndoRule.Enabled = dataGridView1.SelectedRows.Count > 0;
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            var morph = new MorphModel();
+            var editor = new MorphEditor(morph);
+            if (editor.ShowDialog() == DialogResult.OK) {
+                txtForm.Text = morph.Form;
+                btnRunFilter.PerformClick();
+            }
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            if (morphSource.Current is MorphModel model)
+            {
+                var editor = new MorphEditor(model);
+
+                if (editor.ShowDialog() == DialogResult.OK)
+                {
+                    morphSource.ResetCurrentItem();
+                }
+            }
+        }
+
+        private async void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (morphSource.Current is MorphModel model && DialogProcess.DeleteWarning(model) == DialogResult.Yes)
+            {
+                var results = await ElementProcess.GetElements(new ElementQuery { morphId = model.Id }).ConfigureAwait(true);
+
+                if (results.Count == 0)
+                {
+                    await _morphProcess.DeleteMorph(model).ConfigureAwait(true);
+
+                    btnRunFilter.PerformClick();
+                }
+                else
+                {
+                    if (DialogProcess.DeleteBulkWarning($"'{model.Form}' используется в определениях элементов: {results.Count}") == DialogResult.Yes)
+                    {
+
+                        foreach (var element in results)
+                        {
+                            element.MorphId = null;
+                            await ElementProcess.SaveModel(element).ConfigureAwait(true);
+                        }
+
+                        await _morphProcess.DeleteMorph(model).ConfigureAwait(true);
+
+                        btnRunFilter.PerformClick();
+                    }
+                }
+            }
+        }
+
+        private async void btnShowUsage_Click(object sender, EventArgs e)
+        {
+            if (morphSource.Current != null && morphSource.Current is MorphModel morph)
+            {
+                var elements = await ElementProcess.GetElements(new ElementQuery { morphId = morph.Id }).ConfigureAwait(true);
+
+                lblUsageStat.Text = $"Статистика использования '{morph.Form}': {elements.Count}";
+            }
         }
     }
 }

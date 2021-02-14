@@ -1,11 +1,14 @@
 ﻿using Auth;
 using Common.Process;
 using Document;
+using Microsoft.Win32;
 using Model;
 using Morph;
 using Process;
 using Project;
 using System;
+using System.Deployment.Application;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using WeifenLuo.WinFormsUI.Docking;
@@ -21,6 +24,8 @@ namespace Editor
 
         public MainForm()
         {
+            SetAddRemoveProgramsIcon();
+
             InitializeComponent();
 
             dockPanel1.Theme = UIProcess.DockPanelTheme;
@@ -143,6 +148,45 @@ namespace Editor
             var documentForm = new DocumentContainer(header);
 
             documentForm.Show(dockPanel1, DockState.Document);
+        }
+
+        private void SetAddRemoveProgramsIcon()
+        {
+            if (ApplicationDeployment.IsNetworkDeployed && ApplicationDeployment.CurrentDeployment.IsFirstRun)
+            {
+                try
+                {
+                    var iconSourcePath = Path.Combine(Application.StartupPath, "icon.ico");
+
+                    if (!File.Exists(iconSourcePath)) return;
+
+                    var myUninstallKey = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Uninstall");
+                    if (myUninstallKey == null) return;
+
+                    var mySubKeyNames = myUninstallKey.GetSubKeyNames();
+
+                    foreach (var subkeyName in mySubKeyNames)
+                    {
+                        var myKey = myUninstallKey.OpenSubKey(subkeyName, true);
+                        var myValue = myKey.GetValue("DisplayName");
+
+                        // we have two versions 
+                        if (myValue != null && myValue.ToString() == "CLR-Editor") // same as in 'Product name:' field
+                        {
+                            myKey.SetValue("DisplayIcon", iconSourcePath);
+                        }
+                        else
+                        if (myValue != null && myValue.ToString() == "CLR-Editor") // same as in 'Product name:' field
+                        {
+                            myKey.SetValue("DisplayIcon", iconSourcePath);
+                        }
+                    }
+                }
+                catch (Exception exc)
+                {
+                    System.Diagnostics.Trace.WriteLine("SetAddRemoveProgramsIcon failed: " + exc.Message);
+                }
+            }
         }
     }
 }

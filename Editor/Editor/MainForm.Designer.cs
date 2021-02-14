@@ -44,9 +44,10 @@ namespace Editor
             // 
             this.dockPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dockPanel1.DocumentStyle = WeifenLuo.WinFormsUI.Docking.DocumentStyle.DockingWindow;
-            this.dockPanel1.Location = new System.Drawing.Point(0, 24);
+            this.dockPanel1.Location = new System.Drawing.Point(0, 25);
+            this.dockPanel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dockPanel1.Name = "dockPanel1";
-            this.dockPanel1.Size = new System.Drawing.Size(853, 427);
+            this.dockPanel1.Size = new System.Drawing.Size(1280, 669);
             this.dockPanel1.TabIndex = 0;
             // 
             // menuStrip1
@@ -55,7 +56,8 @@ namespace Editor
             this.mnuFile});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(853, 24);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(9, 3, 0, 3);
+            this.menuStrip1.Size = new System.Drawing.Size(1280, 25);
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -67,7 +69,7 @@ namespace Editor
             this.toolStripSeparator1,
             this.mnuExit});
             this.mnuFile.Name = "mnuFile";
-            this.mnuFile.Size = new System.Drawing.Size(48, 20);
+            this.mnuFile.Size = new System.Drawing.Size(48, 19);
             this.mnuFile.Text = "Файл";
             // 
             // mnuLogin
@@ -98,14 +100,15 @@ namespace Editor
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(853, 451);
+            this.ClientSize = new System.Drawing.Size(1280, 694);
             this.Controls.Add(this.dockPanel1);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "MainForm";
-            this.Text = "Редактор";
+            this.Text = "CLR-Editor";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
