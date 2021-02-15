@@ -258,5 +258,23 @@ namespace Morph
                 lblUsageStat.Text = $"Статистика использования '{morph.Form}': {elements.Count}";
             }
         }
+
+        private void btnClone_Click(object sender, EventArgs e)
+        {
+            if (morphSource.Current is MorphModel model)
+            {
+                MorphModel clone = model.Clone() as MorphModel;
+
+                clone.Id = null;
+
+                var editor = new MorphEditor(clone);
+
+                if (editor.ShowDialog() == DialogResult.OK)
+                {
+                    txtForm.Text = clone.Form;
+                    btnRunFilter.PerformClick();
+                }
+            }
+        }
     }
 }

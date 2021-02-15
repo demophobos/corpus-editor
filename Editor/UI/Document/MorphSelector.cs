@@ -313,5 +313,22 @@ namespace Document
 
             btnCancelDefinition.Enabled = !string.IsNullOrEmpty(_element.MorphId);
         }
+
+        private async void btnClone_Click(object sender, EventArgs e)
+        {
+            if (morphSource.Current is MorphModel model)
+            {
+                MorphModel clone = model.Clone() as MorphModel;
+
+                clone.Id = null;
+
+                var editor = new MorphEditor(clone);
+
+                if (editor.ShowDialog() == DialogResult.OK)
+                {
+                    await LoadDataAsync(_element);
+                }
+            }
+        }
     }
 }

@@ -1,8 +1,9 @@
 ﻿using Newtonsoft.Json;
+using System;
 
 namespace Model
 {
-    public class MorphModel : BaseModel
+    public class MorphModel : BaseModel, ICloneable
     {
         [JsonProperty("lemma")]
         public string Lemma { get; set; }
@@ -34,6 +35,11 @@ namespace Model
         public string Lang { get; set; }
         [JsonProperty("isRule")]
         public bool IsRule { get; set; }
+
+        public object Clone()
+        {
+            return (MorphModel)MemberwiseClone();
+        }
 
         public override string ToString()
         {

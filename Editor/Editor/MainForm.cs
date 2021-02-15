@@ -10,6 +10,7 @@ using System;
 using System.Deployment.Application;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Windows.Forms;
 using WeifenLuo.WinFormsUI.Docking;
 
@@ -41,7 +42,9 @@ namespace Editor
                     document.DockHandler.Close();
                 }
 
-                Text = $"Editor [{AuthProcess.User.Email }]";
+                var version = Assembly.GetExecutingAssembly().GetName().Version;
+
+                Text = $"CLR Редактор ({version}) [{AuthProcess.User.Email }]";
 
                 btnShowMorphExplorer.Visible = true;
 

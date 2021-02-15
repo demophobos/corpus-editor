@@ -65,14 +65,15 @@ namespace Morph
             this.btnRunFilter = new System.Windows.Forms.ToolStripButton();
             this.btnUndoRule = new System.Windows.Forms.ToolStripButton();
             this.btnApplyRule = new System.Windows.Forms.ToolStripButton();
+            this.btnShowUsage = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnAdd = new System.Windows.Forms.ToolStripButton();
+            this.btnEdit = new System.Windows.Forms.ToolStripButton();
+            this.btnDelete = new System.Windows.Forms.ToolStripButton();
             this.loader1 = new Common.Control.Loader();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.lblUsageStat = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.btnEdit = new System.Windows.Forms.ToolStripButton();
-            this.btnAdd = new System.Windows.Forms.ToolStripButton();
-            this.btnDelete = new System.Windows.Forms.ToolStripButton();
-            this.btnShowUsage = new System.Windows.Forms.ToolStripButton();
+            this.btnClone = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.morphSource)).BeginInit();
             this.toolStrip1.SuspendLayout();
@@ -276,6 +277,7 @@ namespace Morph
             this.btnShowUsage,
             this.toolStripSeparator1,
             this.btnAdd,
+            this.btnClone,
             this.btnEdit,
             this.btnDelete});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
@@ -406,6 +408,51 @@ namespace Morph
             this.btnApplyRule.Text = "Применить правило";
             this.btnApplyRule.Click += new System.EventHandler(this.btnApplyRule_Click);
             // 
+            // btnShowUsage
+            // 
+            this.btnShowUsage.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnShowUsage.Image = ((System.Drawing.Image)(resources.GetObject("btnShowUsage.Image")));
+            this.btnShowUsage.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnShowUsage.Name = "btnShowUsage";
+            this.btnShowUsage.Size = new System.Drawing.Size(23, 22);
+            this.btnShowUsage.Text = "Случаев использования";
+            this.btnShowUsage.Click += new System.EventHandler(this.btnShowUsage_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnAdd.Image")));
+            this.btnAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(23, 22);
+            this.btnAdd.Text = "Добавить";
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // btnEdit
+            // 
+            this.btnEdit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnEdit.Image = ((System.Drawing.Image)(resources.GetObject("btnEdit.Image")));
+            this.btnEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(23, 22);
+            this.btnEdit.Text = "Редактировать";
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnDelete.Image = ((System.Drawing.Image)(resources.GetObject("btnDelete.Image")));
+            this.btnDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(23, 22);
+            this.btnDelete.Text = "Удалить";
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
             // loader1
             // 
             this.loader1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -431,50 +478,15 @@ namespace Morph
             this.lblUsageStat.Name = "lblUsageStat";
             this.lblUsageStat.Size = new System.Drawing.Size(0, 17);
             // 
-            // toolStripSeparator1
+            // btnClone
             // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
-            // 
-            // btnEdit
-            // 
-            this.btnEdit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnEdit.Image = ((System.Drawing.Image)(resources.GetObject("btnEdit.Image")));
-            this.btnEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(23, 22);
-            this.btnEdit.Text = "Редактировать";
-            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
-            // 
-            // btnAdd
-            // 
-            this.btnAdd.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnAdd.Image")));
-            this.btnAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(23, 22);
-            this.btnAdd.Text = "Добавить";
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-            // 
-            // btnDelete
-            // 
-            this.btnDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnDelete.Image = ((System.Drawing.Image)(resources.GetObject("btnDelete.Image")));
-            this.btnDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(23, 22);
-            this.btnDelete.Text = "Удалить";
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
-            // 
-            // btnShowUsage
-            // 
-            this.btnShowUsage.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnShowUsage.Image = ((System.Drawing.Image)(resources.GetObject("btnShowUsage.Image")));
-            this.btnShowUsage.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnShowUsage.Name = "btnShowUsage";
-            this.btnShowUsage.Size = new System.Drawing.Size(23, 22);
-            this.btnShowUsage.Text = "Случаев использования";
-            this.btnShowUsage.Click += new System.EventHandler(this.btnShowUsage_Click);
+            this.btnClone.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnClone.Image = ((System.Drawing.Image)(resources.GetObject("btnClone.Image")));
+            this.btnClone.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnClone.Name = "btnClone";
+            this.btnClone.Size = new System.Drawing.Size(23, 22);
+            this.btnClone.Text = "Копировать";
+            this.btnClone.Click += new System.EventHandler(this.btnClone_Click);
             // 
             // MorphExplorer
             // 
@@ -544,5 +556,6 @@ namespace Morph
         private System.Windows.Forms.ToolStripButton btnEdit;
         private System.Windows.Forms.ToolStripButton btnDelete;
         private System.Windows.Forms.ToolStripButton btnShowUsage;
+        private System.Windows.Forms.ToolStripButton btnClone;
     }
 }
