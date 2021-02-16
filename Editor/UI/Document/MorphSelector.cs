@@ -123,10 +123,12 @@ namespace Document
                 if (row.Cells["morphId"].Value != null && row.Cells["morphId"].Value.ToString() == _element.MorphId)
                 {
                     row.DefaultCellStyle.Font = new Font(dataGridView1.Font, FontStyle.Underline);
+                    row.DefaultCellStyle.BackColor = Color.Gold;
                 }
                 else
                 {
                     row.DefaultCellStyle.Font = new Font(dataGridView1.Font, FontStyle.Regular);
+                    row.DefaultCellStyle.BackColor = SystemColors.Window;
                 }
             }
         }
