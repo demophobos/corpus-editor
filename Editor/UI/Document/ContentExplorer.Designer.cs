@@ -35,6 +35,9 @@ namespace Document
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.btnAddFirstLevelSection = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnShowBookmarks = new System.Windows.Forms.ToolStripButton();
+            this.btnRemoveAllBookmarks = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.btnImportChunks = new System.Windows.Forms.ToolStripSplitButton();
             this.btnLoadJSON = new System.Windows.Forms.ToolStripMenuItem();
@@ -46,9 +49,14 @@ namespace Document
             this.btnRemoveSection = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.btnOpenEditor = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnSetBookmark = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnRemoveBookmark = new System.Windows.Forms.ToolStripMenuItem();
             this.loader1 = new Common.Control.Loader();
+            this.bookmarkedSource = new System.Windows.Forms.BindingSource(this.components);
             this.toolStrip2.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bookmarkedSource)).BeginInit();
             this.SuspendLayout();
             // 
             // treeView1
@@ -74,15 +82,16 @@ namespace Document
             this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             this.imageList1.Images.SetKeyName(0, "DocumentOutline_16x.png");
-            this.imageList1.Images.SetKeyName(1, "DocumentOutline_16x.png");
-            this.imageList1.Images.SetKeyName(2, "StatusInformationOutline_16x.png");
-            this.imageList1.Images.SetKeyName(3, "StatusOKOutline_16x.png");
+            this.imageList1.Images.SetKeyName(1, "Bookmark_16x.png");
             // 
             // toolStrip2
             // 
             this.toolStrip2.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnAddFirstLevelSection,
+            this.toolStripSeparator2,
+            this.btnShowBookmarks,
+            this.btnRemoveAllBookmarks,
             this.toolStripSeparator1,
             this.btnImportChunks,
             this.btnUpdateHeaderId,
@@ -103,6 +112,31 @@ namespace Document
             this.btnAddFirstLevelSection.Size = new System.Drawing.Size(23, 22);
             this.btnAddFirstLevelSection.Text = "Добавить раздел";
             this.btnAddFirstLevelSection.Click += new System.EventHandler(this.btnAddFirstLevelSection_ClickAsync);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+            // 
+            // btnShowBookmarks
+            // 
+            this.btnShowBookmarks.Image = ((System.Drawing.Image)(resources.GetObject("btnShowBookmarks.Image")));
+            this.btnShowBookmarks.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnShowBookmarks.Name = "btnShowBookmarks";
+            this.btnShowBookmarks.Size = new System.Drawing.Size(33, 22);
+            this.btnShowBookmarks.Text = "0";
+            this.btnShowBookmarks.ToolTipText = "Показать закладки";
+            this.btnShowBookmarks.Click += new System.EventHandler(this.btnShowBookmarks_Click);
+            // 
+            // btnRemoveAllBookmarks
+            // 
+            this.btnRemoveAllBookmarks.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnRemoveAllBookmarks.Image = ((System.Drawing.Image)(resources.GetObject("btnRemoveAllBookmarks.Image")));
+            this.btnRemoveAllBookmarks.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnRemoveAllBookmarks.Name = "btnRemoveAllBookmarks";
+            this.btnRemoveAllBookmarks.Size = new System.Drawing.Size(23, 22);
+            this.btnRemoveAllBookmarks.ToolTipText = "Удалить закладки";
+            this.btnRemoveAllBookmarks.Click += new System.EventHandler(this.btnRemoveAllBookmarks_Click);
             // 
             // toolStripSeparator1
             // 
@@ -158,9 +192,12 @@ namespace Document
             this.btnEditSection,
             this.btnRemoveSection,
             this.toolStripMenuItem1,
-            this.btnOpenEditor});
+            this.btnOpenEditor,
+            this.toolStripSeparator3,
+            this.btnSetBookmark,
+            this.btnRemoveBookmark});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(250, 98);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(250, 148);
             // 
             // btnAddSubsection
             // 
@@ -202,6 +239,27 @@ namespace Document
             this.btnOpenEditor.Text = "Редактор фрагмента";
             this.btnOpenEditor.Click += new System.EventHandler(this.btnOpenEditor_Click);
             // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(246, 6);
+            // 
+            // btnSetBookmark
+            // 
+            this.btnSetBookmark.Image = ((System.Drawing.Image)(resources.GetObject("btnSetBookmark.Image")));
+            this.btnSetBookmark.Name = "btnSetBookmark";
+            this.btnSetBookmark.Size = new System.Drawing.Size(249, 22);
+            this.btnSetBookmark.Text = "Добавить закладку";
+            this.btnSetBookmark.Click += new System.EventHandler(this.btnSetBookmark_Click);
+            // 
+            // btnRemoveBookmark
+            // 
+            this.btnRemoveBookmark.Image = ((System.Drawing.Image)(resources.GetObject("btnRemoveBookmark.Image")));
+            this.btnRemoveBookmark.Name = "btnRemoveBookmark";
+            this.btnRemoveBookmark.Size = new System.Drawing.Size(249, 22);
+            this.btnRemoveBookmark.Text = "Удалить закладку";
+            this.btnRemoveBookmark.Click += new System.EventHandler(this.btnRemoveBookmark_ClickAsync);
+            // 
             // loader1
             // 
             this.loader1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -210,6 +268,12 @@ namespace Document
             this.loader1.Name = "loader1";
             this.loader1.Size = new System.Drawing.Size(366, 450);
             this.loader1.TabIndex = 10;
+            // 
+            // bookmarkedSource
+            // 
+            this.bookmarkedSource.AllowNew = false;
+            this.bookmarkedSource.DataSource = typeof(Model.IndexModel);
+            this.bookmarkedSource.PositionChanged += new System.EventHandler(this.bookmarkedSource_PositionChanged);
             // 
             // ContentExplorer
             // 
@@ -227,6 +291,7 @@ namespace Document
             this.toolStrip2.ResumeLayout(false);
             this.toolStrip2.PerformLayout();
             this.contextMenuStrip1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.bookmarkedSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -250,5 +315,12 @@ namespace Document
         private Common.Control.Loader loader1;
         private System.Windows.Forms.ToolStripButton btnUpdateHeaderId;
         private System.Windows.Forms.ToolStripButton btnUpdateChunkValueObj;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripButton btnShowBookmarks;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripMenuItem btnSetBookmark;
+        private System.Windows.Forms.ToolStripMenuItem btnRemoveBookmark;
+        private System.Windows.Forms.BindingSource bookmarkedSource;
+        private System.Windows.Forms.ToolStripButton btnRemoveAllBookmarks;
     }
 }

@@ -30,17 +30,28 @@ namespace Document
         private void InitializeComponent()
         {
             this.lblChunk = new System.Windows.Forms.Label();
+            this.loader1 = new Common.Control.Loader();
             this.SuspendLayout();
             // 
             // lblChunk
             // 
             this.lblChunk.BackColor = System.Drawing.SystemColors.Info;
             this.lblChunk.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblChunk.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblChunk.Location = new System.Drawing.Point(0, 0);
             this.lblChunk.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
             this.lblChunk.Name = "lblChunk";
             this.lblChunk.Size = new System.Drawing.Size(582, 332);
             this.lblChunk.TabIndex = 0;
+            // 
+            // loader1
+            // 
+            this.loader1.BackColor = System.Drawing.SystemColors.Info;
+            this.loader1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.loader1.Location = new System.Drawing.Point(0, 0);
+            this.loader1.Name = "loader1";
+            this.loader1.Size = new System.Drawing.Size(582, 332);
+            this.loader1.TabIndex = 1;
             // 
             // ChunkViewer
             // 
@@ -52,6 +63,7 @@ namespace Document
             this.CloseButton = false;
             this.CloseButtonVisible = false;
             this.Controls.Add(this.lblChunk);
+            this.Controls.Add(this.loader1);
             this.Name = "ChunkViewer";
             this.ResumeLayout(false);
 
@@ -60,5 +72,6 @@ namespace Document
         #endregion
 
         private System.Windows.Forms.Label lblChunk;
+        private Common.Control.Loader loader1;
     }
 }

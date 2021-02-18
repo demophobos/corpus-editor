@@ -32,22 +32,6 @@ namespace Morph
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MorphExplorer));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.IsRule = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.posDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lemmaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.formDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.genderDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.caseDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.personDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.numberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tenseDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.moodDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.voiceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.degreeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dialectDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.featureDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.langDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.morphSource = new System.Windows.Forms.BindingSource(this.components);
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.btnIsRule = new System.Windows.Forms.ToolStripButton();
@@ -68,12 +52,28 @@ namespace Morph
             this.btnShowUsage = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.btnAdd = new System.Windows.Forms.ToolStripButton();
+            this.btnClone = new System.Windows.Forms.ToolStripButton();
             this.btnEdit = new System.Windows.Forms.ToolStripButton();
             this.btnDelete = new System.Windows.Forms.ToolStripButton();
             this.loader1 = new Common.Control.Loader();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.lblUsageStat = new System.Windows.Forms.ToolStripStatusLabel();
-            this.btnClone = new System.Windows.Forms.ToolStripButton();
+            this.IsRule = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.posDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lemmaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.formDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.genderDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.caseDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.personDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.numberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tenseDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.moodDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.voiceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.degreeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dialectDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.featureDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.langDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.morphSource)).BeginInit();
             this.toolStrip1.SuspendLayout();
@@ -115,140 +115,6 @@ namespace Morph
             this.dataGridView1.Size = new System.Drawing.Size(2007, 645);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
-            // 
-            // IsRule
-            // 
-            this.IsRule.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.IsRule.DataPropertyName = "IsRule";
-            this.IsRule.HeaderText = "";
-            this.IsRule.MinimumWidth = 24;
-            this.IsRule.Name = "IsRule";
-            this.IsRule.ReadOnly = true;
-            this.IsRule.Width = 24;
-            // 
-            // posDataGridViewTextBoxColumn
-            // 
-            this.posDataGridViewTextBoxColumn.DataPropertyName = "Pos";
-            this.posDataGridViewTextBoxColumn.HeaderText = "Часть речи";
-            this.posDataGridViewTextBoxColumn.Name = "posDataGridViewTextBoxColumn";
-            this.posDataGridViewTextBoxColumn.ReadOnly = true;
-            this.posDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.posDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            // 
-            // lemmaDataGridViewTextBoxColumn
-            // 
-            this.lemmaDataGridViewTextBoxColumn.DataPropertyName = "Lemma";
-            this.lemmaDataGridViewTextBoxColumn.HeaderText = "Лемма";
-            this.lemmaDataGridViewTextBoxColumn.Name = "lemmaDataGridViewTextBoxColumn";
-            this.lemmaDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // formDataGridViewTextBoxColumn
-            // 
-            this.formDataGridViewTextBoxColumn.DataPropertyName = "Form";
-            this.formDataGridViewTextBoxColumn.HeaderText = "Форма";
-            this.formDataGridViewTextBoxColumn.Name = "formDataGridViewTextBoxColumn";
-            this.formDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // genderDataGridViewTextBoxColumn
-            // 
-            this.genderDataGridViewTextBoxColumn.DataPropertyName = "Gender";
-            this.genderDataGridViewTextBoxColumn.HeaderText = "Род";
-            this.genderDataGridViewTextBoxColumn.Name = "genderDataGridViewTextBoxColumn";
-            this.genderDataGridViewTextBoxColumn.ReadOnly = true;
-            this.genderDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.genderDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            // 
-            // caseDataGridViewTextBoxColumn
-            // 
-            this.caseDataGridViewTextBoxColumn.DataPropertyName = "Case";
-            this.caseDataGridViewTextBoxColumn.HeaderText = "Падеж";
-            this.caseDataGridViewTextBoxColumn.Name = "caseDataGridViewTextBoxColumn";
-            this.caseDataGridViewTextBoxColumn.ReadOnly = true;
-            this.caseDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.caseDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            // 
-            // personDataGridViewTextBoxColumn
-            // 
-            this.personDataGridViewTextBoxColumn.DataPropertyName = "Person";
-            this.personDataGridViewTextBoxColumn.HeaderText = "Лицо";
-            this.personDataGridViewTextBoxColumn.Name = "personDataGridViewTextBoxColumn";
-            this.personDataGridViewTextBoxColumn.ReadOnly = true;
-            this.personDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.personDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            // 
-            // numberDataGridViewTextBoxColumn
-            // 
-            this.numberDataGridViewTextBoxColumn.DataPropertyName = "Number";
-            this.numberDataGridViewTextBoxColumn.HeaderText = "Число";
-            this.numberDataGridViewTextBoxColumn.Name = "numberDataGridViewTextBoxColumn";
-            this.numberDataGridViewTextBoxColumn.ReadOnly = true;
-            this.numberDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.numberDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            // 
-            // tenseDataGridViewTextBoxColumn
-            // 
-            this.tenseDataGridViewTextBoxColumn.DataPropertyName = "Tense";
-            this.tenseDataGridViewTextBoxColumn.HeaderText = "Время";
-            this.tenseDataGridViewTextBoxColumn.Name = "tenseDataGridViewTextBoxColumn";
-            this.tenseDataGridViewTextBoxColumn.ReadOnly = true;
-            this.tenseDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.tenseDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            // 
-            // moodDataGridViewTextBoxColumn
-            // 
-            this.moodDataGridViewTextBoxColumn.DataPropertyName = "Mood";
-            this.moodDataGridViewTextBoxColumn.HeaderText = "Наклонение";
-            this.moodDataGridViewTextBoxColumn.Name = "moodDataGridViewTextBoxColumn";
-            this.moodDataGridViewTextBoxColumn.ReadOnly = true;
-            this.moodDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.moodDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            // 
-            // voiceDataGridViewTextBoxColumn
-            // 
-            this.voiceDataGridViewTextBoxColumn.DataPropertyName = "Voice";
-            this.voiceDataGridViewTextBoxColumn.HeaderText = "Залог";
-            this.voiceDataGridViewTextBoxColumn.Name = "voiceDataGridViewTextBoxColumn";
-            this.voiceDataGridViewTextBoxColumn.ReadOnly = true;
-            this.voiceDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.voiceDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            // 
-            // degreeDataGridViewTextBoxColumn
-            // 
-            this.degreeDataGridViewTextBoxColumn.DataPropertyName = "Degree";
-            this.degreeDataGridViewTextBoxColumn.HeaderText = "Степень";
-            this.degreeDataGridViewTextBoxColumn.Name = "degreeDataGridViewTextBoxColumn";
-            this.degreeDataGridViewTextBoxColumn.ReadOnly = true;
-            this.degreeDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.degreeDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            // 
-            // dialectDataGridViewTextBoxColumn
-            // 
-            this.dialectDataGridViewTextBoxColumn.DataPropertyName = "Dialect";
-            this.dialectDataGridViewTextBoxColumn.HeaderText = "Стиль";
-            this.dialectDataGridViewTextBoxColumn.Name = "dialectDataGridViewTextBoxColumn";
-            this.dialectDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // featureDataGridViewTextBoxColumn
-            // 
-            this.featureDataGridViewTextBoxColumn.DataPropertyName = "Feature";
-            this.featureDataGridViewTextBoxColumn.HeaderText = "Особенность";
-            this.featureDataGridViewTextBoxColumn.Name = "featureDataGridViewTextBoxColumn";
-            this.featureDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // langDataGridViewTextBoxColumn
-            // 
-            this.langDataGridViewTextBoxColumn.DataPropertyName = "Lang";
-            this.langDataGridViewTextBoxColumn.HeaderText = "Язык";
-            this.langDataGridViewTextBoxColumn.Name = "langDataGridViewTextBoxColumn";
-            this.langDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // idDataGridViewTextBoxColumn
-            // 
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            this.idDataGridViewTextBoxColumn.ReadOnly = true;
-            this.idDataGridViewTextBoxColumn.Visible = false;
             // 
             // morphSource
             // 
@@ -433,6 +299,16 @@ namespace Morph
             this.btnAdd.Text = "Добавить";
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
+            // btnClone
+            // 
+            this.btnClone.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnClone.Image = ((System.Drawing.Image)(resources.GetObject("btnClone.Image")));
+            this.btnClone.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnClone.Name = "btnClone";
+            this.btnClone.Size = new System.Drawing.Size(23, 22);
+            this.btnClone.Text = "Копировать";
+            this.btnClone.Click += new System.EventHandler(this.btnClone_Click);
+            // 
             // btnEdit
             // 
             this.btnEdit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -478,15 +354,138 @@ namespace Morph
             this.lblUsageStat.Name = "lblUsageStat";
             this.lblUsageStat.Size = new System.Drawing.Size(0, 17);
             // 
-            // btnClone
+            // IsRule
             // 
-            this.btnClone.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnClone.Image = ((System.Drawing.Image)(resources.GetObject("btnClone.Image")));
-            this.btnClone.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnClone.Name = "btnClone";
-            this.btnClone.Size = new System.Drawing.Size(23, 22);
-            this.btnClone.Text = "Копировать";
-            this.btnClone.Click += new System.EventHandler(this.btnClone_Click);
+            this.IsRule.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.IsRule.DataPropertyName = "IsRule";
+            this.IsRule.HeaderText = "";
+            this.IsRule.MinimumWidth = 24;
+            this.IsRule.Name = "IsRule";
+            this.IsRule.ReadOnly = true;
+            this.IsRule.Width = 24;
+            // 
+            // posDataGridViewTextBoxColumn
+            // 
+            this.posDataGridViewTextBoxColumn.DataPropertyName = "Pos";
+            this.posDataGridViewTextBoxColumn.HeaderText = "Часть речи";
+            this.posDataGridViewTextBoxColumn.Name = "posDataGridViewTextBoxColumn";
+            this.posDataGridViewTextBoxColumn.ReadOnly = true;
+            this.posDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.posDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            // 
+            // lemmaDataGridViewTextBoxColumn
+            // 
+            this.lemmaDataGridViewTextBoxColumn.DataPropertyName = "Lemma";
+            this.lemmaDataGridViewTextBoxColumn.HeaderText = "Лемма";
+            this.lemmaDataGridViewTextBoxColumn.Name = "lemmaDataGridViewTextBoxColumn";
+            this.lemmaDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // formDataGridViewTextBoxColumn
+            // 
+            this.formDataGridViewTextBoxColumn.DataPropertyName = "Form";
+            this.formDataGridViewTextBoxColumn.HeaderText = "Форма";
+            this.formDataGridViewTextBoxColumn.Name = "formDataGridViewTextBoxColumn";
+            this.formDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // genderDataGridViewTextBoxColumn
+            // 
+            this.genderDataGridViewTextBoxColumn.DataPropertyName = "Gender";
+            this.genderDataGridViewTextBoxColumn.HeaderText = "Род";
+            this.genderDataGridViewTextBoxColumn.Name = "genderDataGridViewTextBoxColumn";
+            this.genderDataGridViewTextBoxColumn.ReadOnly = true;
+            this.genderDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.genderDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            // 
+            // caseDataGridViewTextBoxColumn
+            // 
+            this.caseDataGridViewTextBoxColumn.DataPropertyName = "Case";
+            this.caseDataGridViewTextBoxColumn.HeaderText = "Падеж";
+            this.caseDataGridViewTextBoxColumn.Name = "caseDataGridViewTextBoxColumn";
+            this.caseDataGridViewTextBoxColumn.ReadOnly = true;
+            this.caseDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.caseDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            // 
+            // personDataGridViewTextBoxColumn
+            // 
+            this.personDataGridViewTextBoxColumn.DataPropertyName = "Person";
+            this.personDataGridViewTextBoxColumn.HeaderText = "Лицо";
+            this.personDataGridViewTextBoxColumn.Name = "personDataGridViewTextBoxColumn";
+            this.personDataGridViewTextBoxColumn.ReadOnly = true;
+            this.personDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.personDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            // 
+            // numberDataGridViewTextBoxColumn
+            // 
+            this.numberDataGridViewTextBoxColumn.DataPropertyName = "Number";
+            this.numberDataGridViewTextBoxColumn.HeaderText = "Число";
+            this.numberDataGridViewTextBoxColumn.Name = "numberDataGridViewTextBoxColumn";
+            this.numberDataGridViewTextBoxColumn.ReadOnly = true;
+            this.numberDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.numberDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            // 
+            // tenseDataGridViewTextBoxColumn
+            // 
+            this.tenseDataGridViewTextBoxColumn.DataPropertyName = "Tense";
+            this.tenseDataGridViewTextBoxColumn.HeaderText = "Время";
+            this.tenseDataGridViewTextBoxColumn.Name = "tenseDataGridViewTextBoxColumn";
+            this.tenseDataGridViewTextBoxColumn.ReadOnly = true;
+            this.tenseDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.tenseDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            // 
+            // moodDataGridViewTextBoxColumn
+            // 
+            this.moodDataGridViewTextBoxColumn.DataPropertyName = "Mood";
+            this.moodDataGridViewTextBoxColumn.HeaderText = "Наклонение";
+            this.moodDataGridViewTextBoxColumn.Name = "moodDataGridViewTextBoxColumn";
+            this.moodDataGridViewTextBoxColumn.ReadOnly = true;
+            this.moodDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.moodDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            // 
+            // voiceDataGridViewTextBoxColumn
+            // 
+            this.voiceDataGridViewTextBoxColumn.DataPropertyName = "Voice";
+            this.voiceDataGridViewTextBoxColumn.HeaderText = "Залог";
+            this.voiceDataGridViewTextBoxColumn.Name = "voiceDataGridViewTextBoxColumn";
+            this.voiceDataGridViewTextBoxColumn.ReadOnly = true;
+            this.voiceDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.voiceDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            // 
+            // degreeDataGridViewTextBoxColumn
+            // 
+            this.degreeDataGridViewTextBoxColumn.DataPropertyName = "Degree";
+            this.degreeDataGridViewTextBoxColumn.HeaderText = "Степень";
+            this.degreeDataGridViewTextBoxColumn.Name = "degreeDataGridViewTextBoxColumn";
+            this.degreeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.degreeDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.degreeDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            // 
+            // dialectDataGridViewTextBoxColumn
+            // 
+            this.dialectDataGridViewTextBoxColumn.DataPropertyName = "Dialect";
+            this.dialectDataGridViewTextBoxColumn.HeaderText = "Стиль";
+            this.dialectDataGridViewTextBoxColumn.Name = "dialectDataGridViewTextBoxColumn";
+            this.dialectDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // featureDataGridViewTextBoxColumn
+            // 
+            this.featureDataGridViewTextBoxColumn.DataPropertyName = "Feature";
+            this.featureDataGridViewTextBoxColumn.HeaderText = "Особенность";
+            this.featureDataGridViewTextBoxColumn.Name = "featureDataGridViewTextBoxColumn";
+            this.featureDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // langDataGridViewTextBoxColumn
+            // 
+            this.langDataGridViewTextBoxColumn.DataPropertyName = "Lang";
+            this.langDataGridViewTextBoxColumn.HeaderText = "Язык";
+            this.langDataGridViewTextBoxColumn.Name = "langDataGridViewTextBoxColumn";
+            this.langDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // idDataGridViewTextBoxColumn
+            // 
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            this.idDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // MorphExplorer
             // 
@@ -530,6 +529,17 @@ namespace Morph
         private System.Windows.Forms.ToolStripComboBox cmbDegree;
         private System.Windows.Forms.ToolStripComboBox cmbCase;
         private System.Windows.Forms.ToolStripButton btnRunFilter;
+        private System.Windows.Forms.ToolStripButton btnIsRule;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel lblUsageStat;
+        private System.Windows.Forms.ToolStripButton btnUndoRule;
+        private System.Windows.Forms.ToolStripButton btnApplyRule;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripButton btnAdd;
+        private System.Windows.Forms.ToolStripButton btnEdit;
+        private System.Windows.Forms.ToolStripButton btnDelete;
+        private System.Windows.Forms.ToolStripButton btnShowUsage;
+        private System.Windows.Forms.ToolStripButton btnClone;
         private System.Windows.Forms.DataGridViewCheckBoxColumn IsRule;
         private System.Windows.Forms.DataGridViewTextBoxColumn posDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn lemmaDataGridViewTextBoxColumn;
@@ -546,16 +556,5 @@ namespace Morph
         private System.Windows.Forms.DataGridViewTextBoxColumn featureDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn langDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
-        private System.Windows.Forms.ToolStripButton btnIsRule;
-        private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.ToolStripStatusLabel lblUsageStat;
-        private System.Windows.Forms.ToolStripButton btnUndoRule;
-        private System.Windows.Forms.ToolStripButton btnApplyRule;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripButton btnAdd;
-        private System.Windows.Forms.ToolStripButton btnEdit;
-        private System.Windows.Forms.ToolStripButton btnDelete;
-        private System.Windows.Forms.ToolStripButton btnShowUsage;
-        private System.Windows.Forms.ToolStripButton btnClone;
     }
 }

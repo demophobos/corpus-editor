@@ -20,6 +20,10 @@ namespace Document
 
         public async void LoadData(IndexModel index)
         {
+            loader1.BringToFront();
+
+            loader1.SetStatus("Загрузка данных ...");
+
             var sb = new StringBuilder();
 
             Text = index.Name;
@@ -77,6 +81,8 @@ namespace Document
             {
                 lblChunk.Text = string.Empty;
             }
+
+            loader1.SendToBack();
         }
     }
 }

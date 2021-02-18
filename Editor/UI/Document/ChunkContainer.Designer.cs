@@ -127,11 +127,13 @@ namespace Document
             // 
             // btnMorphServices
             // 
+            this.btnMorphServices.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.btnMorphServices.Image = ((System.Drawing.Image)(resources.GetObject("btnMorphServices.Image")));
             this.btnMorphServices.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnMorphServices.Name = "btnMorphServices";
-            this.btnMorphServices.Size = new System.Drawing.Size(105, 22);
+            this.btnMorphServices.Size = new System.Drawing.Size(23, 22);
             this.btnMorphServices.Text = "Morpheus [lat]";
+            this.btnMorphServices.ToolTipText = "Морфологический сервис";
             this.btnMorphServices.Click += new System.EventHandler(this.btnMorphServices_Click);
             // 
             // toolStripSeparator2
@@ -141,11 +143,12 @@ namespace Document
             // 
             // btnPublishChunk
             // 
+            this.btnPublishChunk.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.btnPublishChunk.Enabled = false;
             this.btnPublishChunk.Image = ((System.Drawing.Image)(resources.GetObject("btnPublishChunk.Image")));
             this.btnPublishChunk.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnPublishChunk.Name = "btnPublishChunk";
-            this.btnPublishChunk.Size = new System.Drawing.Size(106, 22);
+            this.btnPublishChunk.Size = new System.Drawing.Size(23, 22);
             this.btnPublishChunk.Text = "Опубликовать";
             this.btnPublishChunk.Click += new System.EventHandler(this.btnPublishChunk_ClickAsync);
             // 

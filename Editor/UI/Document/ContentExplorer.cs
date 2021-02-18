@@ -23,6 +23,8 @@ namespace Document
 
         private List<IndexModel> _indeces;
 
+        private List<IndexModel> _bookmarkedIndeces = new List<IndexModel>();
+
         public ContentExplorer(DocumentProcess documentProcess)
         {
             _documentProcess = documentProcess;
@@ -45,19 +47,19 @@ namespace Document
 
             treeView1.Nodes.Clear();
 
-            _indeces = await _documentProcess.GetIndecesByHeader();
+            _indeces = await _documentProcess.GetIndecesByHeader().ConfigureAwait(true);
+
+            _bookmarkedIndeces = _indeces.Where(i => i.Bookmarked == true).ToList();
+
+            ShowBookmarkTools();
+
+            bookmarkedSource.DataSource = _bookmarkedIndeces;
 
             var roots = _indeces.Where(i => string.IsNullOrEmpty(i.ParentId)).OrderBy(i => i.Order).ToList();
 
             foreach (var root in roots)
             {
-
-                var rootNode = new TreeNode
-                {
-                    Name = root.Id.ToString(),
-                    Text = root.Name,
-                    Tag = root
-                };
+                TreeNode rootNode = CreateNode(root);
 
                 PopulateTree(rootNode, _indeces);
 
@@ -69,18 +71,34 @@ namespace Document
             loader1.SendToBack();
         }
 
+        private void ShowBookmarkTools()
+        {
+            var count = _bookmarkedIndeces.Count();
+
+            btnShowBookmarks.Text = count.ToString();
+
+            btnShowBookmarks.Enabled = btnRemoveAllBookmarks.Enabled = count > 0;
+        }
+
+        private static TreeNode CreateNode(IndexModel index)
+        {
+            return new TreeNode
+            {
+                Name = index.Id.ToString(),
+                Text = index.Name,
+                Tag = index,
+                ImageIndex = index.Bookmarked ? 1 : 0,
+                SelectedImageIndex = index.Bookmarked ? 1 : 0
+            };
+        }
+
         private void PopulateTree(TreeNode root, List<IndexModel> indices)
         {
             var children = indices.Where(t => t.ParentId == ((IndexModel)root.Tag).Id).OrderBy(i => i.Order);
 
             foreach (var child in children)
             {
-                var n = new TreeNode()
-                {
-                    Name = child.Id,
-                    Text = child.Name,
-                    Tag = child
-                };
+                var n = CreateNode(child);
 
                 PopulateTree(n, indices);
 
@@ -236,7 +254,7 @@ namespace Document
 
             int count = 0;
 
-            var chunks = await ChunkProcess.GetChunksByQuery(new Model.Query.ChunkQuery { headerId = _documentProcess.Header.Id }).ConfigureAwait(true);
+            var chunks = await ChunkProcess.GetChunksByQuery(new ChunkQuery { headerId = _documentProcess.Header.Id }).ConfigureAwait(true);
 
             foreach (var chunkView in chunks)
             {
@@ -329,11 +347,100 @@ namespace Document
                 loader1.SetStatus($"Обновлено фрагментов: {updatedCount} из {chunks.Count}. Обработано: {count}");
             }
 
-            MessageBox.Show($"Обновлено фрагментов: {updatedCount} из {chunks.Count}: {string.Join(", ", updatedChunks.Select(i=>i.IndexName))}");
+            MessageBox.Show($"Обновлено фрагментов: {updatedCount} из {chunks.Count}: {string.Join(", ", updatedChunks.Select(i => i.IndexName))}");
 
             loader1.SendToBack();
 
             btnUpdateChunkValueObj.Enabled = btnAddFirstLevelSection.Enabled = true;
+        }
+
+        private void btnShowBookmarks_Click(object sender, EventArgs e)
+        {
+            if (bookmarkedSource.Position == bookmarkedSource.Count - 1)
+            {
+                bookmarkedSource.MoveFirst();
+                bookmarkedSource.Position = 0;
+            }
+            else {
+                bookmarkedSource.MoveNext();
+            }
+            ShowBookmarked();
+        }
+
+        private async void btnRemoveAllBookmarks_Click(object sender, EventArgs e)
+        {
+            loader1.BringToFront();
+
+            loader1.SetStatus("Удаление закладок");
+
+            foreach (var index in _bookmarkedIndeces) {
+
+                index.Bookmarked = false;
+
+                await _documentProcess.SaveIndex(index).ConfigureAwait(true);
+            }
+
+            await LoadDataAsync();
+        }
+
+        private async void btnSetBookmark_Click(object sender, EventArgs e)
+        {
+            if (treeView1.SelectedNode != null && treeView1.SelectedNode.Tag is IndexModel index)
+            {
+                index.Bookmarked = true;
+
+                await _documentProcess.SaveIndex(index).ConfigureAwait(true);
+
+                treeView1.SelectedNode.ImageIndex = treeView1.SelectedNode.SelectedImageIndex = 1;
+
+                _bookmarkedIndeces.Add(index);
+
+                bookmarkedSource.DataSource = _bookmarkedIndeces;
+
+                bookmarkedSource.ResetBindings(false);
+
+                ShowBookmarkTools();
+            }
+        }
+
+        private async void btnRemoveBookmark_ClickAsync(object sender, EventArgs e)
+        {
+            if (treeView1.SelectedNode != null && treeView1.SelectedNode.Tag is IndexModel index)
+            {
+                index.Bookmarked = false;
+
+                await _documentProcess.SaveIndex(index).ConfigureAwait(true);
+
+                treeView1.SelectedNode.ImageIndex = treeView1.SelectedNode.SelectedImageIndex = 0;
+
+                _bookmarkedIndeces.Remove(index);
+
+                bookmarkedSource.DataSource = _bookmarkedIndeces;
+
+                bookmarkedSource.ResetBindings(false);
+
+                ShowBookmarkTools();
+            }
+        }
+
+        private void bookmarkedSource_PositionChanged(object sender, EventArgs e)
+        {
+            ShowBookmarked();
+        }
+
+        private void ShowBookmarked()
+        {
+            if (bookmarkedSource.Current != null && bookmarkedSource.Current is IndexModel index)
+            {
+                var found = treeView1.Nodes.Find(index.Id, true).FirstOrDefault();
+
+                if (found != null)
+                {
+                    treeView1.SelectedNode = found;
+
+                    IndexPreviewSelected.Invoke(this, index);
+                }
+            }
         }
     }
 }

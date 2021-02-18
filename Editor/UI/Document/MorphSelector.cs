@@ -103,7 +103,7 @@ namespace Document
 
         private void morphSource_CurrentChanged(object sender, EventArgs e)
         {
-            btnEdit.Enabled = btnDelete.Enabled = btnCopyForm.Enabled = morphSource.Current != null;
+            btnEdit.Enabled = btnClone.Enabled = btnDelete.Enabled = btnCopyForm.Enabled = morphSource.Current != null;
 
             btnCancelDefinition.Enabled = morphSource.Current != null && morphSource.Current is MorphModel model && model.Id == _element.MorphId;
 
