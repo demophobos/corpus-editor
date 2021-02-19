@@ -38,11 +38,8 @@ namespace Document
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.btnShowBookmarks = new System.Windows.Forms.ToolStripButton();
             this.btnRemoveAllBookmarks = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.btnImportChunks = new System.Windows.Forms.ToolStripSplitButton();
             this.btnLoadJSON = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnUpdateHeaderId = new System.Windows.Forms.ToolStripButton();
-            this.btnUpdateChunkValueObj = new System.Windows.Forms.ToolStripButton();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.btnAddSubsection = new System.Windows.Forms.ToolStripMenuItem();
             this.btnEditSection = new System.Windows.Forms.ToolStripMenuItem();
@@ -90,10 +87,7 @@ namespace Document
             this.toolStripSeparator2,
             this.btnShowBookmarks,
             this.btnRemoveAllBookmarks,
-            this.toolStripSeparator1,
-            this.btnImportChunks,
-            this.btnUpdateHeaderId,
-            this.btnUpdateChunkValueObj});
+            this.btnImportChunks});
             this.toolStrip2.Location = new System.Drawing.Point(0, 0);
             this.toolStrip2.Name = "toolStrip2";
             this.toolStrip2.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
@@ -136,11 +130,6 @@ namespace Document
             this.btnRemoveAllBookmarks.ToolTipText = "Удалить закладки";
             this.btnRemoveAllBookmarks.Click += new System.EventHandler(this.btnRemoveAllBookmarks_Click);
             // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
-            // 
             // btnImportChunks
             // 
             this.btnImportChunks.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -160,28 +149,6 @@ namespace Document
             this.btnLoadJSON.Size = new System.Drawing.Size(286, 22);
             this.btnLoadJSON.Text = "Загрузить фрагменты в JSON формате";
             this.btnLoadJSON.Click += new System.EventHandler(this.jSONToolStripMenuItem_Click);
-            // 
-            // btnUpdateHeaderId
-            // 
-            this.btnUpdateHeaderId.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnUpdateHeaderId.Image = ((System.Drawing.Image)(resources.GetObject("btnUpdateHeaderId.Image")));
-            this.btnUpdateHeaderId.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnUpdateHeaderId.Name = "btnUpdateHeaderId";
-            this.btnUpdateHeaderId.Size = new System.Drawing.Size(23, 22);
-            this.btnUpdateHeaderId.Text = "toolStripButton1";
-            this.btnUpdateHeaderId.Visible = false;
-            this.btnUpdateHeaderId.Click += new System.EventHandler(this.btnUpdateHeaderId_Click);
-            // 
-            // btnUpdateChunkValueObj
-            // 
-            this.btnUpdateChunkValueObj.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnUpdateChunkValueObj.Image = ((System.Drawing.Image)(resources.GetObject("btnUpdateChunkValueObj.Image")));
-            this.btnUpdateChunkValueObj.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnUpdateChunkValueObj.Name = "btnUpdateChunkValueObj";
-            this.btnUpdateChunkValueObj.Size = new System.Drawing.Size(23, 22);
-            this.btnUpdateChunkValueObj.Text = "Опубликовать";
-            this.btnUpdateChunkValueObj.ToolTipText = "Опубликовать изменения";
-            this.btnUpdateChunkValueObj.Click += new System.EventHandler(this.btnUpdateChunkValueObj_Click);
             // 
             // contextMenuStrip1
             // 
@@ -288,7 +255,7 @@ namespace Document
             this.HelpButton = true;
             this.HideOnClose = true;
             this.Name = "ContentExplorer";
-            this.Text = "Содержание";
+            this.Text = "Индекс";
             this.Load += new System.EventHandler(this.ContentExplorer_LoadAsync);
             this.toolStrip2.ResumeLayout(false);
             this.toolStrip2.PerformLayout();
@@ -311,12 +278,9 @@ namespace Document
         private System.Windows.Forms.ToolStripMenuItem btnRemoveSection;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem btnOpenEditor;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripSplitButton btnImportChunks;
         private System.Windows.Forms.ToolStripMenuItem btnLoadJSON;
         private Common.Control.Loader loader1;
-        private System.Windows.Forms.ToolStripButton btnUpdateHeaderId;
-        private System.Windows.Forms.ToolStripButton btnUpdateChunkValueObj;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripButton btnShowBookmarks;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;

@@ -19,7 +19,6 @@ namespace Document
 
         private ChunkContainer _chunkContainer;
 
-        private IndexModel _selectedIndex;
         public DocumentContainer(HeaderModel header)
         {
             DocumentProcess = new DocumentProcess(header);

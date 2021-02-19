@@ -34,17 +34,20 @@ namespace Document
 
         private void ContentContainer_Load(object sender, EventArgs e)
         {
+            _contentExplorer = new ContentExplorer(_documentProcess);
+
+            _contentExplorer.Show(dockPanel1, DockState.Document);
+
+            _contentExplorer.IndexSelected += _contentExplorer_IndexSelected;
+
             _contentStatusExplorer = new ContentStatusExplorer(_documentProcess);
 
             _contentStatusExplorer.ChunkSelected += _contentStatusExplorer_ChunkSelected;
 
             _contentStatusExplorer.Show(dockPanel1, DockState.Document);
 
-            _contentExplorer = new ContentExplorer(_documentProcess);
+            _contentExplorer.Activate();
 
-            _contentExplorer.Show(dockPanel1, DockState.Document);
-
-            _contentExplorer.IndexSelected += _contentExplorer_IndexSelected;
         }
 
         private void _contentStatusExplorer_ChunkSelected(object sender, ChunkStatusModel e)

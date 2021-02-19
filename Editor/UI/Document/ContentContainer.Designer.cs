@@ -49,11 +49,11 @@ namespace Document
             this.ClientSize = new System.Drawing.Size(284, 261);
             this.CloseButton = false;
             this.CloseButtonVisible = false;
-            this.ControlBox = false;
             this.Controls.Add(this.dockPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.Name = "ContentContainer";
+            this.Text = "Содержание";
             this.Load += new System.EventHandler(this.ContentContainer_Load);
             this.ResumeLayout(false);
 

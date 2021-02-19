@@ -1,4 +1,5 @@
 ﻿using Model;
+using Model.Query;
 using Model.View;
 using Newtonsoft.Json;
 using Process;
@@ -34,11 +35,21 @@ namespace Document
         {
             loader1.BringToFront();
 
+            loader1.SetStatus("Обновление фрагментов");
+
             _chunks = await _documentProcess.GetChunksByHeader().ConfigureAwait(true);
 
             var statusItems = _chunks.OrderBy(i=>i.IndexOrder).Select(i => CreateStatusModel(i)).OrderBy(i=>i.IndexName);
 
             dataSource.DataSource = statusItems;
+
+            lblTotalValue.Text = statusItems.Count().ToString();
+
+            lblDoneValue.Text = statusItems.Count(i => i.UnresolvedItems == 0).ToString();
+
+            lblTotalWordsValue.Text = (statusItems.Sum(i => i.ResolvedItems) + statusItems.Sum(i => i.UnresolvedItems)).ToString();
+
+            lblWordsDoneValue.Text = statusItems.Sum(i => i.ResolvedItems).ToString();
 
             loader1.SendToBack();
         }
@@ -90,6 +101,75 @@ namespace Document
             if (dataSource.Current != null && dataSource.Current is ChunkStatusModel chunkStatus)
             {
                 ChunkSelected.Invoke(this, chunkStatus);
+            }
+        }
+
+        private async void btnPublish_Click(object sender, EventArgs e)
+        {
+            var updatedChunks = new List<ChunkViewModel>();
+
+            loader1.BringToFront();
+
+            loader1.SetStatus("Обновление фрагментов");
+
+            statusStrip1.Enabled = toolStrip2.Enabled = false;
+
+            var chunks = await ChunkProcess.GetChunksByQuery(new ChunkQuery { HeaderId = _documentProcess.Header.Id });
+
+            int updatedCount = 0;
+
+            int count = 0;
+
+            foreach (var chunkView in chunks)
+            {
+                var chunk = new ChunkModel { Id = chunkView.Id, HeaderId = chunkView.HeaderId, IndexId = chunkView.IndexId, Value = chunkView.Value, ValueObj = chunkView.ValueObj };
+
+                var elements = await ElementProcess.GetElements(new ElementQuery { chunkId = chunk.Id }).ConfigureAwait(true);
+
+                var newValueObj = await ChunkProcess.CreateChunkValueObjs(elements).ConfigureAwait(true);
+
+                var published = await ChunkProcess.PublishChunkValueObj(chunk, newValueObj).ConfigureAwait(true);
+
+                if (published != null)
+                {
+                    updatedCount += 1;
+                    updatedChunks.Add(chunkView);
+                }
+
+                count += 1;
+
+                loader1.SetStatus($"Обновлено фрагментов: {updatedCount} из {chunks.Count}. Обработано: {count}");
+            }
+
+            await LoadDataAsync().ConfigureAwait(true);
+
+            MessageBox.Show($"Обновлено фрагментов: {updatedCount} из {chunks.Count}: {string.Join(", ", updatedChunks.Select(i => i.IndexName))}");
+
+            statusStrip1.Enabled = toolStrip2.Enabled = true;
+        }
+
+        private void dataGridView1_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            int wrapLen = 84;
+            if ((e.RowIndex >= 0) && e.ColumnIndex >= 0)
+            {
+                DataGridViewCell cell = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex];
+                string cellText = cell.Value.ToString();
+                if (cellText.Length >= wrapLen)
+                {
+                    cell.ToolTipText = "";
+                    int n = cellText.Length / wrapLen;
+                    for (int i = 0; i <= n; i++)
+                    {
+                        int wStart = wrapLen * i;
+                        int wEnd = wrapLen * (i + 1);
+
+                        if (wEnd >= cellText.Length)
+                            wEnd = cellText.Length;
+
+                        cell.ToolTipText += cellText.Substring(wStart, wEnd - wStart) + "\n";
+                    }
+                }
             }
         }
     }
