@@ -13,13 +13,11 @@ namespace Document
     {
         public DocumentProcess DocumentProcess { get; private set; }
 
-        private ContentExplorer _contentExplorer;
+        private ContentContainer _contentContainer;
 
         private List<ChunkContainer> _chunkContainers;
 
         private ChunkContainer _chunkContainer;
-
-        private ChunkViewer _chunkViewer;
 
         private IndexModel _selectedIndex;
         public DocumentContainer(HeaderModel header)
@@ -35,26 +33,13 @@ namespace Document
 
         private void DocumentContainer_Load(object sender, EventArgs e)
         {
-            _contentExplorer = new ContentExplorer(DocumentProcess);
+            _contentContainer = new ContentContainer(DocumentProcess);
 
-            _contentExplorer.Show(dockPanel1, DockState.DockRight);
+            _contentContainer.IndexSelected += ContentExplorer_IndexSelected;
 
-            _contentExplorer.IndexSelected += ContentExplorer_IndexSelected;
-
-            _contentExplorer.IndexPreviewSelected += ContentExplorer_IndexPreviewSelected;
+            _contentContainer.Show(dockPanel1, DockState.DockRight);
 
             _chunkContainers = new List<ChunkContainer>();
-
-            _chunkViewer = new ChunkViewer(DocumentProcess);
-
-            _chunkViewer.Show(_contentExplorer.Pane, DockAlignment.Bottom, 0.25);
-        }
-
-        private void ContentExplorer_IndexPreviewSelected(object sender, IndexModel index)
-        {
-            _selectedIndex = index;
-
-            _chunkViewer.LoadData(_selectedIndex);
         }
 
         private void ContentExplorer_IndexSelected(object sender, IndexModel index)
@@ -73,41 +58,11 @@ namespace Document
                     _chunkContainer.FormClosed += ChunkContainer_FormClosed;
 
                     _chunkContainer.Show(dockPanel1, DockState.Document);
-
-                    _chunkContainer.ChunkAdded += ChunkContainer_ChunkAdded;
-
-                    _chunkContainer.ChunkDeleted += ChunkContainer_ChunkDeleted;
-
-                    _chunkContainer.ChunkUpdated += ChunkContainer_ChunkUpdated;
                 }
                 else
                 {
                     existingControl.Activate();
                 }
-            }
-        }
-
-        private void ChunkContainer_ChunkUpdated(object sender, ChunkModel chunk)
-        {
-            if (_selectedIndex != null && chunk.IndexId == _selectedIndex.Id)
-            {
-                _chunkViewer.LoadData(_selectedIndex);
-            }
-        }
-
-        private void ChunkContainer_ChunkDeleted(object sender, ChunkModel chunk)
-        {
-            if (_selectedIndex != null && chunk.IndexId == _selectedIndex.Id)
-            {
-                _chunkViewer.LoadData(_selectedIndex);
-            }
-        }
-
-        private void ChunkContainer_ChunkAdded(object sender, ChunkModel chunk)
-        {
-            if (_selectedIndex != null && chunk.IndexId == _selectedIndex.Id)
-            {
-                _chunkViewer.LoadData(_selectedIndex);
             }
         }
 

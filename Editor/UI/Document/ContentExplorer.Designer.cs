@@ -61,7 +61,7 @@ namespace Document
             // 
             // treeView1
             // 
-            this.treeView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.treeView1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.treeView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.treeView1.FullRowSelect = true;
             this.treeView1.HideSelection = false;
@@ -73,8 +73,6 @@ namespace Document
             this.treeView1.SelectedImageIndex = 1;
             this.treeView1.Size = new System.Drawing.Size(366, 450);
             this.treeView1.TabIndex = 9;
-            this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
-            this.treeView1.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView1_NodeMouseClick);
             this.treeView1.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView1_NodeMouseDoubleClick);
             // 
             // imageList1
@@ -277,14 +275,18 @@ namespace Document
             // 
             // ContentExplorer
             // 
+            this.AllowEndUserDocking = false;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(366, 475);
             this.CloseButton = false;
             this.CloseButtonVisible = false;
+            this.ControlBox = false;
             this.Controls.Add(this.loader1);
             this.Controls.Add(this.treeView1);
             this.Controls.Add(this.toolStrip2);
+            this.HelpButton = true;
+            this.HideOnClose = true;
             this.Name = "ContentExplorer";
             this.Text = "Содержание";
             this.Load += new System.EventHandler(this.ContentExplorer_LoadAsync);

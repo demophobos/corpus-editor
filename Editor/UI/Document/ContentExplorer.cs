@@ -17,11 +17,7 @@ namespace Document
     {
         public event EventHandler<IndexModel> IndexSelected;
 
-        public event EventHandler<IndexModel> IndexPreviewSelected;
-
         private DocumentProcess _documentProcess;
-
-        private List<IndexModel> _indeces;
 
         private List<IndexModel> _bookmarkedIndeces = new List<IndexModel>();
 
@@ -47,21 +43,21 @@ namespace Document
 
             treeView1.Nodes.Clear();
 
-            _indeces = await _documentProcess.GetIndecesByHeader().ConfigureAwait(true);
+            _documentProcess.Indeces = await _documentProcess.GetIndecesByHeader().ConfigureAwait(true);
 
-            _bookmarkedIndeces = _indeces.Where(i => i.Bookmarked == true).ToList();
+            _bookmarkedIndeces = _documentProcess.Indeces.Where(i => i.Bookmarked == true).ToList();
 
             ShowBookmarkTools();
 
             bookmarkedSource.DataSource = _bookmarkedIndeces;
 
-            var roots = _indeces.Where(i => string.IsNullOrEmpty(i.ParentId)).OrderBy(i => i.Order).ToList();
+            var roots = _documentProcess.Indeces.Where(i => string.IsNullOrEmpty(i.ParentId)).OrderBy(i => i.Order).ToList();
 
             foreach (var root in roots)
             {
                 TreeNode rootNode = CreateNode(root);
 
-                PopulateTree(rootNode, _indeces);
+                PopulateTree(rootNode, _documentProcess.Indeces);
 
                 treeView1.Nodes.Add(rootNode);
             }
@@ -184,7 +180,7 @@ namespace Document
 
         private async Task Delete(IndexModel index)
         {
-            var children = _indeces.Where(i => i.ParentId == index.Id);
+            var children = _documentProcess.Indeces.Where(i => i.ParentId == index.Id);
 
             if (children.Count() > 0)
             {
@@ -197,27 +193,6 @@ namespace Document
             }
 
             await _documentProcess.DeleteIndex(index).ConfigureAwait(true);
-        }
-
-        private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
-        {
-            btnAddSubsection.Visible = e.Node != null;
-
-            if (e.Action == TreeViewAction.ByKeyboard &&
-                (e.Action != TreeViewAction.Collapse ||
-                e.Action != TreeViewAction.Expand) &&
-                e.Node.Tag is IndexModel index)
-            {
-                IndexPreviewSelected.Invoke(this, index);
-            }
-        }
-
-        private void treeView1_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
-        {
-            if (e.Node.Tag is IndexModel index)
-            {
-                IndexPreviewSelected.Invoke(this, index);
-            }
         }
 
         private void treeView1_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
@@ -254,7 +229,7 @@ namespace Document
 
             int count = 0;
 
-            var chunks = await ChunkProcess.GetChunksByQuery(new ChunkQuery { headerId = _documentProcess.Header.Id }).ConfigureAwait(true);
+            var chunks = await ChunkProcess.GetChunksByQuery(new ChunkQuery { HeaderId = _documentProcess.Header.Id }).ConfigureAwait(true);
 
             foreach (var chunkView in chunks)
             {
@@ -320,7 +295,7 @@ namespace Document
 
             btnUpdateChunkValueObj.Enabled = btnAddFirstLevelSection.Enabled = false;
 
-            var chunks = await ChunkProcess.GetChunksByQuery(new ChunkQuery { headerId = _documentProcess.Header.Id });
+            var chunks = await ChunkProcess.GetChunksByQuery(new ChunkQuery { HeaderId = _documentProcess.Header.Id });
 
             int updatedCount = 0;
 
@@ -437,8 +412,6 @@ namespace Document
                 if (found != null)
                 {
                     treeView1.SelectedNode = found;
-
-                    IndexPreviewSelected.Invoke(this, index);
                 }
             }
         }

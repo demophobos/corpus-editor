@@ -56,7 +56,7 @@ namespace Document
         {
             if (headerSource.Current is HeaderModel header)
             {
-                _chunk = await ChunkProcess.GetChunkByQuery(new ChunkQuery { headerId = header.Id, indexName = _index.Name }).ConfigureAwait(true);
+                _chunk = await ChunkProcess.GetChunkByQuery(new ChunkQuery { HeaderId = header.Id, IndexName = _index.Name }).ConfigureAwait(true);
 
                 if (_chunk != null)
                 {

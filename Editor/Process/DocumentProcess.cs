@@ -2,6 +2,7 @@
 using Model.Query;
 using Model.View;
 using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -11,9 +12,13 @@ namespace Process
     public class DocumentProcess
     {
         public HeaderModel Header { get; private set; }
+
+        public List<IndexModel> Indeces { get; set; }
         public DocumentProcess(HeaderModel header)
         {
             Header = header;
+
+            Indeces = new List<IndexModel>();
         }
 
         public async Task<List<IndexModel>> GetIndecesByName(string name)
@@ -35,6 +40,13 @@ namespace Process
             var query = new IndexQuery { HeaderId = headerId };
 
             return await API.IndexAPI.GetIndeces(query);
+        }
+
+        public async Task<List<ChunkViewModel>> GetChunksByHeader()
+        {
+            var query = new ChunkQuery { HeaderId = Header.Id };
+
+            return await API.ChunkAPI.GetChunksByQuery(query);
         }
 
         public async Task<List<IndexModel>> GetIndecesByParent(string parentId)
@@ -88,7 +100,7 @@ namespace Process
                 {
                     var index = indeces[0];
 
-                    var chunk = await ChunkProcess.GetChunkByQuery(new ChunkQuery { indexId = index.Id });
+                    var chunk = await ChunkProcess.GetChunkByQuery(new ChunkQuery { IndexId = index.Id });
 
                     if (chunk == null)
                     {

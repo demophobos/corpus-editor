@@ -49,6 +49,7 @@
   <ItemGroup>
     <Compile Include="BaseModel.cs" />
     <Compile Include="ChunkModel.cs" />
+    <Compile Include="ChunkStatusModel.cs" />
     <Compile Include="ChunkValueObjModel.cs" />
     <Compile Include="ElementModel.cs" />
     <Compile Include="Enum\EditionTypeEnum.cs" />

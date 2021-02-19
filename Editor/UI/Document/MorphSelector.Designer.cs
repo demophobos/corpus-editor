@@ -523,7 +523,6 @@ namespace Document
         private System.Windows.Forms.ToolStripButton btnDelete;
         private System.Windows.Forms.ToolStripButton btnCancelDefinition;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn formDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource morphSource;
         private System.Windows.Forms.ToolStripSplitButton btnMorphServices;
         private System.Windows.Forms.ToolStripMenuItem btnMorpheusLat;

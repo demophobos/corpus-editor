@@ -22,12 +22,6 @@ namespace Document
 
         private ChunkModel _chunk;
 
-        public event EventHandler<ChunkModel> ChunkAdded;
-
-        public event EventHandler<ChunkModel> ChunkUpdated;
-
-        public event EventHandler<ChunkModel> ChunkDeleted;
-
         public ChunkContainer(IndexModel index, DocumentProcess documentProcess)
         {
             _documentProcess = documentProcess;
@@ -49,7 +43,7 @@ namespace Document
 
             if (editor.ShowDialog() == DialogResult.OK)
             {
-                var query = new ChunkQuery { indexId = Index.Id };
+                var query = new ChunkQuery { IndexId = Index.Id };
 
                 _chunk = await ChunkProcess.GetChunkByQuery(query).ConfigureAwait(true);
 
@@ -66,8 +60,6 @@ namespace Document
                 _chunkExplorer.Show(dockPanel1, DockState.Document);
 
                 btnShowHideMorphologyPane.Enabled = btnShowHideTranslationPane.Enabled = btnMorphServices.Enabled = _chunk != null;
-
-                ChunkAdded.Invoke(this, _chunk);
             }
         }
 
@@ -78,7 +70,7 @@ namespace Document
 
         private async void ChunkContainer_LoadAsync(object sender, EventArgs e)
         {
-            var query = new ChunkQuery { indexId = Index.Id };
+            var query = new ChunkQuery { IndexId = Index.Id };
 
             _chunk = await ChunkProcess.GetChunkByQuery(query).ConfigureAwait(true);
 
@@ -112,7 +104,7 @@ namespace Document
 
                 _chunkExplorer.Close();
 
-                var query = new ChunkQuery { indexId = Index.Id };
+                var query = new ChunkQuery { IndexId = Index.Id };
 
                 _chunk = await ChunkProcess.GetChunkByQuery(query).ConfigureAwait(true);
 
@@ -123,8 +115,6 @@ namespace Document
                 _chunkExplorer.ElementSelected += ChunkExplorer_ElementSelected;
 
                 _chunkExplorer.EnablePublishing += ChunkExplorer_EnablePublishing;
-
-                ChunkUpdated.Invoke(this, _chunk);
             }
         }
 
@@ -147,8 +137,6 @@ namespace Document
                 btnAddChunk.Enabled = true;
 
                 btnDeleteChunk.Enabled = btnEditChunk.Enabled = btnShowHideMorphologyPane.Enabled = btnShowHideTranslationPane.Enabled = false;
-
-                ChunkDeleted.Invoke(this, _chunk);
             }
         }
 

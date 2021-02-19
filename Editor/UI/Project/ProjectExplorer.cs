@@ -243,7 +243,7 @@ namespace Project
 
             await documentProcess.DeleteElementsByQuery(new ElementQuery { headerId = documentProcess.Header.Id }).ConfigureAwait(true);
 
-            await documentProcess.DeleteChunksByQuery(new ChunkQuery { headerId = documentProcess.Header.Id }).ConfigureAwait(true);
+            await documentProcess.DeleteChunksByQuery(new ChunkQuery { HeaderId = documentProcess.Header.Id }).ConfigureAwait(true);
 
             await documentProcess.DeleteIndecesByQuery(new IndexQuery { HeaderId = documentProcess.Header.Id }).ConfigureAwait(true);
 
