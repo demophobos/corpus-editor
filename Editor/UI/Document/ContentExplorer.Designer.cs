@@ -162,7 +162,7 @@ namespace Document
             this.btnSetBookmark,
             this.btnRemoveBookmark});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(250, 148);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(250, 170);
             // 
             // btnAddSubsection
             // 
@@ -172,7 +172,6 @@ namespace Document
             | System.Windows.Forms.Keys.S)));
             this.btnAddSubsection.Size = new System.Drawing.Size(249, 22);
             this.btnAddSubsection.Text = "Добавить подраздел";
-            this.btnAddSubsection.Visible = false;
             this.btnAddSubsection.Click += new System.EventHandler(this.btnAddSubsection_ClickAsync);
             // 
             // btnEditSection

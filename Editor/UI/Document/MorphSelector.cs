@@ -197,56 +197,6 @@ namespace Document
             }
         }
 
-        private async void btnMorpheusLat_Click(object sender, EventArgs e)
-        {
-            if (_element != null)
-            {
-
-                var results = await _morphProcess.GetMorpheusAnalysis(_element.Value, LangStringEnum.Latin).ConfigureAwait(true);
-
-                foreach (var result in results)
-                {
-                    var model = _morphProcess.CreateMorphModel(result, LangStringEnum.Latin);
-
-                    model = await _morphProcess.SaveMorph(model).ConfigureAwait(true);
-
-                    if (model != null)
-                    {
-                        morphSource.List.Add(model);
-                    }
-                    morphSource.ResetBindings(false);
-
-                }
-
-                lblStatus.Text = $"Morpheus: найдено новых определений для '{_element.Value}': {results.Count}";
-            }
-        }
-
-        private async void btnMorpheusGrc_Click(object sender, EventArgs e)
-        {
-            if (_element != null)
-            {
-
-                var results = await _morphProcess.GetMorpheusAnalysis(_element.Value, LangStringEnum.Greek).ConfigureAwait(true);
-
-                foreach (var result in results)
-                {
-                    var model = _morphProcess.CreateMorphModel(result, LangStringEnum.Greek);
-
-                    model = await _morphProcess.SaveMorph(model).ConfigureAwait(true);
-
-                    if (model != null)
-                    {
-                        morphSource.List.Add(model);
-                    }
-                    morphSource.ResetBindings(false);
-
-                }
-
-                lblStatus.Text = $"Morpheus: найдено новых определений для '{_element.Value}': {results.Count}";
-            }
-        }
-
         private void btnCopyForm_Click(object sender, EventArgs e)
         {
             if (morphSource.Current != null && morphSource.Current is MorphModel model)
@@ -265,22 +215,21 @@ namespace Document
 
                 foreach (var element in applicableElements)
                 {
-                    if (element.MorphId == null)
+                    element.MorphId = morph.Id;
+
+                    var elem = await ElementProcess.SaveModel(element).ConfigureAwait(true);
+
+                    if (_element.Id == elem.Id)
                     {
-                        element.MorphId = morph.Id;
+                        _element = elem;
 
-                        var elem = await ElementProcess.SaveModel(element).ConfigureAwait(true);
-
-                        if (_element.Id == elem.Id)
-                        {
-                            _element = elem;
-
-                            await LoadDataAsync(_element);
-                        }
+                        await LoadDataAsync(_element);
                     }
                 }
 
                 ElementMorphAccepted.Invoke(this, _element);
+
+                MessageBox.Show($"Определение применено для {applicableElements.Count}");
             }
         }
 

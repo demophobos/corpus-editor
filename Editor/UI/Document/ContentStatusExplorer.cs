@@ -1,4 +1,6 @@
-﻿using Model;
+﻿using Common.Process;
+using Model;
+using Model.Enum;
 using Model.Query;
 using Model.View;
 using Newtonsoft.Json;
@@ -39,7 +41,7 @@ namespace Document
 
             _chunks = await _documentProcess.GetChunksByHeader().ConfigureAwait(true);
 
-            var statusItems = _chunks.OrderBy(i=>i.IndexOrder).Select(i => CreateStatusModel(i)).OrderBy(i=>i.IndexName);
+            var statusItems = _chunks.OrderBy(i=>i.IndexOrder).Select(i => CreateStatusModel(i)).OrderByDescending(i=>i.UnresolvedItems);
 
             dataSource.DataSource = statusItems;
 
@@ -69,7 +71,7 @@ namespace Document
         }
         private static ChunkStatusModel CreateStatusModel(ChunkViewModel chunk)
         {
-            var publishedElements = JsonConvert.DeserializeObject<ChunkValueItemModel[]>(chunk.ValueObj).Where(i => i.Type == 0);
+            var publishedElements = JsonConvert.DeserializeObject<ChunkValueItemModel[]>(chunk.ValueObj).Where(i => i.Type == (int)ElementTypeEnum.Word);
 
             var resolvedItems = publishedElements.Count(j => j.MorphId != null);
 
@@ -115,7 +117,7 @@ namespace Document
             statusStrip1.Enabled = toolStrip2.Enabled = false;
 
             var chunks = await ChunkProcess.GetChunksByQuery(new ChunkQuery { HeaderId = _documentProcess.Header.Id });
-
+            
             int updatedCount = 0;
 
             int count = 0;
@@ -143,7 +145,7 @@ namespace Document
 
             await LoadDataAsync().ConfigureAwait(true);
 
-            MessageBox.Show($"Обновлено фрагментов: {updatedCount} из {chunks.Count}: {string.Join(", ", updatedChunks.Select(i => i.IndexName))}");
+            DialogProcess.InfoMessage($"Публикация { _documentProcess.Header.Code}", $"Обновлено фрагментов: {updatedCount} из {chunks.Count}: {string.Join(", ", updatedChunks.Select(i => i.IndexName))}");
 
             statusStrip1.Enabled = toolStrip2.Enabled = true;
         }

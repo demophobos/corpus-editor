@@ -4,6 +4,8 @@ namespace Model.View
 {
     public class ChunkViewModel : ChunkModel
     {
+        [JsonProperty("parentId")]
+        public string ParentId { get; set; }
         [JsonProperty("indexName")]
         public string IndexName { get; set; }
         [JsonProperty("indexOrder")]
