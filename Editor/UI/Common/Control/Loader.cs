@@ -11,7 +11,7 @@ namespace Common.Control
 
         public void SetStatus(string status)
         {
-            lblStatus.Text = status;
+            label1.Text = status;
         }
     }
 }

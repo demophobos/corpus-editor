@@ -159,6 +159,7 @@ namespace Document
 
                     if (node != null)
                     {
+                        node.Text = index.Name;
                         treeView1.SelectedNode = node;
                     }
                 }

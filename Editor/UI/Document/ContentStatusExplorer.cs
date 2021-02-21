@@ -59,7 +59,7 @@ namespace Document
         {
             foreach (DataGridViewRow row in dataGridView1.Rows)
             {
-                if ((int)row.Cells["unresolvedItemsCount"].Value == 0)
+                if (row.Cells["unresolvedItemsCount"].Value != null && (int)row.Cells["unresolvedItemsCount"].Value == 0)
                 {
                     row.DefaultCellStyle.BackColor = Color.LightGreen;
                 }
@@ -112,7 +112,7 @@ namespace Document
 
             loader1.BringToFront();
 
-            loader1.SetStatus("Обновление фрагментов");
+            loader1.SetStatus("Публикация фрагментов ...");
 
             statusStrip1.Enabled = toolStrip2.Enabled = false;
 
@@ -140,12 +140,12 @@ namespace Document
 
                 count += 1;
 
-                loader1.SetStatus($"Обновлено фрагментов: {updatedCount} из {chunks.Count}. Обработано: {count}");
+                loader1.SetStatus($"Опубликовано фрагментов: {updatedCount} из {chunks.Count}. Обработано: {count}");
             }
 
             await LoadDataAsync().ConfigureAwait(true);
 
-            DialogProcess.InfoMessage($"Публикация { _documentProcess.Header.Code}", $"Обновлено фрагментов: {updatedCount} из {chunks.Count}: {string.Join(", ", updatedChunks.Select(i => i.IndexName))}");
+            DialogProcess.InfoMessage($"Публикация фрагментов { _documentProcess.Header.Code}", $"Опубликовано: {updatedCount} из {chunks.Count}: {string.Join(", ", updatedChunks.Select(i => i.IndexName))}");
 
             statusStrip1.Enabled = toolStrip2.Enabled = true;
         }
