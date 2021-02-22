@@ -37,11 +37,14 @@ namespace Document
         {
             loader1.BringToFront();
 
-            loader1.SetStatus("Обновление фрагментов");
+            loader1.SetStatus("Обновление фрагментов ...");
 
             _chunks = await _documentProcess.GetChunksByHeader().ConfigureAwait(true);
 
-            var statusItems = _chunks.OrderBy(i=>i.IndexOrder).Select(i => CreateStatusModel(i)).OrderByDescending(i=>i.UnresolvedItems);
+            var statusItems = _chunks.OrderBy(i=>i.IndexOrder)
+                .Select(i => CreateStatusModel(i))
+                .OrderByDescending(i => i.ResolvedItems)
+                .OrderByDescending(i=>i.UnresolvedItems);
 
             dataSource.DataSource = statusItems;
 
@@ -62,10 +65,14 @@ namespace Document
                 if (row.Cells["unresolvedItemsCount"].Value != null && (int)row.Cells["unresolvedItemsCount"].Value == 0)
                 {
                     row.DefaultCellStyle.BackColor = Color.LightGreen;
+                    row.DefaultCellStyle.SelectionBackColor = Color.LightGreen;
+                    row.DefaultCellStyle.SelectionForeColor = Color.Black;
                 }
                 else
                 {
                     row.DefaultCellStyle.BackColor = SystemColors.Window;
+                    row.DefaultCellStyle.SelectionBackColor = SystemColors.Highlight;
+                    row.DefaultCellStyle.SelectionForeColor = SystemColors.HighlightText;
                 }
             }
         }
