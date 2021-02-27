@@ -38,6 +38,7 @@ namespace Document
             this.headerSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtChunk = new System.Windows.Forms.RichTextBox();
+            this.loader1 = new Common.Control.Loader();
             this.flowLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.headerSource)).BeginInit();
@@ -51,16 +52,15 @@ namespace Document
             this.flowLayoutPanel1.Controls.Add(this.btnCancel);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 260);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 328);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(536, 30);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(578, 30);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
             // btnSelect
             // 
-            this.btnSelect.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnSelect.Enabled = false;
-            this.btnSelect.Location = new System.Drawing.Point(458, 3);
+            this.btnSelect.Location = new System.Drawing.Point(500, 3);
             this.btnSelect.Name = "btnSelect";
             this.btnSelect.Size = new System.Drawing.Size(75, 23);
             this.btnSelect.TabIndex = 1;
@@ -71,7 +71,7 @@ namespace Document
             // btnCancel
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(377, 3);
+            this.btnCancel.Location = new System.Drawing.Point(419, 3);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 2;
@@ -95,7 +95,7 @@ namespace Document
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 36F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(542, 293);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(584, 361);
             this.tableLayoutPanel1.TabIndex = 9;
             // 
             // cmbHeader
@@ -108,7 +108,7 @@ namespace Document
             this.cmbHeader.FormattingEnabled = true;
             this.cmbHeader.Location = new System.Drawing.Point(3, 3);
             this.cmbHeader.Name = "cmbHeader";
-            this.cmbHeader.Size = new System.Drawing.Size(536, 21);
+            this.cmbHeader.Size = new System.Drawing.Size(578, 21);
             this.cmbHeader.TabIndex = 2;
             this.cmbHeader.ValueMember = "Id";
             // 
@@ -121,29 +121,39 @@ namespace Document
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.panel1, 2);
             this.panel1.Controls.Add(this.txtChunk);
+            this.panel1.Controls.Add(this.loader1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 30);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(536, 224);
+            this.panel1.Size = new System.Drawing.Size(578, 292);
             this.panel1.TabIndex = 4;
             // 
             // txtChunk
             // 
             this.txtChunk.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtChunk.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtChunk.Font = new System.Drawing.Font("Palatino Linotype", 14.25F);
             this.txtChunk.Location = new System.Drawing.Point(0, 0);
             this.txtChunk.Name = "txtChunk";
             this.txtChunk.ReadOnly = true;
-            this.txtChunk.Size = new System.Drawing.Size(536, 224);
+            this.txtChunk.Size = new System.Drawing.Size(578, 292);
             this.txtChunk.TabIndex = 0;
             this.txtChunk.Text = "";
             this.txtChunk.TextChanged += new System.EventHandler(this.txtChunk_TextChanged);
+            // 
+            // loader1
+            // 
+            this.loader1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.loader1.Location = new System.Drawing.Point(0, 0);
+            this.loader1.Name = "loader1";
+            this.loader1.Size = new System.Drawing.Size(578, 292);
+            this.loader1.TabIndex = 1;
             // 
             // InterpSelector
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(542, 293);
+            this.ClientSize = new System.Drawing.Size(584, 361);
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MaximizeBox = false;
@@ -170,5 +180,6 @@ namespace Document
         private System.Windows.Forms.BindingSource headerSource;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.RichTextBox txtChunk;
+        private Common.Control.Loader loader1;
     }
 }

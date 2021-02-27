@@ -35,6 +35,25 @@ namespace Process.Helper
 
         public static IEnumerable<string> SplitByWordsAndOtherSymbols(this string s)
         {
+            var hyphenReplacer = 'א';
+
+            if (s == null)
+                return null;
+
+            s = s.Replace('-', hyphenReplacer);
+            var array = Regex.Split(s.Trim(), @"(?=[\p{P}\p{S}\s]|\b)").Where(i => i.Length > 0);
+
+            var result = new List<string>();
+
+            foreach (var item in array) {
+                result.Add(item.Replace(hyphenReplacer, '-'));
+            }
+
+            return result;
+        }
+
+        public static IEnumerable<string> SplitByWordsAndOtherSymbolsExceptHyphen(this string s)
+        {
             if (s == null)
                 return null;
             return Regex.Split(s.Trim(), @"(?=[\p{P}\p{S}\s]|\b)").Where(i => i.Length > 0);

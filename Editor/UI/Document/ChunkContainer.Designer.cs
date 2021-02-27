@@ -41,6 +41,8 @@ namespace Document
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.btnPublishChunk = new System.Windows.Forms.ToolStripButton();
             this.dockPanel1 = new WeifenLuo.WinFormsUI.Docking.DockPanel();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnCopyTextToBuffer = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -56,7 +58,9 @@ namespace Document
             this.toolStripSeparator1,
             this.btnMorphServices,
             this.toolStripSeparator2,
-            this.btnPublishChunk});
+            this.btnPublishChunk,
+            this.toolStripSeparator3,
+            this.btnCopyTextToBuffer});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
@@ -161,6 +165,21 @@ namespace Document
             this.dockPanel1.Size = new System.Drawing.Size(797, 459);
             this.dockPanel1.TabIndex = 3;
             // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
+            // 
+            // btnCopyTextToBuffer
+            // 
+            this.btnCopyTextToBuffer.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnCopyTextToBuffer.Image = ((System.Drawing.Image)(resources.GetObject("btnCopyTextToBuffer.Image")));
+            this.btnCopyTextToBuffer.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnCopyTextToBuffer.Name = "btnCopyTextToBuffer";
+            this.btnCopyTextToBuffer.Size = new System.Drawing.Size(23, 22);
+            this.btnCopyTextToBuffer.Text = "toolStripButton1";
+            this.btnCopyTextToBuffer.Click += new System.EventHandler(this.btnCopyTextToBuffer_Click);
+            // 
             // ChunkContainer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -190,5 +209,7 @@ namespace Document
         private System.Windows.Forms.ToolStripButton btnMorphServices;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripButton btnPublishChunk;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripButton btnCopyTextToBuffer;
     }
 }

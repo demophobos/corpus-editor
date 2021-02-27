@@ -141,8 +141,8 @@
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
         YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACISURBVDhPY2Covy/A0PjkPwauf/ILiP0YCAKYAegApLn+
-        3hfChuAyAASIMgSbATBvIGOcXsJlAEgchpufyUPEsLkGlwHIAKYGq5dIMgBINz2OA7K/IwwhxQBkDAoT
-        FElkgM7HBuBqhpEB6JgQgKv5/58RbAgyJskAbAAkiW4oOiZoADGYgYEBAPDo5hzqiwWJAAAAAElFTkSu
+        zhfChuAyAASIMgSbATBvIGOcXsJlAEgchpufyUPEsLkGlwHIAKYGq5dIMgBINz2OA7K/IwwhxQBkDAoT
+        FElkgM7HBuBqhpEB6JgQgKv5/58RbAgyJskAbAAkiW4oOiZoADGYgYEBANfI5hRbTur6AAAAAElFTkSu
         QmCC
 </value>
   </data>
@@ -200,9 +200,9 @@
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
         YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADhSURBVDhPY1CrZ/hPClau4+lnQAYgQZV6lnVqtQye+LB6
         HUM0TgMwBLEAsEGEDFCqZxBDtxmGYS5Ady2KAWBBIJ8UjNUAUsIEqwEY/oQCtWoGRdV6hjwQDVNLtAFg
-        TfUMXSB5lTrG5SQZgKwZLF/Ld5igATDnqtQy2APF4Jrl6pk/YXhBpZ5zD0gTOPCgBoBtAbKVqhifgmgQ
+        TfUMXSB5lTrG5SQZgKwZLF/Ld5igATDnqtQy2APF4Jpl65k/YXhBpZ5zD0gTOPCgBoBtAbKVqhifgmgQ
         hmlGtgxsADoGGwbyJ5IYsmYQgBsAtg2KkV0AUqxUw3gem2YQgBuADJDDAMwHaoJFG1gBEsBrACxM8GGY
-        a6FaIQBmAPGY4T8A04QHWlnPuAUAAAAASUVORK5CYII=
+        a6FaIQBmAPGY4T8AzpoHVgW8SRgAAAAASUVORK5CYII=
 </value>
   </data>
   <data name="btnCancelAllCases.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -225,15 +225,6 @@
         QwCQIMxmdAxziW31pv/P33zAbQApGKKLgQEAeewu4VQrqeYAAAAASUVORK5CYII=
 </value>
   </data>
-  <metadata name="IsRule.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="Form.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="morphSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>477, 17</value>
-  </metadata>
   <metadata name="IsRule.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>

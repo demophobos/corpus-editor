@@ -106,6 +106,18 @@ namespace Document
 
         private async void InterpViewer_Load(object sender, EventArgs e)
         {
+            loader1.BringToFront();
+
+
+            if (_typeToShow == EditionTypeEnum.Original)
+            {
+                loader1.SetStatus("Загрузка оригинала ...");
+            }
+            else
+            {
+                loader1.SetStatus("Загрузка переводов ...");
+            }
+
             await LoadData().ConfigureAwait(true);
 
             loader1.SendToBack();

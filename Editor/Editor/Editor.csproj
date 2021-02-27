@@ -13,7 +13,7 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>C:\Users\agricola\Desktop\EditorPublish\</PublishUrl>
+    <PublishUrl>C:\Users\agricola\Documents\ftp-corpus-editor\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Unc</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
@@ -23,15 +23,17 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <InstallUrl>\\AGRICOLA\Users\agricola\Desktop\EditorPublish\</InstallUrl>
-    <UpdateUrl>\\AGRICOLA\Users\agricola\Desktop\EditorPublish\</UpdateUrl>
+    <InstallUrl>\\AGRICOLA\Users\agricola\Documents\ftp-corpus-editor\</InstallUrl>
+    <UpdateUrl>\\AGRICOLA\Users\agricola\Documents\ftp-corpus-editor\</UpdateUrl>
     <ProductName>CLR Редактор</ProductName>
     <PublisherName>ИЛИ РАН</PublisherName>
     <SuiteName>CLR Редактор</SuiteName>
-    <AutorunEnabled>true</AutorunEnabled>
-    <ApplicationRevision>13</ApplicationRevision>
-    <ApplicationVersion>1.0.0.13</ApplicationVersion>
+    <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
+    <WebPage>index.htm</WebPage>
+    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationVersion>1.0.0.1</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
+    <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>

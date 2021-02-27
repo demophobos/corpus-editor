@@ -204,7 +204,7 @@ namespace Process
 
                 element.HeaderId = chunk.HeaderId;
 
-                await API.ElementAPI.Save(element).ConfigureAwait(true);
+                await ElementAPI.Save(element).ConfigureAwait(true);
             }
         }
 
@@ -235,7 +235,7 @@ namespace Process
                     element.Type = (int)ElementTypeEnum.Punctuation;
                 }
 
-                if (item.All(char.IsLetter))
+                if (item.All(char.IsLetter) || item.Any(char.IsLetter) && item.Contains("-"))
                 {
                     element.Type = (int)ElementTypeEnum.Word;
                 }

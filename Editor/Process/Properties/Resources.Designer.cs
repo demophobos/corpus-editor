@@ -61,7 +61,7 @@ namespace Process.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на [&quot;“”῾†»«᾽&apos;\[\]&lt;&gt;.,\/#!$%?!\^&amp;\*;:{}=\-_`~–()\—].
+        ///   Ищет локализованную строку, похожую на [&quot;“”῾†»«᾽&apos;\[\]&lt;&gt;.,\/#!$%?!\^&amp;\*;:{}=_`~–()\—].
         /// </summary>
         internal static string PunctuationPattern {
             get {

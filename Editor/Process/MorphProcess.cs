@@ -1,4 +1,6 @@
 ﻿using API;
+using CliWrap;
+using CliWrap.Buffered;
 using Model;
 using Model.Enum;
 using Model.Query;
@@ -6,6 +8,9 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Xml;
@@ -63,8 +68,6 @@ namespace Process
             };
         }
         #endregion
-
-
 
         public async Task<List<MorpheusAnalysisModel>> GetMorpheusAnalysis(string value, string lang)
         {
@@ -152,6 +155,58 @@ namespace Process
             doc.LoadXml(xmlString);
 
             return JsonConvert.SerializeXmlNode(doc);
+        }
+
+        public async Task<List<MorphModel>> GetRussianMorphAnalysis(string value)
+        {
+            var path = Guid.NewGuid().ToString();
+
+            var models = new List<MorphModel>();
+
+            try
+            {
+                using (FileStream fs = File.Create(path))
+                {
+                    byte[] info = new UTF8Encoding(true).GetBytes(value);
+                    fs.Write(info, 0, info.Length);
+                }
+
+                var result = await Cli.Wrap("mystem.exe")
+                    .WithArguments($"-i --eng-gr --format json {path}")
+                    .ExecuteBufferedAsync(Encoding.UTF8);
+
+                var exitCode = result.ExitCode;
+                var myStems = JsonConvert.DeserializeObject<List<MyStemModel>>(result.StandardOutput);
+                if (myStems.Count > 0)
+                {
+                    foreach (var st in myStems)
+                    {
+                        foreach (var an in st.analysis)
+                        {
+                            var model = new MorphModel
+                            {
+                                Form = st.text.ToLower(),
+                                Lemma = an.lex,
+                                Lang = LangStringEnum.Russian
+                            };
+
+                            MyStemHelper.ConvertToMorphModel(an.gr, model);
+
+                            models.Add(model);
+                        }
+                    }
+                }
+
+                return models;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                File.Delete(path);
+            }
         }
     }
 }

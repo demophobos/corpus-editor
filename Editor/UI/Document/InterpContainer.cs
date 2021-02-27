@@ -32,13 +32,15 @@ namespace Document
             dockPanel1.Theme = UIProcess.DockPanelTheme;
         }
 
-        private async void btnAdd_Click(object sender, EventArgs e)
+        private void btnAdd_Click(object sender, EventArgs e)
         {
             var dialog = new InterpSelector(_documentProcess, _index, _chunk);
 
-            if (dialog.ShowDialog() == DialogResult.OK)
+            var yesResult = dialog.ShowDialog() == DialogResult.Yes;
+
+            if (yesResult)
             {
-                await LoadData().ConfigureAwait(true);
+                btnRefresh.PerformClick();
             }
         }
 
@@ -103,7 +105,7 @@ namespace Document
 
         private async void btnRefresh_Click(object sender, EventArgs e)
         {
-            await LoadData();
+            await LoadData().ConfigureAwait(true);
         }
     }
 }

@@ -23,6 +23,12 @@ namespace Document
 
         private async void btnSave_ClickAsync(object sender, EventArgs e)
         {
+            loader1.BringToFront();
+
+            btnSave.Enabled = btnCancel.Enabled = false;
+
+            loader1.SetStatus("Обработка и сохранение фрагмента ...");
+
             chunkSource.EndEdit();
 
             var chunk = (ChunkModel)chunkSource.DataSource;
@@ -30,6 +36,8 @@ namespace Document
             var chunkBase = new ChunkModel { Id = chunk.Id, IndexId = chunk.IndexId, Value = chunk.Value, HeaderId = _index.HeaderId };
 
             await ChunkProcess.SaveChunkAndElements(chunkBase).ConfigureAwait(true);
+
+            loader1.SendToBack();
 
             DialogResult = DialogResult.OK;
         }

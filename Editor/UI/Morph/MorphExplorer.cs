@@ -64,6 +64,10 @@ namespace Morph
 
             ComboProcess.CreateNullableSelect(cmbVoice, voices.ToArray());
 
+            var languages = await TaxonomyProcess.GetLanguages();
+
+            ComboProcess.CreateSelect(cmbLang, languages.ToArray());
+
         }
 
         private async Task ApplyFilterAsync()
@@ -94,7 +98,9 @@ namespace Morph
 
                 Lemma = txtLemma.Text.Trim().Length > 0 ? txtLemma.Text.Trim() : null,
 
-                Form = txtForm.Text.Trim().Length > 0 ? txtForm.Text.Trim() : null
+                Form = txtForm.Text.Trim().Length > 0 ? txtForm.Text.Trim() : null,
+
+                Lang = cmbLang.SelectedIndex > 0 ? cmbLang.SelectedItem.ToString() : null
             };
 
             if (btnIsRule.Checked)

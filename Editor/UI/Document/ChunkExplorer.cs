@@ -172,7 +172,40 @@ namespace Document
 
         }
 
-        internal async void RunMorphService()
+        internal async void RunMorphRussianService()
+        {
+            loader1.BringToFront();
+
+            loader1.SetStatus("Получение данных морфологического сервиса ... ");
+
+            var resultsCount = 0;
+
+            foreach (var word in _noDefWords)
+            {
+                if (word.MorphId == null)
+                {
+                    var results = await _morphProcess.GetRussianMorphAnalysis(word.Value).ConfigureAwait(true);
+
+                    foreach (var model in results)
+                    {
+                        var savedModel = await _morphProcess.SaveMorph(model).ConfigureAwait(true);
+
+                        if (savedModel != null)
+                        {
+                            resultsCount += 1;
+
+                            loader1.SetStatus($"Получение данных морфологического сервиса ... {resultsCount}");
+                        }
+                    }
+                }
+            }
+
+            await LoadElements();
+
+            loader1.SendToBack();
+        }
+
+        internal async void RunMorphLatinService()
         {
             loader1.BringToFront();
 
@@ -233,7 +266,7 @@ namespace Document
 
                     if (multyDefWord != null)
                     {
-                        MarkElementMorphStatus(multyDefWord, Color.Blue);
+                        MarkElementMorphStatus(multyDefWord, SystemColors.Highlight);
                     }
 
                     var oneDefDord = _oneDefWords.FirstOrDefault(i => i.Id == word.Id);
@@ -280,7 +313,7 @@ namespace Document
 
                 if (results.Count > 1)
                 {
-                    MarkElementMorphStatus(word, Color.Blue);
+                    MarkElementMorphStatus(word, SystemColors.Highlight);
 
                     _multyDefWords.Add(word);
                 }
@@ -322,7 +355,8 @@ namespace Document
 
             var result = await ChunkProcess.PublishChunkValueObj(chunk, newValueObj).ConfigureAwait(true);
 
-            if (result != null) {
+            if (result != null)
+            {
 
                 Chunk.ValueObj = result.ValueObj;
 

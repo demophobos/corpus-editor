@@ -1,6 +1,7 @@
 ﻿using Auth;
 using Common.Process;
 using Model;
+using Model.Enum;
 using Model.Query;
 using Process;
 using System;
@@ -49,7 +50,7 @@ namespace Document
 
                 btnAddChunk.Enabled = false;
 
-                btnDeleteChunk.Enabled = btnEditChunk.Enabled = true;
+                btnDeleteChunk.Enabled = btnEditChunk.Enabled = btnCopyTextToBuffer.Enabled = true;
 
                 _chunkExplorer = new ChunkExplorer(_chunk);
 
@@ -76,7 +77,7 @@ namespace Document
 
             btnAddChunk.Enabled = _chunk == null;
 
-            btnDeleteChunk.Enabled = btnEditChunk.Enabled = btnMorphServices.Enabled = _chunk != null;
+            btnCopyTextToBuffer.Enabled = btnDeleteChunk.Enabled = btnEditChunk.Enabled = btnMorphServices.Enabled = _chunk != null;
 
             if (_chunk != null)
             {
@@ -241,12 +242,22 @@ namespace Document
 
         private void btnMorphServices_Click(object sender, EventArgs e)
         {
-            _chunkExplorer.RunMorphService();
+            if (_documentProcess.Header.Lang == LangStringEnum.Latin) {
+                _chunkExplorer.RunMorphLatinService();
+            }
+            if (_documentProcess.Header.Lang == LangStringEnum.Russian) {
+                _chunkExplorer.RunMorphRussianService();
+            }
         }
 
         private async void btnPublishChunk_ClickAsync(object sender, EventArgs e)
         {
             await _chunkExplorer.PublishChunkAsync();
+        }
+
+        private void btnCopyTextToBuffer_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(_chunk.Value);
         }
     }
 }

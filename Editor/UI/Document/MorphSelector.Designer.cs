@@ -290,7 +290,7 @@ namespace Document
             // 
             // Form
             // 
-            this.Form.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.Form.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.Form.DataPropertyName = "Form";
             this.Form.HeaderText = "Форма";
             this.Form.Name = "Form";
@@ -299,7 +299,7 @@ namespace Document
             // 
             // lemmaDataGridViewTextBoxColumn
             // 
-            this.lemmaDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.lemmaDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.lemmaDataGridViewTextBoxColumn.DataPropertyName = "Lemma";
             this.lemmaDataGridViewTextBoxColumn.HeaderText = "Лемма";
             this.lemmaDataGridViewTextBoxColumn.Name = "lemmaDataGridViewTextBoxColumn";
@@ -308,7 +308,7 @@ namespace Document
             // 
             // posDataGridViewTextBoxColumn
             // 
-            this.posDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.posDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.posDataGridViewTextBoxColumn.DataPropertyName = "Pos";
             this.posDataGridViewTextBoxColumn.HeaderText = "ЧР";
             this.posDataGridViewTextBoxColumn.Name = "posDataGridViewTextBoxColumn";
@@ -389,7 +389,7 @@ namespace Document
             // 
             // featureDataGridViewTextBoxColumn
             // 
-            this.featureDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.featureDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.featureDataGridViewTextBoxColumn.DataPropertyName = "Feature";
             this.featureDataGridViewTextBoxColumn.HeaderText = "Особенность";
             this.featureDataGridViewTextBoxColumn.Name = "featureDataGridViewTextBoxColumn";
@@ -492,6 +492,8 @@ namespace Document
         private System.Windows.Forms.ToolStripButton btnAcceptForAllCases;
         private System.Windows.Forms.ToolStripButton btnCancelAllCases;
         private System.Windows.Forms.ToolStripButton btnClone;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private System.Windows.Forms.DataGridViewCheckBoxColumn IsRule;
         private System.Windows.Forms.DataGridViewTextBoxColumn Form;
         private System.Windows.Forms.DataGridViewTextBoxColumn lemmaDataGridViewTextBoxColumn;
@@ -508,7 +510,5 @@ namespace Document
         private System.Windows.Forms.DataGridViewTextBoxColumn dialectDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn langDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn morphId;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
     }
 }

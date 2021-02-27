@@ -35,7 +35,13 @@ namespace Document
 
         private async Task LoadFilterData()
         {
+            loader1.BringToFront();
+
+            loader1.SetStatus("Поиск перевода ...");
+
             var list = await HeaderProcess.GetHeaders(_documentProcess.Header.ProjectId).ConfigureAwait(true);
+
+            loader1.SendToBack();
 
             var interps = list.Where(i => i.EditionType != _documentProcess.Header.EditionType);
 
@@ -111,7 +117,15 @@ namespace Document
 
             if (existing.Count == 0)
             {
+                loader1.BringToFront();
+
+                loader1.SetStatus("Сохранение ...");
+
                 await _documentProcess.SaveInterp(interp).ConfigureAwait(true);
+
+                loader1.SendToBack();
+
+                DialogResult = System.Windows.Forms.DialogResult.Yes;
             }
         }
     }

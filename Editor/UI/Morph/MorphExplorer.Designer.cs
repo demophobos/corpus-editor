@@ -32,6 +32,22 @@ namespace Morph
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MorphExplorer));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.IsRule = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.posDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lemmaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.formDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.genderDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.caseDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.personDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.numberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tenseDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.moodDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.voiceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.degreeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dialectDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.featureDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.langDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.morphSource = new System.Windows.Forms.BindingSource(this.components);
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.btnIsRule = new System.Windows.Forms.ToolStripButton();
@@ -58,22 +74,7 @@ namespace Morph
             this.loader1 = new Common.Control.Loader();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.lblUsageStat = new System.Windows.Forms.ToolStripStatusLabel();
-            this.IsRule = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.posDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lemmaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.formDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.genderDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.caseDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.personDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.numberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tenseDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.moodDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.voiceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.degreeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dialectDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.featureDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.langDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cmbLang = new System.Windows.Forms.ToolStripComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.morphSource)).BeginInit();
             this.toolStrip1.SuspendLayout();
@@ -107,252 +108,13 @@ namespace Morph
             this.dataGridView1.DataSource = this.morphSource;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 25);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(2007, 645);
+            this.dataGridView1.Size = new System.Drawing.Size(1338, 403);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
-            // 
-            // morphSource
-            // 
-            this.morphSource.DataSource = typeof(Model.MorphModel);
-            this.morphSource.CurrentChanged += new System.EventHandler(this.morphSource_CurrentChanged);
-            // 
-            // toolStrip1
-            // 
-            this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnIsRule,
-            this.cmbPos,
-            this.txtLemma,
-            this.txtForm,
-            this.cmbGender,
-            this.cmbCase,
-            this.cmbPerson,
-            this.cmbNumber,
-            this.cmbTense,
-            this.cmbMood,
-            this.cmbVoice,
-            this.cmbDegree,
-            this.btnRunFilter,
-            this.btnUndoRule,
-            this.btnApplyRule,
-            this.btnShowUsage,
-            this.toolStripSeparator1,
-            this.btnAdd,
-            this.btnClone,
-            this.btnEdit,
-            this.btnDelete});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Padding = new System.Windows.Forms.Padding(0, 0, 2, 0);
-            this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.toolStrip1.Size = new System.Drawing.Size(2007, 25);
-            this.toolStrip1.TabIndex = 1;
-            this.toolStrip1.Text = "toolStrip1";
-            // 
-            // btnIsRule
-            // 
-            this.btnIsRule.CheckOnClick = true;
-            this.btnIsRule.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnIsRule.Image = ((System.Drawing.Image)(resources.GetObject("btnIsRule.Image")));
-            this.btnIsRule.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnIsRule.Name = "btnIsRule";
-            this.btnIsRule.Size = new System.Drawing.Size(23, 22);
-            this.btnIsRule.Text = "toolStripButton2";
-            this.btnIsRule.Click += new System.EventHandler(this.btnIsRule_Click);
-            // 
-            // cmbPos
-            // 
-            this.cmbPos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbPos.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.cmbPos.Name = "cmbPos";
-            this.cmbPos.Size = new System.Drawing.Size(146, 25);
-            // 
-            // txtLemma
-            // 
-            this.txtLemma.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtLemma.Name = "txtLemma";
-            this.txtLemma.Size = new System.Drawing.Size(145, 25);
-            // 
-            // txtForm
-            // 
-            this.txtForm.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtForm.Name = "txtForm";
-            this.txtForm.Size = new System.Drawing.Size(145, 25);
-            // 
-            // cmbGender
-            // 
-            this.cmbGender.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbGender.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.cmbGender.Name = "cmbGender";
-            this.cmbGender.Size = new System.Drawing.Size(145, 25);
-            // 
-            // cmbCase
-            // 
-            this.cmbCase.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbCase.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.cmbCase.Name = "cmbCase";
-            this.cmbCase.Size = new System.Drawing.Size(145, 25);
-            // 
-            // cmbPerson
-            // 
-            this.cmbPerson.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbPerson.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.cmbPerson.Name = "cmbPerson";
-            this.cmbPerson.Size = new System.Drawing.Size(145, 25);
-            // 
-            // cmbNumber
-            // 
-            this.cmbNumber.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbNumber.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.cmbNumber.Name = "cmbNumber";
-            this.cmbNumber.Size = new System.Drawing.Size(145, 25);
-            // 
-            // cmbTense
-            // 
-            this.cmbTense.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbTense.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.cmbTense.Name = "cmbTense";
-            this.cmbTense.Size = new System.Drawing.Size(145, 25);
-            // 
-            // cmbMood
-            // 
-            this.cmbMood.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbMood.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.cmbMood.Name = "cmbMood";
-            this.cmbMood.Size = new System.Drawing.Size(145, 25);
-            // 
-            // cmbVoice
-            // 
-            this.cmbVoice.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbVoice.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.cmbVoice.Name = "cmbVoice";
-            this.cmbVoice.Size = new System.Drawing.Size(145, 25);
-            // 
-            // cmbDegree
-            // 
-            this.cmbDegree.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbDegree.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.cmbDegree.Name = "cmbDegree";
-            this.cmbDegree.Size = new System.Drawing.Size(145, 25);
-            // 
-            // btnRunFilter
-            // 
-            this.btnRunFilter.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnRunFilter.Image = ((System.Drawing.Image)(resources.GetObject("btnRunFilter.Image")));
-            this.btnRunFilter.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnRunFilter.Name = "btnRunFilter";
-            this.btnRunFilter.Size = new System.Drawing.Size(23, 22);
-            this.btnRunFilter.Text = "Найти";
-            this.btnRunFilter.Click += new System.EventHandler(this.btnRunFilter_Click);
-            // 
-            // btnUndoRule
-            // 
-            this.btnUndoRule.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.btnUndoRule.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnUndoRule.Enabled = false;
-            this.btnUndoRule.Image = ((System.Drawing.Image)(resources.GetObject("btnUndoRule.Image")));
-            this.btnUndoRule.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnUndoRule.Name = "btnUndoRule";
-            this.btnUndoRule.Size = new System.Drawing.Size(23, 22);
-            this.btnUndoRule.Text = "Отменить правило";
-            this.btnUndoRule.Click += new System.EventHandler(this.btnUndoRule_Click);
-            // 
-            // btnApplyRule
-            // 
-            this.btnApplyRule.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.btnApplyRule.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnApplyRule.Enabled = false;
-            this.btnApplyRule.Image = ((System.Drawing.Image)(resources.GetObject("btnApplyRule.Image")));
-            this.btnApplyRule.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnApplyRule.Name = "btnApplyRule";
-            this.btnApplyRule.Size = new System.Drawing.Size(23, 22);
-            this.btnApplyRule.Text = "Применить правило";
-            this.btnApplyRule.Click += new System.EventHandler(this.btnApplyRule_Click);
-            // 
-            // btnShowUsage
-            // 
-            this.btnShowUsage.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnShowUsage.Image = ((System.Drawing.Image)(resources.GetObject("btnShowUsage.Image")));
-            this.btnShowUsage.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnShowUsage.Name = "btnShowUsage";
-            this.btnShowUsage.Size = new System.Drawing.Size(23, 22);
-            this.btnShowUsage.Text = "Случаев использования";
-            this.btnShowUsage.Click += new System.EventHandler(this.btnShowUsage_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
-            // 
-            // btnAdd
-            // 
-            this.btnAdd.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnAdd.Image")));
-            this.btnAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(23, 22);
-            this.btnAdd.Text = "Добавить";
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-            // 
-            // btnClone
-            // 
-            this.btnClone.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnClone.Image = ((System.Drawing.Image)(resources.GetObject("btnClone.Image")));
-            this.btnClone.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnClone.Name = "btnClone";
-            this.btnClone.Size = new System.Drawing.Size(23, 22);
-            this.btnClone.Text = "Копировать";
-            this.btnClone.Click += new System.EventHandler(this.btnClone_Click);
-            // 
-            // btnEdit
-            // 
-            this.btnEdit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnEdit.Image = ((System.Drawing.Image)(resources.GetObject("btnEdit.Image")));
-            this.btnEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(23, 22);
-            this.btnEdit.Text = "Редактировать";
-            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
-            // 
-            // btnDelete
-            // 
-            this.btnDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnDelete.Image = ((System.Drawing.Image)(resources.GetObject("btnDelete.Image")));
-            this.btnDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(23, 22);
-            this.btnDelete.Text = "Удалить";
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
-            // 
-            // loader1
-            // 
-            this.loader1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.loader1.Location = new System.Drawing.Point(0, 25);
-            this.loader1.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
-            this.loader1.Name = "loader1";
-            this.loader1.Size = new System.Drawing.Size(2007, 645);
-            this.loader1.TabIndex = 2;
-            // 
-            // statusStrip1
-            // 
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.lblUsageStat});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 670);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Padding = new System.Windows.Forms.Padding(2, 0, 21, 0);
-            this.statusStrip1.Size = new System.Drawing.Size(2007, 22);
-            this.statusStrip1.TabIndex = 3;
-            this.statusStrip1.Text = "statusStrip1";
-            // 
-            // lblUsageStat
-            // 
-            this.lblUsageStat.Name = "lblUsageStat";
-            this.lblUsageStat.Size = new System.Drawing.Size(0, 17);
             // 
             // IsRule
             // 
@@ -487,16 +249,259 @@ namespace Morph
             this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
             this.idDataGridViewTextBoxColumn.ReadOnly = true;
             // 
+            // morphSource
+            // 
+            this.morphSource.DataSource = typeof(Model.MorphModel);
+            this.morphSource.CurrentChanged += new System.EventHandler(this.morphSource_CurrentChanged);
+            // 
+            // toolStrip1
+            // 
+            this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnIsRule,
+            this.cmbPos,
+            this.txtLemma,
+            this.txtForm,
+            this.cmbGender,
+            this.cmbCase,
+            this.cmbPerson,
+            this.cmbNumber,
+            this.cmbTense,
+            this.cmbMood,
+            this.cmbVoice,
+            this.cmbDegree,
+            this.cmbLang,
+            this.btnRunFilter,
+            this.btnUndoRule,
+            this.btnApplyRule,
+            this.btnShowUsage,
+            this.toolStripSeparator1,
+            this.btnAdd,
+            this.btnClone,
+            this.btnEdit,
+            this.btnDelete});
+            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+            this.toolStrip1.Size = new System.Drawing.Size(1338, 25);
+            this.toolStrip1.TabIndex = 1;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
+            // btnIsRule
+            // 
+            this.btnIsRule.CheckOnClick = true;
+            this.btnIsRule.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnIsRule.Image = ((System.Drawing.Image)(resources.GetObject("btnIsRule.Image")));
+            this.btnIsRule.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnIsRule.Name = "btnIsRule";
+            this.btnIsRule.Size = new System.Drawing.Size(23, 22);
+            this.btnIsRule.Text = "toolStripButton2";
+            this.btnIsRule.Click += new System.EventHandler(this.btnIsRule_Click);
+            // 
+            // cmbPos
+            // 
+            this.cmbPos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbPos.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.cmbPos.Name = "cmbPos";
+            this.cmbPos.Size = new System.Drawing.Size(99, 25);
+            // 
+            // txtLemma
+            // 
+            this.txtLemma.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtLemma.Name = "txtLemma";
+            this.txtLemma.Size = new System.Drawing.Size(98, 25);
+            // 
+            // txtForm
+            // 
+            this.txtForm.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtForm.Name = "txtForm";
+            this.txtForm.Size = new System.Drawing.Size(98, 25);
+            // 
+            // cmbGender
+            // 
+            this.cmbGender.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbGender.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.cmbGender.Name = "cmbGender";
+            this.cmbGender.Size = new System.Drawing.Size(98, 25);
+            // 
+            // cmbCase
+            // 
+            this.cmbCase.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbCase.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.cmbCase.Name = "cmbCase";
+            this.cmbCase.Size = new System.Drawing.Size(98, 25);
+            // 
+            // cmbPerson
+            // 
+            this.cmbPerson.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbPerson.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.cmbPerson.Name = "cmbPerson";
+            this.cmbPerson.Size = new System.Drawing.Size(98, 25);
+            // 
+            // cmbNumber
+            // 
+            this.cmbNumber.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbNumber.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.cmbNumber.Name = "cmbNumber";
+            this.cmbNumber.Size = new System.Drawing.Size(98, 25);
+            // 
+            // cmbTense
+            // 
+            this.cmbTense.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbTense.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.cmbTense.Name = "cmbTense";
+            this.cmbTense.Size = new System.Drawing.Size(98, 25);
+            // 
+            // cmbMood
+            // 
+            this.cmbMood.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbMood.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.cmbMood.Name = "cmbMood";
+            this.cmbMood.Size = new System.Drawing.Size(98, 25);
+            // 
+            // cmbVoice
+            // 
+            this.cmbVoice.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbVoice.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.cmbVoice.Name = "cmbVoice";
+            this.cmbVoice.Size = new System.Drawing.Size(98, 25);
+            // 
+            // cmbDegree
+            // 
+            this.cmbDegree.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbDegree.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.cmbDegree.Name = "cmbDegree";
+            this.cmbDegree.Size = new System.Drawing.Size(98, 25);
+            // 
+            // btnRunFilter
+            // 
+            this.btnRunFilter.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnRunFilter.Image = ((System.Drawing.Image)(resources.GetObject("btnRunFilter.Image")));
+            this.btnRunFilter.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnRunFilter.Name = "btnRunFilter";
+            this.btnRunFilter.Size = new System.Drawing.Size(23, 22);
+            this.btnRunFilter.Text = "Найти";
+            this.btnRunFilter.Click += new System.EventHandler(this.btnRunFilter_Click);
+            // 
+            // btnUndoRule
+            // 
+            this.btnUndoRule.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.btnUndoRule.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnUndoRule.Enabled = false;
+            this.btnUndoRule.Image = ((System.Drawing.Image)(resources.GetObject("btnUndoRule.Image")));
+            this.btnUndoRule.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnUndoRule.Name = "btnUndoRule";
+            this.btnUndoRule.Size = new System.Drawing.Size(23, 22);
+            this.btnUndoRule.Text = "Отменить правило";
+            this.btnUndoRule.Click += new System.EventHandler(this.btnUndoRule_Click);
+            // 
+            // btnApplyRule
+            // 
+            this.btnApplyRule.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.btnApplyRule.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnApplyRule.Enabled = false;
+            this.btnApplyRule.Image = ((System.Drawing.Image)(resources.GetObject("btnApplyRule.Image")));
+            this.btnApplyRule.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnApplyRule.Name = "btnApplyRule";
+            this.btnApplyRule.Size = new System.Drawing.Size(23, 22);
+            this.btnApplyRule.Text = "Применить правило";
+            this.btnApplyRule.Click += new System.EventHandler(this.btnApplyRule_Click);
+            // 
+            // btnShowUsage
+            // 
+            this.btnShowUsage.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnShowUsage.Image = ((System.Drawing.Image)(resources.GetObject("btnShowUsage.Image")));
+            this.btnShowUsage.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnShowUsage.Name = "btnShowUsage";
+            this.btnShowUsage.Size = new System.Drawing.Size(23, 22);
+            this.btnShowUsage.Text = "Случаев использования";
+            this.btnShowUsage.Click += new System.EventHandler(this.btnShowUsage_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnAdd.Image")));
+            this.btnAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(23, 20);
+            this.btnAdd.Text = "Добавить";
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // btnClone
+            // 
+            this.btnClone.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnClone.Image = ((System.Drawing.Image)(resources.GetObject("btnClone.Image")));
+            this.btnClone.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnClone.Name = "btnClone";
+            this.btnClone.Size = new System.Drawing.Size(23, 20);
+            this.btnClone.Text = "Копировать";
+            this.btnClone.Click += new System.EventHandler(this.btnClone_Click);
+            // 
+            // btnEdit
+            // 
+            this.btnEdit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnEdit.Image = ((System.Drawing.Image)(resources.GetObject("btnEdit.Image")));
+            this.btnEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(23, 20);
+            this.btnEdit.Text = "Редактировать";
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnDelete.Image = ((System.Drawing.Image)(resources.GetObject("btnDelete.Image")));
+            this.btnDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(23, 20);
+            this.btnDelete.Text = "Удалить";
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // loader1
+            // 
+            this.loader1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.loader1.Location = new System.Drawing.Point(0, 25);
+            this.loader1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.loader1.Name = "loader1";
+            this.loader1.Size = new System.Drawing.Size(1338, 403);
+            this.loader1.TabIndex = 2;
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.lblUsageStat});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 428);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(1338, 22);
+            this.statusStrip1.TabIndex = 3;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // lblUsageStat
+            // 
+            this.lblUsageStat.Name = "lblUsageStat";
+            this.lblUsageStat.Size = new System.Drawing.Size(0, 17);
+            // 
+            // cmbLang
+            // 
+            this.cmbLang.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbLang.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.cmbLang.Name = "cmbLang";
+            this.cmbLang.Size = new System.Drawing.Size(98, 25);
+            // 
             // MorphExplorer
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(2007, 692);
+            this.ClientSize = new System.Drawing.Size(1338, 450);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.loader1);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.statusStrip1);
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "MorphExplorer";
             this.Text = "Морфология";
             this.Load += new System.EventHandler(this.MorphExplorer_LoadAsync);
@@ -556,5 +561,6 @@ namespace Morph
         private System.Windows.Forms.DataGridViewTextBoxColumn featureDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn langDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
+        private System.Windows.Forms.ToolStripComboBox cmbLang;
     }
 }
