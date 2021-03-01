@@ -15,7 +15,7 @@ namespace API
 
         }
 
-        public static async Task<List<InterpViewModel>> GetInterps(IQuery query)
+        public static async Task<List<InterpViewModel>> GetInterps(InterpQuery query)
         {
             try
             {

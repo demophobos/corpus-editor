@@ -5,6 +5,7 @@ using Model.Enum;
 using Model.Query;
 using Process;
 using System;
+using System.IO;
 using System.Windows.Forms;
 using WeifenLuo.WinFormsUI.Docking;
 
@@ -13,6 +14,8 @@ namespace Document
     public partial class ChunkContainer : DockContent
     {
         private DocumentProcess _documentProcess;
+
+        private ReportProcess _reportProcess;
         public IndexModel Index { get; private set; }
 
         private ChunkExplorer _chunkExplorer;
@@ -23,9 +26,13 @@ namespace Document
 
         private ChunkModel _chunk;
 
+        private SaveFileDialog _saveFileDialog;
+
         public ChunkContainer(IndexModel index, DocumentProcess documentProcess)
         {
             _documentProcess = documentProcess;
+
+            _reportProcess = new ReportProcess(_documentProcess);
 
             Index = index;
 
@@ -48,10 +55,6 @@ namespace Document
 
                 _chunk = await ChunkProcess.GetChunkByQuery(query).ConfigureAwait(true);
 
-                btnAddChunk.Enabled = false;
-
-                btnDeleteChunk.Enabled = btnEditChunk.Enabled = btnCopyTextToBuffer.Enabled = true;
-
                 _chunkExplorer = new ChunkExplorer(_chunk);
 
                 _chunkExplorer.ElementSelected += ChunkExplorer_ElementSelected;
@@ -60,7 +63,15 @@ namespace Document
 
                 _chunkExplorer.Show(dockPanel1, DockState.Document);
 
-                btnShowHideMorphologyPane.Enabled = btnShowHideTranslationPane.Enabled = btnMorphServices.Enabled = _chunk != null;
+                btnDeleteChunk.Enabled = 
+                    btnEditChunk.Enabled = 
+                    btnCopyTextToBuffer.Enabled = 
+                    btnSaveAs.Enabled = 
+                    btnShowHideMorphologyPane.Enabled = 
+                    btnShowHideTranslationPane.Enabled = 
+                    btnMorphServices.Enabled = _chunk != null;
+
+                btnAddChunk.Enabled = _chunk == null;
             }
         }
 
@@ -77,7 +88,7 @@ namespace Document
 
             btnAddChunk.Enabled = _chunk == null;
 
-            btnCopyTextToBuffer.Enabled = btnDeleteChunk.Enabled = btnEditChunk.Enabled = btnMorphServices.Enabled = _chunk != null;
+            btnCopyTextToBuffer.Enabled = btnDeleteChunk.Enabled = btnEditChunk.Enabled = btnMorphServices.Enabled = btnSaveAs.Enabled = _chunk != null;
 
             if (_chunk != null)
             {
@@ -242,10 +253,12 @@ namespace Document
 
         private void btnMorphServices_Click(object sender, EventArgs e)
         {
-            if (_documentProcess.Header.Lang == LangStringEnum.Latin) {
+            if (_documentProcess.Header.Lang == LangStringEnum.Latin)
+            {
                 _chunkExplorer.RunMorphLatinService();
             }
-            if (_documentProcess.Header.Lang == LangStringEnum.Russian) {
+            if (_documentProcess.Header.Lang == LangStringEnum.Russian)
+            {
                 _chunkExplorer.RunMorphRussianService();
             }
         }
@@ -258,6 +271,67 @@ namespace Document
         private void btnCopyTextToBuffer_Click(object sender, EventArgs e)
         {
             Clipboard.SetText(_chunk.Value);
+        }
+
+        private void btnSaveAs_Click(object sender, EventArgs e)
+        {
+            _saveFileDialog = new SaveFileDialog
+            {
+                Title = $"Сохранение фрагмента {_documentProcess.Header.Code}_{Index.Name}",
+
+                Filter = "Текст (*.txt) |*.txt | Json (*.json) |*.json | RusCorpora (*.xml) |*.xml",
+
+                FileName = $"{_documentProcess.Header.Code}_{Index.Name}",
+
+                OverwritePrompt = true
+            };
+
+            _saveFileDialog.ValidateNames = true;
+
+            _saveFileDialog.FileOk += SaveFileDialog_FileOk;
+
+            _saveFileDialog.ShowDialog();
+        }
+
+        private async void SaveFileDialog_FileOk(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (!e.Cancel)
+            {
+                if (_saveFileDialog.FilterIndex == 1)
+                {
+                    if (!File.Exists(_saveFileDialog.FileName))
+                    {
+                        using (StreamWriter sw = File.CreateText(_saveFileDialog.FileName))
+                        {
+                            sw.Write(_chunk.Value);
+                        }
+                    }
+                }
+
+                if (_saveFileDialog.FilterIndex == 2)
+                {
+                    if (!File.Exists(_saveFileDialog.FileName))
+                    {
+                        using (StreamWriter sw = File.CreateText(_saveFileDialog.FileName))
+                        {
+                            sw.Write(_chunk.ValueObj);
+                        }
+                    }
+                }
+
+                if (_saveFileDialog.FilterIndex == 3)
+                {
+                    if (!File.Exists(_saveFileDialog.FileName))
+                    {
+                        using (StreamWriter sw = File.CreateText(_saveFileDialog.FileName))
+                        {
+                            var data = await _reportProcess.CreateRusCorporaChunkReport(Index, _chunk, _interpContainer.Interpretations, _interpContainer.Originals).ConfigureAwait(true);
+
+                            sw.Write(data);
+                        }
+                    }
+                }
+            }
         }
     }
 }

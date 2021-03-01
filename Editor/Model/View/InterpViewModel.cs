@@ -6,6 +6,8 @@ namespace Model.View
     {
         [JsonProperty("sourceValue")]
         public string SourceValue { get; set; }
+        [JsonProperty("sourceValueObj")]
+        public string SourceValueObj { get; set; }
         [JsonProperty("sourceIndexName")]
         public string SourceIndexName { get; set; }
         [JsonProperty("sourceIndexOrder")]
@@ -28,6 +30,8 @@ namespace Model.View
         public string SourceHeaderLang { get; set; }
         [JsonProperty("interpValue")]
         public string InterpValue { get; set; }
+        [JsonProperty("interpValueObj")]
+        public string InterpValueObj { get; set; }
         [JsonProperty("interpIndexName")]
         public string InterpIndexName { get; set; }
         [JsonProperty("interpIndexOrder")]

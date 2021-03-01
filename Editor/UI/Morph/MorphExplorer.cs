@@ -133,7 +133,7 @@ namespace Morph
         {
             btnShowUsage.Enabled = btnDelete.Enabled = btnEdit.Enabled = morphSource.Current != null;
 
-            
+
         }
 
         private async void btnApplyRule_Click(object sender, EventArgs e)
@@ -173,7 +173,8 @@ namespace Morph
 
         private async void btnUndoRule_Click(object sender, EventArgs e)
         {
-            if (DialogProcess.UndoWarning() == DialogResult.Yes) {
+            if (DialogProcess.UndoWarning() == DialogResult.Yes)
+            {
                 int count = 0;
 
                 foreach (DataGridViewRow row in dataGridView1.SelectedRows)
@@ -205,7 +206,8 @@ namespace Morph
         {
             var morph = new MorphModel();
             var editor = new MorphEditor(morph);
-            if (editor.ShowDialog() == DialogResult.OK) {
+            if (editor.ShowDialog() == DialogResult.OK)
+            {
                 txtForm.Text = morph.Form;
                 btnRunFilter.PerformClick();
             }
@@ -226,32 +228,45 @@ namespace Morph
 
         private async void btnDelete_Click(object sender, EventArgs e)
         {
-            if (morphSource.Current is MorphModel model && DialogProcess.DeleteWarning(model) == DialogResult.Yes)
+            if (dataGridView1.SelectedRows.Count > 0 && DialogProcess.DeleteBulkWarning("Удаление") == DialogResult.Yes)
             {
-                var results = await ElementProcess.GetElements(new ElementQuery { morphId = model.Id }).ConfigureAwait(true);
+                loader1.BringToFront();
 
-                if (results.Count == 0)
-                {
-                    await _morphProcess.DeleteMorph(model).ConfigureAwait(true);
+                loader1.SetStatus("Удаление ...");
 
-                    btnRunFilter.PerformClick();
-                }
-                else
+                foreach (DataGridViewRow item in dataGridView1.SelectedRows)
                 {
-                    if (DialogProcess.DeleteBulkWarning($"'{model.Form}' используется в определениях элементов: {results.Count}") == DialogResult.Yes)
+                    if (item.DataBoundItem is MorphModel model)
                     {
 
-                        foreach (var element in results)
+                        var results = await ElementProcess.GetElements(new ElementQuery { morphId = model.Id }).ConfigureAwait(true);
+
+                        if (results.Count == 0)
                         {
-                            element.MorphId = null;
-                            await ElementProcess.SaveModel(element).ConfigureAwait(true);
+                            await _morphProcess.DeleteMorph(model).ConfigureAwait(true);
+
+                            
                         }
+                        else
+                        {
+                            if (DialogProcess.DeleteBulkWarning($"'{model.Form}' используется в определениях элементов: {results.Count}") == DialogResult.Yes)
+                            {
 
-                        await _morphProcess.DeleteMorph(model).ConfigureAwait(true);
+                                foreach (var element in results)
+                                {
+                                    element.MorphId = null;
+                                    await ElementProcess.SaveModel(element).ConfigureAwait(true);
+                                }
 
-                        btnRunFilter.PerformClick();
+                                await _morphProcess.DeleteMorph(model).ConfigureAwait(true);
+                            }
+                        }
                     }
                 }
+
+                btnRunFilter.PerformClick();
+
+                loader1.SendToBack();
             }
         }
 

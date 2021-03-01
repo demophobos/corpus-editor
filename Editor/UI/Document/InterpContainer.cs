@@ -2,8 +2,10 @@
 using Model;
 using Model.Enum;
 using Model.Query;
+using Model.View;
 using Process;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -18,6 +20,10 @@ namespace Document
         private ChunkModel _chunk;
 
         private DocumentProcess _documentProcess;
+
+        public List<InterpViewModel> Interpretations { get; private set; }
+
+        public List<InterpViewModel> Originals { get; private set; }
 
         public InterpContainer(DocumentProcess documentProcess, IndexModel index, ChunkModel chunk)
         {
@@ -59,9 +65,9 @@ namespace Document
 
             if (_documentProcess.Header.EditionType == EditionTypeStringEnum.Original)
             {
-                var interps = await _documentProcess.GetInterpsByQuery(new InterpQuery { sourceId = _chunk.Id }).ConfigureAwait(true);
+                Interpretations= await _documentProcess.GetInterpsByQuery(new InterpQuery { SourceId = _chunk.Id }).ConfigureAwait(true);
 
-                foreach (var interp in interps)
+                foreach (var interp in Interpretations)
                 {
                     var viewer = new InterpViewer(_documentProcess, interp, EditionTypeEnum.Interpretation);
 
@@ -72,9 +78,9 @@ namespace Document
             }
             else
             {
-                var origs = await _documentProcess.GetInterpsByQuery(new InterpQuery { interpId = _chunk.Id }).ConfigureAwait(true);
+                Originals = await _documentProcess.GetInterpsByQuery(new InterpQuery { InterpId = _chunk.Id }).ConfigureAwait(true);
 
-                var original = origs.FirstOrDefault();
+                var original = Originals.FirstOrDefault();
 
                 if (original != null)
                 {

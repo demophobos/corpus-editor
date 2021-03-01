@@ -73,6 +73,7 @@
     <Compile Include="DocumentProcess.cs" />
     <Compile Include="ElementProcess.cs" />
     <Compile Include="HeaderProcess.cs" />
+    <Compile Include="Helper\RusCorporaMapper.cs" />
     <Compile Include="Helper\StringExtension.cs" />
     <Compile Include="MorphProcess.cs" />
     <Compile Include="MyStemHelper.cs" />
@@ -83,6 +84,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="ReportProcess.cs" />
     <Compile Include="TaxonomyProcess.cs" />
   </ItemGroup>
   <ItemGroup>

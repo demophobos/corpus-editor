@@ -40,9 +40,11 @@ namespace Document
             this.btnMorphServices = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.btnPublishChunk = new System.Windows.Forms.ToolStripButton();
-            this.dockPanel1 = new WeifenLuo.WinFormsUI.Docking.DockPanel();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.btnCopyTextToBuffer = new System.Windows.Forms.ToolStripButton();
+            this.dockPanel1 = new WeifenLuo.WinFormsUI.Docking.DockPanel();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnSaveAs = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -60,7 +62,9 @@ namespace Document
             this.toolStripSeparator2,
             this.btnPublishChunk,
             this.toolStripSeparator3,
-            this.btnCopyTextToBuffer});
+            this.btnCopyTextToBuffer,
+            this.toolStripSeparator4,
+            this.btnSaveAs});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
@@ -156,15 +160,6 @@ namespace Document
             this.btnPublishChunk.Text = "Опубликовать";
             this.btnPublishChunk.Click += new System.EventHandler(this.btnPublishChunk_ClickAsync);
             // 
-            // dockPanel1
-            // 
-            this.dockPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dockPanel1.DocumentStyle = WeifenLuo.WinFormsUI.Docking.DocumentStyle.DockingSdi;
-            this.dockPanel1.Location = new System.Drawing.Point(0, 25);
-            this.dockPanel1.Name = "dockPanel1";
-            this.dockPanel1.Size = new System.Drawing.Size(797, 459);
-            this.dockPanel1.TabIndex = 3;
-            // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
@@ -177,8 +172,32 @@ namespace Document
             this.btnCopyTextToBuffer.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnCopyTextToBuffer.Name = "btnCopyTextToBuffer";
             this.btnCopyTextToBuffer.Size = new System.Drawing.Size(23, 22);
-            this.btnCopyTextToBuffer.Text = "toolStripButton1";
+            this.btnCopyTextToBuffer.Text = "Копировать текст фрагмента";
             this.btnCopyTextToBuffer.Click += new System.EventHandler(this.btnCopyTextToBuffer_Click);
+            // 
+            // dockPanel1
+            // 
+            this.dockPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dockPanel1.DocumentStyle = WeifenLuo.WinFormsUI.Docking.DocumentStyle.DockingSdi;
+            this.dockPanel1.Location = new System.Drawing.Point(0, 25);
+            this.dockPanel1.Name = "dockPanel1";
+            this.dockPanel1.Size = new System.Drawing.Size(797, 459);
+            this.dockPanel1.TabIndex = 3;
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 25);
+            // 
+            // btnSaveAs
+            // 
+            this.btnSaveAs.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnSaveAs.Image = ((System.Drawing.Image)(resources.GetObject("btnSaveAs.Image")));
+            this.btnSaveAs.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnSaveAs.Name = "btnSaveAs";
+            this.btnSaveAs.Size = new System.Drawing.Size(23, 22);
+            this.btnSaveAs.Text = "Сохранить фрагмент как ...";
+            this.btnSaveAs.Click += new System.EventHandler(this.btnSaveAs_Click);
             // 
             // ChunkContainer
             // 
@@ -211,5 +230,7 @@ namespace Document
         private System.Windows.Forms.ToolStripButton btnPublishChunk;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripButton btnCopyTextToBuffer;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        private System.Windows.Forms.ToolStripButton btnSaveAs;
     }
 }
