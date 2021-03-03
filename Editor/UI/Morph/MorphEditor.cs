@@ -18,7 +18,7 @@ namespace Morph
         {
             _morphProcess = new MorphProcess();
 
-            _morphModel = morphModel;
+            _morphModel = (MorphModel)morphModel.Clone();
 
             InitializeComponent();
         }

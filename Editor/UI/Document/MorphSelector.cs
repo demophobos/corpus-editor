@@ -88,7 +88,7 @@ namespace Document
             }
         }
 
-        private void btnEdit_Click(object sender, EventArgs e)
+        private async void btnEdit_Click(object sender, EventArgs e)
         {
             if (morphSource.Current is MorphModel model)
             {
@@ -96,7 +96,7 @@ namespace Document
 
                 if (editor.ShowDialog() == DialogResult.OK)
                 {
-                    morphSource.ResetCurrentItem();
+                    await LoadDataAsync(_element);
                 }
             }
         }

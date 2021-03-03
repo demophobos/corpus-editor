@@ -74,7 +74,7 @@ namespace Morph
             // table
             // 
             this.table.ColumnCount = 2;
-            this.table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+            this.table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.table.Controls.Add(this.txtFeature, 0, 13);
             this.table.Controls.Add(this.label14, 0, 13);
@@ -107,36 +107,34 @@ namespace Morph
             this.table.Controls.Add(this.txtLemma, 1, 1);
             this.table.Dock = System.Windows.Forms.DockStyle.Fill;
             this.table.Location = new System.Drawing.Point(0, 0);
-            this.table.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.table.Name = "table";
             this.table.RowCount = 15;
-            this.table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 42F));
-            this.table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 42F));
-            this.table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 42F));
-            this.table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 42F));
-            this.table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 42F));
-            this.table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 42F));
-            this.table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 42F));
-            this.table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 42F));
-            this.table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 42F));
-            this.table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 42F));
-            this.table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 42F));
-            this.table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 42F));
-            this.table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 42F));
-            this.table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 42F));
+            this.table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
+            this.table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
+            this.table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
+            this.table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
+            this.table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
+            this.table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
+            this.table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
+            this.table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
+            this.table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
+            this.table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
+            this.table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
+            this.table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
+            this.table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
+            this.table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
             this.table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
-            this.table.Size = new System.Drawing.Size(531, 635);
+            this.table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.table.Size = new System.Drawing.Size(354, 413);
             this.table.TabIndex = 6;
             // 
             // txtFeature
             // 
             this.txtFeature.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.morphSource, "Feature", true));
             this.txtFeature.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtFeature.Location = new System.Drawing.Point(154, 551);
-            this.txtFeature.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtFeature.Location = new System.Drawing.Point(103, 354);
             this.txtFeature.Name = "txtFeature";
-            this.txtFeature.Size = new System.Drawing.Size(373, 26);
+            this.txtFeature.Size = new System.Drawing.Size(248, 20);
             this.txtFeature.TabIndex = 28;
             // 
             // morphSource
@@ -146,10 +144,9 @@ namespace Morph
             // label14
             // 
             this.label14.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label14.Location = new System.Drawing.Point(4, 546);
-            this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label14.Location = new System.Drawing.Point(3, 351);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(142, 42);
+            this.label14.Size = new System.Drawing.Size(94, 27);
             this.label14.TabIndex = 27;
             this.label14.Text = "особенность:";
             this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -162,10 +159,9 @@ namespace Morph
             this.cmbDialect.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cmbDialect.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbDialect.FormattingEnabled = true;
-            this.cmbDialect.Location = new System.Drawing.Point(154, 509);
-            this.cmbDialect.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.cmbDialect.Location = new System.Drawing.Point(103, 327);
             this.cmbDialect.Name = "cmbDialect";
-            this.cmbDialect.Size = new System.Drawing.Size(373, 28);
+            this.cmbDialect.Size = new System.Drawing.Size(248, 21);
             this.cmbDialect.TabIndex = 26;
             this.cmbDialect.Tag = "Dialect";
             this.cmbDialect.ValueMember = "Code";
@@ -177,10 +173,9 @@ namespace Morph
             // label13
             // 
             this.label13.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label13.Location = new System.Drawing.Point(4, 504);
-            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label13.Location = new System.Drawing.Point(3, 324);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(142, 42);
+            this.label13.Size = new System.Drawing.Size(94, 27);
             this.label13.TabIndex = 25;
             this.label13.Text = "стиль:";
             this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -193,10 +188,9 @@ namespace Morph
             this.cmbDegree.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cmbDegree.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbDegree.FormattingEnabled = true;
-            this.cmbDegree.Location = new System.Drawing.Point(154, 467);
-            this.cmbDegree.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.cmbDegree.Location = new System.Drawing.Point(103, 300);
             this.cmbDegree.Name = "cmbDegree";
-            this.cmbDegree.Size = new System.Drawing.Size(373, 28);
+            this.cmbDegree.Size = new System.Drawing.Size(248, 21);
             this.cmbDegree.TabIndex = 24;
             this.cmbDegree.Tag = "Degree";
             this.cmbDegree.ValueMember = "Code";
@@ -204,10 +198,9 @@ namespace Morph
             // label12
             // 
             this.label12.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label12.Location = new System.Drawing.Point(4, 462);
-            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label12.Location = new System.Drawing.Point(3, 297);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(142, 42);
+            this.label12.Size = new System.Drawing.Size(94, 27);
             this.label12.TabIndex = 23;
             this.label12.Text = "степень:";
             this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -220,10 +213,9 @@ namespace Morph
             this.cmbVoice.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cmbVoice.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbVoice.FormattingEnabled = true;
-            this.cmbVoice.Location = new System.Drawing.Point(154, 425);
-            this.cmbVoice.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.cmbVoice.Location = new System.Drawing.Point(103, 273);
             this.cmbVoice.Name = "cmbVoice";
-            this.cmbVoice.Size = new System.Drawing.Size(373, 28);
+            this.cmbVoice.Size = new System.Drawing.Size(248, 21);
             this.cmbVoice.TabIndex = 22;
             this.cmbVoice.Tag = "Voice";
             this.cmbVoice.ValueMember = "Code";
@@ -231,10 +223,9 @@ namespace Morph
             // label11
             // 
             this.label11.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label11.Location = new System.Drawing.Point(4, 420);
-            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label11.Location = new System.Drawing.Point(3, 270);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(142, 42);
+            this.label11.Size = new System.Drawing.Size(94, 27);
             this.label11.TabIndex = 21;
             this.label11.Text = "залог:";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -247,10 +238,9 @@ namespace Morph
             this.cmbMood.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cmbMood.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbMood.FormattingEnabled = true;
-            this.cmbMood.Location = new System.Drawing.Point(154, 383);
-            this.cmbMood.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.cmbMood.Location = new System.Drawing.Point(103, 246);
             this.cmbMood.Name = "cmbMood";
-            this.cmbMood.Size = new System.Drawing.Size(373, 28);
+            this.cmbMood.Size = new System.Drawing.Size(248, 21);
             this.cmbMood.TabIndex = 20;
             this.cmbMood.Tag = "Mood";
             this.cmbMood.ValueMember = "Code";
@@ -258,10 +248,9 @@ namespace Morph
             // label10
             // 
             this.label10.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label10.Location = new System.Drawing.Point(4, 378);
-            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label10.Location = new System.Drawing.Point(3, 243);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(142, 42);
+            this.label10.Size = new System.Drawing.Size(94, 27);
             this.label10.TabIndex = 19;
             this.label10.Text = "наклонение:";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -274,10 +263,9 @@ namespace Morph
             this.cmbTense.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cmbTense.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbTense.FormattingEnabled = true;
-            this.cmbTense.Location = new System.Drawing.Point(154, 341);
-            this.cmbTense.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.cmbTense.Location = new System.Drawing.Point(103, 219);
             this.cmbTense.Name = "cmbTense";
-            this.cmbTense.Size = new System.Drawing.Size(373, 28);
+            this.cmbTense.Size = new System.Drawing.Size(248, 21);
             this.cmbTense.TabIndex = 18;
             this.cmbTense.Tag = "Tense";
             this.cmbTense.ValueMember = "Code";
@@ -285,10 +273,9 @@ namespace Morph
             // label9
             // 
             this.label9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label9.Location = new System.Drawing.Point(4, 336);
-            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label9.Location = new System.Drawing.Point(3, 216);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(142, 42);
+            this.label9.Size = new System.Drawing.Size(94, 27);
             this.label9.TabIndex = 17;
             this.label9.Text = "время:";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -301,10 +288,9 @@ namespace Morph
             this.cmbNumber.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cmbNumber.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbNumber.FormattingEnabled = true;
-            this.cmbNumber.Location = new System.Drawing.Point(154, 299);
-            this.cmbNumber.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.cmbNumber.Location = new System.Drawing.Point(103, 192);
             this.cmbNumber.Name = "cmbNumber";
-            this.cmbNumber.Size = new System.Drawing.Size(373, 28);
+            this.cmbNumber.Size = new System.Drawing.Size(248, 21);
             this.cmbNumber.TabIndex = 16;
             this.cmbNumber.Tag = "Number";
             this.cmbNumber.ValueMember = "Code";
@@ -312,10 +298,9 @@ namespace Morph
             // label8
             // 
             this.label8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label8.Location = new System.Drawing.Point(4, 294);
-            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label8.Location = new System.Drawing.Point(3, 189);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(142, 42);
+            this.label8.Size = new System.Drawing.Size(94, 27);
             this.label8.TabIndex = 15;
             this.label8.Text = "число:";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -328,10 +313,9 @@ namespace Morph
             this.cmbPerson.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cmbPerson.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbPerson.FormattingEnabled = true;
-            this.cmbPerson.Location = new System.Drawing.Point(154, 257);
-            this.cmbPerson.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.cmbPerson.Location = new System.Drawing.Point(103, 165);
             this.cmbPerson.Name = "cmbPerson";
-            this.cmbPerson.Size = new System.Drawing.Size(373, 28);
+            this.cmbPerson.Size = new System.Drawing.Size(248, 21);
             this.cmbPerson.TabIndex = 14;
             this.cmbPerson.Tag = "Person";
             this.cmbPerson.ValueMember = "Code";
@@ -339,10 +323,9 @@ namespace Morph
             // label7
             // 
             this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label7.Location = new System.Drawing.Point(4, 252);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Location = new System.Drawing.Point(3, 162);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(142, 42);
+            this.label7.Size = new System.Drawing.Size(94, 27);
             this.label7.TabIndex = 13;
             this.label7.Text = "лицо:";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -355,10 +338,9 @@ namespace Morph
             this.cmbCase.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cmbCase.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCase.FormattingEnabled = true;
-            this.cmbCase.Location = new System.Drawing.Point(154, 215);
-            this.cmbCase.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.cmbCase.Location = new System.Drawing.Point(103, 138);
             this.cmbCase.Name = "cmbCase";
-            this.cmbCase.Size = new System.Drawing.Size(373, 28);
+            this.cmbCase.Size = new System.Drawing.Size(248, 21);
             this.cmbCase.TabIndex = 12;
             this.cmbCase.Tag = "Case";
             this.cmbCase.ValueMember = "Code";
@@ -366,10 +348,9 @@ namespace Morph
             // label6
             // 
             this.label6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label6.Location = new System.Drawing.Point(4, 210);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Location = new System.Drawing.Point(3, 135);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(142, 42);
+            this.label6.Size = new System.Drawing.Size(94, 27);
             this.label6.TabIndex = 11;
             this.label6.Text = "падеж:";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -382,10 +363,9 @@ namespace Morph
             this.cmbGender.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cmbGender.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbGender.FormattingEnabled = true;
-            this.cmbGender.Location = new System.Drawing.Point(154, 173);
-            this.cmbGender.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.cmbGender.Location = new System.Drawing.Point(103, 111);
             this.cmbGender.Name = "cmbGender";
-            this.cmbGender.Size = new System.Drawing.Size(373, 28);
+            this.cmbGender.Size = new System.Drawing.Size(248, 21);
             this.cmbGender.TabIndex = 10;
             this.cmbGender.Tag = "Gender";
             this.cmbGender.ValueMember = "Code";
@@ -393,10 +373,9 @@ namespace Morph
             // label5
             // 
             this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label5.Location = new System.Drawing.Point(4, 168);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Location = new System.Drawing.Point(3, 108);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(142, 42);
+            this.label5.Size = new System.Drawing.Size(94, 27);
             this.label5.TabIndex = 9;
             this.label5.Text = "род:";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -409,10 +388,9 @@ namespace Morph
             this.cmbPos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cmbPos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbPos.FormattingEnabled = true;
-            this.cmbPos.Location = new System.Drawing.Point(154, 131);
-            this.cmbPos.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.cmbPos.Location = new System.Drawing.Point(103, 84);
             this.cmbPos.Name = "cmbPos";
-            this.cmbPos.Size = new System.Drawing.Size(373, 28);
+            this.cmbPos.Size = new System.Drawing.Size(248, 21);
             this.cmbPos.TabIndex = 8;
             this.cmbPos.Tag = "Pos";
             this.cmbPos.ValueMember = "Code";
@@ -420,10 +398,9 @@ namespace Morph
             // label4
             // 
             this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label4.Location = new System.Drawing.Point(4, 126);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Location = new System.Drawing.Point(3, 81);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(142, 42);
+            this.label4.Size = new System.Drawing.Size(94, 27);
             this.label4.TabIndex = 7;
             this.label4.Text = "*часть речи:";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -432,19 +409,17 @@ namespace Morph
             // 
             this.txtForm.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.morphSource, "Form", true));
             this.txtForm.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtForm.Location = new System.Drawing.Point(154, 89);
-            this.txtForm.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtForm.Location = new System.Drawing.Point(103, 57);
             this.txtForm.Name = "txtForm";
-            this.txtForm.Size = new System.Drawing.Size(373, 26);
+            this.txtForm.Size = new System.Drawing.Size(248, 20);
             this.txtForm.TabIndex = 6;
             // 
             // label3
             // 
             this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label3.Location = new System.Drawing.Point(4, 84);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(3, 54);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(142, 42);
+            this.label3.Size = new System.Drawing.Size(94, 27);
             this.label3.TabIndex = 5;
             this.label3.Text = "*форма:";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -452,10 +427,9 @@ namespace Morph
             // label2
             // 
             this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label2.Location = new System.Drawing.Point(4, 42);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(3, 27);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(142, 42);
+            this.label2.Size = new System.Drawing.Size(94, 27);
             this.label2.TabIndex = 3;
             this.label2.Text = "*лемма:";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -466,20 +440,18 @@ namespace Morph
             this.flowLayoutPanel1.Controls.Add(this.btnCancel);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(154, 593);
-            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(103, 381);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(373, 37);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(248, 29);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
             // btnSave
             // 
             this.btnSave.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnSave.Enabled = false;
-            this.btnSave.Location = new System.Drawing.Point(257, 5);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnSave.Location = new System.Drawing.Point(170, 3);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(112, 35);
+            this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 2;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -488,10 +460,9 @@ namespace Morph
             // btnCancel
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(137, 5);
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnCancel.Location = new System.Drawing.Point(89, 3);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(112, 35);
+            this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 4;
             this.btnCancel.TabStop = false;
             this.btnCancel.Text = "Cancel";
@@ -500,10 +471,9 @@ namespace Morph
             // label1
             // 
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Location = new System.Drawing.Point(4, 0);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(142, 42);
+            this.label1.Size = new System.Drawing.Size(94, 27);
             this.label1.TabIndex = 1;
             this.label1.Text = "*язык:";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -516,10 +486,9 @@ namespace Morph
             this.cmbLang.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cmbLang.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbLang.FormattingEnabled = true;
-            this.cmbLang.Location = new System.Drawing.Point(154, 5);
-            this.cmbLang.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.cmbLang.Location = new System.Drawing.Point(103, 3);
             this.cmbLang.Name = "cmbLang";
-            this.cmbLang.Size = new System.Drawing.Size(373, 28);
+            this.cmbLang.Size = new System.Drawing.Size(248, 21);
             this.cmbLang.TabIndex = 2;
             this.cmbLang.Tag = "Lang";
             this.cmbLang.ValueMember = "Code";
@@ -528,30 +497,27 @@ namespace Morph
             // 
             this.txtLemma.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.morphSource, "Lemma", true));
             this.txtLemma.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtLemma.Location = new System.Drawing.Point(154, 47);
-            this.txtLemma.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtLemma.Location = new System.Drawing.Point(103, 30);
             this.txtLemma.Name = "txtLemma";
-            this.txtLemma.Size = new System.Drawing.Size(373, 26);
+            this.txtLemma.Size = new System.Drawing.Size(248, 20);
             this.txtLemma.TabIndex = 4;
             // 
             // loader1
             // 
             this.loader1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.loader1.Location = new System.Drawing.Point(0, 0);
-            this.loader1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.loader1.Name = "loader1";
-            this.loader1.Size = new System.Drawing.Size(531, 635);
+            this.loader1.Size = new System.Drawing.Size(354, 413);
             this.loader1.TabIndex = 7;
             // 
             // MorphEditor
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(531, 635);
+            this.ClientSize = new System.Drawing.Size(354, 413);
             this.Controls.Add(this.table);
             this.Controls.Add(this.loader1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MaximizeBox = false;
             this.Name = "MorphEditor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
