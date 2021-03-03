@@ -3,8 +3,10 @@ using Common.Process;
 using Model;
 using Model.Enum;
 using Model.Query;
+using Model.View;
 using Process;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
 using WeifenLuo.WinFormsUI.Docking;
@@ -15,7 +17,7 @@ namespace Document
     {
         private DocumentProcess _documentProcess;
 
-        private ReportProcess _reportProcess;
+        private RusCorporaReportProcess _rusCorporaReportProcess;
         public IndexModel Index { get; private set; }
 
         private ChunkExplorer _chunkExplorer;
@@ -32,7 +34,7 @@ namespace Document
         {
             _documentProcess = documentProcess;
 
-            _reportProcess = new ReportProcess(_documentProcess);
+            _rusCorporaReportProcess = new RusCorporaReportProcess(_documentProcess);
 
             Index = index;
 
@@ -63,12 +65,12 @@ namespace Document
 
                 _chunkExplorer.Show(dockPanel1, DockState.Document);
 
-                btnDeleteChunk.Enabled = 
-                    btnEditChunk.Enabled = 
-                    btnCopyTextToBuffer.Enabled = 
-                    btnSaveAs.Enabled = 
-                    btnShowHideMorphologyPane.Enabled = 
-                    btnShowHideTranslationPane.Enabled = 
+                btnDeleteChunk.Enabled =
+                    btnEditChunk.Enabled =
+                    btnCopyTextToBuffer.Enabled =
+                    btnSaveAs.Enabled =
+                    btnShowHideMorphologyPane.Enabled =
+                    btnShowHideTranslationPane.Enabled =
                     btnMorphServices.Enabled = _chunk != null;
 
                 btnAddChunk.Enabled = _chunk == null;
@@ -255,12 +257,17 @@ namespace Document
         {
             if (_documentProcess.Header.Lang == LangStringEnum.Latin)
             {
-                _chunkExplorer.RunMorphLatinService();
+                _chunkExplorer.RunLatinMorphService();
             }
             if (_documentProcess.Header.Lang == LangStringEnum.Russian)
             {
-                _chunkExplorer.RunMorphRussianService();
+                _chunkExplorer.RunRussianMorphService();
             }
+        }
+
+        private void btnGreekMorphService_Click(object sender, EventArgs e)
+        {
+            _chunkExplorer.RunGreekMorphService();
         }
 
         private async void btnPublishChunk_ClickAsync(object sender, EventArgs e)
@@ -299,39 +306,43 @@ namespace Document
             {
                 if (_saveFileDialog.FilterIndex == 1)
                 {
-                    if (!File.Exists(_saveFileDialog.FileName))
+                    using (StreamWriter sw = File.CreateText(_saveFileDialog.FileName))
                     {
-                        using (StreamWriter sw = File.CreateText(_saveFileDialog.FileName))
-                        {
-                            sw.Write(_chunk.Value);
-                        }
+                        sw.Write(_chunk.Value);
                     }
                 }
 
                 if (_saveFileDialog.FilterIndex == 2)
                 {
-                    if (!File.Exists(_saveFileDialog.FileName))
+                    using (StreamWriter sw = File.CreateText(_saveFileDialog.FileName))
                     {
-                        using (StreamWriter sw = File.CreateText(_saveFileDialog.FileName))
-                        {
-                            sw.Write(_chunk.ValueObj);
-                        }
+                        sw.Write(_chunk.ValueObj);
                     }
                 }
 
                 if (_saveFileDialog.FilterIndex == 3)
                 {
-                    if (!File.Exists(_saveFileDialog.FileName))
+                    using (StreamWriter sw = File.CreateText(_saveFileDialog.FileName))
                     {
-                        using (StreamWriter sw = File.CreateText(_saveFileDialog.FileName))
+                        try
                         {
-                            var data = await _reportProcess.CreateRusCorporaChunkReport(Index, _chunk, _interpContainer.Interpretations, _interpContainer.Originals).ConfigureAwait(true);
+                            var chunkView = await ChunkProcess.GetChunkByQuery(new ChunkQuery { IndexId = _chunk.IndexId });
+
+                            var data = await _rusCorporaReportProcess.CreateRusCorporaChunkReport(chunkView).ConfigureAwait(true);
 
                             sw.Write(data);
+                        }
+                        catch (Exception ex)
+                        {
+                            DialogProcess.InfoMessage("Ошибка сохранения", ex.Message);
+
+                            e.Cancel = true;
                         }
                     }
                 }
             }
         }
+
+
     }
 }

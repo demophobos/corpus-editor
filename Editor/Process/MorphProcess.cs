@@ -6,6 +6,7 @@ using Model.Enum;
 using Model.Query;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using Process.Helper;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -19,6 +20,11 @@ namespace Process
 {
     public class MorphProcess
     {
+        private BetaCodeConverter _betaCodeConverter;
+
+        public MorphProcess() {
+            _betaCodeConverter = new BetaCodeConverter();
+        }
         #region Morph
         public async Task<List<MorphModel>> GetMorphItems(MorphQuery query)
         {
@@ -145,7 +151,10 @@ namespace Process
                     xmlString = await MorpheusAPI.GetLatinWordAnalysis(token).ConfigureAwait(true);
                     break;
                 case LangStringEnum.Greek:
-                    xmlString = await MorpheusAPI.GetGreekWordAnalysis(token).ConfigureAwait(true);
+                    
+                    var convertedValue = _betaCodeConverter.UnicodeToGreekBetaCode(token);
+
+                    xmlString = await MorpheusAPI.GetGreekWordAnalysis(convertedValue).ConfigureAwait(true);
                     break;
 
             }

@@ -50,6 +50,7 @@ namespace Document
             this.CloseButton = false;
             this.CloseButtonVisible = false;
             this.Controls.Add(this.dockPanel1);
+            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.Name = "ContentContainer";

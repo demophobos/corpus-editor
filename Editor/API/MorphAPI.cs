@@ -14,7 +14,7 @@ namespace API
 
         }
 
-        public static async Task<List<MorphModel>> GetMorphItems(IQuery query)
+        public static async Task<List<MorphModel>> GetMorphItems(MorphQuery query)
         {
             try
             {

@@ -42,9 +42,10 @@ namespace Document
             this.btnPublishChunk = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.btnCopyTextToBuffer = new System.Windows.Forms.ToolStripButton();
-            this.dockPanel1 = new WeifenLuo.WinFormsUI.Docking.DockPanel();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.btnSaveAs = new System.Windows.Forms.ToolStripButton();
+            this.dockPanel1 = new WeifenLuo.WinFormsUI.Docking.DockPanel();
+            this.btnGreekMorphService = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -59,6 +60,7 @@ namespace Document
             this.btnDeleteChunk,
             this.toolStripSeparator1,
             this.btnMorphServices,
+            this.btnGreekMorphService,
             this.toolStripSeparator2,
             this.btnPublishChunk,
             this.toolStripSeparator3,
@@ -175,15 +177,6 @@ namespace Document
             this.btnCopyTextToBuffer.Text = "Копировать текст фрагмента";
             this.btnCopyTextToBuffer.Click += new System.EventHandler(this.btnCopyTextToBuffer_Click);
             // 
-            // dockPanel1
-            // 
-            this.dockPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dockPanel1.DocumentStyle = WeifenLuo.WinFormsUI.Docking.DocumentStyle.DockingSdi;
-            this.dockPanel1.Location = new System.Drawing.Point(0, 25);
-            this.dockPanel1.Name = "dockPanel1";
-            this.dockPanel1.Size = new System.Drawing.Size(797, 459);
-            this.dockPanel1.TabIndex = 3;
-            // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
@@ -198,6 +191,25 @@ namespace Document
             this.btnSaveAs.Size = new System.Drawing.Size(23, 22);
             this.btnSaveAs.Text = "Сохранить фрагмент как ...";
             this.btnSaveAs.Click += new System.EventHandler(this.btnSaveAs_Click);
+            // 
+            // dockPanel1
+            // 
+            this.dockPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dockPanel1.DocumentStyle = WeifenLuo.WinFormsUI.Docking.DocumentStyle.DockingSdi;
+            this.dockPanel1.Location = new System.Drawing.Point(0, 25);
+            this.dockPanel1.Name = "dockPanel1";
+            this.dockPanel1.Size = new System.Drawing.Size(797, 459);
+            this.dockPanel1.TabIndex = 3;
+            // 
+            // btnGreekMorphService
+            // 
+            this.btnGreekMorphService.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnGreekMorphService.Image = ((System.Drawing.Image)(resources.GetObject("btnGreekMorphService.Image")));
+            this.btnGreekMorphService.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnGreekMorphService.Name = "btnGreekMorphService";
+            this.btnGreekMorphService.Size = new System.Drawing.Size(69, 22);
+            this.btnGreekMorphService.Text = "Греческий";
+            this.btnGreekMorphService.Click += new System.EventHandler(this.btnGreekMorphService_Click);
             // 
             // ChunkContainer
             // 
@@ -232,5 +244,6 @@ namespace Document
         private System.Windows.Forms.ToolStripButton btnCopyTextToBuffer;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripButton btnSaveAs;
+        private System.Windows.Forms.ToolStripButton btnGreekMorphService;
     }
 }

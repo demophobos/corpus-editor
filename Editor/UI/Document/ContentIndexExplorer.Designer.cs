@@ -1,7 +1,7 @@
 ﻿
 namespace Document
 {
-    partial class ContentExplorer
+    partial class ContentIndexExplorer
     {
         /// <summary> 
         /// Обязательная переменная конструктора.
@@ -30,7 +30,7 @@ namespace Document
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ContentExplorer));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ContentIndexExplorer));
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
@@ -162,7 +162,7 @@ namespace Document
             this.btnSetBookmark,
             this.btnRemoveBookmark});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(250, 170);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(250, 148);
             // 
             // btnAddSubsection
             // 
@@ -239,7 +239,7 @@ namespace Document
             this.bookmarkedSource.DataSource = typeof(Model.IndexModel);
             this.bookmarkedSource.PositionChanged += new System.EventHandler(this.bookmarkedSource_PositionChanged);
             // 
-            // ContentExplorer
+            // ContentIndexExplorer
             // 
             this.AllowEndUserDocking = false;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -251,9 +251,10 @@ namespace Document
             this.Controls.Add(this.loader1);
             this.Controls.Add(this.treeView1);
             this.Controls.Add(this.toolStrip2);
+            this.DoubleBuffered = true;
             this.HelpButton = true;
             this.HideOnClose = true;
-            this.Name = "ContentExplorer";
+            this.Name = "ContentIndexExplorer";
             this.Text = "Индекс";
             this.Load += new System.EventHandler(this.ContentExplorer_LoadAsync);
             this.toolStrip2.ResumeLayout(false);

@@ -1,5 +1,4 @@
-﻿using API.Helpers;
-using System;
+﻿using System;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
@@ -20,10 +19,9 @@ namespace API
 
                 try
                 {
-
                     string report;
 
-                    HttpResponseMessage response = await httpClient.GetAsync("xmlmorph?lang=la&lookup=" + lexema).ConfigureAwait(true);
+                    HttpResponseMessage response = await httpClient.GetAsync($"xmlmorph?lang=la&lookup={lexema}").ConfigureAwait(true);
 
                     if (response.IsSuccessStatusCode)
                     {
@@ -45,10 +43,6 @@ namespace API
 
         public static async Task<string> GetGreekWordAnalysis(string lexema)
         {
-            string betaCodeLexema = new BetaCodeConverter().UnicodeToGreekBetaCode(lexema);
-
-
-
             using (var httpClient = new HttpClient())
             {
                 httpClient.BaseAddress = new Uri("http://www.perseus.tufts.edu/hopper/");
@@ -59,10 +53,9 @@ namespace API
 
                 try
                 {
-
                     string report;
 
-                    HttpResponseMessage response = await httpClient.GetAsync("xmlmorph?lang=greek&lookup=" + betaCodeLexema).ConfigureAwait(true);
+                    HttpResponseMessage response = await httpClient.GetAsync($"xmlmorph?lang=greek&lookup={lexema}").ConfigureAwait(true);
 
                     if (response.IsSuccessStatusCode)
                     {

@@ -18,14 +18,14 @@ using WeifenLuo.WinFormsUI.Docking;
 
 namespace Document
 {
-    public partial class ContentStatusExplorer : DockContent
+    public partial class ContentChunkExplorer : DockContent
     {
         public event EventHandler<ChunkStatusModel> ChunkSelected;
 
         DocumentProcess _documentProcess;
         private List<ChunkViewModel> _chunks;
 
-        public ContentStatusExplorer(DocumentProcess documentProcess)
+        public ContentChunkExplorer(DocumentProcess documentProcess)
         {
             _documentProcess = documentProcess;
 
@@ -33,11 +33,11 @@ namespace Document
 
         }
 
-        private async Task LoadDataAsync()
+        public async Task LoadDataAsync()
         {
             loader1.BringToFront();
 
-            loader1.SetStatus("Обновление фрагментов ...");
+            loader1.SetStatus("Загрузка фрагментов ...");
 
             _chunks = await _documentProcess.GetChunksByHeader().ConfigureAwait(true);
 
@@ -93,11 +93,6 @@ namespace Document
                 ResolvedItems = resolvedItems,
                 UnresolvedItems = unresolvedItems
             };
-        }
-
-        private async void ContentStatusExplorer_Load(object sender, EventArgs e)
-        {
-            await LoadDataAsync().ConfigureAwait(true);
         }
 
         private async void btnRefresh_Click(object sender, EventArgs e)
@@ -159,24 +154,26 @@ namespace Document
 
         private void dataGridView1_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
         {
-            int wrapLen = 84;
-            if ((e.RowIndex >= 0) && e.ColumnIndex >= 0)
-            {
-                DataGridViewCell cell = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex];
-                string cellText = cell.Value.ToString();
-                if (cellText.Length >= wrapLen)
+            if (dataSource.List.Count > 0) {
+                int wrapLen = 84;
+                if ((e.RowIndex >= 0) && e.ColumnIndex >= 0)
                 {
-                    cell.ToolTipText = "";
-                    int n = cellText.Length / wrapLen;
-                    for (int i = 0; i <= n; i++)
+                    DataGridViewCell cell = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex];
+                    string cellText = cell.Value.ToString();
+                    if (cellText.Length >= wrapLen)
                     {
-                        int wStart = wrapLen * i;
-                        int wEnd = wrapLen * (i + 1);
+                        cell.ToolTipText = string.Empty;
+                        int n = cellText.Length / wrapLen;
+                        for (int i = 0; i <= n; i++)
+                        {
+                            int wStart = wrapLen * i;
+                            int wEnd = wrapLen * (i + 1);
 
-                        if (wEnd >= cellText.Length)
-                            wEnd = cellText.Length;
+                            if (wEnd >= cellText.Length)
+                                wEnd = cellText.Length;
 
-                        cell.ToolTipText += cellText.Substring(wStart, wEnd - wStart) + "\n";
+                            cell.ToolTipText += cellText.Substring(wStart, wEnd - wStart) + "\n";
+                        }
                     }
                 }
             }

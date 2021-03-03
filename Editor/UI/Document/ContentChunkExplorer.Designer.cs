@@ -1,7 +1,7 @@
 ﻿
 namespace Document
 {
-    partial class ContentStatusExplorer
+    partial class ContentChunkExplorer
     {
         /// <summary> 
         /// Обязательная переменная конструктора.
@@ -30,9 +30,9 @@ namespace Document
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ContentStatusExplorer));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ContentChunkExplorer));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.btnRefresh = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -144,9 +144,9 @@ namespace Document
             // 
             this.unresolvedItemsCount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.unresolvedItemsCount.DataPropertyName = "UnresolvedItems";
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Blue;
-            this.unresolvedItemsCount.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Blue;
+            this.unresolvedItemsCount.DefaultCellStyle = dataGridViewCellStyle3;
             this.unresolvedItemsCount.HeaderText = "Не принято";
             this.unresolvedItemsCount.Name = "unresolvedItemsCount";
             this.unresolvedItemsCount.ReadOnly = true;
@@ -156,8 +156,8 @@ namespace Document
             // 
             this.resolvedItemsDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.resolvedItemsDataGridViewTextBoxColumn.DataPropertyName = "ResolvedItems";
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.resolvedItemsDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.resolvedItemsDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle4;
             this.resolvedItemsDataGridViewTextBoxColumn.HeaderText = "Принято";
             this.resolvedItemsDataGridViewTextBoxColumn.Name = "resolvedItemsDataGridViewTextBoxColumn";
             this.resolvedItemsDataGridViewTextBoxColumn.ReadOnly = true;
@@ -173,6 +173,7 @@ namespace Document
             // 
             // dataSource
             // 
+            this.dataSource.AllowNew = false;
             this.dataSource.DataSource = typeof(Model.ChunkStatusModel);
             // 
             // loader1
@@ -255,7 +256,7 @@ namespace Document
             this.lblWordsDoneValue.Name = "lblWordsDoneValue";
             this.lblWordsDoneValue.Size = new System.Drawing.Size(0, 17);
             // 
-            // ContentStatusExplorer
+            // ContentChunkExplorer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -266,11 +267,11 @@ namespace Document
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.toolStrip2);
             this.Controls.Add(this.loader1);
+            this.DoubleBuffered = true;
             this.HelpButton = true;
             this.HideOnClose = true;
-            this.Name = "ContentStatusExplorer";
+            this.Name = "ContentChunkExplorer";
             this.Text = "Фрагменты";
-            this.Load += new System.EventHandler(this.ContentStatusExplorer_Load);
             this.toolStrip2.ResumeLayout(false);
             this.toolStrip2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

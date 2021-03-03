@@ -13,7 +13,7 @@ using WeifenLuo.WinFormsUI.Docking;
 
 namespace Document
 {
-    public partial class ContentExplorer : DockContent
+    public partial class ContentIndexExplorer : DockContent
     {
         public event EventHandler<IndexModel> IndexSelected;
 
@@ -21,7 +21,7 @@ namespace Document
 
         private List<IndexModel> _bookmarkedIndeces = new List<IndexModel>();
 
-        public ContentExplorer(DocumentProcess documentProcess)
+        public ContentIndexExplorer(DocumentProcess documentProcess)
         {
             _documentProcess = documentProcess;
 

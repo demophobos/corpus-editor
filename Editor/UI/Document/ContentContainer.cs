@@ -20,9 +20,9 @@ namespace Document
 
         public event EventHandler<IndexModel> IndexSelected;
 
-        private ContentExplorer _contentExplorer;
+        private ContentIndexExplorer _contentIndexExplorer;
 
-        private ContentStatusExplorer _contentStatusExplorer;
+        private ContentChunkExplorer _contentChunkExplorer;
         public ContentContainer(DocumentProcess documentProcess)
         {
             _documentProcess = documentProcess;
@@ -34,29 +34,30 @@ namespace Document
 
         private void ContentContainer_Load(object sender, EventArgs e)
         {
-            _contentExplorer = new ContentExplorer(_documentProcess);
+            _contentIndexExplorer = new ContentIndexExplorer(_documentProcess);
 
-            _contentExplorer.Show(dockPanel1, DockState.Document);
+            _contentIndexExplorer.Show(dockPanel1, DockState.Document);
 
-            _contentExplorer.IndexSelected += _contentExplorer_IndexSelected;
+            _contentIndexExplorer.IndexSelected += _contentExplorer_IndexSelected;
 
-            _contentStatusExplorer = new ContentStatusExplorer(_documentProcess);
+            _contentChunkExplorer = new ContentChunkExplorer(_documentProcess);
 
-            _contentStatusExplorer.ChunkSelected += _contentStatusExplorer_ChunkSelected;
+            _contentChunkExplorer.ChunkSelected += ContentChunkExplorer_ChunkSelected;
 
-            _contentStatusExplorer.Show(dockPanel1, DockState.Document);
+            _contentChunkExplorer.Show(dockPanel1, DockState.Document);
 
-            _contentExplorer.Activate();
+            _contentIndexExplorer.Activate();
 
         }
 
-        private void _contentStatusExplorer_ChunkSelected(object sender, ChunkStatusModel e)
+        private void ContentChunkExplorer_ChunkSelected(object sender, ChunkStatusModel e)
         {
             var index = _documentProcess.Indeces.FirstOrDefault(i => i.Id == e.IndexId);
-            if (index != null) {
+            if (index != null)
+            {
                 IndexSelected?.Invoke(sender, index);
             }
-            
+
         }
 
         private void _contentExplorer_IndexSelected(object sender, IndexModel e)

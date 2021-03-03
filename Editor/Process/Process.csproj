@@ -73,6 +73,7 @@
     <Compile Include="DocumentProcess.cs" />
     <Compile Include="ElementProcess.cs" />
     <Compile Include="HeaderProcess.cs" />
+    <Compile Include="Helper\BetaCodeConverter.cs" />
     <Compile Include="Helper\RusCorporaMapper.cs" />
     <Compile Include="Helper\StringExtension.cs" />
     <Compile Include="MorphProcess.cs" />
@@ -84,7 +85,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="ReportProcess.cs" />
+    <Compile Include="RusCorporaReportProcess.cs" />
     <Compile Include="TaxonomyProcess.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -101,11 +102,18 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <Content Include="unicode_to_beta_code.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="packages.config" />
+    <Content Include="unicode_to_beta_code_wd.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="mystem.exe">
@@ -113,4 +121,8 @@
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
 </Project>

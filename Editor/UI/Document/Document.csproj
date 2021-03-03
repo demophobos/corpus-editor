@@ -76,11 +76,11 @@
     <Compile Include="ContentContainer.Designer.cs">
       <DependentUpon>ContentContainer.cs</DependentUpon>
     </Compile>
-    <Compile Include="ContentStatusExplorer.cs">
+    <Compile Include="ContentChunkExplorer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ContentStatusExplorer.Designer.cs">
-      <DependentUpon>ContentStatusExplorer.cs</DependentUpon>
+    <Compile Include="ContentChunkExplorer.Designer.cs">
+      <DependentUpon>ContentChunkExplorer.cs</DependentUpon>
     </Compile>
     <Compile Include="DocumentContainer.cs">
       <SubType>Form</SubType>
@@ -88,11 +88,11 @@
     <Compile Include="DocumentContainer.Designer.cs">
       <DependentUpon>DocumentContainer.cs</DependentUpon>
     </Compile>
-    <Compile Include="ContentExplorer.cs">
+    <Compile Include="ContentIndexExplorer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ContentExplorer.Designer.cs">
-      <DependentUpon>ContentExplorer.cs</DependentUpon>
+    <Compile Include="ContentIndexExplorer.Designer.cs">
+      <DependentUpon>ContentIndexExplorer.cs</DependentUpon>
     </Compile>
     <Compile Include="MorphSelector.cs">
       <SubType>Form</SubType>
@@ -152,11 +152,11 @@
     <EmbeddedResource Include="ContentContainer.resx">
       <DependentUpon>ContentContainer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ContentExplorer.resx">
-      <DependentUpon>ContentExplorer.cs</DependentUpon>
+    <EmbeddedResource Include="ContentIndexExplorer.resx">
+      <DependentUpon>ContentIndexExplorer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ContentStatusExplorer.resx">
-      <DependentUpon>ContentStatusExplorer.cs</DependentUpon>
+    <EmbeddedResource Include="ContentChunkExplorer.resx">
+      <DependentUpon>ContentChunkExplorer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DocumentContainer.resx">
       <DependentUpon>DocumentContainer.cs</DependentUpon>

@@ -19,6 +19,8 @@ namespace Document
     {
         private MorphProcess _morphProcess = new MorphProcess();
 
+        private Label _selectedLabel;
+
         public event EventHandler<ElementModel> ElementSelected;
 
         public event EventHandler<bool> EnablePublishing;
@@ -117,21 +119,15 @@ namespace Document
                     selectedElement.Type == (int)ElementTypeEnum.Word)
             {
 
-                var labels = flowLayoutPanel1.Controls.OfType<Label>();
-
-                foreach (var label in labels)
+                if (_selectedLabel != null)
                 {
-                    if (label.Tag is ElementModel element && element.Id == selectedElement.Id)
-                    {
-                        label.Font = new Font(label.Font, FontStyle.Underline);
-                        label.BackColor = Color.Gold;
-                    }
-                    else
-                    {
-                        label.Font = new Font(label.Font, FontStyle.Regular);
-                        label.BackColor = SystemColors.Window;
-                    }
+                    _selectedLabel.Font = new Font(_selectedLabel.Font, FontStyle.Regular);
+                    _selectedLabel.BackColor = SystemColors.Window;
                 }
+
+                _selectedLabel = selectedLabel;
+                _selectedLabel.Font = new Font(_selectedLabel.Font, FontStyle.Underline);
+                _selectedLabel.BackColor = Color.Gold;
 
                 ElementSelected.Invoke(this, selectedElement);
             }
@@ -172,7 +168,7 @@ namespace Document
 
         }
 
-        internal async void RunMorphRussianService()
+        internal async void RunRussianMorphService()
         {
             loader1.BringToFront();
 
@@ -205,7 +201,7 @@ namespace Document
             loader1.SendToBack();
         }
 
-        internal async void RunMorphLatinService()
+        internal async void RunLatinMorphService()
         {
             loader1.BringToFront();
 
@@ -222,6 +218,41 @@ namespace Document
                     foreach (var result in results)
                     {
                         var model = _morphProcess.CreateMorphModel(result, LangStringEnum.Latin);
+
+                        model = await _morphProcess.SaveMorph(model).ConfigureAwait(true);
+
+                        if (model != null)
+                        {
+                            resultsCount += 1;
+
+                            loader1.SetStatus($"Получение данных морфологического сервиса ... {resultsCount}");
+                        }
+                    }
+                }
+            }
+
+            await LoadElements();
+
+            loader1.SendToBack();
+        }
+
+        internal async void RunGreekMorphService()
+        {
+            loader1.BringToFront();
+
+            loader1.SetStatus("Получение данных морфологического сервиса ... ");
+
+            var resultsCount = 0;
+
+            foreach (var word in _noDefWords)
+            {
+                if (word.MorphId == null)
+                {
+                    var results = await _morphProcess.GetMorpheusAnalysis(word.Value, LangStringEnum.Greek).ConfigureAwait(true);
+
+                    foreach (var result in results)
+                    {
+                        var model = _morphProcess.CreateMorphModel(result, LangStringEnum.Greek);
 
                         model = await _morphProcess.SaveMorph(model).ConfigureAwait(true);
 
