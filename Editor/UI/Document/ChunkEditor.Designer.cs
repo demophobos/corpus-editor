@@ -56,6 +56,7 @@ namespace Document
             this.txtChunk.TabIndex = 0;
             this.txtChunk.Text = "";
             this.txtChunk.TextChanged += new System.EventHandler(this.txtChunk_TextChanged);
+            this.txtChunk.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtChunk_KeyDown);
             // 
             // chunkSource
             // 

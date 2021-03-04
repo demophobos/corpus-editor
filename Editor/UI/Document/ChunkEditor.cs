@@ -17,8 +17,6 @@ namespace Document
             Text = $"{Text} [{_index.Name}]";
 
             chunkSource.DataSource = chunkModel;
-
-            txtChunk.Text = txtChunk.Text.ToString();
         }
 
         private async void btnSave_ClickAsync(object sender, EventArgs e)
@@ -45,6 +43,15 @@ namespace Document
         private void txtChunk_TextChanged(object sender, EventArgs e)
         {
             btnSave.Enabled = !string.IsNullOrEmpty(txtChunk.Text);
+        }
+
+        private void txtChunk_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.V)
+            {
+                ((RichTextBox)sender).Paste(DataFormats.GetFormat("Text"));
+                e.Handled = true;
+            }
         }
     }
 }
