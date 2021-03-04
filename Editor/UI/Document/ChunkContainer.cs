@@ -65,16 +65,23 @@ namespace Document
 
                 _chunkExplorer.Show(dockPanel1, DockState.Document);
 
-                btnDeleteChunk.Enabled =
-                    btnEditChunk.Enabled =
-                    btnCopyTextToBuffer.Enabled =
-                    btnSaveAs.Enabled =
-                    btnShowHideMorphologyPane.Enabled =
-                    btnShowHideTranslationPane.Enabled =
-                    btnMorphServices.Enabled = _chunk != null;
-
-                btnAddChunk.Enabled = _chunk == null;
+                EnableFunctions();
             }
+        }
+
+        private void EnableFunctions()
+        {
+            btnDeleteChunk.Enabled =
+                btnEditChunk.Enabled =
+                btnExport.Enabled =
+                btnShowHideMorphologyPane.Enabled =
+                btnShowHideTranslationPane.Enabled =
+                btnMorphGreek.Enabled =
+                btnMorphLatin.Enabled =
+                btnMorphRussian.Enabled =
+                btnMorphLatin.Enabled = _chunk != null;
+
+            btnAddChunk.Enabled = _chunk == null;
         }
 
         private void ChunkExplorer_EnablePublishing(object sender, bool e)
@@ -90,7 +97,7 @@ namespace Document
 
             btnAddChunk.Enabled = _chunk == null;
 
-            btnCopyTextToBuffer.Enabled = btnDeleteChunk.Enabled = btnEditChunk.Enabled = btnMorphServices.Enabled = btnSaveAs.Enabled = _chunk != null;
+            EnableFunctions();
 
             if (_chunk != null)
             {
@@ -253,16 +260,14 @@ namespace Document
             _interpContainer.Activate();
         }
 
-        private void btnMorphServices_Click(object sender, EventArgs e)
+        private void btnMorphLatin_Click(object sender, EventArgs e)
         {
-            if (_documentProcess.Header.Lang == LangStringEnum.Latin)
-            {
-                _chunkExplorer.RunLatinMorphService();
-            }
-            if (_documentProcess.Header.Lang == LangStringEnum.Russian)
-            {
-                _chunkExplorer.RunRussianMorphService();
-            }
+            _chunkExplorer.RunLatinMorphService();
+        }
+
+        private void btnMorphRussian_Click(object sender, EventArgs e)
+        {
+            _chunkExplorer.RunRussianMorphService();
         }
 
         private void btnGreekMorphService_Click(object sender, EventArgs e)
@@ -290,7 +295,14 @@ namespace Document
 
                 FileName = $"{_documentProcess.Header.Code}_{Index.Name}",
 
-                OverwritePrompt = true
+                OverwritePrompt = true,
+
+                AddExtension = true,
+
+                AutoUpgradeEnabled = true,
+
+                SupportMultiDottedExtensions = false
+                
             };
 
             _saveFileDialog.ValidateNames = true;
@@ -342,7 +354,6 @@ namespace Document
                 }
             }
         }
-
 
     }
 }

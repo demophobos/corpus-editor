@@ -36,16 +36,14 @@ namespace Document
             this.btnAddChunk = new System.Windows.Forms.ToolStripButton();
             this.btnEditChunk = new System.Windows.Forms.ToolStripButton();
             this.btnDeleteChunk = new System.Windows.Forms.ToolStripButton();
+            this.btnExport = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.btnMorphServices = new System.Windows.Forms.ToolStripButton();
+            this.btnMorphLatin = new System.Windows.Forms.ToolStripButton();
+            this.btnMorphRussian = new System.Windows.Forms.ToolStripButton();
+            this.btnMorphGreek = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.btnPublishChunk = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.btnCopyTextToBuffer = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-            this.btnSaveAs = new System.Windows.Forms.ToolStripButton();
             this.dockPanel1 = new WeifenLuo.WinFormsUI.Docking.DockPanel();
-            this.btnGreekMorphService = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -58,15 +56,13 @@ namespace Document
             this.btnAddChunk,
             this.btnEditChunk,
             this.btnDeleteChunk,
+            this.btnExport,
             this.toolStripSeparator1,
-            this.btnMorphServices,
-            this.btnGreekMorphService,
+            this.btnMorphLatin,
+            this.btnMorphRussian,
+            this.btnMorphGreek,
             this.toolStripSeparator2,
-            this.btnPublishChunk,
-            this.toolStripSeparator3,
-            this.btnCopyTextToBuffer,
-            this.toolStripSeparator4,
-            this.btnSaveAs});
+            this.btnPublishChunk});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
@@ -113,6 +109,7 @@ namespace Document
             // btnEditChunk
             // 
             this.btnEditChunk.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnEditChunk.Enabled = false;
             this.btnEditChunk.Image = ((System.Drawing.Image)(resources.GetObject("btnEditChunk.Image")));
             this.btnEditChunk.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnEditChunk.Name = "btnEditChunk";
@@ -123,6 +120,7 @@ namespace Document
             // btnDeleteChunk
             // 
             this.btnDeleteChunk.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnDeleteChunk.Enabled = false;
             this.btnDeleteChunk.Image = ((System.Drawing.Image)(resources.GetObject("btnDeleteChunk.Image")));
             this.btnDeleteChunk.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnDeleteChunk.Name = "btnDeleteChunk";
@@ -130,21 +128,61 @@ namespace Document
             this.btnDeleteChunk.Text = "Удалить фрагмент";
             this.btnDeleteChunk.Click += new System.EventHandler(this.btnDeleteChunk_Click);
             // 
+            // btnExport
+            // 
+            this.btnExport.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnExport.Enabled = false;
+            this.btnExport.Image = ((System.Drawing.Image)(resources.GetObject("btnExport.Image")));
+            this.btnExport.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Size = new System.Drawing.Size(23, 22);
+            this.btnExport.Text = "Экспорт фрагмента...";
+            this.btnExport.Click += new System.EventHandler(this.btnSaveAs_Click);
+            // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
-            // btnMorphServices
+            // btnMorphLatin
             // 
-            this.btnMorphServices.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnMorphServices.Image = ((System.Drawing.Image)(resources.GetObject("btnMorphServices.Image")));
-            this.btnMorphServices.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnMorphServices.Name = "btnMorphServices";
-            this.btnMorphServices.Size = new System.Drawing.Size(23, 22);
-            this.btnMorphServices.Text = "Morpheus [lat]";
-            this.btnMorphServices.ToolTipText = "Морфологический сервис";
-            this.btnMorphServices.Click += new System.EventHandler(this.btnMorphServices_Click);
+            this.btnMorphLatin.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnMorphLatin.Enabled = false;
+            this.btnMorphLatin.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMorphLatin.Image = ((System.Drawing.Image)(resources.GetObject("btnMorphLatin.Image")));
+            this.btnMorphLatin.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnMorphLatin.Name = "btnMorphLatin";
+            this.btnMorphLatin.Size = new System.Drawing.Size(23, 22);
+            this.btnMorphLatin.Text = "Л";
+            this.btnMorphLatin.ToolTipText = "Латинская морфология";
+            this.btnMorphLatin.Click += new System.EventHandler(this.btnMorphLatin_Click);
+            // 
+            // btnMorphRussian
+            // 
+            this.btnMorphRussian.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnMorphRussian.Enabled = false;
+            this.btnMorphRussian.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMorphRussian.Image = ((System.Drawing.Image)(resources.GetObject("btnMorphRussian.Image")));
+            this.btnMorphRussian.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnMorphRussian.Name = "btnMorphRussian";
+            this.btnMorphRussian.Size = new System.Drawing.Size(23, 22);
+            this.btnMorphRussian.Text = "Р";
+            this.btnMorphRussian.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.btnMorphRussian.ToolTipText = "Русская морфология";
+            this.btnMorphRussian.Click += new System.EventHandler(this.btnMorphRussian_Click);
+            // 
+            // btnMorphGreek
+            // 
+            this.btnMorphGreek.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnMorphGreek.Enabled = false;
+            this.btnMorphGreek.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMorphGreek.Image = ((System.Drawing.Image)(resources.GetObject("btnMorphGreek.Image")));
+            this.btnMorphGreek.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnMorphGreek.Name = "btnMorphGreek";
+            this.btnMorphGreek.Size = new System.Drawing.Size(23, 22);
+            this.btnMorphGreek.Text = "Г";
+            this.btnMorphGreek.ToolTipText = "Греческая морфология";
+            this.btnMorphGreek.Click += new System.EventHandler(this.btnGreekMorphService_Click);
             // 
             // toolStripSeparator2
             // 
@@ -162,36 +200,6 @@ namespace Document
             this.btnPublishChunk.Text = "Опубликовать";
             this.btnPublishChunk.Click += new System.EventHandler(this.btnPublishChunk_ClickAsync);
             // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
-            // 
-            // btnCopyTextToBuffer
-            // 
-            this.btnCopyTextToBuffer.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnCopyTextToBuffer.Image = ((System.Drawing.Image)(resources.GetObject("btnCopyTextToBuffer.Image")));
-            this.btnCopyTextToBuffer.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnCopyTextToBuffer.Name = "btnCopyTextToBuffer";
-            this.btnCopyTextToBuffer.Size = new System.Drawing.Size(23, 22);
-            this.btnCopyTextToBuffer.Text = "Копировать текст фрагмента";
-            this.btnCopyTextToBuffer.Click += new System.EventHandler(this.btnCopyTextToBuffer_Click);
-            // 
-            // toolStripSeparator4
-            // 
-            this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 25);
-            // 
-            // btnSaveAs
-            // 
-            this.btnSaveAs.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnSaveAs.Image = ((System.Drawing.Image)(resources.GetObject("btnSaveAs.Image")));
-            this.btnSaveAs.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnSaveAs.Name = "btnSaveAs";
-            this.btnSaveAs.Size = new System.Drawing.Size(23, 22);
-            this.btnSaveAs.Text = "Сохранить фрагмент как ...";
-            this.btnSaveAs.Click += new System.EventHandler(this.btnSaveAs_Click);
-            // 
             // dockPanel1
             // 
             this.dockPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -201,16 +209,6 @@ namespace Document
             this.dockPanel1.Size = new System.Drawing.Size(797, 459);
             this.dockPanel1.TabIndex = 3;
             // 
-            // btnGreekMorphService
-            // 
-            this.btnGreekMorphService.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.btnGreekMorphService.Image = ((System.Drawing.Image)(resources.GetObject("btnGreekMorphService.Image")));
-            this.btnGreekMorphService.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnGreekMorphService.Name = "btnGreekMorphService";
-            this.btnGreekMorphService.Size = new System.Drawing.Size(69, 22);
-            this.btnGreekMorphService.Text = "Греческий";
-            this.btnGreekMorphService.Click += new System.EventHandler(this.btnGreekMorphService_Click);
-            // 
             // ChunkContainer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -218,6 +216,7 @@ namespace Document
             this.ClientSize = new System.Drawing.Size(797, 484);
             this.Controls.Add(this.dockPanel1);
             this.Controls.Add(this.toolStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ChunkContainer";
             this.Load += new System.EventHandler(this.ChunkContainer_LoadAsync);
             this.toolStrip1.ResumeLayout(false);
@@ -237,13 +236,11 @@ namespace Document
         private System.Windows.Forms.ToolStripButton btnEditChunk;
         private System.Windows.Forms.ToolStripButton btnDeleteChunk;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripButton btnMorphServices;
+        private System.Windows.Forms.ToolStripButton btnMorphLatin;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripButton btnPublishChunk;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
-        private System.Windows.Forms.ToolStripButton btnCopyTextToBuffer;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
-        private System.Windows.Forms.ToolStripButton btnSaveAs;
-        private System.Windows.Forms.ToolStripButton btnGreekMorphService;
+        private System.Windows.Forms.ToolStripButton btnExport;
+        private System.Windows.Forms.ToolStripButton btnMorphGreek;
+        private System.Windows.Forms.ToolStripButton btnMorphRussian;
     }
 }

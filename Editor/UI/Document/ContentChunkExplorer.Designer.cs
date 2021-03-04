@@ -31,8 +31,8 @@ namespace Document
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ContentChunkExplorer));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.btnRefresh = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -144,9 +144,9 @@ namespace Document
             // 
             this.unresolvedItemsCount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.unresolvedItemsCount.DataPropertyName = "UnresolvedItems";
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Blue;
-            this.unresolvedItemsCount.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Blue;
+            this.unresolvedItemsCount.DefaultCellStyle = dataGridViewCellStyle1;
             this.unresolvedItemsCount.HeaderText = "Не принято";
             this.unresolvedItemsCount.Name = "unresolvedItemsCount";
             this.unresolvedItemsCount.ReadOnly = true;
@@ -156,8 +156,8 @@ namespace Document
             // 
             this.resolvedItemsDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.resolvedItemsDataGridViewTextBoxColumn.DataPropertyName = "ResolvedItems";
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.resolvedItemsDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.resolvedItemsDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
             this.resolvedItemsDataGridViewTextBoxColumn.HeaderText = "Принято";
             this.resolvedItemsDataGridViewTextBoxColumn.Name = "resolvedItemsDataGridViewTextBoxColumn";
             this.resolvedItemsDataGridViewTextBoxColumn.ReadOnly = true;
