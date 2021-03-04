@@ -54,6 +54,12 @@ namespace Morph
             {
                 cmb.SelectedValueChanged += Item_Changed;
             }
+
+            txtForm.TextChanged += Item_Changed;
+
+            txtFeature.TextChanged += Item_Changed;
+
+            txtLemma.TextChanged += Item_Changed;
         }
 
         private void Item_Changed(object sender, EventArgs e)
