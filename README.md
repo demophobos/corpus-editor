@@ -1,2 +1,2 @@
 # corpus-editor
-corpus latino-rossicum editor
+corpus latino-rossicum editor-client
