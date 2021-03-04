@@ -67,14 +67,12 @@ namespace Project
 
         private static TreeNode CreateNode(ProjectModel project)
         {
-            int imageIndex = project.Status == ProjectStatusStringEnum.Published ? 0 : 2;
-
             return new TreeNode
             {
                 Name = project.Id,
                 Text = $"{project.Code} [{project.Desc}]",
-                ImageIndex = imageIndex,
-                SelectedImageIndex = imageIndex,
+                ImageIndex = 0,
+                SelectedImageIndex = 0,
                 Tag = project
             };
         }
@@ -97,15 +95,11 @@ namespace Project
             {
                 mnuCreateHeader.Visible = btnDelete.Enabled = true;
 
-                btnPublish.Visible = project.Status != ProjectStatusStringEnum.Published;
-
-                btnUnpublish.Visible = project.Status == ProjectStatusStringEnum.Published;
-
                 ProjectViewProperty?.Invoke(this, project);
             }
             else
             {
-                mnuCreateHeader.Visible = btnPublish.Visible = btnUnpublish.Visible = btnDelete.Enabled = false;
+                mnuCreateHeader.Visible = btnDelete.Enabled = false;
             }
 
             mnuDeleteHeader.Visible = mnuEditHeader.Visible = treeView1.SelectedNode != null && treeView1.SelectedNode.Tag is HeaderModel;
@@ -256,61 +250,6 @@ namespace Project
             {
                 HeaderSelected?.Invoke(this, header);
             }
-        }
-
-        private async void btnPublish_Click(object sender, EventArgs e)
-        {
-            if (treeView1.SelectedNode != null && treeView1.SelectedNode.Tag is ProjectModel project)
-            {
-                await UpdateProjectStatus(project, ProjectStatusStringEnum.Published).ConfigureAwait(true);
-
-                treeView1.SelectedNode.ImageKey = treeView1.SelectedNode.SelectedImageKey = ProjectStatusStringEnum.Published;
-
-                btnPublish.Visible = false;
-
-                btnUnpublish.Visible = true;
-            }
-        }
-
-        private async void btnUnpublish_Click(object sender, EventArgs e)
-        {
-            if (treeView1.SelectedNode != null && treeView1.SelectedNode.Tag is ProjectModel project)
-            {
-                await UpdateProjectStatus(project, ProjectStatusStringEnum.Edited).ConfigureAwait(true);
-
-                treeView1.SelectedNode.ImageKey = treeView1.SelectedNode.SelectedImageKey = ProjectStatusStringEnum.Edited;
-
-                btnPublish.Visible = true;
-
-                btnUnpublish.Visible = false;
-            }
-        }
-
-        private async Task UpdateProjectStatus(ProjectModel project, string status)
-        {
-            project.Status = status;
-
-            var savedProject = await ProjectProcess.Save(project).ConfigureAwait(true);
-
-            var headers = await HeaderProcess.GetHeaders(project.Id).ConfigureAwait(true);
-
-            foreach (var header in headers)
-            {
-                header.Status = savedProject.Status;
-
-                await HeaderProcess.SaveHeader(header).ConfigureAwait(true);
-            }
-
-            if (savedProject.Status == ProjectStatusStringEnum.Published)
-            {
-                treeView1.SelectedNode.ImageIndex = treeView1.SelectedNode.SelectedImageIndex = 0;
-
-                btnUnpublish.Visible = true;
-
-                btnPublish.Visible = false;
-            }
-
-            ProjectUpdated?.Invoke(this, project);
         }
     }
 }
