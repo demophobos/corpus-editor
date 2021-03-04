@@ -42,9 +42,16 @@ namespace Project
 
             var authWordks = await TaxonomyProcess.GetAuthWorks().ConfigureAwait(true);
 
-            authWorkSource.DataSource = authWordks.Where(i => !exsistingProjects.Select(j => j.Code).ToList().Contains(i.Code)).ToList();
+            authWorkSource.DataSource = authWordks.Where(i => !exsistingProjects.Select(j => j.Code).ToList().Contains(i.Code)).OrderBy(i=>i.Code).ToList();
 
             projectSource.DataSource = _project;
+
+            cmbAuthWork.SelectedIndexChanged += CmbAuthWork_SelectedIndexChanged;
+        }
+
+        private void CmbAuthWork_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            btnSave.Enabled = authWorkSource.Current != null;
         }
     }
 }
