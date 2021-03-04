@@ -26,10 +26,18 @@ namespace Project
 
             if (project != null)
             {
-                lblCode.Text = $"{project.Code} [{project.Desc}]";
+                Text += $": {project.Code}";
             }
 
             headerSource.DataSource = _header;
+
+            cmbEditionType.SelectedIndexChanged += ItemChanged;
+
+            cmbLang.SelectedIndexChanged += ItemChanged;
+
+            txtEditionCode.TextChanged += ItemChanged;
+
+            txtTitle.TextChanged += ItemChanged;
         }
 
         private async void btnSave_Click(object sender, EventArgs e)
@@ -37,6 +45,11 @@ namespace Project
             await HeaderProcess.SaveHeader(_header);
 
             DialogResult = DialogResult.OK;
+        }
+
+        private void ItemChanged(object sender, EventArgs e)
+        {
+            btnSave.Enabled = txtTitle.Text.Length > 0 && txtEditionCode.Text.Length > 0 && cmbEditionType.SelectedItem != null && cmbLang.SelectedItem != null;
         }
     }
 }
