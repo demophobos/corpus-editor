@@ -74,6 +74,7 @@
     <Compile Include="ElementProcess.cs" />
     <Compile Include="HeaderProcess.cs" />
     <Compile Include="Helper\BetaCodeConverter.cs" />
+    <Compile Include="Helper\DiacriticHelper.cs" />
     <Compile Include="Helper\RusCorporaMapper.cs" />
     <Compile Include="Helper\StringExtension.cs" />
     <Compile Include="MorphProcess.cs" />

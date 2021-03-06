@@ -8,9 +8,13 @@ namespace Document
     public partial class ChunkEditor : Form
     {
         private IndexModel _index;
-        public ChunkEditor(IndexModel index, ChunkModel chunkModel)
+
+        private string _ruleLang;
+        public ChunkEditor(IndexModel index, ChunkModel chunkModel, string lang)
         {
             _index = index;
+
+            _ruleLang = lang;
 
             InitializeComponent();
 
@@ -33,7 +37,7 @@ namespace Document
 
             var chunkBase = new ChunkModel { Id = chunk.Id, IndexId = chunk.IndexId, Value = chunk.Value, HeaderId = _index.HeaderId };
 
-            await ChunkProcess.SaveChunkAndElements(chunkBase).ConfigureAwait(true);
+            await ChunkProcess.SaveChunkAndElements(chunkBase, _ruleLang).ConfigureAwait(true);
 
             loader1.SendToBack();
 

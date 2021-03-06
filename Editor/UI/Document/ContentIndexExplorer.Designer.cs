@@ -38,8 +38,6 @@ namespace Document
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.btnShowBookmarks = new System.Windows.Forms.ToolStripButton();
             this.btnRemoveAllBookmarks = new System.Windows.Forms.ToolStripButton();
-            this.btnImportChunks = new System.Windows.Forms.ToolStripSplitButton();
-            this.btnLoadJSON = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.btnAddSubsection = new System.Windows.Forms.ToolStripMenuItem();
             this.btnEditSection = new System.Windows.Forms.ToolStripMenuItem();
@@ -87,8 +85,7 @@ namespace Document
             this.btnCreateTopIndex,
             this.toolStripSeparator2,
             this.btnShowBookmarks,
-            this.btnRemoveAllBookmarks,
-            this.btnImportChunks});
+            this.btnRemoveAllBookmarks});
             this.toolStrip2.Location = new System.Drawing.Point(0, 0);
             this.toolStrip2.Name = "toolStrip2";
             this.toolStrip2.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
@@ -130,26 +127,6 @@ namespace Document
             this.btnRemoveAllBookmarks.Size = new System.Drawing.Size(23, 22);
             this.btnRemoveAllBookmarks.ToolTipText = "Удалить закладки";
             this.btnRemoveAllBookmarks.Click += new System.EventHandler(this.btnRemoveAllBookmarks_Click);
-            // 
-            // btnImportChunks
-            // 
-            this.btnImportChunks.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnImportChunks.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnLoadJSON});
-            this.btnImportChunks.Image = ((System.Drawing.Image)(resources.GetObject("btnImportChunks.Image")));
-            this.btnImportChunks.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnImportChunks.Name = "btnImportChunks";
-            this.btnImportChunks.Size = new System.Drawing.Size(32, 22);
-            this.btnImportChunks.Text = "Импортировать фрагменты";
-            this.btnImportChunks.Visible = false;
-            // 
-            // btnLoadJSON
-            // 
-            this.btnLoadJSON.Image = ((System.Drawing.Image)(resources.GetObject("btnLoadJSON.Image")));
-            this.btnLoadJSON.Name = "btnLoadJSON";
-            this.btnLoadJSON.Size = new System.Drawing.Size(286, 22);
-            this.btnLoadJSON.Text = "Загрузить фрагменты в JSON формате";
-            this.btnLoadJSON.Click += new System.EventHandler(this.jSONToolStripMenuItem_Click);
             // 
             // contextMenuStrip1
             // 
@@ -279,8 +256,6 @@ namespace Document
         private System.Windows.Forms.ToolStripMenuItem btnRemoveSection;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem btnOpenEditor;
-        private System.Windows.Forms.ToolStripSplitButton btnImportChunks;
-        private System.Windows.Forms.ToolStripMenuItem btnLoadJSON;
         private Common.Control.Loader loader1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripButton btnShowBookmarks;

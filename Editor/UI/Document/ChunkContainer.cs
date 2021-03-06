@@ -49,7 +49,7 @@ namespace Document
         {
             _chunk = new ChunkModel { IndexId = Index.Id };
 
-            var editor = new ChunkEditor(Index, _chunk);
+            var editor = new ChunkEditor(Index, _chunk, _documentProcess.Header.Lang);
 
             if (editor.ShowDialog() == DialogResult.OK)
             {
@@ -117,7 +117,7 @@ namespace Document
 
         private async void btnEditChunk_Click(object sender, EventArgs e)
         {
-            var editor = new ChunkEditor(Index, _chunk);
+            var editor = new ChunkEditor(Index, _chunk, _documentProcess.Header.Lang);
 
             if (editor.ShowDialog() == DialogResult.OK)
             {

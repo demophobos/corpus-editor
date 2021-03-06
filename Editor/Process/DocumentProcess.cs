@@ -86,49 +86,6 @@ namespace Process
             return await API.InterpAPI.Remove(interp);
         }
 
-        public async Task<List<ChunkModel>> LoadJsonChunks(string fileName)
-        {
-            var chunks = new List<ChunkModel>();
-
-            JObject data = JObject.Parse(File.ReadAllText(fileName));
-
-            foreach (var row in data["rows"])
-            {
-                var indeces = await GetIndecesByName(row[1].ToString()).ConfigureAwait(true);
-
-                if (indeces.Count == 1)
-                {
-                    var index = indeces[0];
-
-                    var chunk = await ChunkProcess.GetChunkByQuery(new ChunkQuery { IndexId = index.Id });
-
-                    if (chunk == null)
-                    {
-                        var newChunk = new ChunkModel
-                        {
-                            IndexId = index.Id,
-                            Value = row[2].ToString()
-                        };
-
-                        var savedChunk = await ChunkProcess.SaveChunkAndElements(newChunk).ConfigureAwait(true);
-
-                        chunks.Add(savedChunk);
-                    }
-                    else
-                    {
-                        continue;
-                    }
-                }
-                else
-                {
-                    continue;
-                }
-            }
-
-            return chunks;
-        }
-
-
         public async Task<ChunkModel> DeleteChunksByQuery(ChunkQuery query)
         {
             return await API.ChunkAPI.RemoveByQuery(query);

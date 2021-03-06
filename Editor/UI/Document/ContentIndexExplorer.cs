@@ -215,18 +215,6 @@ namespace Document
             }
         }
 
-        private async void jSONToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            var fileDialog = new OpenFileDialog();
-
-            if (fileDialog.ShowDialog() == DialogResult.OK)
-            {
-                var chunks = await _documentProcess.LoadJsonChunks(fileDialog.FileName).ConfigureAwait(true);
-
-                MessageBox.Show($"Импортировано фрагментов: {chunks.Count}");
-            }
-        }
-
         private void btnShowBookmarks_Click(object sender, EventArgs e)
         {
             if (bookmarkedSource.Position == bookmarkedSource.Count - 1)

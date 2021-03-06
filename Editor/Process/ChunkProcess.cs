@@ -115,11 +115,11 @@ namespace Process
             return JsonConvert.SerializeObject(chunkValueItems);
         }
 
-        public static async Task<ChunkModel> SaveChunkAndElements(ChunkModel chunk)
+        public static async Task<ChunkModel> SaveChunkAndElements(ChunkModel chunk, string ruleLang)
         {
             var elements = ParseTextElements(chunk);
 
-            var chunkValueItems = await ApplyMorphRules(elements);
+            var chunkValueItems = await ApplyMorphRules(elements, ruleLang);
 
             chunk.ValueObj = JsonConvert.SerializeObject(chunkValueItems);
 
@@ -132,7 +132,7 @@ namespace Process
             return savedChunk;
         }
 
-        private static async Task<List<ChunkValueItemModel>> ApplyMorphRules(List<ElementModel> elements)
+        private static async Task<List<ChunkValueItemModel>> ApplyMorphRules(List<ElementModel> elements, string ruleLang)
         {
             var chunkValueItems = new List<ChunkValueItemModel>();
 
@@ -151,7 +151,9 @@ namespace Process
                     Order = element.Order
                 };
 
-                var rules = morphRules.Where(i => i.Form.ToLower() == element.Value.ToLower()).ToList();
+                var rules = morphRules.Where(i => 
+                DiacriticHelper.RemoveDiacritics(i.Form.ToLower()) == 
+                DiacriticHelper.RemoveDiacritics(element.Value.ToLower())).ToList();
 
                 if (rules.Count == 1)
                 {
