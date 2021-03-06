@@ -46,7 +46,7 @@ namespace Document
                 .OrderByDescending(i => i.ResolvedItems)
                 .OrderByDescending(i => i.UnresolvedItems);
 
-            dataSource.DataSource = statusItems;
+            dataSource.DataSource = statusItems.Count() > 0 ? statusItems : null;
 
             lblTotalValue.Text = statusItems.Count().ToString();
 

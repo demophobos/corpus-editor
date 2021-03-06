@@ -1,4 +1,5 @@
 ﻿using Model;
+using Model.Enum;
 using Process;
 using System;
 using System.Windows.Forms;
@@ -26,12 +27,10 @@ namespace Project
 
             if (project != null)
             {
-                Text += $": {project.Code}";
+                Text = $"{project.Code} [{_header.EditionType}]";
             }
 
             headerSource.DataSource = _header;
-
-            cmbEditionType.SelectedIndexChanged += ItemChanged;
 
             cmbLang.SelectedIndexChanged += ItemChanged;
 
@@ -49,7 +48,7 @@ namespace Project
 
         private void ItemChanged(object sender, EventArgs e)
         {
-            btnSave.Enabled = txtTitle.Text.Length > 0 && txtEditionCode.Text.Length > 0 && cmbEditionType.SelectedItem != null && cmbLang.SelectedItem != null;
+            btnSave.Enabled = txtTitle.Text.Length > 0 && txtEditionCode.Text.Length > 0 && cmbLang.SelectedItem != null;
         }
     }
 }

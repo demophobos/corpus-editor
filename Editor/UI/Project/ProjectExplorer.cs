@@ -46,9 +46,9 @@ namespace Project
             {
                 TreeNode projectNode = CreateNode(project);
 
-                var headers = await HeaderProcess.GetHeaders(project.Id);
+                var headers = await HeaderProcess.GetHeaders(project.Id).ConfigureAwait(true);
 
-                foreach (var header in headers)
+                foreach (var header in headers.OrderBy(i=>i.EditionType))
                 {
                     TreeNode headerNode = CreateNode(header);
 
@@ -93,13 +93,17 @@ namespace Project
         {
             if (treeView1.SelectedNode != null && treeView1.SelectedNode.Tag is ProjectModel project)
             {
-                mnuCreateHeader.Visible = btnDelete.Enabled = true;
+                btnDelete.Enabled = true;
+
+                btnAddOriginal.Visible = CheckOriginal();
+
+                btnAddTranslation.Visible = CheckTranslations();
 
                 ProjectViewProperty?.Invoke(this, project);
             }
             else
             {
-                mnuCreateHeader.Visible = btnDelete.Enabled = false;
+                btnAddOriginal.Visible = btnAddTranslation.Visible = btnDelete.Enabled = false;
             }
 
             mnuDeleteHeader.Visible = mnuEditHeader.Visible = treeView1.SelectedNode != null && treeView1.SelectedNode.Tag is HeaderModel;
@@ -109,6 +113,23 @@ namespace Project
 
                 HeaderViewProperty?.Invoke(this, header);
             }
+        }
+
+        private bool CheckTranslations()
+        {
+            return treeView1.SelectedNode.Nodes.Count >= 1;
+        }
+
+        private bool CheckOriginal()
+        {
+            foreach (TreeNode treeNode in treeView1.SelectedNode.Nodes)
+            {
+                if (treeNode.Tag is HeaderModel header && header.EditionType == EditionTypeStringEnum.Original)
+                {
+                    return false;
+                };
+            }
+            return true;
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -161,7 +182,7 @@ namespace Project
 
                     treeView1.EndUpdate();
 
-                    mnuCreateHeader.Visible = btnDelete.Enabled = treeView1.Nodes.Count != 0;
+                    btnAddTranslation.Visible = btnDelete.Enabled = treeView1.Nodes.Count != 0;
 
                     ProjectDeleted?.Invoke(this, project);
                 }
@@ -170,11 +191,28 @@ namespace Project
             }
         }
 
-        private void mnuCreateHeader_Click(object sender, EventArgs e)
+        private void btnAddTranslation_Click(object sender, EventArgs e)
         {
             if (treeView1.SelectedNode != null && treeView1.SelectedNode.Tag is ProjectModel project)
             {
-                var header = new HeaderModel { ProjectId = project.Id };
+                var header = new HeaderModel { ProjectId = project.Id, EditionType = EditionTypeStringEnum.Interpretation };
+
+                var editor = new HeaderEditor(header);
+
+                if (editor.ShowDialog() == DialogResult.OK)
+                {
+                    LoadData();
+
+                    HeaderAdded?.Invoke(this, header);
+                }
+            }
+        }
+
+        private void btnAddOriginal_Click(object sender, EventArgs e)
+        {
+            if (treeView1.SelectedNode != null && treeView1.SelectedNode.Tag is ProjectModel project)
+            {
+                var header = new HeaderModel { ProjectId = project.Id, EditionType = EditionTypeStringEnum.Original };
 
                 var editor = new HeaderEditor(header);
 
