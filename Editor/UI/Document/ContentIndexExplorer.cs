@@ -108,35 +108,20 @@ namespace Document
         {
             var index = new IndexModel { Order = treeView1.Nodes.Count + 1, HeaderId = _documentProcess.Header.Id };
 
-            var indexTopEditor = new IndexTopEditor(_documentProcess, index);
+            var indexBuilder = new IndexBuilder(_documentProcess, index);
 
-            if (indexTopEditor.ShowDialog() == DialogResult.OK)
+            if (indexBuilder.ShowDialog() == DialogResult.OK)
             {
                 await LoadDataAsync().ConfigureAwait(true);
 
                 treeView1.SelectedNode = treeView1.Nodes.Find(index.Id, false).FirstOrDefault();
             }
-
-            //IndexEditor indexEditor;
-
-            //
-
-            //indexEditor = new IndexEditor(_documentProcess, index);
-
-            //if (indexEditor.ShowDialog() == DialogResult.OK)
-            //{
-            //    await LoadDataAsync().ConfigureAwait(true);
-
-            //    treeView1.SelectedNode = treeView1.Nodes.Find(index.Id, false).FirstOrDefault();
-            //}
         }
 
         private async void btnAddSubsection_ClickAsync(object sender, EventArgs e)
         {
             if (treeView1.SelectedNode != null && treeView1.SelectedNode.Tag is IndexModel parentIndex)
             {
-                IndexEditor indexEditor;
-
                 var index = new IndexModel
                 {
                     HeaderId = _documentProcess.Header.Id,
@@ -144,9 +129,9 @@ namespace Document
                     ParentId = parentIndex.Id
                 };
 
-                indexEditor = new IndexEditor(_documentProcess, index, parentIndex.Name);
+                var indexBuilder = new IndexBuilder(_documentProcess, index, parentIndex.Name);
 
-                if (indexEditor.ShowDialog() == DialogResult.OK)
+                if (indexBuilder.ShowDialog() == DialogResult.OK)
                 {
                     await LoadDataAsync().ConfigureAwait(true);
                 }
@@ -164,15 +149,16 @@ namespace Document
         {
             if (treeView1.SelectedNode != null && treeView1.SelectedNode.Tag is IndexModel index)
             {
-                var indexEditor = new IndexEditor(_documentProcess, index);
+                var indexNameEditor = new IndexNameEditor(_documentProcess, index);
 
-                if (indexEditor.ShowDialog() == DialogResult.OK)
+                if (indexNameEditor.ShowDialog() == DialogResult.OK)
                 {
                     var node = treeView1.Nodes.Find(index.Id, true).FirstOrDefault();
 
                     if (node != null)
                     {
                         node.Text = index.Name;
+
                         treeView1.SelectedNode = node;
                     }
                 }

@@ -94,23 +94,23 @@
     <Compile Include="ContentIndexExplorer.Designer.cs">
       <DependentUpon>ContentIndexExplorer.cs</DependentUpon>
     </Compile>
-    <Compile Include="IndexTopEditor.cs">
+    <Compile Include="IndexBuilder.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="IndexTopEditor.Designer.cs">
-      <DependentUpon>IndexTopEditor.cs</DependentUpon>
+    <Compile Include="IndexBuilder.Designer.cs">
+      <DependentUpon>IndexBuilder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IndexNameEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IndexNameEditor.Designer.cs">
+      <DependentUpon>IndexNameEditor.cs</DependentUpon>
     </Compile>
     <Compile Include="MorphSelector.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MorphSelector.Designer.cs">
       <DependentUpon>MorphSelector.cs</DependentUpon>
-    </Compile>
-    <Compile Include="IndexEditor.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="IndexEditor.Designer.cs">
-      <DependentUpon>IndexEditor.cs</DependentUpon>
     </Compile>
     <Compile Include="InterpContainer.cs">
       <SubType>Form</SubType>
@@ -167,14 +167,14 @@
     <EmbeddedResource Include="DocumentContainer.resx">
       <DependentUpon>DocumentContainer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="IndexTopEditor.resx">
-      <DependentUpon>IndexTopEditor.cs</DependentUpon>
+    <EmbeddedResource Include="IndexBuilder.resx">
+      <DependentUpon>IndexBuilder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IndexNameEditor.resx">
+      <DependentUpon>IndexNameEditor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MorphSelector.resx">
       <DependentUpon>MorphSelector.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="IndexEditor.resx">
-      <DependentUpon>IndexEditor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InterpContainer.resx">
       <DependentUpon>InterpContainer.cs</DependentUpon>

@@ -1,7 +1,7 @@
 ﻿
 namespace Document
 {
-    partial class IndexTopEditor
+    partial class IndexBuilder
     {
         /// <summary>
         /// Required designer variable.
@@ -29,6 +29,7 @@ namespace Document
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(IndexBuilder));
             this.chkRange = new System.Windows.Forms.CheckBox();
             this.startValue = new System.Windows.Forms.NumericUpDown();
             this.endValue = new System.Windows.Forms.NumericUpDown();
@@ -106,17 +107,20 @@ namespace Document
             this.btnCreate.UseVisualStyleBackColor = true;
             this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
-            // IndexTopEditor
+            // IndexBuilder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(337, 40);
+            this.ClientSize = new System.Drawing.Size(334, 41);
             this.Controls.Add(this.btnCreate);
             this.Controls.Add(this.endValue);
             this.Controls.Add(this.startValue);
             this.Controls.Add(this.chkRange);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "IndexTopEditor";
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.Name = "IndexBuilder";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Индекс верхнего уровня";
             ((System.ComponentModel.ISupportInitialize)(this.startValue)).EndInit();

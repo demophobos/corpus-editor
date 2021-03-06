@@ -12,19 +12,37 @@ using System.Windows.Forms;
 
 namespace Document
 {
-    public partial class IndexTopEditor : Form
+    public partial class IndexBuilder : Form
     {
         private DocumentProcess _documentProcess;
 
         private IndexModel _index;
 
-        public IndexTopEditor(DocumentProcess documentProcess, IndexModel index)
+        private string _prefix;
+
+        public IndexBuilder(DocumentProcess documentProcess, IndexModel index)
         {
             _documentProcess = documentProcess;
 
             _index = index;
 
             InitializeComponent();
+        }
+
+        public IndexBuilder(DocumentProcess documentProcess, IndexModel index, string prefix)
+        {
+            _documentProcess = documentProcess;
+
+            _index = index;
+
+            _prefix = prefix;
+
+            InitializeComponent();
+
+            if (!string.IsNullOrEmpty(prefix))
+            {
+                Text = prefix;
+            }
         }
 
         private void chkRange_CheckedChanged(object sender, EventArgs e)
@@ -51,11 +69,11 @@ namespace Document
                         var inx = new IndexModel
                         {
                             HeaderId = _index.HeaderId,
-
-                            Order = startOrder
+                            Order = startOrder,
+                            ParentId = _index.ParentId
                         };
 
-                        inx.Name = item.ToString();
+                        CreateIndexName(item.ToString(), inx);
 
                         await _documentProcess.SaveIndex(inx).ConfigureAwait(true);
 
@@ -64,7 +82,7 @@ namespace Document
                 }
                 else
                 {
-                    _index.Name = indexText;
+                    CreateIndexName(indexText, _index);
 
                     await _documentProcess.SaveIndex(_index).ConfigureAwait(true);
                 }
@@ -74,6 +92,18 @@ namespace Document
             catch (Exception ex)
             {
                 throw ex;
+            }
+        }
+
+        private void CreateIndexName(string item, IndexModel inx)
+        {
+            if (!string.IsNullOrEmpty(_prefix))
+            {
+                inx.Name = $"{_prefix}.{item}";
+            }
+            else
+            {
+                inx.Name = item.ToString();
             }
         }
 
