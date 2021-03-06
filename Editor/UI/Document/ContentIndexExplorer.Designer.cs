@@ -34,7 +34,7 @@ namespace Document
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
-            this.btnAddFirstLevelSection = new System.Windows.Forms.ToolStripButton();
+            this.btnCreateTopIndex = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.btnShowBookmarks = new System.Windows.Forms.ToolStripButton();
             this.btnRemoveAllBookmarks = new System.Windows.Forms.ToolStripButton();
@@ -70,6 +70,7 @@ namespace Document
             this.treeView1.SelectedImageIndex = 1;
             this.treeView1.Size = new System.Drawing.Size(366, 450);
             this.treeView1.TabIndex = 9;
+            this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
             this.treeView1.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView1_NodeMouseDoubleClick);
             // 
             // imageList1
@@ -83,7 +84,7 @@ namespace Document
             // 
             this.toolStrip2.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnAddFirstLevelSection,
+            this.btnCreateTopIndex,
             this.toolStripSeparator2,
             this.btnShowBookmarks,
             this.btnRemoveAllBookmarks,
@@ -95,15 +96,15 @@ namespace Document
             this.toolStrip2.TabIndex = 8;
             this.toolStrip2.Text = "toolStrip2";
             // 
-            // btnAddFirstLevelSection
+            // btnCreateTopIndex
             // 
-            this.btnAddFirstLevelSection.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnAddFirstLevelSection.Image = ((System.Drawing.Image)(resources.GetObject("btnAddFirstLevelSection.Image")));
-            this.btnAddFirstLevelSection.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnAddFirstLevelSection.Name = "btnAddFirstLevelSection";
-            this.btnAddFirstLevelSection.Size = new System.Drawing.Size(23, 22);
-            this.btnAddFirstLevelSection.Text = "Добавить раздел верхнего уровня";
-            this.btnAddFirstLevelSection.Click += new System.EventHandler(this.btnAddFirstLevelSection_ClickAsync);
+            this.btnCreateTopIndex.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnCreateTopIndex.Image = ((System.Drawing.Image)(resources.GetObject("btnCreateTopIndex.Image")));
+            this.btnCreateTopIndex.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnCreateTopIndex.Name = "btnCreateTopIndex";
+            this.btnCreateTopIndex.Size = new System.Drawing.Size(23, 22);
+            this.btnCreateTopIndex.Text = "Добавить раздел верхнего уровня";
+            this.btnCreateTopIndex.Click += new System.EventHandler(this.btnCreateTopIndex_ClickAsync);
             // 
             // toolStripSeparator2
             // 
@@ -271,7 +272,7 @@ namespace Document
         private System.Windows.Forms.TreeView treeView1;
         private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.ToolStrip toolStrip2;
-        private System.Windows.Forms.ToolStripButton btnAddFirstLevelSection;
+        private System.Windows.Forms.ToolStripButton btnCreateTopIndex;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem btnAddSubsection;
         private System.Windows.Forms.ToolStripMenuItem btnEditSection;

@@ -94,6 +94,12 @@
     <Compile Include="ContentIndexExplorer.Designer.cs">
       <DependentUpon>ContentIndexExplorer.cs</DependentUpon>
     </Compile>
+    <Compile Include="IndexTopEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IndexTopEditor.Designer.cs">
+      <DependentUpon>IndexTopEditor.cs</DependentUpon>
+    </Compile>
     <Compile Include="MorphSelector.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -160,6 +166,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DocumentContainer.resx">
       <DependentUpon>DocumentContainer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IndexTopEditor.resx">
+      <DependentUpon>IndexTopEditor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MorphSelector.resx">
       <DependentUpon>MorphSelector.cs</DependentUpon>

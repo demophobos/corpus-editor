@@ -42,8 +42,8 @@ namespace Project
             this.headerSource = new System.Windows.Forms.BindingSource(this.components);
             this.cmbLang = new System.Windows.Forms.ComboBox();
             this.txtEditionCode = new System.Windows.Forms.TextBox();
-            this.editionTypeSource = new System.Windows.Forms.BindingSource(this.components);
             this.label6 = new System.Windows.Forms.Label();
+            this.editionTypeSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.langSource)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -174,10 +174,6 @@ namespace Project
             this.txtEditionCode.Size = new System.Drawing.Size(478, 20);
             this.txtEditionCode.TabIndex = 0;
             // 
-            // editionTypeSource
-            // 
-            this.editionTypeSource.DataSource = typeof(Model.TaxonomyModel);
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -188,6 +184,10 @@ namespace Project
             this.label6.TabIndex = 11;
             this.label6.Text = "Код:";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // editionTypeSource
+            // 
+            this.editionTypeSource.DataSource = typeof(Model.TaxonomyModel);
             // 
             // HeaderEditor
             // 

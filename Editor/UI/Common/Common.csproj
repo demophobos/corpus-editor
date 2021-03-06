@@ -61,6 +61,7 @@
     <Compile Include="Control\PropertyViewer.Designer.cs">
       <DependentUpon>PropertyViewer.cs</DependentUpon>
     </Compile>
+    <Compile Include="Helper\CommonHelper.cs" />
     <Compile Include="Helper\RichTextBoxExtensions.cs" />
     <Compile Include="Helper\TreeViewExtensions.cs" />
     <Compile Include="Process\ComboProcess.cs" />

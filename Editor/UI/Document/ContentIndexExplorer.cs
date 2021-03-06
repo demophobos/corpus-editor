@@ -30,14 +30,16 @@ namespace Document
 
         private async void ContentExplorer_LoadAsync(object sender, EventArgs e)
         {
-            treeView1.ContextMenuStrip = contextMenuStrip1;
-
-            await LoadDataAsync();
+            await LoadDataAsync().ConfigureAwait(true);
         }
 
         private async Task LoadDataAsync()
         {
             loader1.BringToFront();
+
+            loader1.SetStatus("Загрузка содержания...");
+
+            treeView1.ContextMenuStrip = null;
 
             treeView1.BeginUpdate();
 
@@ -102,20 +104,31 @@ namespace Document
             }
         }
 
-        private async void btnAddFirstLevelSection_ClickAsync(object sender, EventArgs e)
+        private async void btnCreateTopIndex_ClickAsync(object sender, EventArgs e)
         {
-            IndexEditor indexEditor;
-
             var index = new IndexModel { Order = treeView1.Nodes.Count + 1, HeaderId = _documentProcess.Header.Id };
 
-            indexEditor = new IndexEditor(_documentProcess, index);
+            var indexTopEditor = new IndexTopEditor(_documentProcess, index);
 
-            if (indexEditor.ShowDialog() == DialogResult.OK)
+            if (indexTopEditor.ShowDialog() == DialogResult.OK)
             {
                 await LoadDataAsync().ConfigureAwait(true);
 
                 treeView1.SelectedNode = treeView1.Nodes.Find(index.Id, false).FirstOrDefault();
             }
+
+            //IndexEditor indexEditor;
+
+            //
+
+            //indexEditor = new IndexEditor(_documentProcess, index);
+
+            //if (indexEditor.ShowDialog() == DialogResult.OK)
+            //{
+            //    await LoadDataAsync().ConfigureAwait(true);
+
+            //    treeView1.SelectedNode = treeView1.Nodes.Find(index.Id, false).FirstOrDefault();
+            //}
         }
 
         private async void btnAddSubsection_ClickAsync(object sender, EventArgs e)
@@ -168,13 +181,19 @@ namespace Document
 
         private async void BtnRemoveSection_ClickAsync(object sender, EventArgs e)
         {
-            if (treeView1.SelectedNode.Tag is IndexModel index)
+            if (treeView1.SelectedNode != null && treeView1.SelectedNode.Tag is IndexModel index)
             {
                 if (DialogProcess.DeleteWarning(index) == DialogResult.Yes)
                 {
-                    await Delete(index);
+                    loader1.BringToFront();
 
-                    treeView1.Nodes.Remove(treeView1.SelectedNode);
+                    loader1.SetStatus("Удаление...");
+
+                    await Delete(index).ConfigureAwait(true);
+
+                    await LoadDataAsync().ConfigureAwait(true);
+
+                    loader1.SendToBack();
                 }
             }
         }
@@ -187,8 +206,6 @@ namespace Document
             {
                 foreach (var child in children)
                 {
-                    await _documentProcess.DeleteIndex(index).ConfigureAwait(true);
-
                     await Delete(child).ConfigureAwait(true);
                 }
             }
@@ -231,7 +248,8 @@ namespace Document
                 bookmarkedSource.MoveFirst();
                 bookmarkedSource.Position = 0;
             }
-            else {
+            else
+            {
                 bookmarkedSource.MoveNext();
             }
             ShowBookmarked();
@@ -243,7 +261,8 @@ namespace Document
 
             loader1.SetStatus("Удаление закладок");
 
-            foreach (var index in _bookmarkedIndeces) {
+            foreach (var index in _bookmarkedIndeces)
+            {
 
                 index.Bookmarked = false;
 
@@ -308,6 +327,17 @@ namespace Document
                 {
                     treeView1.SelectedNode = found;
                 }
+            }
+        }
+
+        private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            if (treeView1.SelectedNode != null && treeView1.SelectedNode.Tag is IndexModel)
+            {
+                treeView1.ContextMenuStrip = contextMenuStrip1;
+            }
+            else {
+                treeView1.ContextMenuStrip = null;
             }
         }
     }
