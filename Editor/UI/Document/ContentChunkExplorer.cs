@@ -41,10 +41,10 @@ namespace Document
 
             _chunks = await _documentProcess.GetChunksByHeader().ConfigureAwait(true);
 
-            var statusItems = _chunks.OrderBy(i=>i.IndexOrder)
+            var statusItems = _chunks.OrderBy(i => i.IndexOrder)
                 .Select(i => CreateStatusModel(i))
                 .OrderByDescending(i => i.ResolvedItems)
-                .OrderByDescending(i=>i.UnresolvedItems);
+                .OrderByDescending(i => i.UnresolvedItems);
 
             dataSource.DataSource = statusItems;
 
@@ -86,6 +86,10 @@ namespace Document
 
             var unresolvedItems = publishedElements.Count(j => j.MorphId == null);
 
+            var languages = publishedElements.Where(i => !string.IsNullOrEmpty(i.Lang)).Select(i => i.Lang).Distinct();
+
+            var lang = languages.Count() > 0 ? string.Join(", ", languages) : string.Empty;
+
             return new ChunkStatusModel
             {
                 Id = chunk.Id,
@@ -93,7 +97,8 @@ namespace Document
                 IndexName = chunk.IndexName,
                 ChunkText = chunk.Value,
                 ResolvedItems = resolvedItems,
-                UnresolvedItems = unresolvedItems
+                UnresolvedItems = unresolvedItems,
+                Languages = lang
             };
         }
 
@@ -121,7 +126,7 @@ namespace Document
             statusStrip1.Enabled = toolStrip2.Enabled = false;
 
             var chunks = await ChunkProcess.GetChunksByQuery(new ChunkQuery { HeaderId = _documentProcess.Header.Id });
-            
+
             int updatedCount = 0;
 
             int count = 0;
@@ -156,7 +161,8 @@ namespace Document
 
         private void dataGridView1_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
         {
-            if (dataSource.List.Count > 0) {
+            if (dataSource.List.Count > 0)
+            {
                 int wrapLen = 84;
                 if ((e.RowIndex >= 0) && e.ColumnIndex >= 0)
                 {

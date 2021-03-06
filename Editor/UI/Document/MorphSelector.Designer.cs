@@ -37,14 +37,14 @@ namespace Document
             this.btnClone = new System.Windows.Forms.ToolStripButton();
             this.btnEdit = new System.Windows.Forms.ToolStripButton();
             this.btnDelete = new System.Windows.Forms.ToolStripButton();
+            this.btnCopyForm = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.btnCancelDefinition = new System.Windows.Forms.ToolStripButton();
+            this.btnAcceptForAllCases = new System.Windows.Forms.ToolStripButton();
+            this.btnCancelAllCases = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.btnCreateRule = new System.Windows.Forms.ToolStripButton();
             this.btnRemoveRule = new System.Windows.Forms.ToolStripButton();
-            this.btnAcceptForAllCases = new System.Windows.Forms.ToolStripButton();
-            this.btnCancelAllCases = new System.Windows.Forms.ToolStripButton();
-            this.btnCopyForm = new System.Windows.Forms.ToolStripButton();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.IsRule = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Form = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -147,6 +147,17 @@ namespace Document
             this.btnDelete.ToolTipText = "Удалить определение";
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_ClickAsync);
             // 
+            // btnCopyForm
+            // 
+            this.btnCopyForm.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnCopyForm.Enabled = false;
+            this.btnCopyForm.Image = ((System.Drawing.Image)(resources.GetObject("btnCopyForm.Image")));
+            this.btnCopyForm.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnCopyForm.Name = "btnCopyForm";
+            this.btnCopyForm.Size = new System.Drawing.Size(23, 22);
+            this.btnCopyForm.Text = "Копировать форму в буфер обмена";
+            this.btnCopyForm.Click += new System.EventHandler(this.btnCopyForm_Click);
+            // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
@@ -162,6 +173,28 @@ namespace Document
             this.btnCancelDefinition.Size = new System.Drawing.Size(23, 22);
             this.btnCancelDefinition.ToolTipText = "Снять определение";
             this.btnCancelDefinition.Click += new System.EventHandler(this.btnUndoAccept_Click);
+            // 
+            // btnAcceptForAllCases
+            // 
+            this.btnAcceptForAllCases.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnAcceptForAllCases.Enabled = false;
+            this.btnAcceptForAllCases.Image = ((System.Drawing.Image)(resources.GetObject("btnAcceptForAllCases.Image")));
+            this.btnAcceptForAllCases.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnAcceptForAllCases.Name = "btnAcceptForAllCases";
+            this.btnAcceptForAllCases.Size = new System.Drawing.Size(23, 22);
+            this.btnAcceptForAllCases.ToolTipText = "Применить ко всему тексту";
+            this.btnAcceptForAllCases.Click += new System.EventHandler(this.btnAcceptForAllCases_Click);
+            // 
+            // btnCancelAllCases
+            // 
+            this.btnCancelAllCases.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnCancelAllCases.Enabled = false;
+            this.btnCancelAllCases.Image = ((System.Drawing.Image)(resources.GetObject("btnCancelAllCases.Image")));
+            this.btnCancelAllCases.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnCancelAllCases.Name = "btnCancelAllCases";
+            this.btnCancelAllCases.Size = new System.Drawing.Size(23, 22);
+            this.btnCancelAllCases.ToolTipText = "Отменить для всего текста";
+            this.btnCancelAllCases.Click += new System.EventHandler(this.btnCancelAllCases_Click);
             // 
             // toolStripSeparator4
             // 
@@ -189,39 +222,6 @@ namespace Document
             this.btnRemoveRule.Size = new System.Drawing.Size(23, 22);
             this.btnRemoveRule.ToolTipText = "Удалить правило";
             this.btnRemoveRule.Click += new System.EventHandler(this.btnRemoveRule_Click);
-            // 
-            // btnAcceptForAllCases
-            // 
-            this.btnAcceptForAllCases.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnAcceptForAllCases.Enabled = false;
-            this.btnAcceptForAllCases.Image = ((System.Drawing.Image)(resources.GetObject("btnAcceptForAllCases.Image")));
-            this.btnAcceptForAllCases.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnAcceptForAllCases.Name = "btnAcceptForAllCases";
-            this.btnAcceptForAllCases.Size = new System.Drawing.Size(23, 22);
-            this.btnAcceptForAllCases.ToolTipText = "Применить ко всему тексту";
-            this.btnAcceptForAllCases.Click += new System.EventHandler(this.btnAcceptForAllCases_Click);
-            // 
-            // btnCancelAllCases
-            // 
-            this.btnCancelAllCases.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnCancelAllCases.Enabled = false;
-            this.btnCancelAllCases.Image = ((System.Drawing.Image)(resources.GetObject("btnCancelAllCases.Image")));
-            this.btnCancelAllCases.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnCancelAllCases.Name = "btnCancelAllCases";
-            this.btnCancelAllCases.Size = new System.Drawing.Size(23, 22);
-            this.btnCancelAllCases.ToolTipText = "Отменить для всего текста";
-            this.btnCancelAllCases.Click += new System.EventHandler(this.btnCancelAllCases_Click);
-            // 
-            // btnCopyForm
-            // 
-            this.btnCopyForm.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnCopyForm.Enabled = false;
-            this.btnCopyForm.Image = ((System.Drawing.Image)(resources.GetObject("btnCopyForm.Image")));
-            this.btnCopyForm.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnCopyForm.Name = "btnCopyForm";
-            this.btnCopyForm.Size = new System.Drawing.Size(23, 22);
-            this.btnCopyForm.Text = "Копировать форму в буфер обмена";
-            this.btnCopyForm.Click += new System.EventHandler(this.btnCopyForm_Click);
             // 
             // dataGridView1
             // 

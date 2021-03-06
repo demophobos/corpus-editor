@@ -49,7 +49,7 @@ namespace Project
 
             _propertyViewer = new PropertyViewer();
 
-            _propertyViewer.Show(dockPanel1, DockState.DockBottom);
+            _propertyViewer.Show(dockPanel1, DockState.DockBottomAutoHide);
         }
 
         private void _projectExplorer_ProjectUpdated(object sender, ProjectModel e)

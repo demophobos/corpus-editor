@@ -8,5 +8,6 @@
         public int ResolvedItems { get; set; }
         public int UnresolvedItems { get; set; }
         public string ChunkText { get; set; }
+        public string Languages { get; set; }
     }
 }

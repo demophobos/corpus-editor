@@ -124,10 +124,10 @@
   <data name="btnRefresh.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAC0SURBVDhPY8AFvnz5cuDVu0//QRjEhgoTD0Ca+GMX/gfh
-        UQPoZQBQkQEQPwDRUD6GAehq4AAk8PXrtw9Bnbv+P37x4SNUIYoBIDGQXHDXrv8gtSA+VDvYgAeBHTv/
-        MwTP+S8UvxhmyAMkAx6AxEByIDUgtSAxqHaIC5AVgOhnrz+ANYMwiI0sB3MlVDsEYDOEO2oBGBPUDAPo
-        hiBjgpphAJshRGuGAWRDSNYMAzBD8GtmYAAAYFVVbqd9P5cAAAAASUVORK5CYII=
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAC3SURBVDhP7Y5NCsIwEIVn70LwJF5FuxPE66hncFHxFHbl
+        UQRBQUGiTd1GvzQjoVZbN658MGR+3vuIvJO1dnM8Xx1FH9btRag7XjrqD/gV4GHq53m+5Q3zC6DqeYpF
+        UdzMcJa53cFcmAnFAHbcknnm8DKHuAjUwXTtJFm43mTlIewUQM+OGx687EK8/EFs4N2fjA9T9PFNfxni
+        peognVHqqzGsqkLiagyr6iCtw6oY8nVYpZDPYZE7L0NVTJMrHe8AAAAASUVORK5CYII=
 </value>
   </data>
   <data name="btnPublish.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -143,6 +143,9 @@
     <value>True</value>
   </metadata>
   <metadata name="ChunkText.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="Languages.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <metadata name="dataSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
