@@ -32,7 +32,7 @@ namespace Document
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MorphSelector));
             this.btnAcceptDefinition = new System.Windows.Forms.ToolStripButton();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.mnuTools = new System.Windows.Forms.ToolStrip();
             this.btnAdd = new System.Windows.Forms.ToolStripButton();
             this.btnClone = new System.Windows.Forms.ToolStripButton();
             this.btnEdit = new System.Windows.Forms.ToolStripButton();
@@ -42,10 +42,8 @@ namespace Document
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.btnCreateRule = new System.Windows.Forms.ToolStripButton();
             this.btnRemoveRule = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.btnAcceptForAllCases = new System.Windows.Forms.ToolStripButton();
             this.btnCancelAllCases = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.btnCopyForm = new System.Windows.Forms.ToolStripButton();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.IsRule = new System.Windows.Forms.DataGridViewCheckBoxColumn();
@@ -65,12 +63,10 @@ namespace Document
             this.langDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.morphId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.morphSource = new System.Windows.Forms.BindingSource(this.components);
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.lblStatus = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStrip1.SuspendLayout();
+            this.loader1 = new Common.Control.Loader();
+            this.mnuTools.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.morphSource)).BeginInit();
-            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnAcceptDefinition
@@ -84,31 +80,29 @@ namespace Document
             this.btnAcceptDefinition.ToolTipText = "Принять определение";
             this.btnAcceptDefinition.Click += new System.EventHandler(this.btnAcceptDefinition_ClickAsync);
             // 
-            // toolStrip1
+            // mnuTools
             // 
-            this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuTools.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.mnuTools.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnAdd,
             this.btnClone,
             this.btnEdit,
             this.btnDelete,
+            this.btnCopyForm,
             this.toolStripSeparator1,
             this.btnAcceptDefinition,
             this.btnCancelDefinition,
-            this.toolStripSeparator4,
-            this.btnCreateRule,
-            this.btnRemoveRule,
-            this.toolStripSeparator3,
             this.btnAcceptForAllCases,
             this.btnCancelAllCases,
-            this.toolStripSeparator5,
-            this.btnCopyForm});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.toolStrip1.Size = new System.Drawing.Size(984, 25);
-            this.toolStrip1.TabIndex = 17;
-            this.toolStrip1.Text = "toolStrip1";
+            this.toolStripSeparator4,
+            this.btnCreateRule,
+            this.btnRemoveRule});
+            this.mnuTools.Location = new System.Drawing.Point(0, 0);
+            this.mnuTools.Name = "mnuTools";
+            this.mnuTools.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+            this.mnuTools.Size = new System.Drawing.Size(984, 25);
+            this.mnuTools.TabIndex = 17;
+            this.mnuTools.Text = "toolStrip1";
             // 
             // btnAdd
             // 
@@ -196,11 +190,6 @@ namespace Document
             this.btnRemoveRule.ToolTipText = "Удалить правило";
             this.btnRemoveRule.Click += new System.EventHandler(this.btnRemoveRule_Click);
             // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
-            // 
             // btnAcceptForAllCases
             // 
             this.btnAcceptForAllCases.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -222,11 +211,6 @@ namespace Document
             this.btnCancelAllCases.Size = new System.Drawing.Size(23, 22);
             this.btnCancelAllCases.ToolTipText = "Отменить для всего текста";
             this.btnCancelAllCases.Click += new System.EventHandler(this.btnCancelAllCases_Click);
-            // 
-            // toolStripSeparator5
-            // 
-            this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 25);
             // 
             // btnCopyForm
             // 
@@ -273,7 +257,7 @@ namespace Document
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(984, 397);
+            this.dataGridView1.Size = new System.Drawing.Size(984, 419);
             this.dataGridView1.TabIndex = 18;
             this.dataGridView1.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridView1_CellFormatting);
             // 
@@ -428,20 +412,13 @@ namespace Document
             this.morphSource.DataSourceChanged += new System.EventHandler(this.morphSource_DataSourceChanged);
             this.morphSource.CurrentChanged += new System.EventHandler(this.morphSource_CurrentChanged);
             // 
-            // statusStrip1
+            // loader1
             // 
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.lblStatus});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 422);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(984, 22);
-            this.statusStrip1.TabIndex = 19;
-            this.statusStrip1.Text = "statusStrip1";
-            // 
-            // lblStatus
-            // 
-            this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(0, 17);
+            this.loader1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.loader1.Location = new System.Drawing.Point(0, 25);
+            this.loader1.Name = "loader1";
+            this.loader1.Size = new System.Drawing.Size(984, 419);
+            this.loader1.TabIndex = 19;
             // 
             // MorphSelector
             // 
@@ -452,8 +429,8 @@ namespace Document
             this.CloseButtonVisible = false;
             this.ControlBox = false;
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.toolStrip1);
-            this.Controls.Add(this.statusStrip1);
+            this.Controls.Add(this.loader1);
+            this.Controls.Add(this.mnuTools);
             this.DockAreas = ((WeifenLuo.WinFormsUI.Docking.DockAreas)(((((WeifenLuo.WinFormsUI.Docking.DockAreas.DockLeft | WeifenLuo.WinFormsUI.Docking.DockAreas.DockRight) 
             | WeifenLuo.WinFormsUI.Docking.DockAreas.DockTop) 
             | WeifenLuo.WinFormsUI.Docking.DockAreas.DockBottom) 
@@ -462,12 +439,10 @@ namespace Document
             this.HideOnClose = true;
             this.Name = "MorphSelector";
             this.Text = "Морфология";
-            this.toolStrip1.ResumeLayout(false);
-            this.toolStrip1.PerformLayout();
+            this.mnuTools.ResumeLayout(false);
+            this.mnuTools.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.morphSource)).EndInit();
-            this.statusStrip1.ResumeLayout(false);
-            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -475,25 +450,21 @@ namespace Document
 
         #endregion
         private System.Windows.Forms.ToolStripButton btnAcceptDefinition;
-        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStrip mnuTools;
         private System.Windows.Forms.ToolStripButton btnAdd;
         private System.Windows.Forms.ToolStripButton btnEdit;
         private System.Windows.Forms.ToolStripButton btnDelete;
         private System.Windows.Forms.ToolStripButton btnCancelDefinition;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.BindingSource morphSource;
-        private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.ToolStripStatusLabel lblStatus;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripButton btnCreateRule;
         private System.Windows.Forms.ToolStripButton btnRemoveRule;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripButton btnCopyForm;
         private System.Windows.Forms.ToolStripButton btnAcceptForAllCases;
         private System.Windows.Forms.ToolStripButton btnCancelAllCases;
         private System.Windows.Forms.ToolStripButton btnClone;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private System.Windows.Forms.DataGridViewCheckBoxColumn IsRule;
         private System.Windows.Forms.DataGridViewTextBoxColumn Form;
         private System.Windows.Forms.DataGridViewTextBoxColumn lemmaDataGridViewTextBoxColumn;
@@ -510,5 +481,6 @@ namespace Document
         private System.Windows.Forms.DataGridViewTextBoxColumn dialectDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn langDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn morphId;
+        private Common.Control.Loader loader1;
     }
 }

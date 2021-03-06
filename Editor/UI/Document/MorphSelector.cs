@@ -51,6 +51,12 @@ namespace Document
         {
             if (morphSource.Current is MorphModel model && DialogProcess.DeleteWarning(model) == DialogResult.Yes)
             {
+                mnuTools.Enabled = false;
+
+                loader1.BringToFront();
+
+                loader1.SetStatus("Обновление элементов ...");
+
                 var results = await ElementProcess.GetElements(new ElementQuery { morphId = model.Id }).ConfigureAwait(true);
 
                 if (results.Count == 0)
@@ -75,6 +81,10 @@ namespace Document
                         await LoadDataAsync(_element);
                     }
                 }
+
+                mnuTools.Enabled = true;
+
+                loader1.SendToBack();
             }
         }
 
@@ -209,6 +219,12 @@ namespace Document
         {
             if (morphSource.Current != null && morphSource.Current is MorphModel morph)
             {
+                mnuTools.Enabled = false;
+
+                loader1.BringToFront();
+
+                loader1.SetStatus("Обновление элементов ...");
+
                 var elements = await ElementProcess.GetElements(new ElementQuery { type = (int)ElementTypeEnum.Word, value = morph.Form, headerId = _index.HeaderId }).ConfigureAwait(true);
 
                 var applicableElements = elements.Where(i => i.MorphId == null).ToList();
@@ -230,6 +246,10 @@ namespace Document
                 ElementMorphAccepted.Invoke(this, _element);
 
                 MessageBox.Show($"Определение применено для {applicableElements.Count}");
+
+                loader1.SendToBack();
+
+                mnuTools.Enabled = true;
             }
         }
 
@@ -237,6 +257,12 @@ namespace Document
         {
             if (morphSource.Current != null && morphSource.Current is MorphModel morph)
             {
+                mnuTools.Enabled = false;
+
+                loader1.BringToFront();
+
+                loader1.SetStatus("Обновление элементов ...");
+
                 var elements = await ElementProcess.GetElements(new ElementQuery { type = (int)ElementTypeEnum.Word, value = morph.Form, headerId = _index.HeaderId }).ConfigureAwait(true);
 
                 var applicableElements = elements.Where(i => i.MorphId != null).ToList();
@@ -258,7 +284,13 @@ namespace Document
                     }
 
                     ElementMorphRejected.Invoke(this, _element);
+
+                    MessageBox.Show($"Определение применено для {applicableElements.Count}");
                 }
+
+                loader1.SendToBack();
+
+                mnuTools.Enabled = true;
             }
         }
 

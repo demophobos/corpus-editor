@@ -102,7 +102,7 @@ namespace Document
             this.btnAddFirstLevelSection.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnAddFirstLevelSection.Name = "btnAddFirstLevelSection";
             this.btnAddFirstLevelSection.Size = new System.Drawing.Size(23, 22);
-            this.btnAddFirstLevelSection.Text = "Добавить раздел";
+            this.btnAddFirstLevelSection.Text = "Добавить раздел верхнего уровня";
             this.btnAddFirstLevelSection.Click += new System.EventHandler(this.btnAddFirstLevelSection_ClickAsync);
             // 
             // toolStripSeparator2

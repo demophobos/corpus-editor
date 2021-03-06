@@ -57,6 +57,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FormCaseEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCaseEditor.Designer.cs">
+      <DependentUpon>FormCaseEditor.cs</DependentUpon>
+    </Compile>
     <Compile Include="MorphEditor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -77,6 +83,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="FormCaseEditor.resx">
+      <DependentUpon>FormCaseEditor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MorphEditor.resx">
       <DependentUpon>MorphEditor.cs</DependentUpon>
     </EmbeddedResource>

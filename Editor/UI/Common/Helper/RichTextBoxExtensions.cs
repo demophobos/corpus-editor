@@ -38,7 +38,7 @@ namespace Common.Helper
             richTextBox.SelectionColor = Color.Black;
         }
 
-        public static void HighlightTextRegExp(this RichTextBox richTextBox, string word, Color color)
+        public static void HighlightTextRegExp(this RichTextBox richTextBox, string word, Color foreColor, Color backColor)
         {
             string pattern = $@"\b({word})\b";
 
@@ -48,7 +48,11 @@ namespace Common.Helper
             {
                 richTextBox.Select(find.Index, find.Length);
 
-                richTextBox.SelectionColor = color;
+                richTextBox.SelectionColor = foreColor;
+
+                richTextBox.SelectionBackColor = backColor;
+
+                richTextBox.Select(find.Index, 0);
             }
         }
     }

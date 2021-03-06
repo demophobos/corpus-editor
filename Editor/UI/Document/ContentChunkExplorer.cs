@@ -56,6 +56,8 @@ namespace Document
 
             lblWordsDoneValue.Text = statusItems.Sum(i => i.ResolvedItems).ToString();
 
+            btnPublish.Enabled = statusItems.Count() > 0;
+
             loader1.SendToBack();
         }
         private void dataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)

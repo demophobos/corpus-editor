@@ -92,6 +92,7 @@ namespace Document
             // btnPublish
             // 
             this.btnPublish.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnPublish.Enabled = false;
             this.btnPublish.Image = ((System.Drawing.Image)(resources.GetObject("btnPublish.Image")));
             this.btnPublish.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnPublish.Name = "btnPublish";
