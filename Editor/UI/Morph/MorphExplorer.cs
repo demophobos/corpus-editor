@@ -245,7 +245,7 @@ namespace Morph
                         {
                             await _morphProcess.DeleteMorph(model).ConfigureAwait(true);
 
-                            
+
                         }
                         else
                         {

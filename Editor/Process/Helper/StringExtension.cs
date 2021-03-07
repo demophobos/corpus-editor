@@ -36,17 +36,25 @@ namespace Process.Helper
         public static IEnumerable<string> SplitByWordsAndOtherSymbols(this string s)
         {
             var hyphenReplacer = 'א';
+            var periodDotReplacer = " ב ";
+            var periodAsteriskReplacer = " ג ";
 
             if (s == null)
                 return null;
 
-            s = s.Replace('-', hyphenReplacer);
+            s = s.Replace('-', hyphenReplacer)
+                .Replace("...", periodDotReplacer)
+                .Replace("***", periodAsteriskReplacer);
+
             var array = Regex.Split(s.Trim(), @"(?=[\p{P}\p{S}\s]|\b)").Where(i => i.Length > 0);
 
             var result = new List<string>();
 
-            foreach (var item in array) {
-                result.Add(item.Replace(hyphenReplacer, '-'));
+            foreach (var item in array)
+            {
+                result.Add(item.Replace(hyphenReplacer, '-')
+                    .Replace(periodDotReplacer.Trim(), "...")
+                    .Replace(periodAsteriskReplacer.Trim(), "***"));
             }
 
             return result;

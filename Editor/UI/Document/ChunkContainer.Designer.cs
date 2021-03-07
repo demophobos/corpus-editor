@@ -38,12 +38,12 @@ namespace Document
             this.btnDeleteChunk = new System.Windows.Forms.ToolStripButton();
             this.btnExport = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.btnMorphLatin = new System.Windows.Forms.ToolStripButton();
-            this.btnMorphRussian = new System.Windows.Forms.ToolStripButton();
-            this.btnMorphGreek = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.btnPublishChunk = new System.Windows.Forms.ToolStripButton();
             this.dockPanel1 = new WeifenLuo.WinFormsUI.Docking.DockPanel();
+            this.cmbLanguages = new System.Windows.Forms.ToolStripComboBox();
+            this.btnRunMorphService = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -56,11 +56,11 @@ namespace Document
             this.btnAddChunk,
             this.btnEditChunk,
             this.btnDeleteChunk,
+            this.toolStripSeparator3,
             this.btnExport,
             this.toolStripSeparator1,
-            this.btnMorphLatin,
-            this.btnMorphRussian,
-            this.btnMorphGreek,
+            this.cmbLanguages,
+            this.btnRunMorphService,
             this.toolStripSeparator2,
             this.btnPublishChunk});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
@@ -144,46 +144,6 @@ namespace Document
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
-            // btnMorphLatin
-            // 
-            this.btnMorphLatin.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.btnMorphLatin.Enabled = false;
-            this.btnMorphLatin.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMorphLatin.Image = ((System.Drawing.Image)(resources.GetObject("btnMorphLatin.Image")));
-            this.btnMorphLatin.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnMorphLatin.Name = "btnMorphLatin";
-            this.btnMorphLatin.Size = new System.Drawing.Size(23, 22);
-            this.btnMorphLatin.Text = "Л";
-            this.btnMorphLatin.ToolTipText = "Латинская морфология";
-            this.btnMorphLatin.Click += new System.EventHandler(this.btnMorphLatin_Click);
-            // 
-            // btnMorphRussian
-            // 
-            this.btnMorphRussian.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.btnMorphRussian.Enabled = false;
-            this.btnMorphRussian.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMorphRussian.Image = ((System.Drawing.Image)(resources.GetObject("btnMorphRussian.Image")));
-            this.btnMorphRussian.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnMorphRussian.Name = "btnMorphRussian";
-            this.btnMorphRussian.Size = new System.Drawing.Size(23, 22);
-            this.btnMorphRussian.Text = "Р";
-            this.btnMorphRussian.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.btnMorphRussian.ToolTipText = "Русская морфология";
-            this.btnMorphRussian.Click += new System.EventHandler(this.btnMorphRussian_Click);
-            // 
-            // btnMorphGreek
-            // 
-            this.btnMorphGreek.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.btnMorphGreek.Enabled = false;
-            this.btnMorphGreek.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMorphGreek.Image = ((System.Drawing.Image)(resources.GetObject("btnMorphGreek.Image")));
-            this.btnMorphGreek.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnMorphGreek.Name = "btnMorphGreek";
-            this.btnMorphGreek.Size = new System.Drawing.Size(23, 22);
-            this.btnMorphGreek.Text = "Г";
-            this.btnMorphGreek.ToolTipText = "Греческая морфология";
-            this.btnMorphGreek.Click += new System.EventHandler(this.btnGreekMorphService_Click);
-            // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
@@ -208,6 +168,30 @@ namespace Document
             this.dockPanel1.Name = "dockPanel1";
             this.dockPanel1.Size = new System.Drawing.Size(797, 459);
             this.dockPanel1.TabIndex = 3;
+            // 
+            // cmbLanguages
+            // 
+            this.cmbLanguages.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbLanguages.Enabled = false;
+            this.cmbLanguages.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.cmbLanguages.Name = "cmbLanguages";
+            this.cmbLanguages.Size = new System.Drawing.Size(100, 25);
+            // 
+            // btnRunMorphService
+            // 
+            this.btnRunMorphService.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnRunMorphService.Enabled = false;
+            this.btnRunMorphService.Image = ((System.Drawing.Image)(resources.GetObject("btnRunMorphService.Image")));
+            this.btnRunMorphService.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnRunMorphService.Name = "btnRunMorphService";
+            this.btnRunMorphService.Size = new System.Drawing.Size(23, 22);
+            this.btnRunMorphService.ToolTipText = "Морфологический разбор...";
+            this.btnRunMorphService.Click += new System.EventHandler(this.btnRunMorphService_Click);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
             // 
             // ChunkContainer
             // 
@@ -236,11 +220,11 @@ namespace Document
         private System.Windows.Forms.ToolStripButton btnEditChunk;
         private System.Windows.Forms.ToolStripButton btnDeleteChunk;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripButton btnMorphLatin;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripButton btnPublishChunk;
         private System.Windows.Forms.ToolStripButton btnExport;
-        private System.Windows.Forms.ToolStripButton btnMorphGreek;
-        private System.Windows.Forms.ToolStripButton btnMorphRussian;
+        private System.Windows.Forms.ToolStripComboBox cmbLanguages;
+        private System.Windows.Forms.ToolStripButton btnRunMorphService;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
     }
 }

@@ -1,11 +1,7 @@
 ﻿using Model;
 using Model.Enum;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Process
 {
@@ -18,13 +14,13 @@ namespace Process
                 model.Pos = PosEnum.Noun;
             }
 
-            if (gr.StartsWith("SPRO,") || 
+            if (gr.StartsWith("SPRO,") ||
                 gr.StartsWith("SPRO="))
             {
                 model.Pos = PosEnum.Pron;
             }
 
-            if (gr.StartsWith("PART=") || 
+            if (gr.StartsWith("PART=") ||
                 gr.StartsWith("PART,"))
             {
                 model.Pos = PosEnum.Particle;
@@ -39,27 +35,27 @@ namespace Process
             {
                 model.Pos = PosEnum.Adj;
             }
-            if (gr.StartsWith("ADV,") || 
-                gr.StartsWith("ADV=") || 
-                gr.StartsWith("ADVPRO=") || 
+            if (gr.StartsWith("ADV,") ||
+                gr.StartsWith("ADV=") ||
+                gr.StartsWith("ADVPRO=") ||
                 gr.StartsWith("ADVPRO,"))
             {
                 model.Pos = PosEnum.Adv;
             }
 
-            if (gr.StartsWith("CONJ=") || 
+            if (gr.StartsWith("CONJ=") ||
                 gr.StartsWith("CONJ,"))
             {
                 model.Pos = PosEnum.Conj;
             }
 
-            if (gr.StartsWith("INTJ=") || 
+            if (gr.StartsWith("INTJ=") ||
                 gr.StartsWith("INTJ,"))
             {
                 model.Pos = PosEnum.Exclam;
             }
 
-            if (gr.StartsWith("NUM=") || 
+            if (gr.StartsWith("NUM=") ||
                 gr.StartsWith("NUM,"))
             {
                 model.Pos = PosEnum.Numeral;
@@ -121,27 +117,27 @@ namespace Process
             if (attrArray.Contains("tran")) result += "tran,";
             if (attrArray.Contains("intr")) result += "intr,";
 
-            if (attrArray.Contains("ipf")) result +=  "ipf,";
-            if (attrArray.Contains("pf")) result +=  "pf,";
+            if (attrArray.Contains("ipf")) result += "ipf,";
+            if (attrArray.Contains("pf")) result += "pf,";
 
             //Noun
-            if (attrArray.Contains("anim")) result +=  "anim,";
-            if (attrArray.Contains("inan")) result +=  "inan,";
+            if (attrArray.Contains("anim")) result += "anim,";
+            if (attrArray.Contains("inan")) result += "inan,";
 
             //Other
-            if (attrArray.Contains("parenth")) result +=  "parenth,"; //вводное слово
-            if (attrArray.Contains("geo")) result +=  "geo,"; //географическое название
-            if (attrArray.Contains("awkw")) result +=  "awkw,"; //образование формы затруднено
-            if (attrArray.Contains("persn")) result +=  "persn,"; //имя собственное
-            if (attrArray.Contains("dist")) result +=  "dist,"; //искаженная форма
-            if (attrArray.Contains("obsc")) result +=  "obsc,"; //обсценная лексика
-            if (attrArray.Contains("patrn")) result +=  "patrn,"; //отчество
-            if (attrArray.Contains("praed")) result +=  "praed,"; //предикатив
-            if (attrArray.Contains("inform")) result +=  "inform,"; //разговорная форма
-            if (attrArray.Contains("rare")) result +=  "rare,"; //редко встречающееся слово
-            if (attrArray.Contains("abbr")) result +=  "abbr,"; //сокращение
-            if (attrArray.Contains("obsol")) result +=  "obsol,"; //устаревшая форма
-            if (attrArray.Contains("famn")) result +=  "famn,";//фамилия
+            if (attrArray.Contains("parenth")) result += "parenth,"; //вводное слово
+            if (attrArray.Contains("geo")) result += "geo,"; //географическое название
+            if (attrArray.Contains("awkw")) result += "awkw,"; //образование формы затруднено
+            if (attrArray.Contains("persn")) result += "persn,"; //имя собственное
+            if (attrArray.Contains("dist")) result += "dist,"; //искаженная форма
+            if (attrArray.Contains("obsc")) result += "obsc,"; //обсценная лексика
+            if (attrArray.Contains("patrn")) result += "patrn,"; //отчество
+            if (attrArray.Contains("praed")) result += "praed,"; //предикатив
+            if (attrArray.Contains("inform")) result += "inform,"; //разговорная форма
+            if (attrArray.Contains("rare")) result += "rare,"; //редко встречающееся слово
+            if (attrArray.Contains("abbr")) result += "abbr,"; //сокращение
+            if (attrArray.Contains("obsol")) result += "obsol,"; //устаревшая форма
+            if (attrArray.Contains("famn")) result += "famn,";//фамилия
             return result;
         }
 

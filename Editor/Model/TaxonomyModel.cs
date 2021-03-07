@@ -15,9 +15,21 @@ namespace Model
         {
             return Code;
         }
+
         [JsonIgnore]
-        public string CombinedName {
-            get {
+        public string Name
+        {
+            get
+            {
+                return $"{Code}";
+            }
+        }
+
+        [JsonIgnore]
+        public string CombinedName
+        {
+            get
+            {
                 return $"{Code} [{Desc}]";
             }
         }

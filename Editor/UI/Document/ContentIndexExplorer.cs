@@ -1,7 +1,5 @@
 ﻿using Common.Process;
 using Model;
-using Model.Query;
-using Model.View;
 using Process;
 using System;
 using System.Collections.Generic;
@@ -310,7 +308,8 @@ namespace Document
             {
                 treeView1.ContextMenuStrip = contextMenuStrip1;
             }
-            else {
+            else
+            {
                 treeView1.ContextMenuStrip = null;
             }
         }

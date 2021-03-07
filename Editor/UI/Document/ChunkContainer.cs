@@ -1,13 +1,11 @@
-﻿using Auth;
-using Common.Process;
+﻿using Common.Process;
 using Model;
 using Model.Enum;
 using Model.Query;
-using Model.View;
 using Process;
 using System;
-using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 using WeifenLuo.WinFormsUI.Docking;
 
@@ -45,6 +43,57 @@ namespace Document
             Text = index.Name;
         }
 
+
+
+        private void EnableFunctions()
+        {
+            btnPublishChunk.Enabled =
+            btnRunMorphService.Enabled =
+            cmbLanguages.Enabled =
+            btnDeleteChunk.Enabled =
+            btnEditChunk.Enabled =
+            btnExport.Enabled =
+            btnShowHideMorphologyPane.Enabled =
+            btnShowHideTranslationPane.Enabled = _chunk != null;
+
+            btnAddChunk.Enabled = _chunk == null;
+        }
+
+        private void ChunkExplorer_EnablePublishing(object sender, bool e)
+        {
+            btnPublishChunk.Enabled = e;
+        }
+
+        private async void ChunkContainer_LoadAsync(object sender, EventArgs e)
+        {
+            var languages = await TaxonomyProcess.GetLanguages().ConfigureAwait(true);
+
+            ComboProcess.CreateSelect(cmbLanguages, languages.ToArray());
+
+            cmbLanguages.SelectedItem = languages.FirstOrDefault(i => i.Code == _documentProcess.Header.Lang);
+
+            var query = new ChunkQuery { IndexId = Index.Id };
+
+            _chunk = await ChunkProcess.GetChunkByQuery(query).ConfigureAwait(true);
+
+            if (_chunk != null)
+            {
+                _chunkExplorer = new ChunkExplorer(_chunk);
+
+                _chunkExplorer.ElementSelected += ChunkExplorer_ElementSelected;
+
+                _chunkExplorer.EnablePublishing += ChunkExplorer_EnablePublishing;
+
+                _chunkExplorer.Show(dockPanel1, DockState.Document);
+
+                btnShowHideMorphologyPane.Enabled = btnShowHideTranslationPane.Enabled = true;
+
+                btnShowHideMorphologyPane.PerformClick();
+            }
+
+            EnableFunctions();
+        }
+
         private async void btnAddChunk_Click(object sender, EventArgs e)
         {
             _chunk = new ChunkModel { IndexId = Index.Id };
@@ -66,52 +115,6 @@ namespace Document
                 _chunkExplorer.Show(dockPanel1, DockState.Document);
 
                 EnableFunctions();
-            }
-        }
-
-        private void EnableFunctions()
-        {
-            btnDeleteChunk.Enabled =
-                btnEditChunk.Enabled =
-                btnExport.Enabled =
-                btnShowHideMorphologyPane.Enabled =
-                btnShowHideTranslationPane.Enabled =
-                btnMorphGreek.Enabled =
-                btnMorphLatin.Enabled =
-                btnMorphRussian.Enabled =
-                btnMorphLatin.Enabled = _chunk != null;
-
-            btnAddChunk.Enabled = _chunk == null;
-        }
-
-        private void ChunkExplorer_EnablePublishing(object sender, bool e)
-        {
-            btnPublishChunk.Enabled = e;
-        }
-
-        private async void ChunkContainer_LoadAsync(object sender, EventArgs e)
-        {
-            var query = new ChunkQuery { IndexId = Index.Id };
-
-            _chunk = await ChunkProcess.GetChunkByQuery(query).ConfigureAwait(true);
-
-            btnAddChunk.Enabled = _chunk == null;
-
-            EnableFunctions();
-
-            if (_chunk != null)
-            {
-                _chunkExplorer = new ChunkExplorer(_chunk);
-
-                _chunkExplorer.ElementSelected += ChunkExplorer_ElementSelected;
-
-                _chunkExplorer.EnablePublishing += ChunkExplorer_EnablePublishing;
-
-                _chunkExplorer.Show(dockPanel1, DockState.Document);
-
-                btnShowHideMorphologyPane.Enabled = btnShowHideTranslationPane.Enabled = true;
-
-                btnShowHideMorphologyPane.PerformClick();
             }
         }
 
@@ -155,9 +158,9 @@ namespace Document
 
                 _chunkExplorer.Close();
 
-                btnAddChunk.Enabled = true;
+                _chunk = null;
 
-                btnDeleteChunk.Enabled = btnEditChunk.Enabled = btnShowHideMorphologyPane.Enabled = btnShowHideTranslationPane.Enabled = false;
+                EnableFunctions();
             }
         }
 
@@ -260,29 +263,30 @@ namespace Document
             _interpContainer.Activate();
         }
 
-        private void btnMorphLatin_Click(object sender, EventArgs e)
+        private void btnRunMorphService_Click(object sender, EventArgs e)
         {
-            _chunkExplorer.RunLatinMorphService();
-        }
-
-        private void btnMorphRussian_Click(object sender, EventArgs e)
-        {
-            _chunkExplorer.RunRussianMorphService();
-        }
-
-        private void btnGreekMorphService_Click(object sender, EventArgs e)
-        {
-            _chunkExplorer.RunGreekMorphService();
+            if (cmbLanguages.SelectedItem is TaxonomyModel lang)
+            {
+                switch (lang.Code)
+                {
+                    case LangStringEnum.Greek:
+                        _chunkExplorer.RunGreekMorphService();
+                        break;
+                    case LangStringEnum.Latin:
+                        _chunkExplorer.RunLatinMorphService();
+                        break;
+                    case LangStringEnum.Russian:
+                        _chunkExplorer.RunRussianMorphService();
+                        break;
+                    default:
+                        break;
+                }
+            }
         }
 
         private async void btnPublishChunk_ClickAsync(object sender, EventArgs e)
         {
             await _chunkExplorer.PublishChunkAsync();
-        }
-
-        private void btnCopyTextToBuffer_Click(object sender, EventArgs e)
-        {
-            Clipboard.SetText(_chunk.Value);
         }
 
         private void btnSaveAs_Click(object sender, EventArgs e)
@@ -302,7 +306,7 @@ namespace Document
                 AutoUpgradeEnabled = true,
 
                 SupportMultiDottedExtensions = false
-                
+
             };
 
             _saveFileDialog.ValidateNames = true;
@@ -354,6 +358,5 @@ namespace Document
                 }
             }
         }
-
     }
 }

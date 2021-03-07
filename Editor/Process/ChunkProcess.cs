@@ -37,7 +37,8 @@ namespace Process
             return await ChunkAPI.Remove(chunk);
         }
 
-        public static bool ChunkValuesEquals(ChunkModel chunk, string newValueObj) {
+        public static bool ChunkValuesEquals(ChunkModel chunk, string newValueObj)
+        {
             return chunk.ValueObj.Equals(newValueObj);
         }
 
@@ -49,7 +50,8 @@ namespace Process
 
                 return await ChunkAPI.Save(chunk).ConfigureAwait(true);
             }
-            else {
+            else
+            {
                 return null;
             }
         }
@@ -151,8 +153,8 @@ namespace Process
                     Order = element.Order
                 };
 
-                var rules = morphRules.Where(i => 
-                DiacriticHelper.RemoveDiacritics(i.Form.ToLower()) == 
+                var rules = morphRules.Where(i =>
+                DiacriticHelper.RemoveDiacritics(i.Form.ToLower()) ==
                 DiacriticHelper.RemoveDiacritics(element.Value.ToLower())).ToList();
 
                 if (rules.Count == 1)
@@ -227,7 +229,7 @@ namespace Process
                     Order = inx
                 };
 
-                if (Regex.IsMatch(item, @Properties.Resources.PunctuationPattern) && item.Length > 1)
+                if (Regex.IsMatch(item, @Properties.Resources.PunctuationPattern) && item.Length > 3)
                 {
                     throw new Exception($"некорректное значение: '{item}'");
                 }

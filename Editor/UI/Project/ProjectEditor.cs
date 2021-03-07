@@ -1,6 +1,5 @@
 ﻿using Model;
 using Model.Enum;
-using Model.Query;
 using Process;
 using System;
 using System.Linq;
@@ -24,7 +23,8 @@ namespace Project
 
             var project = projectSource.DataSource as ProjectModel;
 
-            if (authWorkSource.Current != null && authWorkSource.Current is TaxonomyModel authWork) {
+            if (authWorkSource.Current != null && authWorkSource.Current is TaxonomyModel authWork)
+            {
 
                 project.Desc = authWork.Desc;
 
@@ -42,7 +42,7 @@ namespace Project
 
             var authWordks = await TaxonomyProcess.GetAuthWorks().ConfigureAwait(true);
 
-            authWorkSource.DataSource = authWordks.Where(i => !exsistingProjects.Select(j => j.Code).ToList().Contains(i.Code)).OrderBy(i=>i.Code).ToList();
+            authWorkSource.DataSource = authWordks.Where(i => !exsistingProjects.Select(j => j.Code).ToList().Contains(i.Code)).OrderBy(i => i.Code).ToList();
 
             projectSource.DataSource = _project;
 

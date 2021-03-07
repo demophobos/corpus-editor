@@ -48,7 +48,7 @@ namespace Project
 
                 var headers = await HeaderProcess.GetHeaders(project.Id).ConfigureAwait(true);
 
-                foreach (var header in headers.OrderBy(i=>i.EditionType))
+                foreach (var header in headers.OrderBy(i => i.EditionType))
                 {
                     TreeNode headerNode = CreateNode(header);
 

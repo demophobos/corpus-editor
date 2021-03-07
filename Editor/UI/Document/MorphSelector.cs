@@ -267,7 +267,8 @@ namespace Document
 
                 var applicableElements = elements.Where(i => i.MorphId != null).ToList();
 
-                if (DialogProcess.BulkUndoWarning(applicableElements.Count) == DialogResult.Yes) {
+                if (DialogProcess.BulkUndoWarning(applicableElements.Count) == DialogResult.Yes)
+                {
 
                     foreach (var element in applicableElements)
                     {

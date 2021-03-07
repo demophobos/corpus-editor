@@ -38,7 +38,7 @@ namespace Document
             dockPanel1.Theme = UIProcess.DockPanelTheme;
         }
 
-        private void btnAdd_Click(object sender, EventArgs e)
+        private async void btnAdd_Click(object sender, EventArgs e)
         {
             var dialog = new InterpSelector(_documentProcess, _index, _chunk);
 
@@ -46,7 +46,7 @@ namespace Document
 
             if (yesResult)
             {
-                btnRefresh.PerformClick();
+                await LoadData().ConfigureAwait(true);
             }
         }
 
@@ -65,7 +65,7 @@ namespace Document
 
             if (_documentProcess.Header.EditionType == EditionTypeStringEnum.Original)
             {
-                Interpretations= await _documentProcess.GetInterpsByQuery(new InterpQuery { SourceId = _chunk.Id }).ConfigureAwait(true);
+                Interpretations = await _documentProcess.GetInterpsByQuery(new InterpQuery { SourceId = _chunk.Id }).ConfigureAwait(true);
 
                 foreach (var interp in Interpretations)
                 {

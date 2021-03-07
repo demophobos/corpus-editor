@@ -10,7 +10,6 @@ using Process.Helper;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -22,7 +21,8 @@ namespace Process
     {
         private BetaCodeConverter _betaCodeConverter;
 
-        public MorphProcess() {
+        public MorphProcess()
+        {
             _betaCodeConverter = new BetaCodeConverter();
         }
         #region Morph
@@ -151,7 +151,7 @@ namespace Process
                     xmlString = await MorpheusAPI.GetLatinWordAnalysis(token).ConfigureAwait(true);
                     break;
                 case LangStringEnum.Greek:
-                    
+
                     var convertedValue = _betaCodeConverter.UnicodeToGreekBetaCode(token);
 
                     xmlString = await MorpheusAPI.GetGreekWordAnalysis(convertedValue).ConfigureAwait(true);
