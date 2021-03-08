@@ -63,7 +63,7 @@ namespace Document
             this.btnSelect.Location = new System.Drawing.Point(500, 3);
             this.btnSelect.Name = "btnSelect";
             this.btnSelect.Size = new System.Drawing.Size(75, 23);
-            this.btnSelect.TabIndex = 1;
+            this.btnSelect.TabIndex = 0;
             this.btnSelect.Text = "Выбрать";
             this.btnSelect.UseVisualStyleBackColor = true;
             this.btnSelect.Click += new System.EventHandler(this.btnSelect_Click);
@@ -109,7 +109,8 @@ namespace Document
             this.cmbHeader.Location = new System.Drawing.Point(3, 3);
             this.cmbHeader.Name = "cmbHeader";
             this.cmbHeader.Size = new System.Drawing.Size(578, 21);
-            this.cmbHeader.TabIndex = 2;
+            this.cmbHeader.TabIndex = 100;
+            this.cmbHeader.TabStop = false;
             this.cmbHeader.ValueMember = "Id";
             // 
             // headerSource
@@ -137,7 +138,8 @@ namespace Document
             this.txtChunk.Name = "txtChunk";
             this.txtChunk.ReadOnly = true;
             this.txtChunk.Size = new System.Drawing.Size(578, 292);
-            this.txtChunk.TabIndex = 0;
+            this.txtChunk.TabIndex = 900;
+            this.txtChunk.TabStop = false;
             this.txtChunk.Text = "";
             this.txtChunk.TextChanged += new System.EventHandler(this.txtChunk_TextChanged);
             // 

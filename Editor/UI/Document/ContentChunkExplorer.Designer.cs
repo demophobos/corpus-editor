@@ -33,17 +33,12 @@ namespace Document
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ContentChunkExplorer));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.btnRefresh = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.btnPublish = new System.Windows.Forms.ToolStripButton();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.IndexName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ChunkText = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Languages = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.unresolvedItemsCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.resolvedItemsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataSource = new System.Windows.Forms.BindingSource(this.components);
             this.loader1 = new Common.Control.Loader();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
@@ -55,6 +50,13 @@ namespace Document
             this.lblTotalWordsValue = new System.Windows.Forms.ToolStripStatusLabel();
             this.lblWordsDone = new System.Windows.Forms.ToolStripStatusLabel();
             this.lblWordsDoneValue = new System.Windows.Forms.ToolStripStatusLabel();
+            this.IndexName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ChunkText = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Languages = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HasVersion = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.unresolvedItemsCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.resolvedItemsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSource)).BeginInit();
@@ -110,6 +112,7 @@ namespace Document
             this.IndexName,
             this.ChunkText,
             this.Languages,
+            this.HasVersion,
             this.unresolvedItemsCount,
             this.resolvedItemsDataGridViewTextBoxColumn,
             this.idDataGridViewTextBoxColumn});
@@ -125,64 +128,6 @@ namespace Document
             this.dataGridView1.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentDoubleClick);
             this.dataGridView1.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridView1_CellFormatting);
             this.dataGridView1.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellMouseEnter);
-            // 
-            // IndexName
-            // 
-            this.IndexName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.IndexName.DataPropertyName = "IndexName";
-            this.IndexName.HeaderText = "Индекс";
-            this.IndexName.Name = "IndexName";
-            this.IndexName.ReadOnly = true;
-            this.IndexName.Width = 70;
-            // 
-            // ChunkText
-            // 
-            this.ChunkText.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ChunkText.DataPropertyName = "ChunkText";
-            this.ChunkText.HeaderText = "Текст";
-            this.ChunkText.Name = "ChunkText";
-            this.ChunkText.ReadOnly = true;
-            // 
-            // Languages
-            // 
-            this.Languages.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.Languages.DataPropertyName = "Languages";
-            this.Languages.HeaderText = "Язык";
-            this.Languages.Name = "Languages";
-            this.Languages.ReadOnly = true;
-            this.Languages.ToolTipText = "Языки текста";
-            this.Languages.Width = 60;
-            // 
-            // unresolvedItemsCount
-            // 
-            this.unresolvedItemsCount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.unresolvedItemsCount.DataPropertyName = "UnresolvedItems";
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Blue;
-            this.unresolvedItemsCount.DefaultCellStyle = dataGridViewCellStyle1;
-            this.unresolvedItemsCount.HeaderText = "Не принято";
-            this.unresolvedItemsCount.Name = "unresolvedItemsCount";
-            this.unresolvedItemsCount.ReadOnly = true;
-            this.unresolvedItemsCount.Width = 90;
-            // 
-            // resolvedItemsDataGridViewTextBoxColumn
-            // 
-            this.resolvedItemsDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.resolvedItemsDataGridViewTextBoxColumn.DataPropertyName = "ResolvedItems";
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.resolvedItemsDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
-            this.resolvedItemsDataGridViewTextBoxColumn.HeaderText = "Принято";
-            this.resolvedItemsDataGridViewTextBoxColumn.Name = "resolvedItemsDataGridViewTextBoxColumn";
-            this.resolvedItemsDataGridViewTextBoxColumn.ReadOnly = true;
-            this.resolvedItemsDataGridViewTextBoxColumn.Width = 75;
-            // 
-            // idDataGridViewTextBoxColumn
-            // 
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            this.idDataGridViewTextBoxColumn.ReadOnly = true;
-            this.idDataGridViewTextBoxColumn.Visible = false;
             // 
             // dataSource
             // 
@@ -269,6 +214,78 @@ namespace Document
             this.lblWordsDoneValue.Name = "lblWordsDoneValue";
             this.lblWordsDoneValue.Size = new System.Drawing.Size(0, 17);
             // 
+            // IndexName
+            // 
+            this.IndexName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.IndexName.DataPropertyName = "IndexName";
+            this.IndexName.HeaderText = "Индекс";
+            this.IndexName.Name = "IndexName";
+            this.IndexName.ReadOnly = true;
+            this.IndexName.Width = 70;
+            // 
+            // ChunkText
+            // 
+            this.ChunkText.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ChunkText.DataPropertyName = "ChunkText";
+            this.ChunkText.HeaderText = "Текст";
+            this.ChunkText.Name = "ChunkText";
+            this.ChunkText.ReadOnly = true;
+            // 
+            // Languages
+            // 
+            this.Languages.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.Languages.DataPropertyName = "Languages";
+            this.Languages.HeaderText = "Язык";
+            this.Languages.Name = "Languages";
+            this.Languages.ReadOnly = true;
+            this.Languages.ToolTipText = "Языки текста";
+            this.Languages.Width = 60;
+            // 
+            // HasVersion
+            // 
+            this.HasVersion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.HasVersion.DataPropertyName = "HasVersion";
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Red;
+            dataGridViewCellStyle1.NullValue = false;
+            this.HasVersion.DefaultCellStyle = dataGridViewCellStyle1;
+            this.HasVersion.HeaderText = "П";
+            this.HasVersion.Name = "HasVersion";
+            this.HasVersion.ReadOnly = true;
+            this.HasVersion.ToolTipText = "Наличие перевода";
+            this.HasVersion.Width = 21;
+            // 
+            // unresolvedItemsCount
+            // 
+            this.unresolvedItemsCount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.unresolvedItemsCount.DataPropertyName = "UnresolvedItems";
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Blue;
+            this.unresolvedItemsCount.DefaultCellStyle = dataGridViewCellStyle2;
+            this.unresolvedItemsCount.HeaderText = "Не принято";
+            this.unresolvedItemsCount.Name = "unresolvedItemsCount";
+            this.unresolvedItemsCount.ReadOnly = true;
+            this.unresolvedItemsCount.Width = 90;
+            // 
+            // resolvedItemsDataGridViewTextBoxColumn
+            // 
+            this.resolvedItemsDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.resolvedItemsDataGridViewTextBoxColumn.DataPropertyName = "ResolvedItems";
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.resolvedItemsDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
+            this.resolvedItemsDataGridViewTextBoxColumn.HeaderText = "Принято";
+            this.resolvedItemsDataGridViewTextBoxColumn.Name = "resolvedItemsDataGridViewTextBoxColumn";
+            this.resolvedItemsDataGridViewTextBoxColumn.ReadOnly = true;
+            this.resolvedItemsDataGridViewTextBoxColumn.Width = 75;
+            // 
+            // idDataGridViewTextBoxColumn
+            // 
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            this.idDataGridViewTextBoxColumn.ReadOnly = true;
+            this.idDataGridViewTextBoxColumn.Visible = false;
+            // 
             // ContentChunkExplorer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -317,6 +334,7 @@ namespace Document
         private System.Windows.Forms.DataGridViewTextBoxColumn IndexName;
         private System.Windows.Forms.DataGridViewTextBoxColumn ChunkText;
         private System.Windows.Forms.DataGridViewTextBoxColumn Languages;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn HasVersion;
         private System.Windows.Forms.DataGridViewTextBoxColumn unresolvedItemsCount;
         private System.Windows.Forms.DataGridViewTextBoxColumn resolvedItemsDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;

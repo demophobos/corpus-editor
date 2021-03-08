@@ -1,4 +1,5 @@
 ﻿using Model;
+using Model.Enum;
 using Model.Query;
 using Model.View;
 using System.Collections.Generic;
@@ -68,9 +69,14 @@ namespace Process
             return await API.HeaderAPI.Remove(header);
         }
 
-        public async Task<List<InterpViewModel>> GetInterpsByQuery(InterpQuery query)
+        public async Task<List<InterpViewModel>> GetInterpsByQueryView(InterpViewQuery query)
         {
-            return await API.InterpAPI.GetInterps(query);
+            return await API.InterpAPI.GetInterpsView(query);
+        }
+
+        public async Task<List<InterpModel>> GetInterpsByQueryTable(InterpTableQuery query)
+        {
+            return await API.InterpAPI.GetInterpsTable(query);
         }
 
         public async Task<InterpModel> SaveInterp(InterpModel interp)
@@ -93,7 +99,7 @@ namespace Process
             return await API.ElementAPI.RemoveByQuery(query);
         }
 
-        public async Task<InterpModel> DeleteInterpsByQuery(InterpQuery query)
+        public async Task<InterpModel> DeleteInterpsByQuery(InterpViewQuery query)
         {
             return await API.InterpAPI.RemoveByQuery(query);
         }

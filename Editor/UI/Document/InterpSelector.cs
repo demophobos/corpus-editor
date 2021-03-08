@@ -113,7 +113,7 @@ namespace Document
                 interp.SourceHeaderId = _chunk.HeaderId;
             }
 
-            var existing = await _documentProcess.GetInterpsByQuery(new InterpQuery { SourceId = interp.SourceId, InterpId = interp.InterpId }).ConfigureAwait(true);
+            var existing = await _documentProcess.GetInterpsByQueryView(new InterpViewQuery { SourceId = interp.SourceId, InterpId = interp.InterpId }).ConfigureAwait(true);
 
             if (existing.Count == 0)
             {

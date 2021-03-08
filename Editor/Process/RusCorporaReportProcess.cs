@@ -24,7 +24,7 @@ namespace Process
         private int pairCount;
         public async Task<string> CreateRusCorporaChunkReport(ChunkViewModel chunk)
         {
-            var query = new InterpQuery();
+            var query = new InterpViewQuery();
 
             if (chunk.HeaderEditionType == EditionTypeStringEnum.Original)
             {
@@ -36,7 +36,7 @@ namespace Process
                 query.InterpId = chunk.Id;
             }
 
-            var interpViews = await _documentProcess.GetInterpsByQuery(query).ConfigureAwait(true);
+            var interpViews = await _documentProcess.GetInterpsByQueryView(query).ConfigureAwait(true);
 
             if (interpViews.Count == 0)
             {

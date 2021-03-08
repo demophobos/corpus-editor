@@ -9,5 +9,6 @@
         public int UnresolvedItems { get; set; }
         public string ChunkText { get; set; }
         public string Languages { get; set; }
+        public bool HasVersion { get; set; }
     }
 }

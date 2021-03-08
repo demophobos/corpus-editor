@@ -21,7 +21,10 @@ namespace Document
         public event EventHandler<ChunkStatusModel> ChunkSelected;
 
         DocumentProcess _documentProcess;
+        
         private List<ChunkViewModel> _chunks;
+
+        private List<InterpModel> _interps;
 
         public ContentChunkExplorer(DocumentProcess documentProcess)
         {
@@ -38,6 +41,17 @@ namespace Document
             loader1.SetStatus("Загрузка фрагментов ...");
 
             _chunks = await _documentProcess.GetChunksByHeader().ConfigureAwait(true);
+
+            var interpQuery = new InterpTableQuery();
+
+            if (_documentProcess.Header.EditionType == EditionTypeStringEnum.Original) {
+                interpQuery.SourceHeaderId = _documentProcess.Header.Id;
+            }
+            else {
+                interpQuery.InterpHeaderId = _documentProcess.Header.Id;
+            }
+
+            _interps = await _documentProcess.GetInterpsByQueryTable(interpQuery).ConfigureAwait(true);
 
             var statusItems = _chunks.OrderBy(i => i.IndexOrder)
                 .Select(i => CreateStatusModel(i))
@@ -76,7 +90,7 @@ namespace Document
                 }
             }
         }
-        private static ChunkStatusModel CreateStatusModel(ChunkViewModel chunk)
+        private ChunkStatusModel CreateStatusModel(ChunkViewModel chunk)
         {
             var publishedElements = JsonConvert.DeserializeObject<ChunkValueItemModel[]>(chunk.ValueObj).Where(i => i.Type == (int)ElementTypeEnum.Word);
 
@@ -88,6 +102,17 @@ namespace Document
 
             var lang = languages.Count() > 0 ? string.Join(", ", languages) : string.Empty;
 
+            var hasVersion = false;
+
+            if (_documentProcess.Header.EditionType == EditionTypeStringEnum.Original)
+            {
+                hasVersion = _interps.Any(i => i.SourceId == chunk.Id);
+            }
+            else
+            {
+                hasVersion = _interps.Any(i => i.InterpId == chunk.Id);
+            }
+
             return new ChunkStatusModel
             {
                 Id = chunk.Id,
@@ -96,7 +121,8 @@ namespace Document
                 ChunkText = chunk.Value,
                 ResolvedItems = resolvedItems,
                 UnresolvedItems = unresolvedItems,
-                Languages = lang
+                Languages = lang,
+                HasVersion = hasVersion
             };
         }
 

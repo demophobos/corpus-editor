@@ -64,9 +64,12 @@ namespace Document
             this.morphId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.morphSource = new System.Windows.Forms.BindingSource(this.components);
             this.loader1 = new Common.Control.Loader();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.lblStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.mnuTools.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.morphSource)).BeginInit();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnAcceptDefinition
@@ -91,11 +94,11 @@ namespace Document
             this.btnCopyForm,
             this.toolStripSeparator1,
             this.btnAcceptDefinition,
-            this.btnCancelDefinition,
             this.btnAcceptForAllCases,
-            this.btnCancelAllCases,
-            this.toolStripSeparator4,
             this.btnCreateRule,
+            this.toolStripSeparator4,
+            this.btnCancelDefinition,
+            this.btnCancelAllCases,
             this.btnRemoveRule});
             this.mnuTools.Location = new System.Drawing.Point(0, 0);
             this.mnuTools.Name = "mnuTools";
@@ -257,7 +260,7 @@ namespace Document
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(984, 419);
+            this.dataGridView1.Size = new System.Drawing.Size(984, 397);
             this.dataGridView1.TabIndex = 18;
             this.dataGridView1.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridView1_CellFormatting);
             // 
@@ -420,6 +423,21 @@ namespace Document
             this.loader1.Size = new System.Drawing.Size(984, 419);
             this.loader1.TabIndex = 19;
             // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.lblStatus});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 422);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(984, 22);
+            this.statusStrip1.TabIndex = 20;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // lblStatus
+            // 
+            this.lblStatus.Name = "lblStatus";
+            this.lblStatus.Size = new System.Drawing.Size(0, 17);
+            // 
             // MorphSelector
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -429,6 +447,7 @@ namespace Document
             this.CloseButtonVisible = false;
             this.ControlBox = false;
             this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.loader1);
             this.Controls.Add(this.mnuTools);
             this.DockAreas = ((WeifenLuo.WinFormsUI.Docking.DockAreas)(((((WeifenLuo.WinFormsUI.Docking.DockAreas.DockLeft | WeifenLuo.WinFormsUI.Docking.DockAreas.DockRight) 
@@ -443,6 +462,8 @@ namespace Document
             this.mnuTools.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.morphSource)).EndInit();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -482,5 +503,7 @@ namespace Document
         private System.Windows.Forms.DataGridViewTextBoxColumn langDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn morphId;
         private Common.Control.Loader loader1;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel lblStatus;
     }
 }

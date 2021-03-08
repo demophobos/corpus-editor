@@ -269,9 +269,9 @@ namespace Project
         {
             var documentProcess = new DocumentProcess(header);
 
-            await documentProcess.DeleteInterpsByQuery(new InterpQuery { InterpHeaderId = documentProcess.Header.Id }).ConfigureAwait(true);
+            await documentProcess.DeleteInterpsByQuery(new InterpViewQuery { InterpHeaderId = documentProcess.Header.Id }).ConfigureAwait(true);
 
-            await documentProcess.DeleteInterpsByQuery(new InterpQuery { SourceHeaderId = documentProcess.Header.Id }).ConfigureAwait(true);
+            await documentProcess.DeleteInterpsByQuery(new InterpViewQuery { SourceHeaderId = documentProcess.Header.Id }).ConfigureAwait(true);
 
             await documentProcess.DeleteElementsByQuery(new ElementQuery { headerId = documentProcess.Header.Id }).ConfigureAwait(true);
 

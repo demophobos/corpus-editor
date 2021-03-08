@@ -65,7 +65,7 @@ namespace Document
 
             if (_documentProcess.Header.EditionType == EditionTypeStringEnum.Original)
             {
-                Interpretations = await _documentProcess.GetInterpsByQuery(new InterpQuery { SourceId = _chunk.Id }).ConfigureAwait(true);
+                Interpretations = await _documentProcess.GetInterpsByQueryView(new InterpViewQuery { SourceId = _chunk.Id }).ConfigureAwait(true);
 
                 foreach (var interp in Interpretations)
                 {
@@ -78,7 +78,7 @@ namespace Document
             }
             else
             {
-                Originals = await _documentProcess.GetInterpsByQuery(new InterpQuery { InterpId = _chunk.Id }).ConfigureAwait(true);
+                Originals = await _documentProcess.GetInterpsByQueryView(new InterpViewQuery { InterpId = _chunk.Id }).ConfigureAwait(true);
 
                 var original = Originals.FirstOrDefault();
 

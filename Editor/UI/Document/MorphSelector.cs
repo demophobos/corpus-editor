@@ -160,6 +160,8 @@ namespace Document
                 btnCreateRule.Enabled = false;
 
                 btnRemoveRule.Enabled = true;
+
+                lblStatus.Text = $"Правило создано";
             }
         }
 
@@ -176,6 +178,8 @@ namespace Document
                 btnRemoveRule.Enabled = false;
 
                 btnCreateRule.Enabled = true;
+
+                lblStatus.Text = $"Правило удалено";
             }
         }
 
@@ -187,7 +191,9 @@ namespace Document
 
                 _element = await ElementProcess.SaveModel(_element).ConfigureAwait(true);
 
-                await LoadDataAsync(_element);
+                await LoadDataAsync(_element).ConfigureAwait(true);
+
+                lblStatus.Text = $"Определение применено";
 
                 ElementMorphAccepted.Invoke(this, _element);
             }
@@ -201,7 +207,9 @@ namespace Document
 
                 _element = await ElementProcess.SaveModel(_element).ConfigureAwait(true);
 
-                await LoadDataAsync(_element);
+                await LoadDataAsync(_element).ConfigureAwait(true);
+
+                lblStatus.Text = $"Определение отменено";
 
                 ElementMorphRejected.Invoke(this, _element);
             }
@@ -212,6 +220,7 @@ namespace Document
             if (morphSource.Current != null && morphSource.Current is MorphModel model)
             {
                 Clipboard.SetText(model.Form);
+                lblStatus.Text = $"'{model.Form}' скопирована в буфер обмена";
             }
         }
 
@@ -245,7 +254,7 @@ namespace Document
 
                 ElementMorphAccepted.Invoke(this, _element);
 
-                MessageBox.Show($"Определение применено для {applicableElements.Count}");
+                lblStatus.Text = $"Определение применено для {applicableElements.Count}";
 
                 loader1.SendToBack();
 
@@ -286,7 +295,8 @@ namespace Document
 
                     ElementMorphRejected.Invoke(this, _element);
 
-                    MessageBox.Show($"Определение применено для {applicableElements.Count}");
+                    lblStatus.Text = $"Определение отменено для {applicableElements.Count}";
+
                 }
 
                 loader1.SendToBack();

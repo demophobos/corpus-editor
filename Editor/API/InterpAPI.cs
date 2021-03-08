@@ -1,4 +1,5 @@
 ﻿using Model;
+using Model.Enum;
 using Model.Query;
 using Model.View;
 using System;
@@ -15,10 +16,12 @@ namespace API
 
         }
 
-        public static async Task<List<InterpViewModel>> GetInterps(InterpQuery query)
+        public static async Task<List<InterpViewModel>> GetInterpsView(InterpViewQuery query)
         {
             try
             {
+                query.ReturnedType = (int)ReturnedType.View;
+
                 List<InterpViewModel> report = null;
 
                 HttpResponseMessage response = await Client.GetAsync($"interps?params={query}").ConfigureAwait(true);
@@ -26,6 +29,33 @@ namespace API
                 if (response.IsSuccessStatusCode)
                 {
                     report = await response.Content.ReadAsAsync<List<InterpViewModel>>().ConfigureAwait(true);
+                }
+                else
+                {
+                    throw new Exception(response.StatusCode.ToString());
+                }
+
+                return report;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public static async Task<List<InterpModel>> GetInterpsTable(InterpTableQuery query)
+        {
+            try
+            {
+                query.ReturnedType = (int)ReturnedType.Table;
+
+                List<InterpModel> report = null;
+
+                HttpResponseMessage response = await Client.GetAsync($"interps?params={query}").ConfigureAwait(true);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    report = await response.Content.ReadAsAsync<List<InterpModel>>().ConfigureAwait(true);
                 }
                 else
                 {
@@ -100,7 +130,7 @@ namespace API
             }
         }
 
-        public static async Task<InterpModel> RemoveByQuery(InterpQuery query)
+        public static async Task<InterpModel> RemoveByQuery(InterpViewQuery query)
         {
             try
             {

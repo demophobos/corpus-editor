@@ -61,6 +61,7 @@
     <Compile Include="Enum\ElementTypeEnum.cs" />
     <Compile Include="Enum\ExceptionCodeEnum.cs" />
     <Compile Include="Enum\LangStringEnum.cs" />
+    <Compile Include="Enum\ReturnedType.cs" />
     <Compile Include="Enum\TaxonomyCategoryEnum.cs" />
     <Compile Include="HeaderModel.cs" />
     <Compile Include="IndexModel.cs" />
@@ -79,7 +80,8 @@
     <Compile Include="Query\ElementQuery.cs" />
     <Compile Include="Query\HeaderQuery.cs" />
     <Compile Include="Query\IndexQuery.cs" />
-    <Compile Include="Query\InterpQuery.cs" />
+    <Compile Include="Query\InterpTableQuery.cs" />
+    <Compile Include="Query\InterpViewQuery.cs" />
     <Compile Include="Query\IQuery.cs" />
     <Compile Include="Query\MorphQuery.cs" />
     <Compile Include="Query\ProjectQuery.cs" />
