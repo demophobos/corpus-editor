@@ -81,7 +81,7 @@ namespace Document
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 1;
-            this.btnSave.Text = "Save";
+            this.btnSave.Text = "Сохранить";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_ClickAsync);
             // 
@@ -93,7 +93,7 @@ namespace Document
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 10;
             this.btnCancel.TabStop = false;
-            this.btnCancel.Text = "Cancel";
+            this.btnCancel.Text = "Отмена";
             this.btnCancel.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel1
@@ -128,6 +128,7 @@ namespace Document
             this.loader1.Name = "loader1";
             this.loader1.Size = new System.Drawing.Size(578, 319);
             this.loader1.TabIndex = 2;
+            this.loader1.TabStop = false;
             // 
             // ChunkEditor
             // 

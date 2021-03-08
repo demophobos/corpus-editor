@@ -62,6 +62,7 @@ namespace Document
         private void ChunkExplorer_EnablePublishing(object sender, bool e)
         {
             btnPublishChunk.Enabled = e;
+            btnPublishChunk.ToolTipText = "Изменения не опубликованы";
         }
 
         private async void ChunkContainer_LoadAsync(object sender, EventArgs e)
@@ -164,6 +165,24 @@ namespace Document
             }
         }
 
+        private void MorphSelector_ElementMorphRejected(object sender, ElementModel e)
+        {
+            _chunkExplorer.CheckMorphStatus(e);
+
+            btnPublishChunk.Enabled = true;
+
+            btnPublishChunk.ToolTipText = "Изменения не опубликованы";
+        }
+
+        private void MorphSelector_ElementMorphAccepted(object sender, ElementModel e)
+        {
+            _chunkExplorer.CheckMorphStatus(e);
+
+            btnPublishChunk.Enabled = true;
+
+            btnPublishChunk.ToolTipText = "Изменения не опубликованы";
+        }
+
         private void btnShowHideMorphologyPane_Click(object sender, EventArgs e)
         {
             btnShowHideMorphologyPane.Checked = btnShowHideMorphologyPane.Tag.ToString() == "show";
@@ -202,20 +221,6 @@ namespace Document
                     btnShowHideMorphologyPane.Tag = "hide";
                 }
             }
-        }
-
-        private void MorphSelector_ElementMorphRejected(object sender, ElementModel e)
-        {
-            _chunkExplorer.CheckMorphStatus(e);
-
-            btnPublishChunk.Enabled = true;
-        }
-
-        private void MorphSelector_ElementMorphAccepted(object sender, ElementModel e)
-        {
-            _chunkExplorer.CheckMorphStatus(e);
-
-            btnPublishChunk.Enabled = true;
         }
 
         private void btnShowHideTranslationPane_Click(object sender, EventArgs e)
@@ -286,7 +291,8 @@ namespace Document
 
         private async void btnPublishChunk_ClickAsync(object sender, EventArgs e)
         {
-            await _chunkExplorer.PublishChunkAsync();
+            await _chunkExplorer.PublishChunkAsync().ConfigureAwait(true);
+            btnPublishChunk.ToolTipText = "Изменения опубликованы";
         }
 
         private void btnSaveAs_Click(object sender, EventArgs e)
@@ -358,5 +364,6 @@ namespace Document
                 }
             }
         }
+
     }
 }

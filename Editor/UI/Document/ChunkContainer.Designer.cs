@@ -36,14 +36,14 @@ namespace Document
             this.btnAddChunk = new System.Windows.Forms.ToolStripButton();
             this.btnEditChunk = new System.Windows.Forms.ToolStripButton();
             this.btnDeleteChunk = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.btnExport = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.cmbLanguages = new System.Windows.Forms.ToolStripComboBox();
+            this.btnRunMorphService = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.btnPublishChunk = new System.Windows.Forms.ToolStripButton();
             this.dockPanel1 = new WeifenLuo.WinFormsUI.Docking.DockPanel();
-            this.cmbLanguages = new System.Windows.Forms.ToolStripComboBox();
-            this.btnRunMorphService = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -128,6 +128,11 @@ namespace Document
             this.btnDeleteChunk.Text = "Удалить фрагмент";
             this.btnDeleteChunk.Click += new System.EventHandler(this.btnDeleteChunk_Click);
             // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
+            // 
             // btnExport
             // 
             this.btnExport.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -143,6 +148,25 @@ namespace Document
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
+            // cmbLanguages
+            // 
+            this.cmbLanguages.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbLanguages.Enabled = false;
+            this.cmbLanguages.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.cmbLanguages.Name = "cmbLanguages";
+            this.cmbLanguages.Size = new System.Drawing.Size(100, 25);
+            // 
+            // btnRunMorphService
+            // 
+            this.btnRunMorphService.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnRunMorphService.Enabled = false;
+            this.btnRunMorphService.Image = ((System.Drawing.Image)(resources.GetObject("btnRunMorphService.Image")));
+            this.btnRunMorphService.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnRunMorphService.Name = "btnRunMorphService";
+            this.btnRunMorphService.Size = new System.Drawing.Size(23, 22);
+            this.btnRunMorphService.ToolTipText = "Морфологический разбор...";
+            this.btnRunMorphService.Click += new System.EventHandler(this.btnRunMorphService_Click);
             // 
             // toolStripSeparator2
             // 
@@ -168,30 +192,6 @@ namespace Document
             this.dockPanel1.Name = "dockPanel1";
             this.dockPanel1.Size = new System.Drawing.Size(797, 459);
             this.dockPanel1.TabIndex = 3;
-            // 
-            // cmbLanguages
-            // 
-            this.cmbLanguages.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbLanguages.Enabled = false;
-            this.cmbLanguages.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.cmbLanguages.Name = "cmbLanguages";
-            this.cmbLanguages.Size = new System.Drawing.Size(100, 25);
-            // 
-            // btnRunMorphService
-            // 
-            this.btnRunMorphService.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnRunMorphService.Enabled = false;
-            this.btnRunMorphService.Image = ((System.Drawing.Image)(resources.GetObject("btnRunMorphService.Image")));
-            this.btnRunMorphService.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnRunMorphService.Name = "btnRunMorphService";
-            this.btnRunMorphService.Size = new System.Drawing.Size(23, 22);
-            this.btnRunMorphService.ToolTipText = "Морфологический разбор...";
-            this.btnRunMorphService.Click += new System.EventHandler(this.btnRunMorphService_Click);
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
             // 
             // ChunkContainer
             // 

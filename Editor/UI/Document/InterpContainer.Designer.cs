@@ -74,13 +74,15 @@ namespace Document
             this.ClientSize = new System.Drawing.Size(663, 368);
             this.CloseButton = false;
             this.CloseButtonVisible = false;
-            this.ControlBox = false;
             this.Controls.Add(this.dockPanel1);
             this.Controls.Add(this.toolStrip2);
             this.DockAreas = ((WeifenLuo.WinFormsUI.Docking.DockAreas)(((((WeifenLuo.WinFormsUI.Docking.DockAreas.DockLeft | WeifenLuo.WinFormsUI.Docking.DockAreas.DockRight) 
             | WeifenLuo.WinFormsUI.Docking.DockAreas.DockTop) 
             | WeifenLuo.WinFormsUI.Docking.DockAreas.DockBottom) 
             | WeifenLuo.WinFormsUI.Docking.DockAreas.Document)));
+            this.HideOnClose = true;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "InterpContainer";
             this.Text = "Переводы";
             this.Load += new System.EventHandler(this.InterpContainer_Load);
