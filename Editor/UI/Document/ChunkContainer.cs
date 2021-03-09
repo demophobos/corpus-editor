@@ -43,11 +43,13 @@ namespace Document
             Text = index.Name;
         }
 
-
+        private void DisableFinctions()
+        {
+            toolStrip1.Enabled = false;
+        }
 
         private void EnableFunctions()
         {
-            btnPublishChunk.Enabled =
             btnRunMorphService.Enabled =
             cmbLanguages.Enabled =
             btnDeleteChunk.Enabled =
@@ -57,6 +59,8 @@ namespace Document
             btnShowHideTranslationPane.Enabled = _chunk != null;
 
             btnAddChunk.Enabled = _chunk == null;
+
+            toolStrip1.Enabled = true;
         }
 
         private void ChunkExplorer_EnablePublishing(object sender, bool e)
@@ -67,6 +71,8 @@ namespace Document
 
         private async void ChunkContainer_LoadAsync(object sender, EventArgs e)
         {
+            DisableFinctions();
+
             var languages = await TaxonomyProcess.GetLanguages().ConfigureAwait(true);
 
             ComboProcess.CreateSelect(cmbLanguages, languages.ToArray());
@@ -85,6 +91,8 @@ namespace Document
 
                 _chunkExplorer.EnablePublishing += ChunkExplorer_EnablePublishing;
 
+                _chunkExplorer.ElementsLoaded += ChunkExplorer_ElementsLoaded;
+
                 _chunkExplorer.Show(dockPanel1, DockState.Document);
 
                 btnShowHideMorphologyPane.Enabled = btnShowHideTranslationPane.Enabled = true;
@@ -92,6 +100,11 @@ namespace Document
                 btnShowHideMorphologyPane.PerformClick();
             }
 
+            EnableFunctions();
+        }
+
+        private void ChunkExplorer_ElementsLoaded(object sender, EventArgs e)
+        {
             EnableFunctions();
         }
 
@@ -103,6 +116,8 @@ namespace Document
 
             if (editor.ShowDialog() == DialogResult.OK)
             {
+                DisableFinctions();
+
                 var query = new ChunkQuery { IndexId = Index.Id };
 
                 _chunk = await ChunkProcess.GetChunkByQuery(query).ConfigureAwait(true);
@@ -113,9 +128,9 @@ namespace Document
 
                 _chunkExplorer.EnablePublishing += ChunkExplorer_EnablePublishing;
 
-                _chunkExplorer.Show(dockPanel1, DockState.Document);
+                _chunkExplorer.ElementsLoaded += ChunkExplorer_ElementsLoaded;
 
-                EnableFunctions();
+                _chunkExplorer.Show(dockPanel1, DockState.Document);
             }
         }
 
@@ -125,7 +140,7 @@ namespace Document
 
             if (editor.ShowDialog() == DialogResult.OK)
             {
-                btnAddChunk.Enabled = false;
+                DisableFinctions();
 
                 _chunkExplorer.Close();
 
@@ -140,6 +155,8 @@ namespace Document
                 _chunkExplorer.ElementSelected += ChunkExplorer_ElementSelected;
 
                 _chunkExplorer.EnablePublishing += ChunkExplorer_EnablePublishing;
+
+                _chunkExplorer.ElementsLoaded += ChunkExplorer_ElementsLoaded;
             }
         }
 
@@ -155,6 +172,8 @@ namespace Document
         {
             if (DialogProcess.DeleteWarning(_chunk) == DialogResult.Yes)
             {
+                DisableFinctions();
+
                 await ChunkProcess.RemoveChunk(_chunk).ConfigureAwait(true);
 
                 _chunkExplorer.Close();
@@ -292,6 +311,7 @@ namespace Document
         private async void btnPublishChunk_ClickAsync(object sender, EventArgs e)
         {
             await _chunkExplorer.PublishChunkAsync().ConfigureAwait(true);
+
             btnPublishChunk.ToolTipText = "Изменения опубликованы";
         }
 

@@ -20,6 +20,8 @@ namespace Document
 
         public event EventHandler<ElementModel> ElementSelected;
 
+        public event EventHandler ElementsLoaded;
+
         public event EventHandler<bool> EnablePublishing;
 
         private List<ElementModel> _elements = new List<ElementModel>();
@@ -64,8 +66,6 @@ namespace Document
 
             bool equal = ChunkProcess.ChunkValuesEquals(Chunk, newValueObjs);
 
-            EnablePublishing?.Invoke(this, !equal);
-
             foreach (var element in _elements)
             {
                 if (element.Type == (int)ElementTypeEnum.NewLine)
@@ -107,6 +107,12 @@ namespace Document
             }
 
             await CheckMorphStatus().ConfigureAwait(true);
+
+            ElementsLoaded?.Invoke(this, EventArgs.Empty);
+
+            if (equal == false) {
+                EnablePublishing?.Invoke(this, true);
+            }
         }
 
         private void Label_Click(object sender, EventArgs e)
