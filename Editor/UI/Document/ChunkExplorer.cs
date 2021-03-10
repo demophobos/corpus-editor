@@ -68,6 +68,8 @@ namespace Document
 
             foreach (var element in _elements)
             {
+                Label label = new Label();
+
                 if (element.Type == (int)ElementTypeEnum.NewLine)
                 {
                     var lastLabel = flowLayoutPanel1.Controls.OfType<Label>().LastOrDefault();
@@ -76,6 +78,15 @@ namespace Document
                 }
                 else if (element.Type == (int)ElementTypeEnum.Space)
                 {
+                    label = new Label
+                    {
+                        AutoSize = true,
+                        Text = "•",
+                        Tag = element,
+                        ForeColor = Color.LightGray,
+                        FlatStyle = FlatStyle.Flat
+                    };
+
                     var next = _elements.FirstOrDefault(i => i.Order == element.Order + 1);
 
                     if (next != null && next.Type == (int)ElementTypeEnum.Punctuation)
@@ -85,12 +96,12 @@ namespace Document
                 }
                 else
                 {
-                    var label = new Label
+                    label = new Label
                     {
                         AutoSize = true,
                         Text = element.Value,
                         Tag = element,
-                        Padding = new Padding(1, 1, 1, 1),
+                        //Padding = new Padding(1, 1, 1, 1),
                         FlatStyle = FlatStyle.Flat
                     };
 
@@ -100,10 +111,10 @@ namespace Document
 
                     label.Click += Label_Click;
 
-                    flowLayoutPanel1.Controls.Add(label);
-
                     loader1.SetStatus($"Загрузка элементов ... {flowLayoutPanel1.Controls.Count}");
                 }
+
+                flowLayoutPanel1.Controls.Add(label);
             }
 
             await CheckMorphStatus().ConfigureAwait(true);
