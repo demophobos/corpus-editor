@@ -211,6 +211,10 @@
       <Project>{e3850395-8afd-498e-8603-6180bbfbfa6b}</Project>
       <Name>Morph</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Report\Report.csproj">
+      <Project>{37406742-1aa2-4438-88bd-f5210c7d0de4}</Project>
+      <Name>Report</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

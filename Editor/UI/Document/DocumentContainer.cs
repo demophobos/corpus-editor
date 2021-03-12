@@ -1,6 +1,8 @@
 ﻿using Common.Process;
 using Model;
+using Model.Enum;
 using Process;
+using Report;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -82,6 +84,47 @@ namespace Document
                 document.DockHandler.Close();
             }
             _chunkContainers = new List<ChunkContainer>();
+        }
+
+        private async void btnReportChunkWithoutVersion_Click(object sender, EventArgs e)
+        {
+            var reportViewer = new ReportBrowser(DocumentProcess);
+
+            reportViewer.Show(dockPanel1, DockState.Document);
+
+            await reportViewer.GetReport(ReportTypeEnum.ChunkWithoutVersion).ConfigureAwait(true);
+        }
+
+        private async void btnReportChunkWithUndefinedWord_Click(object sender, EventArgs e)
+        {
+            var reportViewer = new ReportBrowser(DocumentProcess);
+
+            reportViewer.Show(dockPanel1, DockState.Document);
+
+            await reportViewer.GetReport(ReportTypeEnum.ChunkWithUndefinedWord).ConfigureAwait(true);
+        }
+
+        private async void btnReportChunkUnpublished_Click(object sender, EventArgs e)
+        {
+            var reportViewer = new ReportBrowser(DocumentProcess);
+
+            reportViewer.Show(dockPanel1, DockState.Document);
+
+            await reportViewer.GetReport(ReportTypeEnum.ChunkUnpublished).ConfigureAwait(true);
+        }
+
+        private async void btnReportReadinessStatistics_Click(object sender, EventArgs e)
+        {
+            var reportViewer = new ReportBrowser(DocumentProcess);
+
+            reportViewer.Show(dockPanel1, DockState.Document);
+
+            await reportViewer.GetReport(ReportTypeEnum.ReadinessStatistics).ConfigureAwait(true);
+        }
+
+        private void btnReportFullText_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

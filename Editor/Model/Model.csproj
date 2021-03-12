@@ -61,6 +61,7 @@
     <Compile Include="Enum\ElementTypeEnum.cs" />
     <Compile Include="Enum\ExceptionCodeEnum.cs" />
     <Compile Include="Enum\LangStringEnum.cs" />
+    <Compile Include="Enum\ReportTypeEnum.cs" />
     <Compile Include="Enum\ReturnedType.cs" />
     <Compile Include="Enum\TaxonomyCategoryEnum.cs" />
     <Compile Include="HeaderModel.cs" />

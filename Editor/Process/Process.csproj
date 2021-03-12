@@ -86,6 +86,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="DocumentReportProcess.cs" />
     <Compile Include="RusCorporaReportProcess.cs" />
     <Compile Include="TaxonomyProcess.cs" />
   </ItemGroup>

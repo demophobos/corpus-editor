@@ -30,8 +30,8 @@ namespace Document
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.loader1 = new Common.Control.Loader();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -45,6 +45,14 @@ namespace Document
             this.panel1.Size = new System.Drawing.Size(659, 325);
             this.panel1.TabIndex = 16;
             // 
+            // loader1
+            // 
+            this.loader1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.loader1.Location = new System.Drawing.Point(0, 0);
+            this.loader1.Name = "loader1";
+            this.loader1.Size = new System.Drawing.Size(659, 325);
+            this.loader1.TabIndex = 0;
+            // 
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.AutoScroll = true;
@@ -56,20 +64,13 @@ namespace Document
             this.flowLayoutPanel1.Size = new System.Drawing.Size(659, 325);
             this.flowLayoutPanel1.TabIndex = 1;
             // 
-            // loader1
-            // 
-            this.loader1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.loader1.Location = new System.Drawing.Point(0, 0);
-            this.loader1.Name = "loader1";
-            this.loader1.Size = new System.Drawing.Size(659, 325);
-            this.loader1.TabIndex = 0;
-            // 
             // ChunkExplorer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(659, 325);
             this.Controls.Add(this.panel1);
+            this.DoubleBuffered = true;
             this.Name = "ChunkExplorer";
             this.Load += new System.EventHandler(this.ChunkExplorer_Load);
             this.panel1.ResumeLayout(false);
