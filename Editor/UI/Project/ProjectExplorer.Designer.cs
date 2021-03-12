@@ -34,6 +34,7 @@ namespace Project
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.mnuHeader = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.btnAddOriginal = new System.Windows.Forms.ToolStripMenuItem();
             this.btnAddTranslation = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuEditHeader = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuDeleteHeader = new System.Windows.Forms.ToolStripMenuItem();
@@ -42,7 +43,6 @@ namespace Project
             this.btnDelete = new System.Windows.Forms.ToolStripButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.loader1 = new Common.Control.Loader();
-            this.btnAddOriginal = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuHeader.SuspendLayout();
             this.toolStrip2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -57,7 +57,6 @@ namespace Project
             // 
             // treeView1
             // 
-            this.treeView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.treeView1.ContextMenuStrip = this.mnuHeader;
             this.treeView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.treeView1.FullRowSelect = true;
@@ -82,7 +81,16 @@ namespace Project
             this.mnuEditHeader,
             this.mnuDeleteHeader});
             this.mnuHeader.Name = "mnuHeader";
-            this.mnuHeader.Size = new System.Drawing.Size(183, 114);
+            this.mnuHeader.Size = new System.Drawing.Size(183, 92);
+            // 
+            // btnAddOriginal
+            // 
+            this.btnAddOriginal.Image = ((System.Drawing.Image)(resources.GetObject("btnAddOriginal.Image")));
+            this.btnAddOriginal.Name = "btnAddOriginal";
+            this.btnAddOriginal.Size = new System.Drawing.Size(182, 22);
+            this.btnAddOriginal.Text = "Добавить оригинал";
+            this.btnAddOriginal.Visible = false;
+            this.btnAddOriginal.Click += new System.EventHandler(this.btnAddOriginal_Click);
             // 
             // btnAddTranslation
             // 
@@ -163,15 +171,6 @@ namespace Project
             this.loader1.Name = "loader1";
             this.loader1.Size = new System.Drawing.Size(314, 301);
             this.loader1.TabIndex = 12;
-            // 
-            // btnAddOriginal
-            // 
-            this.btnAddOriginal.Image = ((System.Drawing.Image)(resources.GetObject("btnAddOriginal.Image")));
-            this.btnAddOriginal.Name = "btnAddOriginal";
-            this.btnAddOriginal.Size = new System.Drawing.Size(182, 22);
-            this.btnAddOriginal.Text = "Добавить оригинал";
-            this.btnAddOriginal.Visible = false;
-            this.btnAddOriginal.Click += new System.EventHandler(this.btnAddOriginal_Click);
             // 
             // ProjectExplorer
             // 
