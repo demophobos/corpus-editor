@@ -1,5 +1,7 @@
 ﻿using Common.Process;
 using Model;
+using Model.Query;
+using Model.View;
 using Process;
 using System;
 using System.Collections.Generic;
@@ -312,6 +314,50 @@ namespace Document
             {
                 treeView1.ContextMenuStrip = null;
             }
+        }
+
+        private async void btnPublish_Click(object sender, EventArgs e)
+        {
+            var updatedChunks = new List<ChunkViewModel>();
+
+            loader1.BringToFront();
+
+            loader1.SetStatus("Публикация фрагментов ...");
+
+            toolStrip2.Enabled = false;
+
+            var chunks = await ChunkProcess.GetChunksByQuery(new ChunkQuery { HeaderId = _documentProcess.Header.Id });
+
+            int updatedCount = 0;
+
+            int count = 0;
+
+            foreach (var chunkView in chunks)
+            {
+                var chunk = new ChunkModel { Id = chunkView.Id, HeaderId = chunkView.HeaderId, IndexId = chunkView.IndexId, Value = chunkView.Value, ValueObj = chunkView.ValueObj };
+
+                var elements = await ElementProcess.GetElements(new ElementQuery { chunkId = chunk.Id }).ConfigureAwait(true);
+
+                var newValueObj = await ChunkProcess.CreateChunkValueObjs(elements).ConfigureAwait(true);
+
+                var published = await ChunkProcess.PublishChunkValueObj(chunk, newValueObj).ConfigureAwait(true);
+
+                if (published != null)
+                {
+                    updatedCount += 1;
+                    updatedChunks.Add(chunkView);
+                }
+
+                count += 1;
+
+                loader1.SetStatus($"Опубликовано фрагментов: {updatedCount} из {chunks.Count}. Обработано: {count}");
+            }
+
+            await LoadDataAsync().ConfigureAwait(true);
+
+            DialogProcess.InfoMessage($"Публикация фрагментов { _documentProcess.Header.Code}", $"Опубликовано: {updatedCount} из {chunks.Count}: {string.Join(", ", updatedChunks.Select(i => i.IndexName))}");
+
+            toolStrip2.Enabled = true;
         }
     }
 }

@@ -11,6 +11,9 @@ namespace Model.Enum
         ChunkWithoutVersion,
         ChunkWithUndefinedWord,
         ChunkUnpublished,
-        ReadinessStatistics
+        ReadinessStatistics,
+        FullText,
+        OriginalAndVersion,
+        VersionAndOriginal
     }
 }

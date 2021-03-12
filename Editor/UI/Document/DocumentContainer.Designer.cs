@@ -31,128 +31,136 @@ namespace Document
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DocumentContainer));
             this.dockPanel1 = new WeifenLuo.WinFormsUI.Docking.DockPanel();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.btnCloseAllChunks = new System.Windows.Forms.ToolStripButton();
-            this.btnReport = new System.Windows.Forms.ToolStripSplitButton();
-            this.btnReportFullText = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnReportOriginalAndVersion = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnReportReadinessStatistics = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
-            this.btnReportChunkWithoutVersion = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnReportChunkWithUndefinedWord = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnReportChunkUnpublished = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
-            this.btnReportVersionAndOriginal = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStrip1.SuspendLayout();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.mnuReport = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuWindow = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuCloseAllWindows = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuReportFullText = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuReportOriginalAndVersion = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuReportVersionAndOriginal = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
+            this.mnuReportChunkWithoutVersion = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuReportChunkWithUndefinedWord = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuReportChunkUnpublished = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripSeparator();
+            this.mnuReportReadinessStatistics = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dockPanel1
             // 
             this.dockPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dockPanel1.DocumentStyle = WeifenLuo.WinFormsUI.Docking.DocumentStyle.DockingWindow;
-            this.dockPanel1.Location = new System.Drawing.Point(0, 25);
+            this.dockPanel1.Location = new System.Drawing.Point(0, 24);
             this.dockPanel1.Name = "dockPanel1";
-            this.dockPanel1.Size = new System.Drawing.Size(640, 461);
+            this.dockPanel1.Size = new System.Drawing.Size(640, 462);
             this.dockPanel1.TabIndex = 1;
             // 
-            // toolStrip1
+            // menuStrip1
             // 
-            this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnCloseAllChunks,
-            this.btnReport});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.toolStrip1.Size = new System.Drawing.Size(640, 25);
-            this.toolStrip1.TabIndex = 2;
-            this.toolStrip1.Text = "toolStrip1";
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuReport,
+            this.mnuWindow});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(640, 24);
+            this.menuStrip1.TabIndex = 3;
+            this.menuStrip1.Text = "menuStrip1";
             // 
-            // btnCloseAllChunks
+            // mnuReport
             // 
-            this.btnCloseAllChunks.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.btnCloseAllChunks.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnCloseAllChunks.Image = ((System.Drawing.Image)(resources.GetObject("btnCloseAllChunks.Image")));
-            this.btnCloseAllChunks.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnCloseAllChunks.Name = "btnCloseAllChunks";
-            this.btnCloseAllChunks.Size = new System.Drawing.Size(23, 22);
-            this.btnCloseAllChunks.Text = "Закрыть фрагменты";
-            this.btnCloseAllChunks.Click += new System.EventHandler(this.btnCloseAllChunks_Click);
+            this.mnuReport.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuReportFullText,
+            this.mnuReportOriginalAndVersion,
+            this.mnuReportVersionAndOriginal,
+            this.toolStripMenuItem3,
+            this.mnuReportChunkWithoutVersion,
+            this.mnuReportChunkWithUndefinedWord,
+            this.mnuReportChunkUnpublished,
+            this.toolStripMenuItem4,
+            this.mnuReportReadinessStatistics});
+            this.mnuReport.Image = ((System.Drawing.Image)(resources.GetObject("mnuReport.Image")));
+            this.mnuReport.MergeIndex = 1;
+            this.mnuReport.Name = "mnuReport";
+            this.mnuReport.Size = new System.Drawing.Size(76, 20);
+            this.mnuReport.Text = "Отчеты";
             // 
-            // btnReport
+            // mnuWindow
             // 
-            this.btnReport.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnReportFullText,
-            this.btnReportOriginalAndVersion,
-            this.btnReportVersionAndOriginal,
-            this.toolStripMenuItem1,
-            this.btnReportChunkWithoutVersion,
-            this.btnReportChunkWithUndefinedWord,
-            this.btnReportChunkUnpublished,
-            this.toolStripMenuItem2,
-            this.btnReportReadinessStatistics});
-            this.btnReport.Image = ((System.Drawing.Image)(resources.GetObject("btnReport.Image")));
-            this.btnReport.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnReport.Name = "btnReport";
-            this.btnReport.Size = new System.Drawing.Size(80, 22);
-            this.btnReport.Text = "Отчеты";
+            this.mnuWindow.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuCloseAllWindows});
+            this.mnuWindow.Image = ((System.Drawing.Image)(resources.GetObject("mnuWindow.Image")));
+            this.mnuWindow.MergeIndex = 2;
+            this.mnuWindow.Name = "mnuWindow";
+            this.mnuWindow.Size = new System.Drawing.Size(64, 20);
+            this.mnuWindow.Text = "Окно";
             // 
-            // btnReportFullText
+            // mnuCloseAllWindows
             // 
-            this.btnReportFullText.Name = "btnReportFullText";
-            this.btnReportFullText.Size = new System.Drawing.Size(304, 22);
-            this.btnReportFullText.Text = "Полный текст";
-            this.btnReportFullText.Click += new System.EventHandler(this.btnReportFullText_Click);
+            this.mnuCloseAllWindows.Image = ((System.Drawing.Image)(resources.GetObject("mnuCloseAllWindows.Image")));
+            this.mnuCloseAllWindows.Name = "mnuCloseAllWindows";
+            this.mnuCloseAllWindows.Size = new System.Drawing.Size(207, 22);
+            this.mnuCloseAllWindows.Text = "Закрыть все фрагменты";
+            this.mnuCloseAllWindows.Click += new System.EventHandler(this.mnuCloseAllWindows_Click);
             // 
-            // btnReportOriginalAndVersion
+            // mnuReportFullText
             // 
-            this.btnReportOriginalAndVersion.Name = "btnReportOriginalAndVersion";
-            this.btnReportOriginalAndVersion.Size = new System.Drawing.Size(304, 22);
-            this.btnReportOriginalAndVersion.Text = "Оригинал + перевод";
+            this.mnuReportFullText.Name = "mnuReportFullText";
+            this.mnuReportFullText.Size = new System.Drawing.Size(304, 22);
+            this.mnuReportFullText.Text = "Полный текст";
+            this.mnuReportFullText.Click += new System.EventHandler(this.mnuReportFullText_Click);
             // 
-            // btnReportReadinessStatistics
+            // mnuReportOriginalAndVersion
             // 
-            this.btnReportReadinessStatistics.Name = "btnReportReadinessStatistics";
-            this.btnReportReadinessStatistics.Size = new System.Drawing.Size(304, 22);
-            this.btnReportReadinessStatistics.Text = "Статистика выполнения";
-            this.btnReportReadinessStatistics.Click += new System.EventHandler(this.btnReportReadinessStatistics_Click);
+            this.mnuReportOriginalAndVersion.Name = "mnuReportOriginalAndVersion";
+            this.mnuReportOriginalAndVersion.Size = new System.Drawing.Size(304, 22);
+            this.mnuReportOriginalAndVersion.Text = "Оригинал + перевод";
+            this.mnuReportOriginalAndVersion.Click += new System.EventHandler(this.mnuReportOriginalAndVersion_Click);
             // 
-            // toolStripMenuItem1
+            // mnuReportVersionAndOriginal
             // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(301, 6);
+            this.mnuReportVersionAndOriginal.Name = "mnuReportVersionAndOriginal";
+            this.mnuReportVersionAndOriginal.Size = new System.Drawing.Size(304, 22);
+            this.mnuReportVersionAndOriginal.Text = "Перевод + оригинал";
+            this.mnuReportVersionAndOriginal.Click += new System.EventHandler(this.mnuReportVersionAndOriginal_Click);
             // 
-            // btnReportChunkWithoutVersion
+            // toolStripMenuItem3
             // 
-            this.btnReportChunkWithoutVersion.Name = "btnReportChunkWithoutVersion";
-            this.btnReportChunkWithoutVersion.Size = new System.Drawing.Size(304, 22);
-            this.btnReportChunkWithoutVersion.Text = "Фрагменты без параллельного текста";
-            this.btnReportChunkWithoutVersion.Click += new System.EventHandler(this.btnReportChunkWithoutVersion_Click);
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(301, 6);
             // 
-            // btnReportChunkWithUndefinedWord
+            // mnuReportChunkWithoutVersion
             // 
-            this.btnReportChunkWithUndefinedWord.Name = "btnReportChunkWithUndefinedWord";
-            this.btnReportChunkWithUndefinedWord.Size = new System.Drawing.Size(304, 22);
-            this.btnReportChunkWithUndefinedWord.Text = "Фрагменты с неопределенными словами";
-            this.btnReportChunkWithUndefinedWord.Click += new System.EventHandler(this.btnReportChunkWithUndefinedWord_Click);
+            this.mnuReportChunkWithoutVersion.Name = "mnuReportChunkWithoutVersion";
+            this.mnuReportChunkWithoutVersion.Size = new System.Drawing.Size(304, 22);
+            this.mnuReportChunkWithoutVersion.Text = "Фрагменты без параллельного текста";
+            this.mnuReportChunkWithoutVersion.Click += new System.EventHandler(this.mnuReportChunkWithoutVersion_Click);
             // 
-            // btnReportChunkUnpublished
+            // mnuReportChunkWithUndefinedWord
             // 
-            this.btnReportChunkUnpublished.Name = "btnReportChunkUnpublished";
-            this.btnReportChunkUnpublished.Size = new System.Drawing.Size(304, 22);
-            this.btnReportChunkUnpublished.Text = "Неопубликованные фрагменты";
-            this.btnReportChunkUnpublished.Click += new System.EventHandler(this.btnReportChunkUnpublished_Click);
+            this.mnuReportChunkWithUndefinedWord.Name = "mnuReportChunkWithUndefinedWord";
+            this.mnuReportChunkWithUndefinedWord.Size = new System.Drawing.Size(304, 22);
+            this.mnuReportChunkWithUndefinedWord.Text = "Фрагменты с неопределенными словами";
+            this.mnuReportChunkWithUndefinedWord.Click += new System.EventHandler(this.mnuReportChunkWithUndefinedWord_Click);
             // 
-            // toolStripMenuItem2
+            // mnuReportChunkUnpublished
             // 
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(301, 6);
+            this.mnuReportChunkUnpublished.Name = "mnuReportChunkUnpublished";
+            this.mnuReportChunkUnpublished.Size = new System.Drawing.Size(304, 22);
+            this.mnuReportChunkUnpublished.Text = "Неопубликованные фрагменты";
+            this.mnuReportChunkUnpublished.Click += new System.EventHandler(this.mnuReportChunkUnpublished_Click);
             // 
-            // btnReportVersionAndOriginal
+            // toolStripMenuItem4
             // 
-            this.btnReportVersionAndOriginal.Name = "btnReportVersionAndOriginal";
-            this.btnReportVersionAndOriginal.Size = new System.Drawing.Size(304, 22);
-            this.btnReportVersionAndOriginal.Text = "Перевод + оригинал";
+            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(301, 6);
+            // 
+            // mnuReportReadinessStatistics
+            // 
+            this.mnuReportReadinessStatistics.Name = "mnuReportReadinessStatistics";
+            this.mnuReportReadinessStatistics.Size = new System.Drawing.Size(304, 22);
+            this.mnuReportReadinessStatistics.Text = "Статистика выполнения";
+            this.mnuReportReadinessStatistics.Click += new System.EventHandler(this.mnuReportReadinessStatistics_Click);
             // 
             // DocumentContainer
             // 
@@ -160,12 +168,14 @@ namespace Document
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(640, 486);
             this.Controls.Add(this.dockPanel1);
-            this.Controls.Add(this.toolStrip1);
+            this.Controls.Add(this.menuStrip1);
             this.HideOnClose = true;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "DocumentContainer";
             this.Load += new System.EventHandler(this.DocumentContainer_Load);
-            this.toolStrip1.ResumeLayout(false);
-            this.toolStrip1.PerformLayout();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -174,17 +184,18 @@ namespace Document
         #endregion
 
         private WeifenLuo.WinFormsUI.Docking.DockPanel dockPanel1;
-        private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripButton btnCloseAllChunks;
-        private System.Windows.Forms.ToolStripSplitButton btnReport;
-        private System.Windows.Forms.ToolStripMenuItem btnReportFullText;
-        private System.Windows.Forms.ToolStripMenuItem btnReportOriginalAndVersion;
-        private System.Windows.Forms.ToolStripMenuItem btnReportReadinessStatistics;
-        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem btnReportChunkWithoutVersion;
-        private System.Windows.Forms.ToolStripMenuItem btnReportChunkWithUndefinedWord;
-        private System.Windows.Forms.ToolStripMenuItem btnReportChunkUnpublished;
-        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
-        private System.Windows.Forms.ToolStripMenuItem btnReportVersionAndOriginal;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem mnuReport;
+        private System.Windows.Forms.ToolStripMenuItem mnuWindow;
+        private System.Windows.Forms.ToolStripMenuItem mnuCloseAllWindows;
+        private System.Windows.Forms.ToolStripMenuItem mnuReportFullText;
+        private System.Windows.Forms.ToolStripMenuItem mnuReportOriginalAndVersion;
+        private System.Windows.Forms.ToolStripMenuItem mnuReportVersionAndOriginal;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem3;
+        private System.Windows.Forms.ToolStripMenuItem mnuReportChunkWithoutVersion;
+        private System.Windows.Forms.ToolStripMenuItem mnuReportChunkWithUndefinedWord;
+        private System.Windows.Forms.ToolStripMenuItem mnuReportChunkUnpublished;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem4;
+        private System.Windows.Forms.ToolStripMenuItem mnuReportReadinessStatistics;
     }
 }

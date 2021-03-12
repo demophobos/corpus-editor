@@ -15,7 +15,7 @@ namespace Document
     {
         public DocumentProcess DocumentProcess { get; private set; }
 
-        private ContentContainer _contentContainer;
+        private ContentIndexExplorer _contentIndexExplorer;
 
         private List<ChunkContainer> _chunkContainers;
 
@@ -34,11 +34,11 @@ namespace Document
 
         private void DocumentContainer_Load(object sender, EventArgs e)
         {
-            _contentContainer = new ContentContainer(DocumentProcess);
+            _contentIndexExplorer = new ContentIndexExplorer(DocumentProcess);
 
-            _contentContainer.IndexSelected += ContentExplorer_IndexSelected;
+            _contentIndexExplorer.IndexSelected += ContentExplorer_IndexSelected;
 
-            _contentContainer.Show(dockPanel1, DockState.DockRight);
+            _contentIndexExplorer.Show(dockPanel1, DockState.DockRight);
 
             _chunkContainers = new List<ChunkContainer>();
         }
@@ -76,7 +76,7 @@ namespace Document
             ctrl.Dispose();
         }
 
-        private void btnCloseAllChunks_Click(object sender, EventArgs e)
+        private void mnuCloseAllWindows_Click(object sender, EventArgs e)
         {
             foreach (IDockContent document in dockPanel1.DocumentsToArray())
             {
@@ -86,7 +86,34 @@ namespace Document
             _chunkContainers = new List<ChunkContainer>();
         }
 
-        private async void btnReportChunkWithoutVersion_Click(object sender, EventArgs e)
+        private async void mnuReportFullText_Click(object sender, EventArgs e)
+        {
+            var reportViewer = new ReportBrowser(DocumentProcess);
+
+            reportViewer.Show(dockPanel1, DockState.Document);
+
+            await reportViewer.GetReport(ReportTypeEnum.FullText).ConfigureAwait(true);
+        }
+
+        private async void mnuReportOriginalAndVersion_Click(object sender, EventArgs e)
+        {
+            var reportViewer = new ReportBrowser(DocumentProcess);
+
+            reportViewer.Show(dockPanel1, DockState.Document);
+
+            await reportViewer.GetReport(ReportTypeEnum.OriginalAndVersion).ConfigureAwait(true);
+        }
+
+        private async void mnuReportVersionAndOriginal_Click(object sender, EventArgs e)
+        {
+            var reportViewer = new ReportBrowser(DocumentProcess);
+
+            reportViewer.Show(dockPanel1, DockState.Document);
+
+            await reportViewer.GetReport(ReportTypeEnum.VersionAndOriginal).ConfigureAwait(true);
+        }
+
+        private async void mnuReportChunkWithoutVersion_Click(object sender, EventArgs e)
         {
             var reportViewer = new ReportBrowser(DocumentProcess);
 
@@ -95,7 +122,7 @@ namespace Document
             await reportViewer.GetReport(ReportTypeEnum.ChunkWithoutVersion).ConfigureAwait(true);
         }
 
-        private async void btnReportChunkWithUndefinedWord_Click(object sender, EventArgs e)
+        private async void mnuReportChunkWithUndefinedWord_Click(object sender, EventArgs e)
         {
             var reportViewer = new ReportBrowser(DocumentProcess);
 
@@ -104,7 +131,7 @@ namespace Document
             await reportViewer.GetReport(ReportTypeEnum.ChunkWithUndefinedWord).ConfigureAwait(true);
         }
 
-        private async void btnReportChunkUnpublished_Click(object sender, EventArgs e)
+        private async void mnuReportChunkUnpublished_Click(object sender, EventArgs e)
         {
             var reportViewer = new ReportBrowser(DocumentProcess);
 
@@ -113,18 +140,13 @@ namespace Document
             await reportViewer.GetReport(ReportTypeEnum.ChunkUnpublished).ConfigureAwait(true);
         }
 
-        private async void btnReportReadinessStatistics_Click(object sender, EventArgs e)
+        private async void mnuReportReadinessStatistics_Click(object sender, EventArgs e)
         {
             var reportViewer = new ReportBrowser(DocumentProcess);
 
             reportViewer.Show(dockPanel1, DockState.Document);
 
             await reportViewer.GetReport(ReportTypeEnum.ReadinessStatistics).ConfigureAwait(true);
-        }
-
-        private void btnReportFullText_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

@@ -54,6 +54,7 @@ namespace Editor
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuFile});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.MdiWindowListItem = this.mnuFile;
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(853, 24);
             this.menuStrip1.TabIndex = 3;
@@ -82,7 +83,7 @@ namespace Editor
             // 
             this.btnShowMorphExplorer.Image = ((System.Drawing.Image)(resources.GetObject("btnShowMorphExplorer.Image")));
             this.btnShowMorphExplorer.Name = "btnShowMorphExplorer";
-            this.btnShowMorphExplorer.Size = new System.Drawing.Size(180, 22);
+            this.btnShowMorphExplorer.Size = new System.Drawing.Size(147, 22);
             this.btnShowMorphExplorer.Text = "Морфология";
             this.btnShowMorphExplorer.Visible = false;
             this.btnShowMorphExplorer.Click += new System.EventHandler(this.btnShowMorphExplorer_Click);
@@ -90,13 +91,13 @@ namespace Editor
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(144, 6);
             // 
             // mnuExit
             // 
             this.mnuExit.Image = ((System.Drawing.Image)(resources.GetObject("mnuExit.Image")));
             this.mnuExit.Name = "mnuExit";
-            this.mnuExit.Size = new System.Drawing.Size(180, 22);
+            this.mnuExit.Size = new System.Drawing.Size(147, 22);
             this.mnuExit.Text = "Выйти";
             // 
             // MainForm
@@ -107,6 +108,7 @@ namespace Editor
             this.Controls.Add(this.dockPanel1);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.IsMdiContainer = true;
             this.Name = "MainForm";
             this.Text = "CLR Редактор";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

@@ -49,6 +49,8 @@ namespace Document
             this.btnRemoveBookmark = new System.Windows.Forms.ToolStripMenuItem();
             this.loader1 = new Common.Control.Loader();
             this.bookmarkedSource = new System.Windows.Forms.BindingSource(this.components);
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnPublish = new System.Windows.Forms.ToolStripButton();
             this.toolStrip2.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bookmarkedSource)).BeginInit();
@@ -56,7 +58,6 @@ namespace Document
             // 
             // treeView1
             // 
-            this.treeView1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.treeView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.treeView1.FullRowSelect = true;
             this.treeView1.HideSelection = false;
@@ -85,7 +86,9 @@ namespace Document
             this.btnCreateTopIndex,
             this.toolStripSeparator2,
             this.btnShowBookmarks,
-            this.btnRemoveAllBookmarks});
+            this.btnRemoveAllBookmarks,
+            this.toolStripSeparator1,
+            this.btnPublish});
             this.toolStrip2.Location = new System.Drawing.Point(0, 0);
             this.toolStrip2.Name = "toolStrip2";
             this.toolStrip2.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
@@ -217,6 +220,21 @@ namespace Document
             this.bookmarkedSource.DataSource = typeof(Model.IndexModel);
             this.bookmarkedSource.PositionChanged += new System.EventHandler(this.bookmarkedSource_PositionChanged);
             // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
+            // btnPublish
+            // 
+            this.btnPublish.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnPublish.Image = ((System.Drawing.Image)(resources.GetObject("btnPublish.Image")));
+            this.btnPublish.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnPublish.Name = "btnPublish";
+            this.btnPublish.Size = new System.Drawing.Size(23, 22);
+            this.btnPublish.ToolTipText = "Опубликовать";
+            this.btnPublish.Click += new System.EventHandler(this.btnPublish_Click);
+            // 
             // ContentIndexExplorer
             // 
             this.AllowEndUserDocking = false;
@@ -233,7 +251,7 @@ namespace Document
             this.HelpButton = true;
             this.HideOnClose = true;
             this.Name = "ContentIndexExplorer";
-            this.Text = "Индекс";
+            this.Text = "Содержание";
             this.Load += new System.EventHandler(this.ContentExplorer_LoadAsync);
             this.toolStrip2.ResumeLayout(false);
             this.toolStrip2.PerformLayout();
@@ -264,5 +282,7 @@ namespace Document
         private System.Windows.Forms.ToolStripMenuItem btnRemoveBookmark;
         private System.Windows.Forms.BindingSource bookmarkedSource;
         private System.Windows.Forms.ToolStripButton btnRemoveAllBookmarks;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripButton btnPublish;
     }
 }
