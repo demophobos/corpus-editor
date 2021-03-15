@@ -37,17 +37,16 @@ namespace Process
             return await ChunkAPI.Remove(chunk);
         }
 
-        public static bool ChunkValuesEquals(ChunkModel chunk, string newValueObj)
+        public static bool ChunkValuesEquals(string valueObj, string newValueObj)
         {
-            return chunk.ValueObj.Equals(newValueObj);
+            return valueObj.Equals(newValueObj);
         }
 
         public static async Task<ChunkModel> PublishChunkValueObj(ChunkModel chunk, string newValueObj)
         {
-            if (!ChunkValuesEquals(chunk, newValueObj))
+            if (!ChunkValuesEquals(chunk.ValueObj, newValueObj))
             {
                 chunk.ValueObj = newValueObj;
-
                 return await ChunkAPI.Save(chunk).ConfigureAwait(true);
             }
             else

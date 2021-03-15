@@ -326,7 +326,7 @@ namespace Document
 
             toolStrip2.Enabled = false;
 
-            var chunks = await ChunkProcess.GetChunksByQuery(new ChunkQuery { HeaderId = _documentProcess.Header.Id });
+            var chunks = await _documentProcess.GetChunksByHeader();
 
             int updatedCount = 0;
 
@@ -345,6 +345,7 @@ namespace Document
                 if (published != null)
                 {
                     updatedCount += 1;
+
                     updatedChunks.Add(chunkView);
                 }
 

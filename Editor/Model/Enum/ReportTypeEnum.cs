@@ -8,12 +8,11 @@ namespace Model.Enum
 {
     public enum ReportTypeEnum
     {
-        ChunkWithoutVersion,
+        ChunkWithoutParallelText,
         ChunkWithUndefinedWord,
-        ChunkUnpublished,
         ReadinessStatistics,
-        FullText,
-        OriginalAndVersion,
+        Text,
+        ParallelText,
         VersionAndOriginal
     }
 }

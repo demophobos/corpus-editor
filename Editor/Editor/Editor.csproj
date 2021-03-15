@@ -25,13 +25,13 @@
     <MapFileExtensions>true</MapFileExtensions>
     <InstallUrl>\\AGRICOLA\Users\agricola\Documents\ftp-corpus-editor\</InstallUrl>
     <UpdateUrl>\\AGRICOLA\Users\agricola\Documents\ftp-corpus-editor\</UpdateUrl>
-    <ProductName>CLR Редактор</ProductName>
+    <ProductName>CLR Editor</ProductName>
     <PublisherName>ИЛИ РАН</PublisherName>
-    <SuiteName>CLR Редактор</SuiteName>
+    <SuiteName>CLR Editor</SuiteName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>index.htm</WebPage>
-    <ApplicationRevision>14</ApplicationRevision>
-    <ApplicationVersion>1.0.0.14</ApplicationVersion>
+    <ApplicationRevision>15</ApplicationRevision>
+    <ApplicationVersion>1.0.0.15</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -98,8 +98,24 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Content Include="..\UI\Report\Reports\ChunkStatus.rdlc">
-      <Link>Reports\ChunkStatus.rdlc</Link>
+    <Content Include="..\UI\Report\Reports\ReadinessStatistics.rdlc">
+      <Link>Reports\ReadinessStatistics.rdlc</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\UI\Report\Reports\ChunkWithUndefinedWord.rdlc">
+      <Link>Reports\ChunkWithUndefinedWord.rdlc</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\UI\Report\Reports\ParallelText.rdlc">
+      <Link>Reports\ParallelText.rdlc</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\UI\Report\Reports\Text.rdlc">
+      <Link>Reports\Text.rdlc</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\UI\Report\Reports\ChunkWithoutParallelText.rdlc">
+      <Link>Reports\ChunkWithoutParallelText.rdlc</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <EmbeddedResource Include="MainForm.resx">

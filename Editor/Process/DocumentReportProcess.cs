@@ -1,12 +1,11 @@
 ﻿using Model;
 using Model.Enum;
 using Model.Query;
+using Model.Report;
 using Model.View;
 using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Process
@@ -15,13 +14,35 @@ namespace Process
     {
         private DocumentProcess _documentProcess;
 
+        private List<IndexModel> _indeces;
+
         private List<ChunkViewModel> _chunks;
 
+        private List<ChunkViewModel> _interpChunks;
+
         private List<InterpModel> _interps;
-        public DocumentReportProcess(DocumentProcess documentProcess) {
+
+        private List<ChunkIndexedReportModel> _fullTextReportResult;
+
+        public DocumentReportProcess(DocumentProcess documentProcess)
+        {
             _documentProcess = documentProcess;
         }
-        public async Task<List<ChunkStatusModel>> GetChunkStatusReport()
+        public async Task<List<ChunkStatusReportModel>> GetChunkWithoutTranslationReport()
+        {
+            var statusItems = await GetStatusItems().ConfigureAwait(true);
+
+            return statusItems.Where(i => i.HasVersion == false).ToList();
+        }
+
+        public async Task<List<ChunkStatusReportModel>> GetChunkWithUndefinedWordReport()
+        {
+            var statusItems = await GetStatusItems().ConfigureAwait(true);
+
+            return statusItems.Where(i => i.UnresolvedItems > 0).OrderByDescending(i => i.UnresolvedItems).ToList();
+        }
+
+        private async Task<List<ChunkStatusReportModel>> GetStatusItems()
         {
             _chunks = await _documentProcess.GetChunksByHeader().ConfigureAwait(true);
 
@@ -38,15 +59,10 @@ namespace Process
 
             _interps = await _documentProcess.GetInterpsByQueryTable(interpQuery).ConfigureAwait(true);
 
-            var statusItems = _chunks.OrderBy(i => i.IndexOrder)
-                .Select(i => CreateStatusModel(i))
-                .OrderByDescending(i => i.ResolvedItems)
-                .OrderByDescending(i => i.UnresolvedItems);
-
-            return statusItems.ToList();
+            return _chunks.Select(i => CreateStatusModel(i)).ToList();
         }
 
-        private ChunkStatusModel CreateStatusModel(ChunkViewModel chunk)
+        private ChunkStatusReportModel CreateStatusModel(ChunkViewModel chunk)
         {
             var publishedElements = JsonConvert.DeserializeObject<ChunkValueItemModel[]>(chunk.ValueObj).Where(i => i.Type == (int)ElementTypeEnum.Word);
 
@@ -69,17 +85,102 @@ namespace Process
                 hasVersion = _interps.Any(i => i.InterpId == chunk.Id);
             }
 
-            return new ChunkStatusModel
+            return new ChunkStatusReportModel
             {
                 Id = chunk.Id,
-                IndexId = chunk.IndexId,
                 IndexName = chunk.IndexName,
-                ChunkText = chunk.Value,
+                Value = chunk.Value,
                 ResolvedItems = resolvedItems,
                 UnresolvedItems = unresolvedItems,
                 Languages = lang,
                 HasVersion = hasVersion
             };
+        }
+
+        public async Task<List<ChunkIndexedReportModel>> GetParallelTextReport(List<HeaderModel> headers)
+        {
+            _fullTextReportResult = new List<ChunkIndexedReportModel>();
+
+            _interpChunks = new List<ChunkViewModel>();
+
+            var origHeader = headers.FirstOrDefault(i => i.EditionType == EditionTypeStringEnum.Original);
+
+            _indeces = await _documentProcess.GetIndecesByHeader(origHeader.Id).ConfigureAwait(true);
+
+            _chunks = await _documentProcess.GetChunksByHeader(origHeader).ConfigureAwait(true);
+
+            foreach (var interpHeader in headers.Where(i => i.EditionType == EditionTypeStringEnum.Interpretation))
+            {
+                var interps = await _documentProcess.GetChunksByHeader(interpHeader).ConfigureAwait(true);
+                _interpChunks.AddRange(interps);
+            }
+
+            foreach (var topIndex in _indeces.Where(i => i.ParentId == null).OrderBy(j => j.Order))
+            {
+                CreateTextItem(topIndex);
+
+                CreateTextItems(topIndex.Id);
+            }
+
+
+            return _fullTextReportResult;
+        }
+
+        public async Task<List<ChunkIndexedReportModel>> GetTextReport()
+        {
+            _fullTextReportResult = new List<ChunkIndexedReportModel>();
+
+            _chunks = await _documentProcess.GetChunksByHeader().ConfigureAwait(true);
+
+            _indeces = _documentProcess.Indeces;
+
+            foreach (var topIndex in _indeces.Where(i => i.ParentId == null).OrderBy(j => j.Order))
+            {
+                CreateTextItem(topIndex);
+
+                CreateTextItems(topIndex.Id);
+            }
+            return _fullTextReportResult;
+        }
+
+        private void CreateTextItems(string parentId)
+        {
+            var childerenTexts = _indeces.Where(i => i.ParentId == parentId).OrderBy(j => j.Order);
+
+            foreach (var child in childerenTexts)
+            {
+                CreateTextItem(child);
+
+                CreateTextItems(child.Id);
+            }
+        }
+
+        private void CreateTextItem(IndexModel index)
+        {
+            var chunk = _chunks.FirstOrDefault(i => i.IndexId == index.Id);
+
+            var fullTextItem = new ChunkIndexedReportModel
+            {
+                IndexId = index.Id,
+                IndexName = index.Name,
+                ChunkId = chunk?.Id,
+                ChunkValue = chunk?.Value
+            };
+
+            _fullTextReportResult.Add(fullTextItem);
+
+            if (_interpChunks != null)
+            {
+                foreach (var interp in _interpChunks.Where(i => i.IndexName == index.Name))
+                {
+                    var interpItem = new ChunkIndexedReportModel
+                    {
+                        ChunkId = interp.Id,
+                        ChunkValue = interp.Value
+                    };
+                    _fullTextReportResult.Add(interpItem);
+                }
+            }
         }
     }
 }

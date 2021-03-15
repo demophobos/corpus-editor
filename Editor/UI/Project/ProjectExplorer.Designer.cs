@@ -182,11 +182,10 @@ namespace Project
             this.ControlBox = false;
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.toolStrip2);
-            this.DockAreas = ((WeifenLuo.WinFormsUI.Docking.DockAreas)(((((WeifenLuo.WinFormsUI.Docking.DockAreas.DockLeft | WeifenLuo.WinFormsUI.Docking.DockAreas.DockRight) 
-            | WeifenLuo.WinFormsUI.Docking.DockAreas.DockTop) 
-            | WeifenLuo.WinFormsUI.Docking.DockAreas.DockBottom) 
-            | WeifenLuo.WinFormsUI.Docking.DockAreas.Document)));
+            this.DockAreas = WeifenLuo.WinFormsUI.Docking.DockAreas.DockLeft;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ProjectExplorer";
+            this.Text = "Проекты";
             this.mnuHeader.ResumeLayout(false);
             this.toolStrip2.ResumeLayout(false);
             this.toolStrip2.PerformLayout();

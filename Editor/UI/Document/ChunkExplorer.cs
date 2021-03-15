@@ -64,7 +64,7 @@ namespace Document
 
             var newValueObjs = await ChunkProcess.CreateChunkValueObjs(_elements).ConfigureAwait(true);
 
-            bool equal = ChunkProcess.ChunkValuesEquals(Chunk, newValueObjs);
+            bool equal = ChunkProcess.ChunkValuesEquals(Chunk.ValueObj, newValueObjs);
 
             foreach (var element in _elements)
             {
@@ -110,7 +110,7 @@ namespace Document
 
             ElementsLoaded?.Invoke(this, EventArgs.Empty);
 
-            if (equal == false) {
+            if (!equal) {
                 EnablePublishing?.Invoke(this, true);
             }
         }
@@ -391,7 +391,6 @@ namespace Document
 
             if (result != null)
             {
-
                 Chunk.ValueObj = result.ValueObj;
 
                 EnablePublishing.Invoke(this, false);

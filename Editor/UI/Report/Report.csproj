@@ -88,7 +88,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Reports\ChunkStatus.rdlc">
+    <Content Include="Reports\ChunkWithUndefinedWord.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="SqlServerTypes\readme.htm" />
@@ -108,6 +108,15 @@
       <DependentUpon>ReportBrowser.cs</DependentUpon>
     </EmbeddedResource>
     <Content Include="Reports\ReadinessStatistics.rdlc" />
+    <Content Include="Reports\Text.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\ParallelText.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\ChunkWithoutParallelText.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

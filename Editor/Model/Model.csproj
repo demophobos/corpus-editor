@@ -49,7 +49,9 @@
   <ItemGroup>
     <Compile Include="BaseModel.cs" />
     <Compile Include="ChunkModel.cs" />
-    <Compile Include="ChunkStatusModel.cs" />
+    <Compile Include="Report\ChunkIndexedReportModel.cs" />
+    <Compile Include="Report\ChunkReportModel.cs" />
+    <Compile Include="Report\ChunkStatusReportModel.cs" />
     <Compile Include="ChunkValueObjModel.cs" />
     <Compile Include="ElementModel.cs" />
     <Compile Include="Enum\CaseEnum.cs" />

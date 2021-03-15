@@ -38,6 +38,8 @@ namespace Document
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.btnShowBookmarks = new System.Windows.Forms.ToolStripButton();
             this.btnRemoveAllBookmarks = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnPublish = new System.Windows.Forms.ToolStripButton();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.btnAddSubsection = new System.Windows.Forms.ToolStripMenuItem();
             this.btnEditSection = new System.Windows.Forms.ToolStripMenuItem();
@@ -49,8 +51,6 @@ namespace Document
             this.btnRemoveBookmark = new System.Windows.Forms.ToolStripMenuItem();
             this.loader1 = new Common.Control.Loader();
             this.bookmarkedSource = new System.Windows.Forms.BindingSource(this.components);
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.btnPublish = new System.Windows.Forms.ToolStripButton();
             this.toolStrip2.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bookmarkedSource)).BeginInit();
@@ -116,8 +116,7 @@ namespace Document
             this.btnShowBookmarks.Image = ((System.Drawing.Image)(resources.GetObject("btnShowBookmarks.Image")));
             this.btnShowBookmarks.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnShowBookmarks.Name = "btnShowBookmarks";
-            this.btnShowBookmarks.Size = new System.Drawing.Size(33, 22);
-            this.btnShowBookmarks.Text = "0";
+            this.btnShowBookmarks.Size = new System.Drawing.Size(23, 22);
             this.btnShowBookmarks.ToolTipText = "Показать закладки";
             this.btnShowBookmarks.Click += new System.EventHandler(this.btnShowBookmarks_Click);
             // 
@@ -130,6 +129,21 @@ namespace Document
             this.btnRemoveAllBookmarks.Size = new System.Drawing.Size(23, 22);
             this.btnRemoveAllBookmarks.ToolTipText = "Удалить закладки";
             this.btnRemoveAllBookmarks.Click += new System.EventHandler(this.btnRemoveAllBookmarks_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
+            // btnPublish
+            // 
+            this.btnPublish.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnPublish.Image = ((System.Drawing.Image)(resources.GetObject("btnPublish.Image")));
+            this.btnPublish.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnPublish.Name = "btnPublish";
+            this.btnPublish.Size = new System.Drawing.Size(23, 22);
+            this.btnPublish.ToolTipText = "Опубликовать все измененные фрагменты";
+            this.btnPublish.Click += new System.EventHandler(this.btnPublish_Click);
             // 
             // contextMenuStrip1
             // 
@@ -220,21 +234,6 @@ namespace Document
             this.bookmarkedSource.DataSource = typeof(Model.IndexModel);
             this.bookmarkedSource.PositionChanged += new System.EventHandler(this.bookmarkedSource_PositionChanged);
             // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
-            // 
-            // btnPublish
-            // 
-            this.btnPublish.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnPublish.Image = ((System.Drawing.Image)(resources.GetObject("btnPublish.Image")));
-            this.btnPublish.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnPublish.Name = "btnPublish";
-            this.btnPublish.Size = new System.Drawing.Size(23, 22);
-            this.btnPublish.ToolTipText = "Опубликовать";
-            this.btnPublish.Click += new System.EventHandler(this.btnPublish_Click);
-            // 
             // ContentIndexExplorer
             // 
             this.AllowEndUserDocking = false;
@@ -247,6 +246,7 @@ namespace Document
             this.Controls.Add(this.loader1);
             this.Controls.Add(this.treeView1);
             this.Controls.Add(this.toolStrip2);
+            this.DockAreas = WeifenLuo.WinFormsUI.Docking.DockAreas.DockRight;
             this.DoubleBuffered = true;
             this.HelpButton = true;
             this.HideOnClose = true;

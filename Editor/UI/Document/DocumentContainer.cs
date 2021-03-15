@@ -86,43 +86,48 @@ namespace Document
             _chunkContainers = new List<ChunkContainer>();
         }
 
-        private async void mnuReportFullText_Click(object sender, EventArgs e)
+        #region Menu Report
+        #region Menu Text Report
+        private async void mnuTextReportText_Click(object sender, EventArgs e)
         {
             var reportViewer = new ReportBrowser(DocumentProcess);
 
             reportViewer.Show(dockPanel1, DockState.Document);
 
-            await reportViewer.GetReport(ReportTypeEnum.FullText).ConfigureAwait(true);
+            await reportViewer.GetReport(ReportTypeEnum.Text).ConfigureAwait(true);
         }
 
-        private async void mnuReportOriginalAndVersion_Click(object sender, EventArgs e)
+        private async void mnuTextReportParallelText_Click(object sender, EventArgs e)
         {
             var reportViewer = new ReportBrowser(DocumentProcess);
 
             reportViewer.Show(dockPanel1, DockState.Document);
 
-            await reportViewer.GetReport(ReportTypeEnum.OriginalAndVersion).ConfigureAwait(true);
+            await reportViewer.GetReport(ReportTypeEnum.ParallelText).ConfigureAwait(true);
         }
 
-        private async void mnuReportVersionAndOriginal_Click(object sender, EventArgs e)
+        private void mnuTextReportTextCommented_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void mnuTextReportParallelTextCommented_Click(object sender, EventArgs e)
+        {
+
+        }
+        #endregion
+
+        #region Menu Chunk Report
+        private async void mnuChunkReportChunkWithoutVersion_Click(object sender, EventArgs e)
         {
             var reportViewer = new ReportBrowser(DocumentProcess);
 
             reportViewer.Show(dockPanel1, DockState.Document);
 
-            await reportViewer.GetReport(ReportTypeEnum.VersionAndOriginal).ConfigureAwait(true);
+            await reportViewer.GetReport(ReportTypeEnum.ChunkWithoutParallelText).ConfigureAwait(true);
         }
 
-        private async void mnuReportChunkWithoutVersion_Click(object sender, EventArgs e)
-        {
-            var reportViewer = new ReportBrowser(DocumentProcess);
-
-            reportViewer.Show(dockPanel1, DockState.Document);
-
-            await reportViewer.GetReport(ReportTypeEnum.ChunkWithoutVersion).ConfigureAwait(true);
-        }
-
-        private async void mnuReportChunkWithUndefinedWord_Click(object sender, EventArgs e)
+        private async void mnuChunkReportChunkWithUndefinedWord_Click(object sender, EventArgs e)
         {
             var reportViewer = new ReportBrowser(DocumentProcess);
 
@@ -131,16 +136,17 @@ namespace Document
             await reportViewer.GetReport(ReportTypeEnum.ChunkWithUndefinedWord).ConfigureAwait(true);
         }
 
-        private async void mnuReportChunkUnpublished_Click(object sender, EventArgs e)
+        #endregion
+
+        #region Menu Word Report
+        private void mnuWordReportUndefinedWord_Click(object sender, EventArgs e)
         {
-            var reportViewer = new ReportBrowser(DocumentProcess);
 
-            reportViewer.Show(dockPanel1, DockState.Document);
-
-            await reportViewer.GetReport(ReportTypeEnum.ChunkUnpublished).ConfigureAwait(true);
         }
+        #endregion
 
-        private async void mnuReportReadinessStatistics_Click(object sender, EventArgs e)
+        #region Menu Stat Report
+        private async void mnuStatReportReadinessStatistics_Click(object sender, EventArgs e)
         {
             var reportViewer = new ReportBrowser(DocumentProcess);
 
@@ -148,5 +154,7 @@ namespace Document
 
             await reportViewer.GetReport(ReportTypeEnum.ReadinessStatistics).ConfigureAwait(true);
         }
+        #endregion 
+        #endregion
     }
 }

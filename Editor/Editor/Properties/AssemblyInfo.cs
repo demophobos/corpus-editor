@@ -4,11 +4,11 @@ using System.Runtime.InteropServices;
 // Общие сведения об этой сборке предоставляются следующим набором
 // набора атрибутов. Измените значения этих атрибутов для изменения сведений,
 // связанных со сборкой.
-[assembly: AssemblyTitle("CLR Редактор")]
+[assembly: AssemblyTitle("CLR Editor")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("ИЛИ РАН")]
-[assembly: AssemblyProduct("CLR Редактор")]
+[assembly: AssemblyProduct("CLR Editor")]
 [assembly: AssemblyCopyright("© ИЛИ РАН. 2021")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -31,5 +31,5 @@ using System.Runtime.InteropServices;
 // Можно задать все значения или принять номера сборки и редакции по умолчанию 
 // используя "*", как показано ниже:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.0.14")]
-[assembly: AssemblyFileVersion("1.0.0.14")]
+[assembly: AssemblyVersion("1.0.0.15")]
+[assembly: AssemblyFileVersion("1.0.0.15")]

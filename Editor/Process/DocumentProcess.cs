@@ -47,6 +47,13 @@ namespace Process
             return await API.ChunkAPI.GetChunksByQuery(query);
         }
 
+        public async Task<List<ChunkViewModel>> GetChunksByHeader(HeaderModel header)
+        {
+            var query = new ChunkQuery { HeaderId = header.Id };
+
+            return await API.ChunkAPI.GetChunksByQuery(query);
+        }
+
         public async Task<List<IndexModel>> GetIndecesByParent(string parentId)
         {
             var query = new IndexQuery { ParentId = parentId };

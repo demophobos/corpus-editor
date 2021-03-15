@@ -18,10 +18,9 @@ namespace Editor
 {
     public partial class MainForm : Form
     {
-
         private MorphExplorer _morphExplorer;
 
-        private ProjectContainer _projectContainer;
+        private ProjectExplorer _projectExplorer;
 
         public MainForm()
         {
@@ -44,7 +43,7 @@ namespace Editor
 
                 var version = Assembly.GetExecutingAssembly().GetName().Version;
 
-                Text = $"CLR Редактор ({version}) [{AuthProcess.User.Email }]";
+                Text = $"CLR Editor ({version}) [{AuthProcess.User.Email}]";
 
                 btnShowMorphExplorer.Visible = true;
 
@@ -54,20 +53,34 @@ namespace Editor
 
         private void LoadItems()
         {
-            if (_projectContainer == null || _projectContainer.IsDisposed)
+            _projectExplorer = new ProjectExplorer();
+
+            _projectExplorer.HeaderSelected += ProjectExplorer_HeaderSelected;
+
+            _projectExplorer.HeaderDeleted += ProjectExplorer_HeaderDeleted;
+
+            _projectExplorer.HeaderUpdated += ProjectExplorer_HeaderUpdated;
+
+            _projectExplorer.ProjectDeleted += ProjectExplorer_ProjectDeleted;
+
+            _projectExplorer.LoadData();
+
+            _projectExplorer.Show(dockPanel1, DockState.DockLeft);
+        }
+
+        private void ProjectExplorer_HeaderUpdated(object sender, HeaderModel header)
+        {
+            var docs = dockPanel1.DocumentsToArray();
+
+            var exsitingDocuments = docs.Where(i => i is DocumentContainer).ToList();
+
+            if (exsitingDocuments.Count > 0)
             {
-                _projectContainer = new ProjectContainer();
-
-                _projectContainer.HeaderDeleted += ProjectExplorer_HeaderDeleted;
-
-                _projectContainer.ProjectDeleted += ProjectExplorer_ProjectDeleted;
-
-                _projectContainer.HeaderSelected += ProjectExplorer_HeaderSelected;
+                if (exsitingDocuments.FirstOrDefault(i => ((DocumentContainer)i).DocumentProcess.Header.Id == header.Id) is DocumentContainer exsitingDocument)
+                {
+                    exsitingDocument.Text = header.Code;
+                }
             }
-
-            _projectContainer.LoadItems();
-
-            _projectContainer.Show(dockPanel1, DockState.DockLeftAutoHide);
         }
 
         public bool Login()
@@ -174,12 +187,12 @@ namespace Editor
                         var myValue = myKey.GetValue("DisplayName");
 
                         // we have two versions 
-                        if (myValue != null && myValue.ToString() == "CLR-Editor") // same as in 'Product name:' field
+                        if (myValue != null && myValue.ToString() == "CLR Editor") // same as in 'Product name:' field
                         {
                             myKey.SetValue("DisplayIcon", iconSourcePath);
                         }
                         else
-                        if (myValue != null && myValue.ToString() == "CLR-Editor") // same as in 'Product name:' field
+                        if (myValue != null && myValue.ToString() == "CLR Editor") // same as in 'Product name:' field
                         {
                             myKey.SetValue("DisplayIcon", iconSourcePath);
                         }
