@@ -107,7 +107,9 @@
     <EmbeddedResource Include="ReportBrowser.resx">
       <DependentUpon>ReportBrowser.cs</DependentUpon>
     </EmbeddedResource>
-    <Content Include="Reports\ReadinessStatistics.rdlc" />
+    <Content Include="Reports\ReadinessStatistics.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Reports\Text.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -115,6 +117,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Reports\ChunkWithoutParallelText.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\PosStatistics.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

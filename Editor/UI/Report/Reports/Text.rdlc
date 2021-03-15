@@ -36,8 +36,14 @@
                       </Paragraphs>
                       <Style>
                         <Border>
+                          <Color>Silver</Color>
                           <Style>None</Style>
                         </Border>
+                        <BottomBorder>
+                          <Color>White</Color>
+                          <Style>Solid</Style>
+                          <Width>1pt</Width>
+                        </BottomBorder>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -45,6 +51,7 @@
                       </Style>
                     </Textbox>
                     <ColSpan>2</ColSpan>
+                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell />

@@ -76,15 +76,33 @@ namespace Document
             ctrl.Dispose();
         }
 
+        #region Menu Close
         private void mnuCloseAllWindows_Click(object sender, EventArgs e)
         {
             foreach (IDockContent document in dockPanel1.DocumentsToArray())
             {
                 document.DockHandler.DockPanel = null;
+
                 document.DockHandler.Close();
             }
+
             _chunkContainers = new List<ChunkContainer>();
         }
+
+        private void mnuCloseAllWindowsExceptActive_Click(object sender, EventArgs e)
+        {
+            foreach (IDockContent document in dockPanel1.DocumentsToArray().Where(i => !i.DockHandler.IsActivated))
+            {
+                document.DockHandler.DockPanel = null;
+
+                document.DockHandler.Close();
+
+                var chunkContainer = (ChunkContainer)document;
+
+                _chunkContainers.Remove(chunkContainer);
+            }
+        }
+        #endregion
 
         #region Menu Report
         #region Menu Text Report
@@ -154,7 +172,21 @@ namespace Document
 
             await reportViewer.GetReport(ReportTypeEnum.ReadinessStatistics).ConfigureAwait(true);
         }
-        #endregion 
+
+        private async void mnuStatPosReport_Click(object sender, EventArgs e)
+        {
+            var reportViewer = new ReportBrowser(DocumentProcess);
+
+            reportViewer.Show(dockPanel1, DockState.Document);
+
+            await reportViewer.GetReport(ReportTypeEnum.PosStatistics).ConfigureAwait(true);
+        }
+
+
         #endregion
+
+        #endregion
+
+
     }
 }

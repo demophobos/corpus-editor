@@ -13,6 +13,7 @@ namespace Model.Enum
         ReadinessStatistics,
         Text,
         ParallelText,
-        VersionAndOriginal
+        VersionAndOriginal,
+        PosStatistics
     }
 }

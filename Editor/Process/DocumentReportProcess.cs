@@ -28,11 +28,11 @@ namespace Process
         {
             _documentProcess = documentProcess;
         }
-        public async Task<List<ChunkStatusReportModel>> GetChunkWithoutTranslationReport()
+        public async Task<List<ChunkReportModel>> GetChunkWithoutTranslationReport()
         {
             var statusItems = await GetStatusItems().ConfigureAwait(true);
 
-            return statusItems.Where(i => i.HasVersion == false).ToList();
+            return statusItems.Where(i => i.HasVersion == false).Select(i=> new ChunkReportModel { IndexName = i.IndexName, Value = i.Value}).ToList();
         }
 
         public async Task<List<ChunkStatusReportModel>> GetChunkWithUndefinedWordReport()
@@ -87,7 +87,6 @@ namespace Process
 
             return new ChunkStatusReportModel
             {
-                Id = chunk.Id,
                 IndexName = chunk.IndexName,
                 Value = chunk.Value,
                 ResolvedItems = resolvedItems,
@@ -95,6 +94,32 @@ namespace Process
                 Languages = lang,
                 HasVersion = hasVersion
             };
+        }
+
+        public async Task<List<PosReportModel>> GetPosStatisticsReport()
+        {
+            var result = new List<PosReportModel>();
+
+            var chunks = await _documentProcess.GetChunksByHeader().ConfigureAwait(true);
+
+            var values = new List<ChunkValueItemModel>();
+
+            foreach (var chunk in chunks) {
+                var items = JsonConvert.DeserializeObject<List<ChunkValueItemModel>>(chunk.ValueObj).Where(i => i.Type == (int)ElementTypeEnum.Word && i.MorphId != null);
+
+                if (items.Count() > 0) {
+                    values.AddRange(items);
+                }
+            }
+
+            result = values.GroupBy(i => i.Pos).Select(i => new PosReportModel { Name = i.Key, Count = i.Count() }).ToList().OrderByDescending(i=>i.Count).ToList();
+
+            return result;
+        }
+
+        public async Task<List<ChunkStatusReportModel>> GetReadinessStatisticsReport()
+        {
+            return await GetStatusItems().ConfigureAwait(true);
         }
 
         public async Task<List<ChunkIndexedReportModel>> GetParallelTextReport(List<HeaderModel> headers)

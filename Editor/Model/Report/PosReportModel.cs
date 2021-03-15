@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Model.Report
 {
-    public class ChunkReportModel
+    public class PosReportModel
     {
-        public string IndexName { get; set; }
-        public string Value { get; set; }
+        public string Name { get; set; }
+        public int Count { get; set; }
     }
 }

@@ -73,6 +73,12 @@ namespace Report
                 case ReportTypeEnum.ParallelText:
                     await GetParallelTextReport().ConfigureAwait(true);
                     break;
+                case ReportTypeEnum.ReadinessStatistics:
+                    await GetReadinessStatisticsReport().ConfigureAwait(true);
+                    break;
+                case ReportTypeEnum.PosStatistics:
+                    await GetPosStatisticsReport().ConfigureAwait(true);
+                    break;
                 default:
                     break;
             }
@@ -80,6 +86,46 @@ namespace Report
             _reportViewer.ReportRefresh += ReportRefresh;
 
             loader1.SendToBack();
+        }
+
+        private async Task GetPosStatisticsReport()
+        {
+            Text = "Части речи";
+
+            _reportViewer.LocalReport.DataSources.Clear();
+
+            _reportViewer.LocalReport.ReportPath = @"Reports\PosStatistics.rdlc";
+
+            var ds = new ReportDataSource
+            {
+                Name = "DS_Pos",
+            };
+
+            ds.Value = await _documentReportProcess.GetPosStatisticsReport().ConfigureAwait(true);
+
+            _reportViewer.LocalReport.DataSources.Add(ds);
+
+            _reportViewer.RefreshReport();
+        }
+
+        private async Task GetReadinessStatisticsReport()
+        {
+            Text = "Статистика выполнения";
+
+            _reportViewer.LocalReport.DataSources.Clear();
+
+            _reportViewer.LocalReport.ReportPath = @"Reports\ReadinessStatistics.rdlc";
+
+            var ds = new ReportDataSource
+            {
+                Name = "DS_Chunks",
+            };
+
+            ds.Value = await _documentReportProcess.GetReadinessStatisticsReport().ConfigureAwait(true);
+
+            _reportViewer.LocalReport.DataSources.Add(ds);
+
+            _reportViewer.RefreshReport();
         }
 
         private async Task GetChunkWithUndefinedWordReport()

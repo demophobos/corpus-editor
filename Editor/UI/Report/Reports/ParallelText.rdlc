@@ -148,7 +148,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=IIf(Fields!IndexName.Value &lt;&gt; Nothing, Fields!IndexName.Value + ". " + Fields!ChunkValue.Value, "► " + Fields!ChunkValue.Value)</Value>
+                                  <Value>=IIf(Fields!IndexName.Value &lt;&gt; Nothing, Fields!IndexName.Value + ". " + Fields!ChunkValue.Value, Constants.vbTab + Constants.vbTab + Fields!ChunkValue.Value)</Value>
                                   <Style>
                                     <FontStyle>="Default"</FontStyle>
                                   </Style>
@@ -235,14 +235,21 @@
                           <rd:DefaultName>Desc</rd:DefaultName>
                           <Style>
                             <Border>
+                              <Color>Silver</Color>
                               <Style>None</Style>
                             </Border>
+                            <BottomBorder>
+                              <Color>White</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </BottomBorder>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
+                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                   </TablixCells>

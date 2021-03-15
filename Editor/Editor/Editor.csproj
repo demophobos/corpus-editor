@@ -118,6 +118,10 @@
       <Link>Reports\ChunkWithoutParallelText.rdlc</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="..\UI\Report\Reports\PosStatistics.rdlc">
+      <Link>Reports\PosStatistics.rdlc</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>

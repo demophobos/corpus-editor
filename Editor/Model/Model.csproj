@@ -89,6 +89,7 @@
     <Compile Include="Query\MorphQuery.cs" />
     <Compile Include="Query\ProjectQuery.cs" />
     <Compile Include="Query\TaxonomyQuery.cs" />
+    <Compile Include="Report\PosReportModel.cs" />
     <Compile Include="TaxonomyModel.cs" />
     <Compile Include="UserModel.cs" />
     <Compile Include="View\ChunkViewModel.cs" />

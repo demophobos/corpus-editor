@@ -47,6 +47,9 @@ namespace Document
             this.mnuStatReportReadinessStatistics = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuWindow = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuCloseAllWindows = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuStatPosReport = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.mnuCloseAllWindowsExceptActive = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -151,7 +154,7 @@ namespace Document
             // mnuWordReportUndefinedWord
             // 
             this.mnuWordReportUndefinedWord.Name = "mnuWordReportUndefinedWord";
-            this.mnuWordReportUndefinedWord.Size = new System.Drawing.Size(170, 22);
+            this.mnuWordReportUndefinedWord.Size = new System.Drawing.Size(180, 22);
             this.mnuWordReportUndefinedWord.Text = "Неопределенные";
             this.mnuWordReportUndefinedWord.Click += new System.EventHandler(this.mnuWordReportUndefinedWord_Click);
             // 
@@ -165,6 +168,8 @@ namespace Document
             // mnuStatReport
             // 
             this.mnuStatReport.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuStatPosReport,
+            this.toolStripSeparator1,
             this.mnuStatReportReadinessStatistics});
             this.mnuStatReport.Image = ((System.Drawing.Image)(resources.GetObject("mnuStatReport.Image")));
             this.mnuStatReport.Name = "mnuStatReport";
@@ -174,28 +179,47 @@ namespace Document
             // mnuStatReportReadinessStatistics
             // 
             this.mnuStatReportReadinessStatistics.Name = "mnuStatReportReadinessStatistics";
-            this.mnuStatReportReadinessStatistics.Size = new System.Drawing.Size(144, 22);
+            this.mnuStatReportReadinessStatistics.Size = new System.Drawing.Size(180, 22);
             this.mnuStatReportReadinessStatistics.Text = "Выполнение";
             this.mnuStatReportReadinessStatistics.Click += new System.EventHandler(this.mnuStatReportReadinessStatistics_Click);
             // 
             // mnuWindow
             // 
             this.mnuWindow.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuCloseAllWindows});
+            this.mnuCloseAllWindows,
+            this.mnuCloseAllWindowsExceptActive});
             this.mnuWindow.Image = ((System.Drawing.Image)(resources.GetObject("mnuWindow.Image")));
             this.mnuWindow.MergeIndex = 2;
             this.mnuWindow.Name = "mnuWindow";
             this.mnuWindow.Size = new System.Drawing.Size(64, 20);
             this.mnuWindow.Text = "Окно";
-            this.mnuWindow.Visible = false;
             // 
             // mnuCloseAllWindows
             // 
             this.mnuCloseAllWindows.Image = ((System.Drawing.Image)(resources.GetObject("mnuCloseAllWindows.Image")));
             this.mnuCloseAllWindows.Name = "mnuCloseAllWindows";
-            this.mnuCloseAllWindows.Size = new System.Drawing.Size(207, 22);
+            this.mnuCloseAllWindows.Size = new System.Drawing.Size(241, 22);
             this.mnuCloseAllWindows.Text = "Закрыть все фрагменты";
             this.mnuCloseAllWindows.Click += new System.EventHandler(this.mnuCloseAllWindows_Click);
+            // 
+            // mnuStatPosReport
+            // 
+            this.mnuStatPosReport.Name = "mnuStatPosReport";
+            this.mnuStatPosReport.Size = new System.Drawing.Size(180, 22);
+            this.mnuStatPosReport.Text = "По частям речи";
+            this.mnuStatPosReport.Click += new System.EventHandler(this.mnuStatPosReport_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            // 
+            // mnuCloseAllWindowsExceptActive
+            // 
+            this.mnuCloseAllWindowsExceptActive.Name = "mnuCloseAllWindowsExceptActive";
+            this.mnuCloseAllWindowsExceptActive.Size = new System.Drawing.Size(241, 22);
+            this.mnuCloseAllWindowsExceptActive.Text = "Закрыть все, кроме активного";
+            this.mnuCloseAllWindowsExceptActive.Click += new System.EventHandler(this.mnuCloseAllWindowsExceptActive_Click);
             // 
             // DocumentContainer
             // 
@@ -235,5 +259,8 @@ namespace Document
         private System.Windows.Forms.ToolStripMenuItem mnuStatReportReadinessStatistics;
         private System.Windows.Forms.ToolStripMenuItem mnuTextReportTextCommented;
         private System.Windows.Forms.ToolStripMenuItem mnuTextReportParallelTextCommented;
+        private System.Windows.Forms.ToolStripMenuItem mnuStatPosReport;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem mnuCloseAllWindowsExceptActive;
     }
 }

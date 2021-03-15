@@ -52,21 +52,21 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="ChunkText">
+                    <Textbox Name="Value">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!ChunkText.Value</Value>
+                              <Value>=Fields!Value.Value</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>ChunkText</rd:DefaultName>
+                      <rd:DefaultName>Value</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -219,17 +219,11 @@
         <TablixRowHierarchy>
           <TablixMembers>
             <TablixMember>
-              <Group Name="Id">
+              <Group Name="IndexName">
                 <GroupExpressions>
-                  <GroupExpression>=Fields!Id.Value</GroupExpression>
+                  <GroupExpression>=Fields!IndexName.Value</GroupExpression>
                 </GroupExpressions>
-                <Parent>=Fields!IndexId.Value</Parent>
               </Group>
-              <SortExpressions>
-                <SortExpression>
-                  <Value>=Fields!IndexName.Value</Value>
-                </SortExpression>
-              </SortExpressions>
               <TablixMembers>
                 <TablixMember>
                   <Group Name="Подробности" />
@@ -248,11 +242,6 @@
         <FixedColumnHeaders>true</FixedColumnHeaders>
         <NoRowsMessage>Фрагменты не найдены</NoRowsMessage>
         <DataSetName>DS_Chunks</DataSetName>
-        <SortExpressions>
-          <SortExpression>
-            <Value>=Fields!UnresolvedItems.Value</Value>
-          </SortExpression>
-        </SortExpressions>
         <Height>0.54289in</Height>
         <Width>19cm</Width>
         <Style>
@@ -278,36 +267,24 @@
   </Page>
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
-    <DataSource Name="Model">
+    <DataSource Name="ModelReport">
       <ConnectionProperties>
         <DataProvider>System.Data.DataSet</DataProvider>
         <ConnectString>/* Local Connection */</ConnectString>
       </ConnectionProperties>
-      <rd:DataSourceID>c5c2966c-84b4-4ce7-bfdf-0c4af9336d46</rd:DataSourceID>
+      <rd:DataSourceID>5818f4be-6f42-46ab-b489-a864bcb69dd0</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>
     <DataSet Name="DS_Chunks">
       <Query>
-        <DataSourceName>Model</DataSourceName>
+        <DataSourceName>ModelReport</DataSourceName>
         <CommandText>/* Local Query */</CommandText>
       </Query>
       <Fields>
-        <Field Name="ChunkText">
-          <DataField>ChunkText</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
         <Field Name="HasVersion">
           <DataField>HasVersion</DataField>
           <rd:TypeName>System.Boolean</rd:TypeName>
-        </Field>
-        <Field Name="Id">
-          <DataField>Id</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="IndexId">
-          <DataField>IndexId</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="IndexName">
           <DataField>IndexName</DataField>
@@ -325,11 +302,15 @@
           <DataField>UnresolvedItems</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
+        <Field Name="Value">
+          <DataField>Value</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
       </Fields>
       <rd:DataSetInfo>
-        <rd:DataSetName>Model</rd:DataSetName>
-        <rd:TableName>ChunkStatusModel</rd:TableName>
-        <rd:ObjectDataSourceType>Model.ChunkStatusModel, Model, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
+        <rd:DataSetName>Model.Report</rd:DataSetName>
+        <rd:TableName>ChunkStatusReportModel</rd:TableName>
+        <rd:ObjectDataSourceType>Model.Report.ChunkStatusReportModel, Model, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>
