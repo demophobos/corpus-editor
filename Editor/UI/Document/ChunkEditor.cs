@@ -1,5 +1,4 @@
 ﻿using Model;
-using Model.Enum;
 using Process;
 using System;
 using System.Windows.Forms;

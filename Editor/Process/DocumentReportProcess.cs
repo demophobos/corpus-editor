@@ -32,7 +32,7 @@ namespace Process
         {
             var statusItems = await GetStatusItems().ConfigureAwait(true);
 
-            return statusItems.Where(i => i.HasVersion == false).Select(i=> new ChunkReportModel { IndexName = i.IndexName, Value = i.Value}).ToList();
+            return statusItems.Where(i => i.HasVersion == false).Select(i => new ChunkReportModel { IndexName = i.IndexName, Value = i.Value }).ToList();
         }
 
         public async Task<List<ChunkStatusReportModel>> GetChunkWithUndefinedWordReport()
@@ -104,15 +104,17 @@ namespace Process
 
             var values = new List<ChunkValueItemModel>();
 
-            foreach (var chunk in chunks) {
+            foreach (var chunk in chunks)
+            {
                 var items = JsonConvert.DeserializeObject<List<ChunkValueItemModel>>(chunk.ValueObj).Where(i => i.Type == (int)ElementTypeEnum.Word && i.MorphId != null);
 
-                if (items.Count() > 0) {
+                if (items.Count() > 0)
+                {
                     values.AddRange(items);
                 }
             }
 
-            result = values.GroupBy(i => i.Pos).Select(i => new PosReportModel { Name = i.Key, Count = i.Count() }).ToList().OrderByDescending(i=>i.Count).ToList();
+            result = values.GroupBy(i => i.Pos).Select(i => new PosReportModel { Name = i.Key, Count = i.Count() }).ToList().OrderByDescending(i => i.Count).ToList();
 
             return result;
         }

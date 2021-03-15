@@ -31,7 +31,7 @@ namespace Editor
             dockPanel1.Theme = UIProcess.DockPanelTheme;
         }
 
-        private void mnuLogin_Click(object sender, EventArgs e)
+        private void MainForm_Load(object sender, EventArgs e)
         {
             if (Login())
             {
@@ -49,6 +49,15 @@ namespace Editor
 
                 LoadItems();
             }
+            else
+            {
+                Close();
+            }
+        }
+
+        private void mnuLogin_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void LoadItems()

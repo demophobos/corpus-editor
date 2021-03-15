@@ -110,7 +110,8 @@ namespace Document
 
             ElementsLoaded?.Invoke(this, EventArgs.Empty);
 
-            if (!equal) {
+            if (!equal)
+            {
                 EnablePublishing?.Invoke(this, true);
             }
         }

@@ -97,9 +97,10 @@ namespace Document
 
                 document.DockHandler.Close();
 
-                var chunkContainer = (ChunkContainer)document;
-
-                _chunkContainers.Remove(chunkContainer);
+                if (document is ChunkContainer chunkContainer)
+                {
+                    _chunkContainers.Remove(chunkContainer);
+                }
             }
         }
         #endregion
@@ -186,7 +187,6 @@ namespace Document
         #endregion
 
         #endregion
-
 
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace Model.Report
 {
-    public class ChunkStatusReportModel: ChunkReportModel
+    public class ChunkStatusReportModel : ChunkReportModel
     {
         public int ResolvedItems { get; set; }
         public int UnresolvedItems { get; set; }
