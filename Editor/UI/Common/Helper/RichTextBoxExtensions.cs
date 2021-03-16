@@ -29,7 +29,7 @@ namespace Common.Helper
             {
                 richTextBox.Select(index, word.Length);
                 richTextBox.SelectionColor = color;
-
+                richTextBox.SelectionFont = new Font("Palatino Linotype", (float)14.25, FontStyle.Underline);
                 startIndex = index + word.Length;
             }
 

@@ -1,5 +1,6 @@
 ﻿using Common.Process;
 using Model;
+using Model.Enum;
 using Model.Query;
 using Model.View;
 using Process;
@@ -326,7 +327,7 @@ namespace Document
 
             toolStrip2.Enabled = false;
 
-            var chunks = await _documentProcess.GetChunksByHeader();
+            var chunks = await _documentProcess.GetChunksByHeader(ChunkStatusEnum.Changed);
 
             int updatedCount = 0;
 
@@ -334,7 +335,14 @@ namespace Document
 
             foreach (var chunkView in chunks)
             {
-                var chunk = new ChunkModel { Id = chunkView.Id, HeaderId = chunkView.HeaderId, IndexId = chunkView.IndexId, Value = chunkView.Value, ValueObj = chunkView.ValueObj };
+                var chunk = new ChunkModel { 
+                    Id = chunkView.Id, 
+                    HeaderId = chunkView.HeaderId, 
+                    IndexId = chunkView.IndexId, 
+                    Value = chunkView.Value, 
+                    ValueObj = chunkView.ValueObj,
+                    Status = ChunkStatusEnum.Published
+                };
 
                 var elements = await ElementProcess.GetElements(new ElementQuery { chunkId = chunk.Id }).ConfigureAwait(true);
 
@@ -351,7 +359,7 @@ namespace Document
 
                 count += 1;
 
-                loader1.SetStatus($"Опубликовано фрагментов: {updatedCount} из {chunks.Count}. Обработано: {count}");
+                loader1.SetStatus($"Опубликовано фрагментов: {updatedCount} из {chunks.Count}");
             }
 
             await LoadDataAsync().ConfigureAwait(true);

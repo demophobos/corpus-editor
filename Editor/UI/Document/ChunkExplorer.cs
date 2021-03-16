@@ -383,14 +383,15 @@ namespace Document
                 Id = Chunk.Id,
                 IndexId = Chunk.IndexId,
                 Value = Chunk.Value,
-                ValueObj = Chunk.ValueObj
+                ValueObj = Chunk.ValueObj,
+                Status = ChunkStatusEnum.Published
             };
 
             var newValueObj = await ChunkProcess.CreateChunkValueObjs(_elements).ConfigureAwait(true);
 
             var result = await ChunkProcess.PublishChunkValueObj(chunk, newValueObj).ConfigureAwait(true);
 
-            if (result != null)
+            if (result != null && result.Status == ChunkStatusEnum.Published)
             {
                 Chunk.ValueObj = result.ValueObj;
 

@@ -47,6 +47,7 @@ namespace Process
             if (!ChunkValuesEquals(chunk.ValueObj, newValueObj))
             {
                 chunk.ValueObj = newValueObj;
+
                 return await ChunkAPI.Save(chunk).ConfigureAwait(true);
             }
             else
@@ -116,6 +117,32 @@ namespace Process
             return JsonConvert.SerializeObject(chunkValueItems);
         }
 
+        public static async Task<ChunkModel> ChangeChunkStatus(ChunkModel chunk, string status)
+        {
+            if (chunk.GetType() != typeof(ChunkModel))
+            {
+                chunk = new ChunkModel { HeaderId = chunk.HeaderId, Id = chunk.Id, IndexId = chunk.IndexId, Value = chunk.Value, ValueObj = chunk.ValueObj };
+            }
+            chunk.Status = status;
+
+            return await ChunkAPI.Save(chunk).ConfigureAwait(true);
+        }
+
+        public static async Task<List<ChunkModel>> ChangeChunkStatus(List<string> chunksToUpdate, string status)
+        {
+            List<ChunkModel> chunks = new List<ChunkModel>();
+            foreach (var chunkId in chunksToUpdate)
+            {
+                var chunk = await GetChunk(chunkId).ConfigureAwait(true);
+
+                var chunkChanged = await ChangeChunkStatus(chunk, status).ConfigureAwait(true);
+
+                chunks.Add(chunkChanged);
+            }
+
+            return chunks;
+        }
+
         public static async Task<ChunkModel> SaveChunkAndElements(ChunkModel chunk, string ruleLang)
         {
             var elements = ParseTextElements(chunk);
@@ -143,8 +170,6 @@ namespace Process
             {
                 var chunkValueItem = new ChunkValueItemModel
                 {
-                    Id = Guid.NewGuid().ToString(),
-
                     Value = element.Value,
 
                     Type = element.Type,
@@ -267,5 +292,7 @@ namespace Process
 
             return elements;
         }
+
+
     }
 }

@@ -52,6 +52,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ChunkListViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChunkListViewer.Designer.cs">
+      <DependentUpon>ChunkListViewer.cs</DependentUpon>
+    </Compile>
     <Compile Include="ChunkContainer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -134,6 +140,9 @@
     <None Include="Properties\DataSources\Model.MorphModel.datasource" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="ChunkListViewer.resx">
+      <DependentUpon>ChunkListViewer.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ChunkContainer.resx">
       <DependentUpon>ChunkContainer.cs</DependentUpon>
     </EmbeddedResource>

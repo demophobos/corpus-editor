@@ -8,6 +8,7 @@
         Text,
         ParallelText,
         VersionAndOriginal,
-        PosStatistics
+        PosStatistics,
+        ChunkUnpublished
     }
 }

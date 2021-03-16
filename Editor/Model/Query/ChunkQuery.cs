@@ -10,5 +10,7 @@ namespace Model.Query
         public string HeaderId { get; set; }
         [JsonProperty("indexName", NullValueHandling = NullValueHandling.Ignore)]
         public string IndexName { get; set; }
+        [JsonProperty("status", NullValueHandling = NullValueHandling.Ignore)]
+        public string Status { get; set; }
     }
 }

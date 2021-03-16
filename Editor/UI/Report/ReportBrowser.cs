@@ -2,6 +2,7 @@
 using Model;
 using Model.Enum;
 using Process;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading.Tasks;
@@ -73,6 +74,9 @@ namespace Report
                 case ReportTypeEnum.PosStatistics:
                     await GetPosStatisticsReport().ConfigureAwait(true);
                     break;
+                case ReportTypeEnum.ChunkUnpublished:
+                    await GetChunkUnpublishedReport().ConfigureAwait(true);
+                    break;
                 default:
                     break;
             }
@@ -80,6 +84,26 @@ namespace Report
             _reportViewer.ReportRefresh += ReportRefresh;
 
             loader1.SendToBack();
+        }
+
+        private async Task GetChunkUnpublishedReport()
+        {
+            Text = "Неопубликованные фрагменты";
+
+            _reportViewer.LocalReport.DataSources.Clear();
+
+            _reportViewer.LocalReport.ReportPath = @"Reports\ChunkUnpublished.rdlc";
+
+            var ds = new ReportDataSource
+            {
+                Name = "DS_Chunks",
+            };
+
+            ds.Value = await _documentReportProcess.GetChunkUnpublishedReport().ConfigureAwait(true);
+
+            _reportViewer.LocalReport.DataSources.Add(ds);
+
+            _reportViewer.RefreshReport();
         }
 
         private async Task GetPosStatisticsReport()

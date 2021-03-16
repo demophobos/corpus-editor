@@ -96,6 +96,13 @@ namespace Process
             };
         }
 
+        public async Task<List<ChunkReportModel>> GetChunkUnpublishedReport()
+        {
+            var statusItems = await _documentProcess.GetChunksByHeader(ChunkStatusEnum.Changed);
+
+            return statusItems.Select(i => new ChunkReportModel { IndexName = i.IndexName, Value = i.Value }).ToList();
+        }
+
         public async Task<List<PosReportModel>> GetPosStatisticsReport()
         {
             var result = new List<PosReportModel>();

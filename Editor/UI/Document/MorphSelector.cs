@@ -5,6 +5,7 @@ using Model.Query;
 using Morph;
 using Process;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Threading.Tasks;
@@ -15,18 +16,26 @@ namespace Document
 {
     public partial class MorphSelector : DockContent
     {
+        DocumentProcess _documentProcess;
+
         MorphProcess _morphProcess;
 
         ElementModel _element;
 
         IndexModel _index;
 
+        ChunkModel _chunk;
+
         public event EventHandler<ElementModel> ElementMorphAccepted;
 
         public event EventHandler<ElementModel> ElementMorphRejected;
 
-        public MorphSelector(IndexModel index)
+        public MorphSelector(DocumentProcess documentProcess, IndexModel index, ChunkModel chunk)
         {
+            _documentProcess = documentProcess;
+
+            _chunk = chunk;
+
             _index = index;
 
             _morphProcess = new MorphProcess();
@@ -191,6 +200,8 @@ namespace Document
 
                 _element = await ElementProcess.SaveModel(_element).ConfigureAwait(true);
 
+                await ChunkProcess.ChangeChunkStatus(_chunk, ChunkStatusEnum.Changed).ConfigureAwait(true);
+
                 await LoadDataAsync(_element).ConfigureAwait(true);
 
                 lblStatus.Text = $"Определение применено";
@@ -206,6 +217,8 @@ namespace Document
                 _element.MorphId = null;
 
                 _element = await ElementProcess.SaveModel(_element).ConfigureAwait(true);
+
+                await ChunkProcess.ChangeChunkStatus(_chunk, ChunkStatusEnum.Changed).ConfigureAwait(true);
 
                 await LoadDataAsync(_element).ConfigureAwait(true);
 
@@ -226,6 +239,8 @@ namespace Document
 
         private async void btnAcceptForAllCases_Click(object sender, EventArgs e)
         {
+            var chunksToUpdate = new List<string>();
+
             if (morphSource.Current != null && morphSource.Current is MorphModel morph)
             {
                 mnuTools.Enabled = false;
@@ -248,9 +263,16 @@ namespace Document
                     {
                         _element = elem;
 
-                        await LoadDataAsync(_element);
+                        await LoadDataAsync(_element).ConfigureAwait(true);
+                    }
+
+                    if (!chunksToUpdate.Contains(element.ChunkId))
+                    {
+                        chunksToUpdate.Add(element.ChunkId);
                     }
                 }
+
+                var changedChunks = await ChunkProcess.ChangeChunkStatus(chunksToUpdate, ChunkStatusEnum.Changed);
 
                 ElementMorphAccepted.Invoke(this, _element);
 
@@ -259,11 +281,20 @@ namespace Document
                 loader1.SendToBack();
 
                 mnuTools.Enabled = true;
+
+                if (changedChunks.Count > 0)
+                {
+                    var chunkListViewer = new ChunkListViewer(_documentProcess, changedChunks, _element, ChunkEditAction.MorphDefinitionAccepted);
+
+                    chunkListViewer.ShowDialog();
+                }
             }
         }
 
         private async void btnCancelAllCases_Click(object sender, EventArgs e)
         {
+            var chunksToUpdate = new List<string>();
+
             if (morphSource.Current != null && morphSource.Current is MorphModel morph)
             {
                 mnuTools.Enabled = false;
@@ -291,12 +322,25 @@ namespace Document
 
                             await LoadDataAsync(_element);
                         }
+
+                        if (!chunksToUpdate.Contains(element.ChunkId))
+                        {
+                            chunksToUpdate.Add(element.ChunkId);
+                        }
                     }
+
+                    var changedChunks = await ChunkProcess.ChangeChunkStatus(chunksToUpdate, ChunkStatusEnum.Changed);
 
                     ElementMorphRejected.Invoke(this, _element);
 
                     lblStatus.Text = $"Определение отменено для {applicableElements.Count}";
 
+                    if (changedChunks.Count > 0)
+                    {
+                        var chunkListViewer = new ChunkListViewer(_documentProcess, changedChunks, _element, ChunkEditAction.MorphDefinitionRejected);
+
+                        chunkListViewer.ShowDialog();
+                    }
                 }
 
                 loader1.SendToBack();

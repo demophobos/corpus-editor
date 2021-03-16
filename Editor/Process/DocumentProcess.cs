@@ -1,4 +1,5 @@
 ﻿using Model;
+using Model.Enum;
 using Model.Query;
 using Model.View;
 using System.Collections.Generic;
@@ -42,6 +43,13 @@ namespace Process
         public async Task<List<ChunkViewModel>> GetChunksByHeader()
         {
             var query = new ChunkQuery { HeaderId = Header.Id };
+
+            return await API.ChunkAPI.GetChunksByQuery(query);
+        }
+
+        public async Task<List<ChunkViewModel>> GetChunksByHeader(string chunkStatus)
+        {
+            var query = new ChunkQuery { HeaderId = Header.Id, Status = chunkStatus };
 
             return await API.ChunkAPI.GetChunksByQuery(query);
         }

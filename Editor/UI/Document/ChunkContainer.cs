@@ -208,7 +208,7 @@ namespace Document
 
             if (_morphSelector == null || _morphSelector.IsDisposed)
             {
-                _morphSelector = new MorphSelector(Index);
+                _morphSelector = new MorphSelector(_documentProcess, Index, _chunk);
 
                 _morphSelector.ElementMorphAccepted += MorphSelector_ElementMorphAccepted;
 

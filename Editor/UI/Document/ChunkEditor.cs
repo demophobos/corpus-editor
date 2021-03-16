@@ -1,4 +1,5 @@
 ﻿using Model;
+using Model.Enum;
 using Process;
 using System;
 using System.Windows.Forms;
@@ -35,7 +36,14 @@ namespace Document
 
             var chunk = (ChunkModel)chunkSource.DataSource;
 
-            var chunkBase = new ChunkModel { Id = chunk.Id, IndexId = chunk.IndexId, Value = chunk.Value, HeaderId = _index.HeaderId };
+            var chunkBase = new ChunkModel
+            {
+                Id = chunk.Id,
+                IndexId = chunk.IndexId,
+                Value = chunk.Value,
+                HeaderId = _index.HeaderId,
+                Status = ChunkStatusEnum.Changed
+            };
 
             await ChunkProcess.SaveChunkAndElements(chunkBase, _ruleLang).ConfigureAwait(true);
 

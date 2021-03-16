@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using System;
 
 namespace Model
 {
@@ -12,6 +13,8 @@ namespace Model
         public string IndexId { get; set; }
         [JsonProperty("headerId")]
         public string HeaderId { get; set; }
+        [JsonProperty("status")]
+        public string Status { get; set; }
 
         public override string ToString()
         {

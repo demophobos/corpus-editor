@@ -122,6 +122,9 @@
       <Link>Reports\PosStatistics.rdlc</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <EmbeddedResource Include="..\UI\Report\Reports\ChunkUnpublished.rdlc">
+      <Link>Reports\ChunkUnpublished.rdlc</Link>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
