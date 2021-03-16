@@ -41,12 +41,15 @@ namespace Document
             // 
             // txtChunk
             // 
-            this.txtChunk.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtChunk.BackColor = System.Drawing.SystemColors.Window;
+            this.txtChunk.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtChunk.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtChunk.Location = new System.Drawing.Point(0, 0);
             this.txtChunk.Name = "txtChunk";
+            this.txtChunk.ReadOnly = true;
             this.txtChunk.Size = new System.Drawing.Size(584, 361);
             this.txtChunk.TabIndex = 0;
+            this.txtChunk.TabStop = false;
             this.txtChunk.Text = "";
             // 
             // ChunkListViewer

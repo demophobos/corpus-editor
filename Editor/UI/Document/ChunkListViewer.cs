@@ -42,7 +42,7 @@ namespace Document
 
             _chunkEditAction = chunkEditAction;
 
-            Text = chunkEditAction == ChunkEditAction.MorphDefinitionAccepted ? "Определение применено для следующих случаев:"
+            Text = chunkEditAction == ChunkEditAction.MorphDefinitionAccepted ? "Определение применено к следующим случаям:"
                 : "Определение отменено для следующих случаев:";
 
             foreach (var chunk in _chunks)

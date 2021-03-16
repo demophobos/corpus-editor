@@ -33,7 +33,6 @@
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>IndexName</rd:DefaultName>
-                      <DocumentMapLabel>=Fields!IndexName.Value</DocumentMapLabel>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -75,6 +74,7 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
+                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
               </TablixCells>

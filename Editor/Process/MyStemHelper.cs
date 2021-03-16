@@ -95,7 +95,7 @@ namespace Process
             model.Feature = ConvertFeature(attrArray);
             model.Tense = ConvertTense(attrArray);
 
-            model.Feature = !string.IsNullOrEmpty(model.Feature.Trim(',')) ? model.Feature.Trim(',') : null;
+            model.Feature = !string.IsNullOrEmpty(model.Feature.Trim(';')) ? model.Feature.Trim(';') : null;
         }
 
         private static string ConvertTense(string[] attrArray)
@@ -110,34 +110,34 @@ namespace Process
         {
             var result = string.Empty;
             //Adj
-            if (attrArray.Contains("brev")) result += "brev,";
-            if (attrArray.Contains("plen")) result += "plen,";
-            if (attrArray.Contains("poss")) result += "poss,";
+            if (attrArray.Contains("brev")) result += "brev;";
+            if (attrArray.Contains("plen")) result += "plen;";
+            if (attrArray.Contains("poss")) result += "poss;";
             //Verb
-            if (attrArray.Contains("tran")) result += "tran,";
-            if (attrArray.Contains("intr")) result += "intr,";
+            if (attrArray.Contains("tran")) result += "tran;";
+            if (attrArray.Contains("intr")) result += "intr;";
 
-            if (attrArray.Contains("ipf")) result += "ipf,";
-            if (attrArray.Contains("pf")) result += "pf,";
+            if (attrArray.Contains("ipf")) result += "ipf;";
+            if (attrArray.Contains("pf")) result += "pf;";
 
             //Noun
-            if (attrArray.Contains("anim")) result += "anim,";
-            if (attrArray.Contains("inan")) result += "inan,";
+            if (attrArray.Contains("anim")) result += "anim;";
+            if (attrArray.Contains("inan")) result += "inan;";
 
             //Other
-            if (attrArray.Contains("parenth")) result += "parenth,"; //вводное слово
-            if (attrArray.Contains("geo")) result += "geo,"; //географическое название
-            if (attrArray.Contains("awkw")) result += "awkw,"; //образование формы затруднено
-            if (attrArray.Contains("persn")) result += "persn,"; //имя собственное
-            if (attrArray.Contains("dist")) result += "dist,"; //искаженная форма
-            if (attrArray.Contains("obsc")) result += "obsc,"; //обсценная лексика
-            if (attrArray.Contains("patrn")) result += "patrn,"; //отчество
-            if (attrArray.Contains("praed")) result += "praed,"; //предикатив
-            if (attrArray.Contains("inform")) result += "inform,"; //разговорная форма
-            if (attrArray.Contains("rare")) result += "rare,"; //редко встречающееся слово
-            if (attrArray.Contains("abbr")) result += "abbr,"; //сокращение
-            if (attrArray.Contains("obsol")) result += "obsol,"; //устаревшая форма
-            if (attrArray.Contains("famn")) result += "famn,";//фамилия
+            if (attrArray.Contains("parenth")) result += "parenth;"; //вводное слово
+            if (attrArray.Contains("geo")) result += "geo;"; //географическое название
+            if (attrArray.Contains("awkw")) result += "awkw;"; //образование формы затруднено
+            if (attrArray.Contains("persn")) result += "persn;"; //имя собственное
+            if (attrArray.Contains("dist")) result += "dist;"; //искаженная форма
+            if (attrArray.Contains("obsc")) result += "obsc;"; //обсценная лексика
+            if (attrArray.Contains("patrn")) result += "patrn;"; //отчество
+            if (attrArray.Contains("praed")) result += "praed;"; //предикатив
+            if (attrArray.Contains("inform")) result += "inform;"; //разговорная форма
+            if (attrArray.Contains("rare")) result += "rare;"; //редко встречающееся слово
+            if (attrArray.Contains("abbr")) result += "abbr;"; //сокращение
+            if (attrArray.Contains("obsol")) result += "obsol;"; //устаревшая форма
+            if (attrArray.Contains("famn")) result += "famn;";//фамилия
             return result;
         }
 
