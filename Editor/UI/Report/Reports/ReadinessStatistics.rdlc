@@ -405,7 +405,7 @@
                 </ChartElementPosition>
               </ChartArea>
             </ChartAreas>
-            <Palette>BrightPastel</Palette>
+            <Palette>GrayScale</Palette>
             <ChartBorderSkin>
               <Style>
                 <BackgroundColor>Gray</BackgroundColor>
@@ -424,9 +424,9 @@
             </ChartNoDataMessage>
             <rd:DesignerMode>DataBar</rd:DesignerMode>
             <DataSetName>DS_Chunks</DataSetName>
-            <Top>0.94932cm</Top>
-            <Left>1.45203cm</Left>
-            <Height>1.25cm</Height>
+            <Top>1.00224cm</Top>
+            <Left>0.86995cm</Left>
+            <Height>1.19708cm</Height>
             <Width>16.23833cm</Width>
             <Style>
               <Border>

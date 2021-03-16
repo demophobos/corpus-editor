@@ -51,6 +51,7 @@
     <Compile Include="ChunkModel.cs" />
     <Compile Include="Report\ChunkIndexedReportModel.cs" />
     <Compile Include="Report\ChunkReportModel.cs" />
+    <Compile Include="Report\ChunkStatReportModel.cs" />
     <Compile Include="Report\ChunkStatusReportModel.cs" />
     <Compile Include="ChunkValueObjModel.cs" />
     <Compile Include="ElementModel.cs" />
@@ -89,6 +90,7 @@
     <Compile Include="Query\MorphQuery.cs" />
     <Compile Include="Query\ProjectQuery.cs" />
     <Compile Include="Query\TaxonomyQuery.cs" />
+    <Compile Include="Report\ElementStatReportModel.cs" />
     <Compile Include="Report\PosReportModel.cs" />
     <Compile Include="TaxonomyModel.cs" />
     <Compile Include="UserModel.cs" />
