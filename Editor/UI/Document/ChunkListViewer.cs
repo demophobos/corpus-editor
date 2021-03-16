@@ -25,9 +25,16 @@ namespace Document
 
         ChunkEditAction _chunkEditAction;
 
-        public ChunkListViewer(DocumentProcess documentProcess, List<ChunkModel> chunks, ElementModel element, ChunkEditAction chunkEditAction)
+        public ChunkListViewer(DocumentProcess documentProcess)
         {
             _documentProcess = documentProcess;
+
+            InitializeComponent();
+        }
+
+        public void LoadData(List<ChunkModel> chunks, ElementModel element, ChunkEditAction chunkEditAction)
+        {
+            txtChunk.Clear();
 
             _chunks = chunks;
 
@@ -35,14 +42,9 @@ namespace Document
 
             _chunkEditAction = chunkEditAction;
 
-            InitializeComponent();
-
             Text = chunkEditAction == ChunkEditAction.MorphDefinitionAccepted ? "Определение применено для следующих случаев:"
                 : "Определение отменено для следующих случаев:";
-        }
 
-        private void ChunkListViewer_Load(object sender, EventArgs e)
-        {
             foreach (var chunk in _chunks)
             {
                 txtChunk.AppendText(_documentProcess.Indeces.FirstOrDefault(i => i.Id == chunk.IndexId).Name, Color.Blue);
@@ -54,7 +56,7 @@ namespace Document
                 txtChunk.AppendText(Environment.NewLine);
             }
 
-            txtChunk.HighlightText(_element.Value, _chunkEditAction == ChunkEditAction.MorphDefinitionAccepted ? Color.Green : Color.Red);
+            txtChunk.HighlightText(_element.Value, _chunkEditAction == ChunkEditAction.MorphDefinitionAccepted ? Color.Green : Color.Red, new Font(txtChunk.Font.FontFamily, txtChunk.Font.Size, FontStyle.Underline));
         }
     }
 }

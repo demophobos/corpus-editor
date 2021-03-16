@@ -30,26 +30,10 @@ namespace Document
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.headerSource = new System.Windows.Forms.BindingSource(this.components);
             this.txtChunk = new System.Windows.Forms.RichTextBox();
-            this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.headerSource)).BeginInit();
             this.SuspendLayout();
-            // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.ColumnCount = 1;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 428F));
-            this.tableLayoutPanel1.Controls.Add(this.txtChunk, 0, 0);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(584, 361);
-            this.tableLayoutPanel1.TabIndex = 10;
             // 
             // headerSource
             // 
@@ -57,15 +41,12 @@ namespace Document
             // 
             // txtChunk
             // 
-            this.txtChunk.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtChunk.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtChunk.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtChunk.Font = new System.Drawing.Font("Palatino Linotype", 14.25F);
-            this.txtChunk.Location = new System.Drawing.Point(3, 3);
+            this.txtChunk.Location = new System.Drawing.Point(0, 0);
             this.txtChunk.Name = "txtChunk";
-            this.txtChunk.ReadOnly = true;
-            this.txtChunk.Size = new System.Drawing.Size(578, 355);
-            this.txtChunk.TabIndex = 901;
-            this.txtChunk.TabStop = false;
+            this.txtChunk.Size = new System.Drawing.Size(584, 361);
+            this.txtChunk.TabIndex = 0;
             this.txtChunk.Text = "";
             // 
             // ChunkListViewer
@@ -73,20 +54,18 @@ namespace Document
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(584, 361);
-            this.Controls.Add(this.tableLayoutPanel1);
+            this.Controls.Add(this.txtChunk);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.HideOnClose = true;
             this.Name = "ChunkListViewer";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Измененные фрагменты";
-            this.Load += new System.EventHandler(this.ChunkListViewer_Load);
-            this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.headerSource)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.BindingSource headerSource;
         private System.Windows.Forms.RichTextBox txtChunk;
     }

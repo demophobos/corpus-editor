@@ -17,7 +17,7 @@ namespace Common.Helper
             box.SelectionColor = box.ForeColor;
         }
 
-        public static void HighlightText(this RichTextBox richTextBox, string word, Color color)
+        public static void HighlightText(this RichTextBox richTextBox, string word, Color color, Font font)
         {
 
             if (word == string.Empty)
@@ -29,7 +29,7 @@ namespace Common.Helper
             {
                 richTextBox.Select(index, word.Length);
                 richTextBox.SelectionColor = color;
-                richTextBox.SelectionFont = new Font("Palatino Linotype", (float)14.25, FontStyle.Underline);
+                richTextBox.SelectionFont = font;
                 startIndex = index + word.Length;
             }
 

@@ -30,6 +30,8 @@ namespace Document
 
         public event EventHandler<ElementModel> ElementMorphRejected;
 
+        public event EventHandler<Tuple<List<ChunkModel>, ElementModel, ChunkEditAction>> ChunkBulkMorphChanged;
+
         public MorphSelector(DocumentProcess documentProcess, IndexModel index, ChunkModel chunk)
         {
             _documentProcess = documentProcess;
@@ -282,12 +284,7 @@ namespace Document
 
                 mnuTools.Enabled = true;
 
-                if (changedChunks.Count > 0)
-                {
-                    var chunkListViewer = new ChunkListViewer(_documentProcess, changedChunks, _element, ChunkEditAction.MorphDefinitionAccepted);
-
-                    chunkListViewer.ShowDialog();
-                }
+                ShowAffectedCases(changedChunks, ChunkEditAction.MorphDefinitionAccepted);
             }
         }
 
@@ -335,17 +332,20 @@ namespace Document
 
                     lblStatus.Text = $"Определение отменено для {applicableElements.Count}";
 
-                    if (changedChunks.Count > 0)
-                    {
-                        var chunkListViewer = new ChunkListViewer(_documentProcess, changedChunks, _element, ChunkEditAction.MorphDefinitionRejected);
-
-                        chunkListViewer.ShowDialog();
-                    }
+                    ShowAffectedCases(changedChunks, ChunkEditAction.MorphDefinitionRejected);
                 }
 
                 loader1.SendToBack();
 
                 mnuTools.Enabled = true;
+            }
+        }
+
+        private void ShowAffectedCases(List<ChunkModel> changedChunks, ChunkEditAction chunkEditAction)
+        {
+            if (changedChunks.Count > 0)
+            {
+                ChunkBulkMorphChanged?.Invoke(this, new Tuple<List<ChunkModel>, ElementModel, ChunkEditAction>(changedChunks, _element, chunkEditAction));
             }
         }
 

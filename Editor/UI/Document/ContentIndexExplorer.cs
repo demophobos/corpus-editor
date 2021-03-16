@@ -362,7 +362,7 @@ namespace Document
                 loader1.SetStatus($"Опубликовано фрагментов: {updatedCount} из {chunks.Count}");
             }
 
-            await LoadDataAsync().ConfigureAwait(true);
+            loader1.SendToBack();
 
             DialogProcess.InfoMessage($"Публикация фрагментов { _documentProcess.Header.Code}", $"Опубликовано: {updatedCount} из {chunks.Count}: {string.Join(", ", updatedChunks.Select(i => i.IndexName))}");
 

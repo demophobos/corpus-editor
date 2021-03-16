@@ -21,6 +21,8 @@ namespace Document
 
         private ChunkContainer _chunkContainer;
 
+        private ChunkListViewer _chunkListViewer;
+
         public DocumentContainer(HeaderModel header)
         {
             DocumentProcess = new DocumentProcess(header);
@@ -41,6 +43,8 @@ namespace Document
             _contentIndexExplorer.Show(dockPanel1, DockState.DockRight);
 
             _chunkContainers = new List<ChunkContainer>();
+
+            _chunkListViewer = new ChunkListViewer(DocumentProcess);
         }
 
         private void ContentExplorer_IndexSelected(object sender, IndexModel index)
@@ -58,12 +62,24 @@ namespace Document
 
                     _chunkContainer.FormClosed += ChunkContainer_FormClosed;
 
+                    _chunkContainer.ChunkBulkMorphChanged += ChunkContainer_ChunkBulkMorphChanged;
+
                     _chunkContainer.Show(dockPanel1, DockState.Document);
                 }
                 else
                 {
                     existingControl.Activate();
                 }
+            }
+        }
+
+        private void ChunkContainer_ChunkBulkMorphChanged(object sender, Tuple<List<ChunkModel>, ElementModel, ChunkEditAction> e)
+        {
+            _chunkListViewer.LoadData(e.Item1, e.Item2, e.Item3);
+
+            if (_chunkListViewer.IsHidden)
+            {
+                _chunkListViewer.Show(_contentIndexExplorer.Pane, DockAlignment.Bottom, 0.5);
             }
         }
 

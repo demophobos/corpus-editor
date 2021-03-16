@@ -4,6 +4,7 @@ using Model.Enum;
 using Model.Query;
 using Process;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
@@ -27,6 +28,8 @@ namespace Document
         private ChunkModel _chunk;
 
         private SaveFileDialog _saveFileDialog;
+
+        public event EventHandler<Tuple<List<ChunkModel>, ElementModel, ChunkEditAction>> ChunkBulkMorphChanged;
 
         public ChunkContainer(IndexModel index, DocumentProcess documentProcess)
         {
@@ -214,6 +217,8 @@ namespace Document
 
                 _morphSelector.ElementMorphRejected += MorphSelector_ElementMorphRejected;
 
+                _morphSelector.ChunkBulkMorphChanged += MorphSelector_ChunkBulkMorphChanged;
+
                 _morphSelector.Show(dockPanel1, DockState.DockBottom);
 
                 btnShowHideMorphologyPane.ToolTipText = "Cкрыть морфологию";
@@ -240,6 +245,11 @@ namespace Document
                     btnShowHideMorphologyPane.Tag = "hide";
                 }
             }
+        }
+
+        private void MorphSelector_ChunkBulkMorphChanged(object sender, Tuple<List<ChunkModel>, ElementModel, ChunkEditAction> e)
+        {
+            ChunkBulkMorphChanged?.Invoke(sender, e);
         }
 
         private void btnShowHideTranslationPane_Click(object sender, EventArgs e)
