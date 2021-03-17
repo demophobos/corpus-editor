@@ -60,7 +60,7 @@ namespace Editor
 
         }
 
-        private void LoadItems()
+        private async void LoadItems()
         {
             _projectExplorer = new ProjectExplorer();
 
@@ -72,9 +72,9 @@ namespace Editor
 
             _projectExplorer.ProjectDeleted += ProjectExplorer_ProjectDeleted;
 
-            _projectExplorer.LoadData();
+            await _projectExplorer.LoadData().ConfigureAwait(true);
 
-            _projectExplorer.Show(dockPanel1, DockState.DockLeft);
+            _projectExplorer.Show(dockPanel1, DockState.DockLeftAutoHide);
         }
 
         private void ProjectExplorer_HeaderUpdated(object sender, HeaderModel header)

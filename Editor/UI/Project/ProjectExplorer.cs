@@ -27,7 +27,7 @@ namespace Project
             InitializeComponent();
         }
 
-        public async void LoadData()
+        public async Task LoadData()
         {
 
             treeView1.BeginUpdate();
