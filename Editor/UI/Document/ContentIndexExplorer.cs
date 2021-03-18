@@ -18,6 +18,8 @@ namespace Document
     {
         public event EventHandler<IndexModel> IndexSelected;
 
+        public event EventHandler<IndexModel> IndexDeleted;
+
         private DocumentProcess _documentProcess;
 
         private List<IndexModel> _bookmarkedIndeces = new List<IndexModel>();
@@ -179,6 +181,8 @@ namespace Document
                     await Delete(index).ConfigureAwait(true);
 
                     await LoadDataAsync().ConfigureAwait(true);
+
+                    IndexDeleted.Invoke(this, index);
 
                     loader1.SendToBack();
                 }

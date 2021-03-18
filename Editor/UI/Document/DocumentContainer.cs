@@ -38,7 +38,9 @@ namespace Document
         {
             _contentIndexExplorer = new ContentIndexExplorer(DocumentProcess);
 
-            _contentIndexExplorer.IndexSelected += ContentExplorer_IndexSelected;
+            _contentIndexExplorer.IndexSelected += ContentIndexExplorer_IndexSelected;
+
+            _contentIndexExplorer.IndexDeleted += ContentIndexExplorer_IndexDeleted;
 
             _contentIndexExplorer.Show(dockPanel1, DockState.DockRight);
 
@@ -47,7 +49,18 @@ namespace Document
             _chunkListViewer = new ChunkListViewer(DocumentProcess);
         }
 
-        private void ContentExplorer_IndexSelected(object sender, IndexModel index)
+        private void ContentIndexExplorer_IndexDeleted(object sender, IndexModel index)
+        {
+            IDockContent document = dockPanel1.DocumentsToArray().FirstOrDefault(i => i is ChunkContainer chunkContainer && chunkContainer.Index.Id == index.Id);
+
+            document.DockHandler.DockPanel = null;
+
+            document.DockHandler.Close();
+
+            _chunkContainers.Remove(document as ChunkContainer);
+        }
+
+        private void ContentIndexExplorer_IndexSelected(object sender, IndexModel index)
         {
             if (DocumentProcess.Header.Id == index.HeaderId)
             {

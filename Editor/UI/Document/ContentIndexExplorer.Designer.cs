@@ -157,7 +157,7 @@ namespace Document
             this.btnSetBookmark,
             this.btnRemoveBookmark});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(250, 148);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(250, 170);
             // 
             // btnAddSubsection
             // 
