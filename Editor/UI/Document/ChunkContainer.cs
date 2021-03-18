@@ -94,10 +94,6 @@ namespace Document
 
             _interpContainer = new InterpContainer(_documentProcess, Index);
 
-            _morphSelector.Show(dockPanel1, DockState.DockBottom);
-
-            _interpContainer.Show(dockPanel1, DockState.DockBottom);
-
             if (_chunk != null)
             {
                 _chunkExplorer = new ChunkExplorer(_chunk);
@@ -110,7 +106,18 @@ namespace Document
 
                 _chunkExplorer.Show(dockPanel1, DockState.Document);
 
+                _interpContainer.Show(dockPanel1, DockState.DockBottom);
+
+                _morphSelector.Show(dockPanel1, DockState.DockBottom);
+
                 await _interpContainer.LoadData(_chunk).ConfigureAwait(true);
+
+            }
+            else
+            {
+                _morphSelector.Show(dockPanel1, DockState.DockBottom);
+
+                _interpContainer.Show(dockPanel1, DockState.DockBottom);
             }
 
             EnableFunctions();
@@ -242,7 +249,7 @@ namespace Document
                         break;
                 }
             }
-        } 
+        }
         #endregion
 
         #region Publish
@@ -251,7 +258,7 @@ namespace Document
             await _chunkExplorer.PublishChunkAsync().ConfigureAwait(true);
 
             btnPublishChunk.ToolTipText = "Изменения опубликованы";
-        } 
+        }
         #endregion
 
         #region Export to file
@@ -323,7 +330,7 @@ namespace Document
                     }
                 }
             }
-        } 
+        }
         #endregion
 
     }

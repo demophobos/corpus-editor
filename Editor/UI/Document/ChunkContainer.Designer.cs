@@ -34,12 +34,12 @@ namespace Document
             this.btnAddChunk = new System.Windows.Forms.ToolStripButton();
             this.btnEditChunk = new System.Windows.Forms.ToolStripButton();
             this.btnDeleteChunk = new System.Windows.Forms.ToolStripButton();
+            this.btnPublishChunk = new System.Windows.Forms.ToolStripButton();
             this.btnExport = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.cmbLanguages = new System.Windows.Forms.ToolStripComboBox();
             this.btnRunMorphService = new System.Windows.Forms.ToolStripButton();
-            this.btnPublishChunk = new System.Windows.Forms.ToolStripButton();
             this.dockPanel1 = new WeifenLuo.WinFormsUI.Docking.DockPanel();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -94,6 +94,18 @@ namespace Document
             this.btnDeleteChunk.Text = "Удалить фрагмент";
             this.btnDeleteChunk.Click += new System.EventHandler(this.btnDeleteChunk_Click);
             // 
+            // btnPublishChunk
+            // 
+            this.btnPublishChunk.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.btnPublishChunk.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnPublishChunk.Enabled = false;
+            this.btnPublishChunk.Image = ((System.Drawing.Image)(resources.GetObject("btnPublishChunk.Image")));
+            this.btnPublishChunk.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnPublishChunk.Name = "btnPublishChunk";
+            this.btnPublishChunk.Size = new System.Drawing.Size(23, 22);
+            this.btnPublishChunk.Text = "Опубликовать";
+            this.btnPublishChunk.Click += new System.EventHandler(this.btnPublishChunk_ClickAsync);
+            // 
             // btnExport
             // 
             this.btnExport.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
@@ -105,6 +117,11 @@ namespace Document
             this.btnExport.Size = new System.Drawing.Size(23, 22);
             this.btnExport.Text = "Экспорт фрагмента...";
             this.btnExport.Click += new System.EventHandler(this.btnSaveAs_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
             // cmbLanguages
             // 
@@ -125,31 +142,16 @@ namespace Document
             this.btnRunMorphService.ToolTipText = "Морфологический разбор...";
             this.btnRunMorphService.Click += new System.EventHandler(this.btnRunMorphService_Click);
             // 
-            // btnPublishChunk
-            // 
-            this.btnPublishChunk.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.btnPublishChunk.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnPublishChunk.Enabled = false;
-            this.btnPublishChunk.Image = ((System.Drawing.Image)(resources.GetObject("btnPublishChunk.Image")));
-            this.btnPublishChunk.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnPublishChunk.Name = "btnPublishChunk";
-            this.btnPublishChunk.Size = new System.Drawing.Size(23, 22);
-            this.btnPublishChunk.Text = "Опубликовать";
-            this.btnPublishChunk.Click += new System.EventHandler(this.btnPublishChunk_ClickAsync);
-            // 
             // dockPanel1
             // 
             this.dockPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dockPanel1.DockBottomPortion = 0.75D;
             this.dockPanel1.DocumentStyle = WeifenLuo.WinFormsUI.Docking.DocumentStyle.DockingSdi;
+            this.dockPanel1.DocumentTabStripLocation = WeifenLuo.WinFormsUI.Docking.DocumentTabStripLocation.Bottom;
             this.dockPanel1.Location = new System.Drawing.Point(0, 25);
             this.dockPanel1.Name = "dockPanel1";
             this.dockPanel1.Size = new System.Drawing.Size(797, 459);
             this.dockPanel1.TabIndex = 3;
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
             // ChunkContainer
             // 
