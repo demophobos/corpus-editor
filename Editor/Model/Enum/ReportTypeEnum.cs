@@ -9,6 +9,7 @@
         ParallelText,
         VersionAndOriginal,
         PosStatistics,
-        ChunkUnpublished
+        ChunkUnpublished,
+        IndexWithEmptyText
     }
 }

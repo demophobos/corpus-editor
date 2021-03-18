@@ -31,19 +31,15 @@ namespace Document
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ChunkContainer));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.btnShowHideTranslationPane = new System.Windows.Forms.ToolStripButton();
-            this.btnShowHideMorphologyPane = new System.Windows.Forms.ToolStripButton();
             this.btnAddChunk = new System.Windows.Forms.ToolStripButton();
             this.btnEditChunk = new System.Windows.Forms.ToolStripButton();
             this.btnDeleteChunk = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.btnExport = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.cmbLanguages = new System.Windows.Forms.ToolStripComboBox();
             this.btnRunMorphService = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.btnPublishChunk = new System.Windows.Forms.ToolStripButton();
             this.dockPanel1 = new WeifenLuo.WinFormsUI.Docking.DockPanel();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -51,50 +47,20 @@ namespace Document
             // 
             this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnShowHideTranslationPane,
-            this.btnShowHideMorphologyPane,
             this.btnAddChunk,
             this.btnEditChunk,
             this.btnDeleteChunk,
-            this.toolStripSeparator3,
+            this.btnPublishChunk,
             this.btnExport,
             this.toolStripSeparator1,
             this.cmbLanguages,
-            this.btnRunMorphService,
-            this.toolStripSeparator2,
-            this.btnPublishChunk});
+            this.btnRunMorphService});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             this.toolStrip1.Size = new System.Drawing.Size(797, 25);
             this.toolStrip1.TabIndex = 2;
             this.toolStrip1.Text = "toolStrip1";
-            // 
-            // btnShowHideTranslationPane
-            // 
-            this.btnShowHideTranslationPane.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.btnShowHideTranslationPane.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnShowHideTranslationPane.Enabled = false;
-            this.btnShowHideTranslationPane.Image = ((System.Drawing.Image)(resources.GetObject("btnShowHideTranslationPane.Image")));
-            this.btnShowHideTranslationPane.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnShowHideTranslationPane.Name = "btnShowHideTranslationPane";
-            this.btnShowHideTranslationPane.Size = new System.Drawing.Size(23, 22);
-            this.btnShowHideTranslationPane.Tag = "show";
-            this.btnShowHideTranslationPane.Text = "Перевод";
-            this.btnShowHideTranslationPane.Click += new System.EventHandler(this.btnShowHideTranslationPane_Click);
-            // 
-            // btnShowHideMorphologyPane
-            // 
-            this.btnShowHideMorphologyPane.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.btnShowHideMorphologyPane.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnShowHideMorphologyPane.Enabled = false;
-            this.btnShowHideMorphologyPane.Image = ((System.Drawing.Image)(resources.GetObject("btnShowHideMorphologyPane.Image")));
-            this.btnShowHideMorphologyPane.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnShowHideMorphologyPane.Name = "btnShowHideMorphologyPane";
-            this.btnShowHideMorphologyPane.Size = new System.Drawing.Size(23, 22);
-            this.btnShowHideMorphologyPane.Tag = "show";
-            this.btnShowHideMorphologyPane.Text = "Морфология";
-            this.btnShowHideMorphologyPane.Click += new System.EventHandler(this.btnShowHideMorphologyPane_Click);
             // 
             // btnAddChunk
             // 
@@ -128,13 +94,9 @@ namespace Document
             this.btnDeleteChunk.Text = "Удалить фрагмент";
             this.btnDeleteChunk.Click += new System.EventHandler(this.btnDeleteChunk_Click);
             // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
-            // 
             // btnExport
             // 
+            this.btnExport.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.btnExport.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.btnExport.Enabled = false;
             this.btnExport.Image = ((System.Drawing.Image)(resources.GetObject("btnExport.Image")));
@@ -144,37 +106,28 @@ namespace Document
             this.btnExport.Text = "Экспорт фрагмента...";
             this.btnExport.Click += new System.EventHandler(this.btnSaveAs_Click);
             // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
-            // 
             // cmbLanguages
             // 
             this.cmbLanguages.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbLanguages.Enabled = false;
             this.cmbLanguages.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.cmbLanguages.Name = "cmbLanguages";
-            this.cmbLanguages.Size = new System.Drawing.Size(100, 25);
+            this.cmbLanguages.Size = new System.Drawing.Size(200, 25);
             // 
             // btnRunMorphService
             // 
-            this.btnRunMorphService.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.btnRunMorphService.Enabled = false;
             this.btnRunMorphService.Image = ((System.Drawing.Image)(resources.GetObject("btnRunMorphService.Image")));
             this.btnRunMorphService.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnRunMorphService.Name = "btnRunMorphService";
-            this.btnRunMorphService.Size = new System.Drawing.Size(23, 22);
+            this.btnRunMorphService.Size = new System.Drawing.Size(62, 22);
+            this.btnRunMorphService.Text = "Поиск";
             this.btnRunMorphService.ToolTipText = "Морфологический разбор...";
             this.btnRunMorphService.Click += new System.EventHandler(this.btnRunMorphService_Click);
             // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
-            // 
             // btnPublishChunk
             // 
+            this.btnPublishChunk.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.btnPublishChunk.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.btnPublishChunk.Enabled = false;
             this.btnPublishChunk.Image = ((System.Drawing.Image)(resources.GetObject("btnPublishChunk.Image")));
@@ -192,6 +145,11 @@ namespace Document
             this.dockPanel1.Name = "dockPanel1";
             this.dockPanel1.Size = new System.Drawing.Size(797, 459);
             this.dockPanel1.TabIndex = 3;
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
             // ChunkContainer
             // 
@@ -213,18 +171,14 @@ namespace Document
         #endregion
 
         private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripButton btnShowHideMorphologyPane;
-        private System.Windows.Forms.ToolStripButton btnShowHideTranslationPane;
         private System.Windows.Forms.ToolStripButton btnAddChunk;
         private WeifenLuo.WinFormsUI.Docking.DockPanel dockPanel1;
         private System.Windows.Forms.ToolStripButton btnEditChunk;
         private System.Windows.Forms.ToolStripButton btnDeleteChunk;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripButton btnPublishChunk;
         private System.Windows.Forms.ToolStripButton btnExport;
         private System.Windows.Forms.ToolStripComboBox cmbLanguages;
         private System.Windows.Forms.ToolStripButton btnRunMorphService;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
     }
 }

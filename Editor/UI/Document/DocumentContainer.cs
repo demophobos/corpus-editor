@@ -153,6 +153,15 @@ namespace Document
         #endregion
 
         #region Menu Chunk Report
+        private async void mnuChunkReportIndexWithEmptyText_Click(object sender, EventArgs e)
+        {
+            var reportViewer = new ReportBrowser(DocumentProcess);
+
+            reportViewer.Show(dockPanel1, DockState.Document);
+
+            await reportViewer.GetReport(ReportTypeEnum.IndexWithEmptyText).ConfigureAwait(true);
+        }
+
         private async void mnuChunkReportChunkWithoutParallelText_Click(object sender, EventArgs e)
         {
             var reportViewer = new ReportBrowser(DocumentProcess);
@@ -207,6 +216,7 @@ namespace Document
 
             await reportViewer.GetReport(ReportTypeEnum.PosStatistics).ConfigureAwait(true);
         }
+
 
 
 

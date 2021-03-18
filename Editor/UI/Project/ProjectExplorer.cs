@@ -132,13 +132,13 @@ namespace Project
             return true;
         }
 
-        private void btnAdd_Click(object sender, EventArgs e)
+        private async void btnAdd_Click(object sender, EventArgs e)
         {
             var dialog = new ProjectEditor(new ProjectModel());
 
             if (dialog.ShowDialog() == DialogResult.OK)
             {
-                LoadData();
+                await LoadData().ConfigureAwait(true);
             }
         }
 
@@ -191,7 +191,7 @@ namespace Project
             }
         }
 
-        private void btnAddTranslation_Click(object sender, EventArgs e)
+        private async void btnAddTranslation_Click(object sender, EventArgs e)
         {
             if (treeView1.SelectedNode != null && treeView1.SelectedNode.Tag is ProjectModel project)
             {
@@ -201,14 +201,14 @@ namespace Project
 
                 if (editor.ShowDialog() == DialogResult.OK)
                 {
-                    LoadData();
+                    await LoadData().ConfigureAwait(true);
 
                     HeaderAdded?.Invoke(this, header);
                 }
             }
         }
 
-        private void btnAddOriginal_Click(object sender, EventArgs e)
+        private async void btnAddOriginal_Click(object sender, EventArgs e)
         {
             if (treeView1.SelectedNode != null && treeView1.SelectedNode.Tag is ProjectModel project)
             {
@@ -218,14 +218,14 @@ namespace Project
 
                 if (editor.ShowDialog() == DialogResult.OK)
                 {
-                    LoadData();
+                    await LoadData().ConfigureAwait(true);
 
                     HeaderAdded?.Invoke(this, header);
                 }
             }
         }
 
-        private void mnuEditHeader_Click(object sender, EventArgs e)
+        private async void mnuEditHeader_Click(object sender, EventArgs e)
         {
             if (treeView1.SelectedNode != null && treeView1.SelectedNode.Tag is HeaderModel header)
             {
@@ -233,7 +233,7 @@ namespace Project
 
                 if (editor.ShowDialog() == DialogResult.OK)
                 {
-                    LoadData();
+                    await LoadData().ConfigureAwait(true);
 
                     HeaderUpdated?.Invoke(this, header);
                 }

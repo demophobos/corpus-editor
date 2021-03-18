@@ -16,8 +16,6 @@ namespace Document
 {
     public partial class MorphSelector : DockContent
     {
-        DocumentProcess _documentProcess;
-
         MorphProcess _morphProcess;
 
         ElementModel _element;
@@ -32,12 +30,8 @@ namespace Document
 
         public event EventHandler<Tuple<List<ChunkModel>, ElementModel, ChunkEditAction>> ChunkBulkMorphChanged;
 
-        public MorphSelector(DocumentProcess documentProcess, IndexModel index, ChunkModel chunk)
+        public MorphSelector(DocumentProcess documentProcess, IndexModel index)
         {
-            _documentProcess = documentProcess;
-
-            _chunk = chunk;
-
             _index = index;
 
             _morphProcess = new MorphProcess();
@@ -45,11 +39,22 @@ namespace Document
             InitializeComponent();
         }
 
-        public async Task LoadDataAsync(ElementModel element)
+        public async Task LoadDataAsync(ElementModel element, ChunkModel chunk)
         {
+            _chunk = chunk;
+
             Enabled = true;
 
-            Text = $"Морфология: {element.Value}";
+            _element = element;
+
+            var query = new MorphQuery { Form = element.Value.ToLower() };
+
+            morphSource.DataSource = await _morphProcess.GetMorphItems(query).ConfigureAwait(true);
+        }
+
+        private async Task LoadDataAsync(ElementModel element)
+        {
+            Enabled = true;
 
             _element = element;
 
@@ -89,7 +94,7 @@ namespace Document
 
                         await _morphProcess.DeleteMorph(model).ConfigureAwait(true);
 
-                        await LoadDataAsync(_element);
+                        await LoadDataAsync(_element).ConfigureAwait(true);
                     }
                 }
 
@@ -105,7 +110,7 @@ namespace Document
 
             if (editor.ShowDialog() == DialogResult.OK)
             {
-                await LoadDataAsync(_element);
+                await LoadDataAsync(_element).ConfigureAwait(true);
             }
         }
 
@@ -117,7 +122,7 @@ namespace Document
 
                 if (editor.ShowDialog() == DialogResult.OK)
                 {
-                    await LoadDataAsync(_element);
+                    await LoadDataAsync(_element).ConfigureAwait(true);
                 }
             }
         }
@@ -317,7 +322,7 @@ namespace Document
                         {
                             _element = elem;
 
-                            await LoadDataAsync(_element);
+                            await LoadDataAsync(_element).ConfigureAwait(true);
                         }
 
                         if (!chunksToUpdate.Contains(element.ChunkId))
@@ -368,7 +373,7 @@ namespace Document
 
                 if (editor.ShowDialog() == DialogResult.OK)
                 {
-                    await LoadDataAsync(_element);
+                    await LoadDataAsync(_element).ConfigureAwait(true);
                 }
             }
         }

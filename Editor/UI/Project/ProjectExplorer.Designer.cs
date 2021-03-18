@@ -81,7 +81,7 @@ namespace Project
             this.mnuEditHeader,
             this.mnuDeleteHeader});
             this.mnuHeader.Name = "mnuHeader";
-            this.mnuHeader.Size = new System.Drawing.Size(183, 92);
+            this.mnuHeader.Size = new System.Drawing.Size(183, 114);
             // 
             // btnAddOriginal
             // 

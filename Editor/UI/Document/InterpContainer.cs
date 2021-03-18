@@ -25,17 +25,17 @@ namespace Document
 
         public List<InterpViewModel> Originals { get; private set; }
 
-        public InterpContainer(DocumentProcess documentProcess, IndexModel index, ChunkModel chunk)
+        public InterpContainer(DocumentProcess documentProcess, IndexModel index)
         {
             _index = index;
-
-            _chunk = chunk;
 
             _documentProcess = documentProcess;
 
             InitializeComponent();
 
             dockPanel1.Theme = UIProcess.DockPanelTheme;
+
+            Text = _documentProcess.Header.EditionType == EditionTypeStringEnum.Original ? "Переводы" : "Оригинал";
         }
 
         private async void btnAdd_Click(object sender, EventArgs e)
@@ -46,17 +46,16 @@ namespace Document
 
             if (yesResult)
             {
-                await LoadData().ConfigureAwait(true);
+                await LoadData(_chunk).ConfigureAwait(true);
             }
         }
 
-        private async void InterpContainer_Load(object sender, EventArgs e)
+        public async Task LoadData(ChunkModel chunk)
         {
-            await LoadData().ConfigureAwait(true);
-        }
+            _chunk = chunk;
 
-        private async Task LoadData()
-        {
+            btnAdd.Enabled = true;
+
             foreach (IDockContent document in dockPanel1.DocumentsToArray())
             {
                 document.DockHandler.DockPanel = null;
@@ -65,6 +64,7 @@ namespace Document
 
             if (_documentProcess.Header.EditionType == EditionTypeStringEnum.Original)
             {
+
                 Interpretations = await _documentProcess.GetInterpsByQueryView(new InterpViewQuery { SourceId = _chunk.Id }).ConfigureAwait(true);
 
                 foreach (var interp in Interpretations)
@@ -78,6 +78,7 @@ namespace Document
             }
             else
             {
+
                 Originals = await _documentProcess.GetInterpsByQueryView(new InterpViewQuery { InterpId = _chunk.Id }).ConfigureAwait(true);
 
                 var original = Originals.FirstOrDefault();
@@ -89,6 +90,12 @@ namespace Document
                     viewer.InterpDeleted += Viewer_InterpDeleted;
 
                     viewer.Show(dockPanel1, DockState.Document);
+
+                    toolStrip2.Visible = false;
+                }
+                else
+                {
+                    toolStrip2.Visible = true;
                 }
             }
         }
@@ -107,11 +114,8 @@ namespace Document
             deleted.Close();
 
             docs.ToList().Remove(deleted);
-        }
 
-        private async void btnRefresh_Click(object sender, EventArgs e)
-        {
-            await LoadData().ConfigureAwait(true);
+            toolStrip2.Visible = true;
         }
     }
 }

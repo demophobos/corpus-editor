@@ -40,6 +40,7 @@ namespace Document
             this.mnuChunkReport = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuChunkReportWithoutParallelText = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuChunkReportChunkWithUndefinedWord = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuChunkReportUnpublished = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuWordReport = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuWordReportUndefinedWord = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuCommentReport = new System.Windows.Forms.ToolStripMenuItem();
@@ -50,7 +51,7 @@ namespace Document
             this.mnuWindow = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuCloseAllWindows = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuCloseAllWindowsExceptActive = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuChunkReportUnpublished = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuChunkReportIndexWithEmptyText = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -122,6 +123,7 @@ namespace Document
             // mnuChunkReport
             // 
             this.mnuChunkReport.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuChunkReportIndexWithEmptyText,
             this.mnuChunkReportWithoutParallelText,
             this.mnuChunkReportChunkWithUndefinedWord,
             this.mnuChunkReportUnpublished});
@@ -143,6 +145,13 @@ namespace Document
             this.mnuChunkReportChunkWithUndefinedWord.Size = new System.Drawing.Size(240, 22);
             this.mnuChunkReportChunkWithUndefinedWord.Text = "С неопределенными словами";
             this.mnuChunkReportChunkWithUndefinedWord.Click += new System.EventHandler(this.mnuChunkReportChunkWithUndefinedWord_Click);
+            // 
+            // mnuChunkReportUnpublished
+            // 
+            this.mnuChunkReportUnpublished.Name = "mnuChunkReportUnpublished";
+            this.mnuChunkReportUnpublished.Size = new System.Drawing.Size(240, 22);
+            this.mnuChunkReportUnpublished.Text = "Неопубликованные";
+            this.mnuChunkReportUnpublished.Click += new System.EventHandler(this.mnuChunkReportUnpublished_Click);
             // 
             // mnuWordReport
             // 
@@ -223,12 +232,12 @@ namespace Document
             this.mnuCloseAllWindowsExceptActive.Text = "Закрыть все, кроме активного";
             this.mnuCloseAllWindowsExceptActive.Click += new System.EventHandler(this.mnuCloseAllWindowsExceptActive_Click);
             // 
-            // mnuChunkReportUnpublished
+            // mnuChunkReportIndexWithEmptyText
             // 
-            this.mnuChunkReportUnpublished.Name = "mnuChunkReportUnpublished";
-            this.mnuChunkReportUnpublished.Size = new System.Drawing.Size(240, 22);
-            this.mnuChunkReportUnpublished.Text = "Неопубликованные";
-            this.mnuChunkReportUnpublished.Click += new System.EventHandler(this.mnuChunkReportUnpublished_Click);
+            this.mnuChunkReportIndexWithEmptyText.Name = "mnuChunkReportIndexWithEmptyText";
+            this.mnuChunkReportIndexWithEmptyText.Size = new System.Drawing.Size(240, 22);
+            this.mnuChunkReportIndexWithEmptyText.Text = "Индекс без текста";
+            this.mnuChunkReportIndexWithEmptyText.Click += new System.EventHandler(this.mnuChunkReportIndexWithEmptyText_Click);
             // 
             // DocumentContainer
             // 
@@ -272,5 +281,6 @@ namespace Document
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem mnuCloseAllWindowsExceptActive;
         private System.Windows.Forms.ToolStripMenuItem mnuChunkReportUnpublished;
+        private System.Windows.Forms.ToolStripMenuItem mnuChunkReportIndexWithEmptyText;
     }
 }

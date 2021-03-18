@@ -57,9 +57,7 @@ namespace Document
             cmbLanguages.Enabled =
             btnDeleteChunk.Enabled =
             btnEditChunk.Enabled =
-            btnExport.Enabled =
-            btnShowHideMorphologyPane.Enabled =
-            btnShowHideTranslationPane.Enabled = _chunk != null;
+            btnExport.Enabled = _chunk != null;
 
             btnAddChunk.Enabled = _chunk == null;
 
@@ -86,6 +84,20 @@ namespace Document
 
             _chunk = await ChunkProcess.GetChunkByQuery(query).ConfigureAwait(true);
 
+            _morphSelector = new MorphSelector(_documentProcess, Index);
+
+            _morphSelector.ElementMorphAccepted += MorphSelector_ElementMorphAccepted;
+
+            _morphSelector.ElementMorphRejected += MorphSelector_ElementMorphRejected;
+
+            _morphSelector.ChunkBulkMorphChanged += MorphSelector_ChunkBulkMorphChanged;
+
+            _interpContainer = new InterpContainer(_documentProcess, Index);
+
+            _morphSelector.Show(dockPanel1, DockState.DockBottom);
+
+            _interpContainer.Show(dockPanel1, DockState.DockBottom);
+
             if (_chunk != null)
             {
                 _chunkExplorer = new ChunkExplorer(_chunk);
@@ -98,9 +110,7 @@ namespace Document
 
                 _chunkExplorer.Show(dockPanel1, DockState.Document);
 
-                btnShowHideMorphologyPane.Enabled = btnShowHideTranslationPane.Enabled = true;
-
-                btnShowHideMorphologyPane.PerformClick();
+                await _interpContainer.LoadData(_chunk).ConfigureAwait(true);
             }
 
             EnableFunctions();
@@ -134,6 +144,8 @@ namespace Document
                 _chunkExplorer.ElementsLoaded += ChunkExplorer_ElementsLoaded;
 
                 _chunkExplorer.Show(dockPanel1, DockState.Document);
+
+                await _interpContainer.LoadData(_chunk).ConfigureAwait(true);
             }
         }
 
@@ -167,7 +179,7 @@ namespace Document
         {
             if (_morphSelector != null)
             {
-                await _morphSelector.LoadDataAsync(e);
+                await _morphSelector.LoadDataAsync(e, _chunk);
             }
         }
 
@@ -205,98 +217,12 @@ namespace Document
             btnPublishChunk.ToolTipText = "Изменения не опубликованы";
         }
 
-        private void btnShowHideMorphologyPane_Click(object sender, EventArgs e)
-        {
-            btnShowHideMorphologyPane.Checked = btnShowHideMorphologyPane.Tag.ToString() == "show";
-
-            if (_morphSelector == null || _morphSelector.IsDisposed)
-            {
-                _morphSelector = new MorphSelector(_documentProcess, Index, _chunk);
-
-                _morphSelector.ElementMorphAccepted += MorphSelector_ElementMorphAccepted;
-
-                _morphSelector.ElementMorphRejected += MorphSelector_ElementMorphRejected;
-
-                _morphSelector.ChunkBulkMorphChanged += MorphSelector_ChunkBulkMorphChanged;
-
-                _morphSelector.Show(dockPanel1, DockState.DockBottom);
-
-                btnShowHideMorphologyPane.ToolTipText = "Cкрыть морфологию";
-
-                btnShowHideMorphologyPane.Tag = "hide";
-            }
-            else
-            {
-
-                if (btnShowHideMorphologyPane.Tag.ToString() == "hide")
-                {
-                    _morphSelector.Hide();
-
-                    btnShowHideMorphologyPane.ToolTipText = "Показать морфологию";
-
-                    btnShowHideMorphologyPane.Tag = "show";
-                }
-                else
-                {
-                    _morphSelector.Show();
-
-                    btnShowHideMorphologyPane.ToolTipText = "Cкрыть морфологию";
-
-                    btnShowHideMorphologyPane.Tag = "hide";
-                }
-            }
-        }
-
         private void MorphSelector_ChunkBulkMorphChanged(object sender, Tuple<List<ChunkModel>, ElementModel, ChunkEditAction> e)
         {
             ChunkBulkMorphChanged?.Invoke(sender, e);
         }
 
-        private void btnShowHideTranslationPane_Click(object sender, EventArgs e)
-        {
-            btnShowHideTranslationPane.Checked = btnShowHideTranslationPane.Tag.ToString() == "show";
-
-            if (_interpContainer == null || _interpContainer.IsDisposed)
-            {
-                ShowInterpretationContainer();
-            }
-            else
-            {
-
-                if (btnShowHideTranslationPane.Tag.ToString() == "hide")
-                {
-                    _interpContainer.Hide();
-
-                    btnShowHideTranslationPane.ToolTipText = "Показать переводы";
-
-                    btnShowHideTranslationPane.Tag = "show";
-                }
-                else
-                {
-                    _interpContainer.Show();
-
-                    btnShowHideTranslationPane.ToolTipText = "Cкрыть переводы";
-
-                    btnShowHideTranslationPane.Tag = "hide";
-                }
-            }
-        }
-
-        private void ShowInterpretationContainer()
-        {
-            _interpContainer = new InterpContainer(_documentProcess, Index, _chunk);
-
-            _interpContainer.Show(dockPanel1, DockState.DockBottom);
-
-            btnShowHideTranslationPane.ToolTipText = "Cкрыть переводы";
-
-            btnShowHideTranslationPane.Tag = "hide";
-
-            btnShowHideTranslationPane.Checked = true;
-
-            _interpContainer.Activate();
-        }
-
+        #region Morph service
         private void btnRunMorphService_Click(object sender, EventArgs e)
         {
             if (cmbLanguages.SelectedItem is TaxonomyModel lang)
@@ -316,15 +242,19 @@ namespace Document
                         break;
                 }
             }
-        }
+        } 
+        #endregion
 
+        #region Publish
         private async void btnPublishChunk_ClickAsync(object sender, EventArgs e)
         {
             await _chunkExplorer.PublishChunkAsync().ConfigureAwait(true);
 
             btnPublishChunk.ToolTipText = "Изменения опубликованы";
-        }
+        } 
+        #endregion
 
+        #region Export to file
         private void btnSaveAs_Click(object sender, EventArgs e)
         {
             _saveFileDialog = new SaveFileDialog
@@ -393,7 +323,8 @@ namespace Document
                     }
                 }
             }
-        }
+        } 
+        #endregion
 
     }
 }

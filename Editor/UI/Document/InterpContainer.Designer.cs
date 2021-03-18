@@ -39,6 +39,7 @@ namespace Document
             // btnAdd
             // 
             this.btnAdd.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnAdd.Enabled = false;
             this.btnAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnAdd.Image")));
             this.btnAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnAdd.Name = "btnAdd";
@@ -85,7 +86,6 @@ namespace Document
             this.MinimizeBox = false;
             this.Name = "InterpContainer";
             this.Text = "Переводы";
-            this.Load += new System.EventHandler(this.InterpContainer_Load);
             this.toolStrip2.ResumeLayout(false);
             this.toolStrip2.PerformLayout();
             this.ResumeLayout(false);

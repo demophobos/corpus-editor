@@ -5,6 +5,7 @@ using Process;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WeifenLuo.WinFormsUI.Docking;
@@ -77,6 +78,9 @@ namespace Report
                 case ReportTypeEnum.ChunkUnpublished:
                     await GetChunkUnpublishedReport().ConfigureAwait(true);
                     break;
+                case ReportTypeEnum.IndexWithEmptyText:
+                    await GetIndexWithEmptyTextReport().ConfigureAwait(true);
+                    break;
                 default:
                     break;
             }
@@ -84,6 +88,28 @@ namespace Report
             _reportViewer.ReportRefresh += ReportRefresh;
 
             loader1.SendToBack();
+        }
+
+        private async Task GetIndexWithEmptyTextReport()
+        {
+            Text = $"Индексы без текста";
+
+            _reportViewer.LocalReport.DataSources.Clear();
+
+            _reportViewer.LocalReport.ReportPath = @"Reports\IndexWithEmptyText.rdlc";
+
+            var dsChunks = new ReportDataSource
+            {
+                Name = "DS_Chunks",
+            };
+
+            var values = await _documentReportProcess.GetTextReport().ConfigureAwait(true);
+
+            dsChunks.Value = values.Where(i => string.IsNullOrEmpty(i.ChunkValue)).ToList();
+
+            _reportViewer.LocalReport.DataSources.Add(dsChunks);
+
+            _reportViewer.RefreshReport();
         }
 
         private async Task GetChunkUnpublishedReport()
