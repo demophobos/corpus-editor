@@ -58,13 +58,17 @@ namespace Document
 
         private void ContentIndexExplorer_IndexDeleted(object sender, IndexModel index)
         {
-            IDockContent document = dockPanel1.DocumentsToArray().FirstOrDefault(i => i is ChunkContainer chunkContainer && chunkContainer.Index.Id == index.Id);
+            var document = dockPanel1.DocumentsToArray()
+                .FirstOrDefault(i => i is ChunkContainer chunkContainer && chunkContainer.Index.Id == index.Id);
 
-            document.DockHandler.DockPanel = null;
+            if (document != null)
+            {
+                document.DockHandler.DockPanel = null;
 
-            document.DockHandler.Close();
+                document.DockHandler.Close();
 
-            _chunkContainers.Remove(document as ChunkContainer);
+                _chunkContainers.Remove(document as ChunkContainer);
+            }
         }
 
         private void ContentIndexExplorer_IndexSelected(object sender, IndexModel index)
