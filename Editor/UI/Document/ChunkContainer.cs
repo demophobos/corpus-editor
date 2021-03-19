@@ -55,7 +55,7 @@ namespace Document
         private void EnableFunctions()
         {
             btnRunMorphService.Enabled =
-            cmbLanguages.Enabled =
+            cmbMorphService.Enabled =
             btnDeleteChunk.Enabled =
             btnEditChunk.Enabled =
             btnExport.Enabled = _chunk != null;
@@ -78,11 +78,11 @@ namespace Document
         {
             DisableFinctions();
 
-            var languages = await TaxonomyProcess.GetLanguages().ConfigureAwait(true);
+            var services = TaxonomyProcess.GetMorphServices();
 
-            ComboProcess.CreateSelect(cmbLanguages, languages.ToArray());
+            ComboProcess.CreateSelect(cmbMorphService, services.ToArray());
 
-            cmbLanguages.SelectedItem = languages.FirstOrDefault(i => i.Code == _documentProcess.Header.Lang);
+            cmbMorphService.SelectedItem = services.FirstOrDefault(i => i.Id == _documentProcess.Header.Lang);
 
             var query = new ChunkQuery { IndexId = Index.Id };
 
@@ -247,9 +247,9 @@ namespace Document
         #region Morph service
         private void btnRunMorphService_Click(object sender, EventArgs e)
         {
-            if (cmbLanguages.SelectedItem is TaxonomyModel lang)
+            if (cmbMorphService.SelectedItem is TaxonomyModel service)
             {
-                switch (lang.Code)
+                switch (service.Id)
                 {
                     case LangStringEnum.Greek:
                         _chunkExplorer.RunGreekMorphService();

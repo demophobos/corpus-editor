@@ -9,7 +9,14 @@ namespace Process
 {
     public class TaxonomyProcess
     {
-
+        public static List<TaxonomyModel> GetMorphServices()
+        {
+            return new List<TaxonomyModel> {
+            MophServiceEnum.MorpheusLat,
+            MophServiceEnum.MorpheusGrc,
+            MophServiceEnum.MyStem
+            };
+        }
         public static async Task<List<TaxonomyModel>> GetAuthWorks()
         {
             return await TaxonomyAPI.GetTaxonomyItems(new TaxonomyQuery { CategoryCode = TaxonomyCategoryEnum.AuthWork });

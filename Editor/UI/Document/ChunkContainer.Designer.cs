@@ -37,7 +37,7 @@ namespace Document
             this.btnPublishChunk = new System.Windows.Forms.ToolStripButton();
             this.btnExport = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.cmbLanguages = new System.Windows.Forms.ToolStripComboBox();
+            this.cmbMorphService = new System.Windows.Forms.ToolStripComboBox();
             this.btnRunMorphService = new System.Windows.Forms.ToolStripButton();
             this.dockPanel1 = new WeifenLuo.WinFormsUI.Docking.DockPanel();
             this.toolStrip1.SuspendLayout();
@@ -53,7 +53,7 @@ namespace Document
             this.btnPublishChunk,
             this.btnExport,
             this.toolStripSeparator1,
-            this.cmbLanguages,
+            this.cmbMorphService,
             this.btnRunMorphService});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
@@ -123,13 +123,13 @@ namespace Document
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
-            // cmbLanguages
+            // cmbMorphService
             // 
-            this.cmbLanguages.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbLanguages.Enabled = false;
-            this.cmbLanguages.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.cmbLanguages.Name = "cmbLanguages";
-            this.cmbLanguages.Size = new System.Drawing.Size(200, 25);
+            this.cmbMorphService.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbMorphService.Enabled = false;
+            this.cmbMorphService.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.cmbMorphService.Name = "cmbMorphService";
+            this.cmbMorphService.Size = new System.Drawing.Size(250, 25);
             // 
             // btnRunMorphService
             // 
@@ -179,7 +179,7 @@ namespace Document
         private System.Windows.Forms.ToolStripButton btnDeleteChunk;
         private System.Windows.Forms.ToolStripButton btnPublishChunk;
         private System.Windows.Forms.ToolStripButton btnExport;
-        private System.Windows.Forms.ToolStripComboBox cmbLanguages;
+        private System.Windows.Forms.ToolStripComboBox cmbMorphService;
         private System.Windows.Forms.ToolStripButton btnRunMorphService;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
     }
