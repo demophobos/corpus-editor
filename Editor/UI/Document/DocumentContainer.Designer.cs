@@ -38,6 +38,7 @@ namespace Document
             this.mnuTextReportParallelText = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuTextReportParallelTextCommented = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuChunkReport = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuChunkReportIndexWithEmptyText = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuChunkReportWithoutParallelText = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuChunkReportChunkWithUndefinedWord = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuChunkReportUnpublished = new System.Windows.Forms.ToolStripMenuItem();
@@ -51,8 +52,10 @@ namespace Document
             this.mnuWindow = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuCloseAllWindows = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuCloseAllWindowsExceptActive = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuChunkReportIndexWithEmptyText = new System.Windows.Forms.ToolStripMenuItem();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.lblStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip1.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dockPanel1
@@ -61,7 +64,7 @@ namespace Document
             this.dockPanel1.DocumentStyle = WeifenLuo.WinFormsUI.Docking.DocumentStyle.DockingWindow;
             this.dockPanel1.Location = new System.Drawing.Point(0, 24);
             this.dockPanel1.Name = "dockPanel1";
-            this.dockPanel1.Size = new System.Drawing.Size(640, 462);
+            this.dockPanel1.Size = new System.Drawing.Size(640, 440);
             this.dockPanel1.TabIndex = 1;
             // 
             // menuStrip1
@@ -131,6 +134,13 @@ namespace Document
             this.mnuChunkReport.Name = "mnuChunkReport";
             this.mnuChunkReport.Size = new System.Drawing.Size(98, 20);
             this.mnuChunkReport.Text = "Фрагменты";
+            // 
+            // mnuChunkReportIndexWithEmptyText
+            // 
+            this.mnuChunkReportIndexWithEmptyText.Name = "mnuChunkReportIndexWithEmptyText";
+            this.mnuChunkReportIndexWithEmptyText.Size = new System.Drawing.Size(240, 22);
+            this.mnuChunkReportIndexWithEmptyText.Text = "Индекс без текста";
+            this.mnuChunkReportIndexWithEmptyText.Click += new System.EventHandler(this.mnuChunkReportIndexWithEmptyText_Click);
             // 
             // mnuChunkReportWithoutParallelText
             // 
@@ -232,12 +242,20 @@ namespace Document
             this.mnuCloseAllWindowsExceptActive.Text = "Закрыть все, кроме активного";
             this.mnuCloseAllWindowsExceptActive.Click += new System.EventHandler(this.mnuCloseAllWindowsExceptActive_Click);
             // 
-            // mnuChunkReportIndexWithEmptyText
+            // statusStrip1
             // 
-            this.mnuChunkReportIndexWithEmptyText.Name = "mnuChunkReportIndexWithEmptyText";
-            this.mnuChunkReportIndexWithEmptyText.Size = new System.Drawing.Size(240, 22);
-            this.mnuChunkReportIndexWithEmptyText.Text = "Индекс без текста";
-            this.mnuChunkReportIndexWithEmptyText.Click += new System.EventHandler(this.mnuChunkReportIndexWithEmptyText_Click);
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.lblStatus});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 464);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(640, 22);
+            this.statusStrip1.TabIndex = 4;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // lblStatus
+            // 
+            this.lblStatus.Name = "lblStatus";
+            this.lblStatus.Size = new System.Drawing.Size(0, 17);
             // 
             // DocumentContainer
             // 
@@ -246,6 +264,7 @@ namespace Document
             this.ClientSize = new System.Drawing.Size(640, 486);
             this.Controls.Add(this.dockPanel1);
             this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.statusStrip1);
             this.HideOnClose = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
@@ -253,6 +272,8 @@ namespace Document
             this.Load += new System.EventHandler(this.DocumentContainer_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -282,5 +303,7 @@ namespace Document
         private System.Windows.Forms.ToolStripMenuItem mnuCloseAllWindowsExceptActive;
         private System.Windows.Forms.ToolStripMenuItem mnuChunkReportUnpublished;
         private System.Windows.Forms.ToolStripMenuItem mnuChunkReportIndexWithEmptyText;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel lblStatus;
     }
 }

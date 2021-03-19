@@ -2,6 +2,7 @@
 using Model.Enum;
 using Model.Query;
 using Model.View;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -10,7 +11,6 @@ namespace Process
     public class DocumentProcess
     {
         public HeaderModel Header { get; private set; }
-
         public List<IndexModel> Indeces { get; set; }
         public DocumentProcess(HeaderModel header)
         {

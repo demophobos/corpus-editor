@@ -20,6 +20,8 @@ namespace Document
 
         public event EventHandler<IndexModel> IndexDeleted;
 
+        public event EventHandler<string> StatusInfoShown;
+
         private DocumentProcess _documentProcess;
 
         private List<IndexModel> _bookmarkedIndeces = new List<IndexModel>();
@@ -368,7 +370,7 @@ namespace Document
 
             loader1.SendToBack();
 
-            DialogProcess.InfoMessage($"Публикация фрагментов { _documentProcess.Header.Code}", $"Опубликовано: {updatedCount} из {chunks.Count}: {string.Join(", ", updatedChunks.Select(i => i.IndexName))}");
+            StatusInfoShown?.Invoke(this, $"Публикация фрагментов { _documentProcess.Header.Code} завершена. Опубликовано: {updatedCount} из {chunks.Count}");
 
             toolStrip2.Enabled = true;
         }

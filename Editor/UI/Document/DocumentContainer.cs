@@ -42,11 +42,18 @@ namespace Document
 
             _contentIndexExplorer.IndexDeleted += ContentIndexExplorer_IndexDeleted;
 
+            _contentIndexExplorer.StatusInfoShown += ContentIndexExplorer_StatusInfoShown;
+
             _contentIndexExplorer.Show(dockPanel1, DockState.DockRight);
 
             _chunkContainers = new List<ChunkContainer>();
 
             _chunkListViewer = new ChunkListViewer(DocumentProcess);
+        }
+
+        private void ContentIndexExplorer_StatusInfoShown(object sender, string e)
+        {
+            lblStatus.Text = e;
         }
 
         private void ContentIndexExplorer_IndexDeleted(object sender, IndexModel index)
@@ -77,6 +84,8 @@ namespace Document
 
                     _chunkContainer.ChunkBulkMorphChanged += ChunkContainer_ChunkBulkMorphChanged;
 
+                    _chunkContainer.StatusInfoShown += ChunkContainer_StatusInfoShown;
+
                     _chunkContainer.Show(dockPanel1, DockState.Document);
                 }
                 else
@@ -84,6 +93,11 @@ namespace Document
                     existingControl.Activate();
                 }
             }
+        }
+
+        private void ChunkContainer_StatusInfoShown(object sender, string e)
+        {
+            lblStatus.Text = e;
         }
 
         private void ChunkContainer_ChunkBulkMorphChanged(object sender, Tuple<List<ChunkModel>, ElementModel, ChunkEditAction> e)
@@ -135,6 +149,7 @@ namespace Document
         #endregion
 
         #region Menu Report
+
         #region Menu Text Report
         private async void mnuTextReportText_Click(object sender, EventArgs e)
         {
@@ -236,7 +251,5 @@ namespace Document
         #endregion
 
         #endregion
-
-
     }
 }

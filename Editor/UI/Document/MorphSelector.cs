@@ -30,7 +30,8 @@ namespace Document
 
         public event EventHandler<Tuple<List<ChunkModel>, ElementModel, ChunkEditAction>> ChunkBulkMorphChanged;
 
-        public MorphSelector(DocumentProcess documentProcess, IndexModel index)
+        public event EventHandler<string> StatusInfoShown;
+        public MorphSelector(IndexModel index)
         {
             _index = index;
 
@@ -177,7 +178,7 @@ namespace Document
 
                 btnRemoveRule.Enabled = true;
 
-                lblStatus.Text = $"Правило создано";
+                StatusInfoShown?.Invoke(this, $"Правило создано");
             }
         }
 
@@ -195,7 +196,7 @@ namespace Document
 
                 btnCreateRule.Enabled = true;
 
-                lblStatus.Text = $"Правило удалено";
+                StatusInfoShown?.Invoke(this, $"Правило удалено");
             }
         }
 
@@ -211,7 +212,7 @@ namespace Document
 
                 await LoadDataAsync(_element).ConfigureAwait(true);
 
-                lblStatus.Text = $"Определение применено";
+                StatusInfoShown?.Invoke(this, $"Определение применено");
 
                 ElementMorphAccepted.Invoke(this, _element);
             }
@@ -229,7 +230,7 @@ namespace Document
 
                 await LoadDataAsync(_element).ConfigureAwait(true);
 
-                lblStatus.Text = $"Определение отменено";
+                StatusInfoShown?.Invoke(this, $"Определение отменено");
 
                 ElementMorphRejected.Invoke(this, _element);
             }
@@ -240,7 +241,8 @@ namespace Document
             if (morphSource.Current != null && morphSource.Current is MorphModel model)
             {
                 Clipboard.SetText(model.Form);
-                lblStatus.Text = $"'{model.Form}' скопирована в буфер обмена";
+
+                StatusInfoShown?.Invoke(this, $"'{model.Form}' скопирована в буфер обмена");
             }
         }
 
@@ -283,7 +285,7 @@ namespace Document
 
                 ElementMorphAccepted.Invoke(this, _element);
 
-                lblStatus.Text = $"Определение применено для {applicableElements.Count}";
+                StatusInfoShown?.Invoke(this, $"Определение применено к {applicableElements.Count}");
 
                 loader1.SendToBack();
 
@@ -335,7 +337,7 @@ namespace Document
 
                     ElementMorphRejected.Invoke(this, _element);
 
-                    lblStatus.Text = $"Определение отменено для {applicableElements.Count}";
+                    StatusInfoShown?.Invoke(this, $"Определение отменено для {applicableElements.Count}");
 
                     ShowAffectedCases(changedChunks, ChunkEditAction.MorphDefinitionRejected);
                 }

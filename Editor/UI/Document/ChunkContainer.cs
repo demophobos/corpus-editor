@@ -31,6 +31,7 @@ namespace Document
 
         public event EventHandler<Tuple<List<ChunkModel>, ElementModel, ChunkEditAction>> ChunkBulkMorphChanged;
 
+        public event EventHandler<string> StatusInfoShown;
         public ChunkContainer(IndexModel index, DocumentProcess documentProcess)
         {
             _documentProcess = documentProcess;
@@ -67,6 +68,9 @@ namespace Document
         private void ChunkExplorer_EnablePublishing(object sender, bool e)
         {
             btnPublishChunk.Enabled = e;
+
+            StatusInfoShown?.Invoke(this, $"Фрагмент {Index.Name} изменен");
+
             btnPublishChunk.ToolTipText = "Изменения не опубликованы";
         }
 
@@ -84,7 +88,7 @@ namespace Document
 
             _chunk = await ChunkProcess.GetChunkByQuery(query).ConfigureAwait(true);
 
-            _morphSelector = new MorphSelector(_documentProcess, Index);
+            _morphSelector = new MorphSelector(Index);
 
             _morphSelector.ElementMorphAccepted += MorphSelector_ElementMorphAccepted;
 
@@ -120,7 +124,14 @@ namespace Document
                 _interpContainer.Show(dockPanel1, DockState.DockBottom);
             }
 
+            _morphSelector.StatusInfoShown += MorphSelector_StatusInfoShown;
+
             EnableFunctions();
+        }
+
+        private void MorphSelector_StatusInfoShown(object sender, string e)
+        {
+            StatusInfoShown?.Invoke(sender, e);
         }
 
         private void ChunkExplorer_ElementsLoaded(object sender, EventArgs e)
@@ -212,6 +223,8 @@ namespace Document
 
             btnPublishChunk.Enabled = true;
 
+            StatusInfoShown?.Invoke(this, $"Фрагмент {Index.Name} изменен");
+
             btnPublishChunk.ToolTipText = "Изменения не опубликованы";
         }
 
@@ -220,6 +233,8 @@ namespace Document
             _chunkExplorer.CheckMorphStatus(e);
 
             btnPublishChunk.Enabled = true;
+
+            StatusInfoShown?.Invoke(this, $"Фрагмент {Index.Name} изменен");
 
             btnPublishChunk.ToolTipText = "Изменения не опубликованы";
         }
@@ -256,6 +271,8 @@ namespace Document
         private async void btnPublishChunk_ClickAsync(object sender, EventArgs e)
         {
             await _chunkExplorer.PublishChunkAsync().ConfigureAwait(true);
+
+            StatusInfoShown?.Invoke(this, $"Изменения фрагмента {Index.Name} опубликованы");
 
             btnPublishChunk.ToolTipText = "Изменения опубликованы";
         }
