@@ -56,7 +56,7 @@ namespace Document
                 txtChunk.AppendText(Environment.NewLine);
             }
 
-            txtChunk.HighlightText(_element.Value, _chunkEditAction == ChunkEditAction.MorphDefinitionAccepted ? Color.Green : Color.Red, new Font(txtChunk.Font.FontFamily, txtChunk.Font.Size, FontStyle.Underline));
+            txtChunk.HighlightTextRegExp(_element.Value, _chunkEditAction == ChunkEditAction.MorphDefinitionAccepted ? Color.Green : Color.Red, new Font(txtChunk.Font.FontFamily, txtChunk.Font.Size, FontStyle.Underline));
         }
     }
 }

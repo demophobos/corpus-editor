@@ -38,6 +38,24 @@ namespace Common.Helper
             richTextBox.SelectionColor = Color.Black;
         }
 
+        public static void HighlightTextRegExp(this RichTextBox richTextBox, string word, Color foreColor, Font font)
+        {
+            string pattern = $@"\b({word})\b";
+
+            Regex reg = new Regex(pattern, RegexOptions.IgnoreCase);
+
+            foreach (Match find in reg.Matches(richTextBox.Text))
+            {
+                richTextBox.Select(find.Index, find.Length);
+
+                richTextBox.SelectionColor = foreColor;
+
+                richTextBox.SelectionFont = font;
+
+                richTextBox.Select(find.Index, 0);
+            }
+        }
+
         public static void HighlightTextRegExp(this RichTextBox richTextBox, string word, Color foreColor, Color backColor)
         {
             string pattern = $@"\b({word})\b";
