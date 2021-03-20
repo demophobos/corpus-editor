@@ -163,7 +163,14 @@ namespace Document
 
                 _chunkExplorer.Show(dockPanel1, DockState.Document);
 
-                await _interpContainer.LoadData(_chunk).ConfigureAwait(true);
+                if (_documentProcess.Header.EditionType == EditionTypeStringEnum.Interpretation)
+                {
+                    await _interpContainer.CreateLinkAndLoadOriginal(_chunk).ConfigureAwait(true);
+                }
+                else
+                {
+                    await _interpContainer.LoadData(_chunk).ConfigureAwait(true);
+                }
             }
         }
 

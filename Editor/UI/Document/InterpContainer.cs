@@ -117,5 +117,32 @@ namespace Document
 
             toolStrip2.Visible = true;
         }
+
+        internal async Task CreateLinkAndLoadOriginal(ChunkModel chunk)
+        {
+            var headers = await HeaderProcess.GetHeaders(_documentProcess.Header.ProjectId).ConfigureAwait(true);
+
+            var originalHeader = headers.FirstOrDefault(i => i.EditionType == EditionTypeStringEnum.Original);
+
+            var originalChunk = await ChunkProcess.GetChunkByQuery(new ChunkQuery { HeaderId = originalHeader.Id, IndexName = _index.Name }).ConfigureAwait(true);
+
+            if (originalChunk != null)
+            {
+                var interp = new InterpModel
+                {
+                    SourceId = originalChunk.Id,
+
+                    InterpId = chunk.Id,
+
+                    InterpHeaderId = chunk.HeaderId,
+
+                    SourceHeaderId = originalChunk.HeaderId
+                };
+
+                await _documentProcess.SaveInterp(interp).ConfigureAwait(true);
+            }
+
+            await LoadData(chunk).ConfigureAwait(true);
+        }
     }
 }
