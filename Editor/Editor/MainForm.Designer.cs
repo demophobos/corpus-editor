@@ -34,7 +34,6 @@ namespace Editor
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.mnuFile = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuLogin = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnShowMorphExplorer = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuExit = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
@@ -65,11 +64,10 @@ namespace Editor
             // 
             this.mnuFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuLogin,
-            this.btnShowMorphExplorer,
             this.toolStripSeparator1,
             this.mnuExit});
             this.mnuFile.Name = "mnuFile";
-            this.mnuFile.Size = new System.Drawing.Size(20, 40);
+            this.mnuFile.Size = new System.Drawing.Size(48, 20);
             this.mnuFile.Text = "Файл";
             // 
             // mnuLogin
@@ -79,15 +77,6 @@ namespace Editor
             this.mnuLogin.Size = new System.Drawing.Size(180, 22);
             this.mnuLogin.Text = "Войти";
             this.mnuLogin.Click += new System.EventHandler(this.mnuLogin_Click);
-            // 
-            // btnShowMorphExplorer
-            // 
-            this.btnShowMorphExplorer.Image = ((System.Drawing.Image)(resources.GetObject("btnShowMorphExplorer.Image")));
-            this.btnShowMorphExplorer.Name = "btnShowMorphExplorer";
-            this.btnShowMorphExplorer.Size = new System.Drawing.Size(180, 22);
-            this.btnShowMorphExplorer.Text = "Морфология";
-            this.btnShowMorphExplorer.Visible = false;
-            this.btnShowMorphExplorer.Click += new System.EventHandler(this.btnShowMorphExplorer_Click);
             // 
             // toolStripSeparator1
             // 
@@ -129,7 +118,6 @@ namespace Editor
         private System.Windows.Forms.ToolStripMenuItem mnuLogin;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem mnuExit;
-        private System.Windows.Forms.ToolStripMenuItem btnShowMorphExplorer;
     }
 }
 

@@ -18,8 +18,6 @@ namespace Editor
 {
     public partial class MainForm : Form
     {
-        private MorphExplorer _morphExplorer;
-
         private ProjectExplorer _projectExplorer;
 
         public MainForm()
@@ -44,8 +42,6 @@ namespace Editor
                 var version = Assembly.GetExecutingAssembly().GetName().Version;
 
                 Text = $"CLR Editor ({version}) [{AuthProcess.User.Email}]";
-
-                btnShowMorphExplorer.Visible = true;
 
                 LoadItems();
             }
@@ -97,13 +93,6 @@ namespace Editor
             var loginForm = new LoginForm();
 
             return loginForm.ShowDialog() == DialogResult.OK;
-        }
-
-        private void btnShowMorphExplorer_Click(object sender, EventArgs e)
-        {
-            _morphExplorer = new MorphExplorer();
-
-            _morphExplorer.Show(dockPanel1, DockState.Document);
         }
 
         private void ProjectExplorer_ProjectDeleted(object sender, ProjectModel project)

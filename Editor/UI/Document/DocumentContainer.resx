@@ -123,10 +123,9 @@
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="mnuMorphTable.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAABMSURBVDhPY/j//z9FGEx8+/btP7kYboCTkxPJeBAa8OH9
-        Rzgmhk99A0jF1HcBugJCfAwDSMXUdwG6AkJ8DANIxSgGkIvBBpCP/zMAAID/3TObWds5AAAAAElFTkSu
-        QmCC
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        xAAADsQBlSsOGwAAAExJREFUOE9j+P//P0UYTHz79u0/uRhugJOTE8l4EBrw4f1HOCaGT30DSMXUdwG6
+        AkJ8DANIxdR3AboCQnwMA0jFKAaQi8EGkI//MwAAgP/dM5tZ2zkAAAAASUVORK5CYII=
 </value>
   </data>
   <data name="mnuTextReport.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -169,6 +168,14 @@
         RU5ErkJggg==
 </value>
   </data>
+  <data name="mnuWindow.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        xAAADsQBlSsOGwAAAIFJREFUOE/dkjEOwCAIRXs2T9J72htp0nbQleYPGFALde3wQiKfJyZuRDRQayWH
+        nbPDMEAohPBKSqlJTMF13gqcxXgoibluKWUQoLIEGXfdnLMSSJSAQzLMN0mJ7LsCVJbMnuMKJMj1fVMg
+        +ZEAVbIsmLEk6L88aAIPU/CVfpiItgdMqi+lec2UVAAAAABJRU5ErkJggg==
+</value>
+  </data>
   <data name="mnuCloseAllWindows.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
@@ -176,14 +183,6 @@
         tjFQ0Ojq8OXlvb/9+lJPSkkfcFcsicgbogW+7zsxWRAElGUZ+tWkIN2mVB5Kync5FfvCChysnQJwOV+p
         ulXEGLMCkxmem2xGArxsNkDFDFlTtxbMIOecIzuONhjiEhiSJEF+0oI5pgQAuf0MNBgKIXR9vejiL3AL
         ujAMfxIsFO3XAkPf93oTHJgjjmMI6pFADSMEsL+hk1JGD9VgJlb7+rSvAAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="mnuWindow.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        xAAADsQBlSsOGwAAAIFJREFUOE/dkjEOwCAIRXs2T9J72htp0nbQleYPGFALde3wQiKfJyZuRDRQayWH
-        nbPDMEAohPBKSqlJTMF13gqcxXgoibluKWUQoLIEGXfdnLMSSJSAQzLMN0mJ7LsCVJbMnuMKJMj1fVMg
-        +ZEAVbIsmLEk6L88aAIPU/CVfpiItgdMqi+lec2UVAAAAABJRU5ErkJggg==
 </value>
   </data>
   <metadata name="statusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">

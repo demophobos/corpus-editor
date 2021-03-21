@@ -32,6 +32,7 @@ namespace Document
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DocumentContainer));
             this.dockPanel1 = new WeifenLuo.WinFormsUI.Docking.DockPanel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.mnuMorphTable = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuTextReport = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuTextReportText = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuTextReportTextCommented = new System.Windows.Forms.ToolStripMenuItem();
@@ -54,7 +55,6 @@ namespace Document
             this.mnuCloseAllWindowsExceptActive = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.lblStatus = new System.Windows.Forms.ToolStripStatusLabel();
-            this.mnuMorphTable = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -62,6 +62,7 @@ namespace Document
             // dockPanel1
             // 
             this.dockPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dockPanel1.DockRightPortion = 0.2D;
             this.dockPanel1.DocumentStyle = WeifenLuo.WinFormsUI.Docking.DocumentStyle.DockingWindow;
             this.dockPanel1.Location = new System.Drawing.Point(0, 24);
             this.dockPanel1.Name = "dockPanel1";
@@ -83,6 +84,14 @@ namespace Document
             this.menuStrip1.Size = new System.Drawing.Size(640, 24);
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
+            // 
+            // mnuMorphTable
+            // 
+            this.mnuMorphTable.Image = ((System.Drawing.Image)(resources.GetObject("mnuMorphTable.Image")));
+            this.mnuMorphTable.Name = "mnuMorphTable";
+            this.mnuMorphTable.Size = new System.Drawing.Size(108, 20);
+            this.mnuMorphTable.Text = "Морфология";
+            this.mnuMorphTable.Click += new System.EventHandler(this.mnuMorphTable_Click);
             // 
             // mnuTextReport
             // 
@@ -258,14 +267,6 @@ namespace Document
             // 
             this.lblStatus.Name = "lblStatus";
             this.lblStatus.Size = new System.Drawing.Size(0, 17);
-            // 
-            // mnuMorphTable
-            // 
-            this.mnuMorphTable.Image = ((System.Drawing.Image)(resources.GetObject("mnuMorphTable.Image")));
-            this.mnuMorphTable.Name = "mnuMorphTable";
-            this.mnuMorphTable.Size = new System.Drawing.Size(108, 20);
-            this.mnuMorphTable.Text = "Морфология";
-            this.mnuMorphTable.Click += new System.EventHandler(this.mnuMorphTable_Click);
             // 
             // DocumentContainer
             // 

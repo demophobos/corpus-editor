@@ -37,8 +37,6 @@ namespace Document
             this.btnClone = new System.Windows.Forms.ToolStripButton();
             this.btnEdit = new System.Windows.Forms.ToolStripButton();
             this.btnDelete = new System.Windows.Forms.ToolStripButton();
-            this.btnCopyForm = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.btnCancelDefinition = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.btnAcceptForAllCases = new System.Windows.Forms.ToolStripButton();
@@ -91,8 +89,6 @@ namespace Document
             this.btnEdit,
             this.btnDelete,
             this.toolStripSeparator3,
-            this.btnCopyForm,
-            this.toolStripSeparator1,
             this.btnAcceptDefinition,
             this.btnCancelDefinition,
             this.toolStripSeparator4,
@@ -150,22 +146,6 @@ namespace Document
             this.btnDelete.Size = new System.Drawing.Size(23, 22);
             this.btnDelete.ToolTipText = "Удалить определение";
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_ClickAsync);
-            // 
-            // btnCopyForm
-            // 
-            this.btnCopyForm.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnCopyForm.Enabled = false;
-            this.btnCopyForm.Image = ((System.Drawing.Image)(resources.GetObject("btnCopyForm.Image")));
-            this.btnCopyForm.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnCopyForm.Name = "btnCopyForm";
-            this.btnCopyForm.Size = new System.Drawing.Size(23, 22);
-            this.btnCopyForm.Text = "Копировать форму в буфер обмена";
-            this.btnCopyForm.Click += new System.EventHandler(this.btnCopyForm_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
             // btnCancelDefinition
             // 
@@ -471,10 +451,8 @@ namespace Document
         private System.Windows.Forms.ToolStripButton btnCancelDefinition;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.BindingSource morphSource;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripButton btnCreateRule;
         private System.Windows.Forms.ToolStripButton btnRemoveRule;
-        private System.Windows.Forms.ToolStripButton btnCopyForm;
         private System.Windows.Forms.ToolStripButton btnAcceptForAllCases;
         private System.Windows.Forms.ToolStripButton btnCancelAllCases;
         private System.Windows.Forms.ToolStripButton btnClone;

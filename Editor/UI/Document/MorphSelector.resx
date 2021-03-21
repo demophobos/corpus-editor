@@ -166,16 +166,6 @@
         BPDKWTJg9v4BXwVc8XpAVyLNtFQ5YFRjjaq1MTsWORRS0BQujwAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="btnCopyForm.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADwSURBVDhPY8AGvnz5YgDEB759+/YfhD99+vQAJAaVJgxA
-        GubMmfPfyckJjEFsoEEf3r9/LwBVgh18//7dAWYrSGNycvL/1tZWMPv+/ftgcZAaqHJUANMI04xuAAgj
-        q4FqQwBkjYQwXgNgNuDCRBkAswkdE20APuzr6wumodoQACSIbAsyBgXm5E1n/+sWrv1//MwFwgag45k7
-        r/xnCJ7zP2bCPrgYVBsCgARhBqDbjK4ZGUO143YBX+xCsAHYMEgeqh23C/afuwM2hGwXgPCJ608xDIFq
-        QwCQIMxmdAxziW31pv/P33zAbQApGKKLgQEAeewu4VQrqeYAAAAASUVORK5CYII=
-</value>
-  </data>
   <data name="btnCancelDefinition.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -224,6 +214,15 @@
         AAAASUVORK5CYII=
 </value>
   </data>
+  <metadata name="IsRule.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="Form.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="morphSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>477, 17</value>
+  </metadata>
   <metadata name="IsRule.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>

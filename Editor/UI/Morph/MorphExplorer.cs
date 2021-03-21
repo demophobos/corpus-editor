@@ -77,9 +77,11 @@ namespace Morph
 
             ComboProcess.CreateNullableSelect(cmbVoice, voices.ToArray());
 
-            var languages = await TaxonomyProcess.GetLanguages();
+            var languages = await TaxonomyProcess.GetLanguages().ConfigureAwait(true);
 
-            ComboProcess.CreateSelect(cmbLang, languages.ToArray());
+            var selected = languages.FirstOrDefault(i => i.Code == _documentProcess.Header.Lang);
+
+            ComboProcess.CreateSelect(cmbLang, languages.ToArray(), selected);
 
         }
 

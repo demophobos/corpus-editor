@@ -130,7 +130,7 @@ namespace Document
 
         private void morphSource_CurrentChanged(object sender, EventArgs e)
         {
-            btnEdit.Enabled = btnClone.Enabled = btnDelete.Enabled = btnCopyForm.Enabled = morphSource.Current != null;
+            btnEdit.Enabled = btnClone.Enabled = btnDelete.Enabled = morphSource.Current != null;
 
             btnCancelDefinition.Enabled = morphSource.Current != null && morphSource.Current is MorphModel model && model.Id == _element.MorphId;
 
@@ -233,16 +233,6 @@ namespace Document
                 StatusInfoShown?.Invoke(this, $"Определение отменено");
 
                 ElementMorphRejected.Invoke(this, _element);
-            }
-        }
-
-        private void btnCopyForm_Click(object sender, EventArgs e)
-        {
-            if (morphSource.Current != null && morphSource.Current is MorphModel model)
-            {
-                Clipboard.SetText(model.Form);
-
-                StatusInfoShown?.Invoke(this, $"'{model.Form}' скопирована в буфер обмена");
             }
         }
 

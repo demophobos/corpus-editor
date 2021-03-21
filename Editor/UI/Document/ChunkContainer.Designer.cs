@@ -40,6 +40,8 @@ namespace Document
             this.cmbMorphService = new System.Windows.Forms.ToolStripComboBox();
             this.btnRunMorphService = new System.Windows.Forms.ToolStripButton();
             this.dockPanel1 = new WeifenLuo.WinFormsUI.Docking.DockPanel();
+            this.btnCopyToClipboard = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -53,6 +55,8 @@ namespace Document
             this.btnPublishChunk,
             this.btnExport,
             this.toolStripSeparator1,
+            this.btnCopyToClipboard,
+            this.toolStripSeparator2,
             this.cmbMorphService,
             this.btnRunMorphService});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
@@ -153,6 +157,22 @@ namespace Document
             this.dockPanel1.Size = new System.Drawing.Size(797, 459);
             this.dockPanel1.TabIndex = 3;
             // 
+            // btnCopyToClipboard
+            // 
+            this.btnCopyToClipboard.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnCopyToClipboard.Enabled = false;
+            this.btnCopyToClipboard.Image = ((System.Drawing.Image)(resources.GetObject("btnCopyToClipboard.Image")));
+            this.btnCopyToClipboard.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnCopyToClipboard.Name = "btnCopyToClipboard";
+            this.btnCopyToClipboard.Size = new System.Drawing.Size(23, 22);
+            this.btnCopyToClipboard.Text = "toolStripButton1";
+            this.btnCopyToClipboard.Click += new System.EventHandler(this.btnCopyToClipboard_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+            // 
             // ChunkContainer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -182,5 +202,7 @@ namespace Document
         private System.Windows.Forms.ToolStripComboBox cmbMorphService;
         private System.Windows.Forms.ToolStripButton btnRunMorphService;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripButton btnCopyToClipboard;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
     }
 }

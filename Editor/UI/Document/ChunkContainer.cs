@@ -29,6 +29,8 @@ namespace Document
 
         private SaveFileDialog _saveFileDialog;
 
+        private ElementModel _currentElement;
+
         public event EventHandler<Tuple<List<ChunkModel>, ElementModel, ChunkEditAction>> ChunkBulkMorphChanged;
 
         public event EventHandler<string> StatusInfoShown;
@@ -202,6 +204,10 @@ namespace Document
 
         private async void ChunkExplorer_ElementSelected(object sender, ElementModel e)
         {
+            btnCopyToClipboard.Enabled = true;
+
+            _currentElement = e;
+
             if (_morphSelector != null)
             {
                 await _morphSelector.LoadDataAsync(e, _chunk);
@@ -357,5 +363,11 @@ namespace Document
         }
         #endregion
 
+        private void btnCopyToClipboard_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(_currentElement.Value);
+
+            StatusInfoShown?.Invoke(this, $"Форма '{_currentElement.Value}' скопирована в буфер обмена");
+        }
     }
 }
