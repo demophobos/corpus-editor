@@ -54,6 +54,7 @@ namespace Document
             this.mnuCloseAllWindowsExceptActive = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.lblStatus = new System.Windows.Forms.ToolStripStatusLabel();
+            this.mnuMorphTable = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -70,6 +71,7 @@ namespace Document
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuMorphTable,
             this.mnuTextReport,
             this.mnuChunkReport,
             this.mnuWordReport,
@@ -257,6 +259,14 @@ namespace Document
             this.lblStatus.Name = "lblStatus";
             this.lblStatus.Size = new System.Drawing.Size(0, 17);
             // 
+            // mnuMorphTable
+            // 
+            this.mnuMorphTable.Image = ((System.Drawing.Image)(resources.GetObject("mnuMorphTable.Image")));
+            this.mnuMorphTable.Name = "mnuMorphTable";
+            this.mnuMorphTable.Size = new System.Drawing.Size(108, 20);
+            this.mnuMorphTable.Text = "Морфология";
+            this.mnuMorphTable.Click += new System.EventHandler(this.mnuMorphTable_Click);
+            // 
             // DocumentContainer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -305,5 +315,6 @@ namespace Document
         private System.Windows.Forms.ToolStripMenuItem mnuChunkReportIndexWithEmptyText;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel lblStatus;
+        private System.Windows.Forms.ToolStripMenuItem mnuMorphTable;
     }
 }

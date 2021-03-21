@@ -19,11 +19,24 @@ namespace Morph
 
         MorphProcess _morphProcess;
 
+        DocumentProcess _documentProcess;
+
+        public event EventHandler<string> StatusInfoShown;
+
         public MorphExplorer()
         {
             InitializeComponent();
 
             _morphProcess = new MorphProcess();
+        }
+
+        public MorphExplorer(DocumentProcess documentProcess)
+        {
+            InitializeComponent();
+
+            _morphProcess = new MorphProcess();
+
+            _documentProcess = documentProcess;
         }
 
         private async void MorphExplorer_LoadAsync(object sender, EventArgs e)
@@ -112,8 +125,6 @@ namespace Morph
 
             morphSource.DataSource = _morphItems;
 
-            lblUsageStat.Text = $"Всего определений: {_morphItems.Count}";
-
             loader1.SendToBack();
 
             toolStrip1.Enabled = true;
@@ -132,24 +143,32 @@ namespace Morph
         private void morphSource_CurrentChanged(object sender, EventArgs e)
         {
             btnShowUsage.Enabled = btnDelete.Enabled = btnEdit.Enabled = morphSource.Current != null;
-
-
         }
 
         private async void btnApplyRule_Click(object sender, EventArgs e)
         {
             loader1.BringToFront();
 
+            var query = new ElementQuery();
+
+            if (_documentProcess != null)
+            {
+                query.headerId = _documentProcess.Header.Id;
+                query.type = (int)ElementTypeEnum.Word;
+            }
+
             int count = 0;
+            int ruleCount = 0;
 
             foreach (DataGridViewRow row in dataGridView1.SelectedRows)
             {
-
                 var morph = row.DataBoundItem as MorphModel;
 
                 if (morph != null)
                 {
-                    var result = await ElementProcess.GetElements(new ElementQuery { value = morph.Form.ToLower() }).ConfigureAwait(true);
+                    query.value = morph.Form.ToLower();
+
+                    var result = await ElementProcess.GetElements(query).ConfigureAwait(true);
 
                     var elements = result.Where(i => string.IsNullOrEmpty(i.MorphId)).ToList();
 
@@ -158,41 +177,65 @@ namespace Morph
                         element.MorphId = morph.Id;
 
                         await ElementProcess.SaveModel(element).ConfigureAwait(true);
+
+                        await ChunkProcess.ChangeChunkStatus(new List<string> { element.ChunkId }, ChunkStatusEnum.Changed).ConfigureAwait(true);
+
+                        count += 1;
                     }
-
-                    count += elements.Count;
-
-                    loader1.SetStatus(count.ToString());
                 }
+
+                ruleCount += 1;
+
+                loader1.SetStatus($"Обработано правил {ruleCount} из {dataGridView1.SelectedRows.Count}. Применено: {count}");
             }
 
             loader1.SendToBack();
 
-            lblUsageStat.Text = $"Определение применено для {count} элементов";
+            StatusInfoShown?.Invoke(this, $"Определение применено. Количество слов затронутых слов: {count}");
         }
 
         private async void btnUndoRule_Click(object sender, EventArgs e)
         {
             if (DialogProcess.UndoWarning() == DialogResult.Yes)
             {
+                var query = new ElementQuery();
+
+                if (_documentProcess != null)
+                {
+                    query.headerId = _documentProcess.Header.Id;
+                    query.type = (int)ElementTypeEnum.Word;
+                }
+
                 int count = 0;
+                int ruleCount = 0;
 
                 foreach (DataGridViewRow row in dataGridView1.SelectedRows)
                 {
                     var morph = row.DataBoundItem as MorphModel;
-                    var elements = await ElementProcess.GetElements(new ElementQuery { morphId = morph.Id }).ConfigureAwait(true);
+
+                    query.morphId = morph.Id;
+
+                    var elements = await ElementProcess.GetElements(query).ConfigureAwait(true);
 
                     foreach (var element in elements)
                     {
                         element.MorphId = null;
 
                         await ElementProcess.SaveModel(element).ConfigureAwait(true);
+
+                        await ChunkProcess.ChangeChunkStatus(new List<string> { element.ChunkId }, ChunkStatusEnum.Changed).ConfigureAwait(true);
+
+                        count += 1;
+
+                        loader1.SetStatus(count.ToString());
                     }
 
-                    count += elements.Count;
+                    ruleCount += 1;
+
+                    loader1.SetStatus($"Обработано правил {ruleCount} из {dataGridView1.SelectedRows.Count}. Применено: {count}");
                 }
 
-                lblUsageStat.Text = $"Определение отменено для {count} элементов";
+                StatusInfoShown?.Invoke(this, $"Определение отменено. Количество слов затронутых слов: {count}");
             }
 
         }
@@ -274,9 +317,9 @@ namespace Morph
         {
             if (morphSource.Current != null && morphSource.Current is MorphModel morph)
             {
-                var elements = await ElementProcess.GetElements(new ElementQuery { morphId = morph.Id }).ConfigureAwait(true);
+                var elements = await ElementProcess.GetElements(new ElementQuery { morphId = morph.Id, headerId = _documentProcess.Header.Id }).ConfigureAwait(true);
 
-                lblUsageStat.Text = $"Статистика использования '{morph.Form}': {elements.Count}";
+                StatusInfoShown?.Invoke(this, $"Форма '{morph.Form}'. Количество использований: {elements.Count}");
             }
         }
 

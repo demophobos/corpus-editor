@@ -62,6 +62,7 @@ namespace Morph
             this.cmbMood = new System.Windows.Forms.ToolStripComboBox();
             this.cmbVoice = new System.Windows.Forms.ToolStripComboBox();
             this.cmbDegree = new System.Windows.Forms.ToolStripComboBox();
+            this.cmbLang = new System.Windows.Forms.ToolStripComboBox();
             this.btnRunFilter = new System.Windows.Forms.ToolStripButton();
             this.btnUndoRule = new System.Windows.Forms.ToolStripButton();
             this.btnApplyRule = new System.Windows.Forms.ToolStripButton();
@@ -72,13 +73,9 @@ namespace Morph
             this.btnEdit = new System.Windows.Forms.ToolStripButton();
             this.btnDelete = new System.Windows.Forms.ToolStripButton();
             this.loader1 = new Common.Control.Loader();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.lblUsageStat = new System.Windows.Forms.ToolStripStatusLabel();
-            this.cmbLang = new System.Windows.Forms.ToolStripComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.morphSource)).BeginInit();
             this.toolStrip1.SuspendLayout();
-            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -112,7 +109,7 @@ namespace Morph
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1338, 403);
+            this.dataGridView1.Size = new System.Drawing.Size(1484, 536);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
             // 
@@ -283,7 +280,7 @@ namespace Morph
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.toolStrip1.Size = new System.Drawing.Size(1338, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(1484, 25);
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -373,6 +370,13 @@ namespace Morph
             this.cmbDegree.Name = "cmbDegree";
             this.cmbDegree.Size = new System.Drawing.Size(98, 25);
             // 
+            // cmbLang
+            // 
+            this.cmbLang.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbLang.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.cmbLang.Name = "cmbLang";
+            this.cmbLang.Size = new System.Drawing.Size(98, 25);
+            // 
             // btnRunFilter
             // 
             this.btnRunFilter.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -428,7 +432,7 @@ namespace Morph
             this.btnAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnAdd.Image")));
             this.btnAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(23, 20);
+            this.btnAdd.Size = new System.Drawing.Size(23, 22);
             this.btnAdd.Text = "Добавить";
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
@@ -438,7 +442,7 @@ namespace Morph
             this.btnClone.Image = ((System.Drawing.Image)(resources.GetObject("btnClone.Image")));
             this.btnClone.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnClone.Name = "btnClone";
-            this.btnClone.Size = new System.Drawing.Size(23, 20);
+            this.btnClone.Size = new System.Drawing.Size(23, 22);
             this.btnClone.Text = "Копировать";
             this.btnClone.Click += new System.EventHandler(this.btnClone_Click);
             // 
@@ -448,7 +452,7 @@ namespace Morph
             this.btnEdit.Image = ((System.Drawing.Image)(resources.GetObject("btnEdit.Image")));
             this.btnEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(23, 20);
+            this.btnEdit.Size = new System.Drawing.Size(23, 22);
             this.btnEdit.Text = "Редактировать";
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
@@ -458,7 +462,7 @@ namespace Morph
             this.btnDelete.Image = ((System.Drawing.Image)(resources.GetObject("btnDelete.Image")));
             this.btnDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(23, 20);
+            this.btnDelete.Size = new System.Drawing.Size(23, 22);
             this.btnDelete.Text = "Удалить";
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
@@ -468,49 +472,26 @@ namespace Morph
             this.loader1.Location = new System.Drawing.Point(0, 25);
             this.loader1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.loader1.Name = "loader1";
-            this.loader1.Size = new System.Drawing.Size(1338, 403);
+            this.loader1.Size = new System.Drawing.Size(1484, 536);
             this.loader1.TabIndex = 2;
-            // 
-            // statusStrip1
-            // 
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.lblUsageStat});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 428);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1338, 22);
-            this.statusStrip1.TabIndex = 3;
-            this.statusStrip1.Text = "statusStrip1";
-            // 
-            // lblUsageStat
-            // 
-            this.lblUsageStat.Name = "lblUsageStat";
-            this.lblUsageStat.Size = new System.Drawing.Size(0, 17);
-            // 
-            // cmbLang
-            // 
-            this.cmbLang.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbLang.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.cmbLang.Name = "cmbLang";
-            this.cmbLang.Size = new System.Drawing.Size(98, 25);
             // 
             // MorphExplorer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1338, 450);
+            this.ClientSize = new System.Drawing.Size(1484, 561);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.loader1);
             this.Controls.Add(this.toolStrip1);
-            this.Controls.Add(this.statusStrip1);
+            this.HideOnClose = true;
             this.Name = "MorphExplorer";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Морфология";
             this.Load += new System.EventHandler(this.MorphExplorer_LoadAsync);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.morphSource)).EndInit();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
-            this.statusStrip1.ResumeLayout(false);
-            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -535,8 +516,6 @@ namespace Morph
         private System.Windows.Forms.ToolStripComboBox cmbCase;
         private System.Windows.Forms.ToolStripButton btnRunFilter;
         private System.Windows.Forms.ToolStripButton btnIsRule;
-        private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.ToolStripStatusLabel lblUsageStat;
         private System.Windows.Forms.ToolStripButton btnUndoRule;
         private System.Windows.Forms.ToolStripButton btnApplyRule;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;

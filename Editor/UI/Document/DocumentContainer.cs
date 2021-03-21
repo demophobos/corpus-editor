@@ -1,6 +1,7 @@
 ﻿using Common.Process;
 using Model;
 using Model.Enum;
+using Morph;
 using Process;
 using Report;
 using System;
@@ -22,6 +23,8 @@ namespace Document
         private ChunkContainer _chunkContainer;
 
         private ChunkListViewer _chunkListViewer;
+
+        private MorphExplorer _morphExplorer;
 
         public DocumentContainer(HeaderModel header)
         {
@@ -255,5 +258,21 @@ namespace Document
         #endregion
 
         #endregion
+
+        private void mnuMorphTable_Click(object sender, EventArgs e)
+        {
+            if (_morphExplorer == null || _morphExplorer.IsDisposed)
+            {
+                _morphExplorer = new MorphExplorer(DocumentProcess);
+
+                _morphExplorer.StatusInfoShown += MorphExplorer_StatusInfoShown;
+            }
+            _morphExplorer.Show(dockPanel1, DockState.Document);
+        }
+
+        private void MorphExplorer_StatusInfoShown(object sender, string e)
+        {
+            lblStatus.Text = e;
+        }
     }
 }

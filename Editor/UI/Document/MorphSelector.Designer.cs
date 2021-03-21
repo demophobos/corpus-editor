@@ -65,6 +65,7 @@ namespace Document
             this.morphId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.morphSource = new System.Windows.Forms.BindingSource(this.components);
             this.loader1 = new Common.Control.Loader();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuTools.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.morphSource)).BeginInit();
@@ -89,6 +90,7 @@ namespace Document
             this.btnClone,
             this.btnEdit,
             this.btnDelete,
+            this.toolStripSeparator3,
             this.btnCopyForm,
             this.toolStripSeparator1,
             this.btnAcceptDefinition,
@@ -158,7 +160,6 @@ namespace Document
             this.btnCopyForm.Name = "btnCopyForm";
             this.btnCopyForm.Size = new System.Drawing.Size(23, 22);
             this.btnCopyForm.Text = "Копировать форму в буфер обмена";
-            this.btnCopyForm.Visible = false;
             this.btnCopyForm.Click += new System.EventHandler(this.btnCopyForm_Click);
             // 
             // toolStripSeparator1
@@ -428,6 +429,11 @@ namespace Document
             this.loader1.Size = new System.Drawing.Size(984, 419);
             this.loader1.TabIndex = 19;
             // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
+            // 
             // MorphSelector
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -491,5 +497,6 @@ namespace Document
         private System.Windows.Forms.DataGridViewTextBoxColumn morphId;
         private Common.Control.Loader loader1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
     }
 }

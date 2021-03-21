@@ -185,8 +185,8 @@
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
         YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACISURBVDhPY2Covy/A0PjkPwauf/ILiP0YCAKYAegApLn+
-        4RfChuAyAASIMgSbATBvIGOcXsJlAEgchpufyUPEsLkGlwHIAKYGq5dIMgBINz2OA7K/IwwhxQBkDAoT
-        FElkgM7HBuBqhpEB6JgQgKv5/58RbAgyJskAbAAkiW4oOiZoADGYgYEBABan5igDIpL6AAAAAElFTkSu
+        /hfChuAyAASIMgSbATBvIGOcXsJlAEgchpufyUPFsLgGlwHIAKYGq5dIMgBINz2OA7K/IwwhxQBkDAoT
+        FElkgM7HBuBqhpEB6JgQgKv5/58RbAgyJskAbAAkiW4oOiZoADGYgYEBAP145iAXYNQ1AAAAAElFTkSu
         QmCC
 </value>
   </data>
@@ -194,13 +194,13 @@
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
         YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGISURBVDhPrZNPSwJRFMUt3PVn04cICloVRpsiWkiLaiEu
-        rKAvELnSWgiSi4KioL2QRAQhZGSGVNAqKgjToiKihWJpo41iM4Kb073DMzNLJTrwmGHe+Z1333t3dPUq
-        n88PqqoaUhQV9EzSsANoENPVpSjKSDQuFYyuAPRmN9qnt3ESiXKQXVh+VxHumPFiwLGH68cXODbPtRCu
-        RNh+FsMxATPQNrWB05uYFtJocnMAhLVSDMcT6UK3bQfDrgO8SjKcWxdaCFcyuhDkgIiwl+srbF46hJSS
-        kZGzWghX0k8BqUxGJV+PQEr6DqfTmU+YKynCfCsCKakW3De3+3eYvydSMrH/DXM30WlKBrsPrZMeXD08
-        V8AczosIpFy5XK4r/JREy4QH46vH2jVd3sfrg1k0aV3zh2GcD2grW1aO0DzuATcPN1FVmEXl+0y0b8Os
-        D0POfTRZ1tFp9YLbtybMor/rjVcbWwxi2RfC2V0ctK13gk3CUl1kvKWRpUr8NGz03ksHqxfTNaTTfQDQ
-        wcF2cfZnEgAAAABJRU5ErkJggg==
+        rKAvELnSWgiSi4KioL2QRAQhZGSGVNAqKgjToiKihTKWjaZiM4Kb073DMzNLJTrwmGHe+Z1333t3dPUq
+        n88PqqoaUhQV9EzQsANoENPVpSjKSFRKFIyuAPRmN9qnt3ESiXKQXVh+VxHumPFiwLGH68dnODbPtRCu
+        RNh+FsMxATPQNrWB05uYFtJocnMAhLVSDEtxudBt28Gw6wCvchrOrQsthCsZXQhyQETYy/UVNi8dQk6m
+        kUlntRCupJ8CkpmMSr4egZT0HU6lMp8wV1KE+VYEUlItuG9u9+8wf39Jpon9b5i7iU5TNth9aJ304Ooh
+        XgFzOC8ikHLlcrmu8FMCLRMejK8ea9d0eS/VB7No0rrmD8M4H9BWtqwcoXncA24ebqKqMIvK95lo34ZZ
+        H4ac+2iyrKPT6gW3b02YRX/XG682thjEsi+EszsJtK13gk3CUl1kvKWRpUr8NGz03ksHqxfTNaTTfQB3
+        PcFMZVx7LAAAAABJRU5ErkJggg==
 </value>
   </data>
   <data name="btnDelete.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -211,7 +211,4 @@
         BPDKWTJg9v4BXwVc8XpAVyLNtFQ5YFRjjaq1MTsWORRS0BQujwAAAABJRU5ErkJggg==
 </value>
   </data>
-  <metadata name="statusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>247, 17</value>
-  </metadata>
 </root>

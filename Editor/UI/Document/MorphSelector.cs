@@ -281,7 +281,7 @@ namespace Document
                     }
                 }
 
-                var changedChunks = await ChunkProcess.ChangeChunkStatus(chunksToUpdate, ChunkStatusEnum.Changed);
+                var changedChunks = await ChunkProcess.ChangeChunkStatus(chunksToUpdate, ChunkStatusEnum.Changed).ConfigureAwait(true);
 
                 ElementMorphAccepted.Invoke(this, _element);
 
@@ -333,7 +333,7 @@ namespace Document
                         }
                     }
 
-                    var changedChunks = await ChunkProcess.ChangeChunkStatus(chunksToUpdate, ChunkStatusEnum.Changed);
+                    var changedChunks = await ChunkProcess.ChangeChunkStatus(chunksToUpdate, ChunkStatusEnum.Changed).ConfigureAwait(true);
 
                     ElementMorphRejected.Invoke(this, _element);
 
