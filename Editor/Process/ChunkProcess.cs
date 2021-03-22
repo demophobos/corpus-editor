@@ -164,7 +164,7 @@ namespace Process
         {
             var chunkValueItems = new List<ChunkValueItemModel>();
 
-            var morphRules = await MorphAPI.GetMorphItems(new MorphQuery { IsRule = true }).ConfigureAwait(true);
+            var morphRules = await MorphAPI.GetMorphItems(new MorphQuery { IsRule = true, Lang = ruleLang }).ConfigureAwait(true);
 
             foreach (var element in elements)
             {
