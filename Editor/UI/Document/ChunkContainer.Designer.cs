@@ -37,11 +37,12 @@ namespace Document
             this.btnPublishChunk = new System.Windows.Forms.ToolStripButton();
             this.btnExport = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnCopyToClipboard = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.cmbMorphService = new System.Windows.Forms.ToolStripComboBox();
             this.btnRunMorphService = new System.Windows.Forms.ToolStripButton();
             this.dockPanel1 = new WeifenLuo.WinFormsUI.Docking.DockPanel();
-            this.btnCopyToClipboard = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnReplaceAll = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -51,6 +52,7 @@ namespace Document
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnAddChunk,
             this.btnEditChunk,
+            this.btnReplaceAll,
             this.btnDeleteChunk,
             this.btnPublishChunk,
             this.btnExport,
@@ -127,6 +129,22 @@ namespace Document
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
+            // btnCopyToClipboard
+            // 
+            this.btnCopyToClipboard.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnCopyToClipboard.Enabled = false;
+            this.btnCopyToClipboard.Image = ((System.Drawing.Image)(resources.GetObject("btnCopyToClipboard.Image")));
+            this.btnCopyToClipboard.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnCopyToClipboard.Name = "btnCopyToClipboard";
+            this.btnCopyToClipboard.Size = new System.Drawing.Size(23, 22);
+            this.btnCopyToClipboard.Text = "toolStripButton1";
+            this.btnCopyToClipboard.Click += new System.EventHandler(this.btnCopyToClipboard_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+            // 
             // cmbMorphService
             // 
             this.cmbMorphService.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -157,21 +175,17 @@ namespace Document
             this.dockPanel1.Size = new System.Drawing.Size(797, 459);
             this.dockPanel1.TabIndex = 3;
             // 
-            // btnCopyToClipboard
+            // btnReplaceAll
             // 
-            this.btnCopyToClipboard.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnCopyToClipboard.Enabled = false;
-            this.btnCopyToClipboard.Image = ((System.Drawing.Image)(resources.GetObject("btnCopyToClipboard.Image")));
-            this.btnCopyToClipboard.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnCopyToClipboard.Name = "btnCopyToClipboard";
-            this.btnCopyToClipboard.Size = new System.Drawing.Size(23, 22);
-            this.btnCopyToClipboard.Text = "toolStripButton1";
-            this.btnCopyToClipboard.Click += new System.EventHandler(this.btnCopyToClipboard_Click);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+            this.btnReplaceAll.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnReplaceAll.Enabled = false;
+            this.btnReplaceAll.Image = ((System.Drawing.Image)(resources.GetObject("btnReplaceAll.Image")));
+            this.btnReplaceAll.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnReplaceAll.Name = "btnReplaceAll";
+            this.btnReplaceAll.Size = new System.Drawing.Size(23, 22);
+            this.btnReplaceAll.Text = "Заменить";
+            this.btnReplaceAll.ToolTipText = "Заменить строку";
+            this.btnReplaceAll.Click += new System.EventHandler(this.btnReplaceAll_Click);
             // 
             // ChunkContainer
             // 
@@ -204,5 +218,6 @@ namespace Document
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripButton btnCopyToClipboard;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripButton btnReplaceAll;
     }
 }

@@ -26,9 +26,13 @@ namespace Document
 
         private MorphExplorer _morphExplorer;
 
+        private ReplaceDialog _replaceDialog;
+
         public DocumentContainer(HeaderModel header)
         {
             DocumentProcess = new DocumentProcess(header);
+
+            _replaceDialog = new ReplaceDialog();
 
             Text = header.Code;
 
@@ -48,6 +52,8 @@ namespace Document
             _contentIndexExplorer.StatusInfoShown += ContentIndexExplorer_StatusInfoShown;
 
             _contentIndexExplorer.Show(dockPanel1, DockState.DockRight);
+
+            _contentIndexExplorer.ReplaceDialog = _replaceDialog;
 
             _chunkContainers = new List<ChunkContainer>();
 
@@ -92,6 +98,8 @@ namespace Document
                     _chunkContainer.ChunkBulkMorphChanged += ChunkContainer_ChunkBulkMorphChanged;
 
                     _chunkContainer.StatusInfoShown += ChunkContainer_StatusInfoShown;
+
+                    _chunkContainer.ReplaceDialog = _replaceDialog;
 
                     _chunkContainer.Show(dockPanel1, DockState.Document);
                 }

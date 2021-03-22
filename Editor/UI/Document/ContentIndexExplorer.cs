@@ -26,6 +26,8 @@ namespace Document
 
         private List<IndexModel> _bookmarkedIndeces = new List<IndexModel>();
 
+        public ReplaceDialog ReplaceDialog;
+
         public ContentIndexExplorer(DocumentProcess documentProcess)
         {
             _documentProcess = documentProcess;

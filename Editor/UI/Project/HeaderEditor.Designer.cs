@@ -118,7 +118,7 @@ namespace Project
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 4;
-            this.btnSave.Text = "Save";
+            this.btnSave.Text = "Сохранить";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
@@ -130,7 +130,7 @@ namespace Project
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 4;
             this.btnCancel.TabStop = false;
-            this.btnCancel.Text = "Cancel";
+            this.btnCancel.Text = "Отмена";
             this.btnCancel.UseVisualStyleBackColor = true;
             // 
             // txtTitle
@@ -202,6 +202,7 @@ namespace Project
             this.Name = "HeaderEditor";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "Заголовок";
             this.Load += new System.EventHandler(this.HeaderEditor_Load);
             ((System.ComponentModel.ISupportInitialize)(this.langSource)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);

@@ -34,6 +34,8 @@ namespace Document
         public event EventHandler<Tuple<List<ChunkModel>, ElementModel, ChunkEditAction>> ChunkBulkMorphChanged;
 
         public event EventHandler<string> StatusInfoShown;
+
+        public ReplaceDialog ReplaceDialog;
         public ChunkContainer(IndexModel index, DocumentProcess documentProcess)
         {
             _documentProcess = documentProcess;
@@ -60,6 +62,7 @@ namespace Document
             cmbMorphService.Enabled =
             btnDeleteChunk.Enabled =
             btnEditChunk.Enabled =
+            btnReplaceAll.Enabled =
             btnExport.Enabled = _chunk != null;
 
             btnAddChunk.Enabled = _chunk == null;
@@ -368,6 +371,48 @@ namespace Document
             Clipboard.SetText(_currentElement.Value);
 
             StatusInfoShown?.Invoke(this, $"Форма '{_currentElement.Value}' скопирована в буфер обмена");
+        }
+
+        private async void btnReplaceAll_Click(object sender, EventArgs e)
+        {
+
+            ReplaceDialog.Input = _chunk.Value;
+
+            if (ReplaceDialog.ShowDialog() == DialogResult.OK)
+            {
+
+                var document = dockPanel1.DocumentsToArray().FirstOrDefault();
+
+                document.DockHandler.DockPanel = null;
+
+                document.DockHandler.Close();
+
+                var chunk = new ChunkModel
+                {
+                    HeaderId = _chunk.HeaderId,
+                    Id = _chunk.Id,
+                    IndexId = _chunk.IndexId,
+                    Status = ChunkStatusEnum.Changed,
+                    Value = ReplaceDialog.Output,
+                    ValueObj = _chunk.ValueObj
+                };
+
+                await ChunkProcess.SaveChunkAndElements(chunk, _documentProcess.Header.Lang).ConfigureAwait(true);
+
+                var query = new ChunkQuery { IndexId = Index.Id };
+
+                _chunk = await ChunkProcess.GetChunkByQuery(query).ConfigureAwait(true);
+
+                _chunkExplorer = new ChunkExplorer(_chunk);
+
+                _chunkExplorer.Show(dockPanel1, DockState.Document);
+
+                _chunkExplorer.ElementSelected += ChunkExplorer_ElementSelected;
+
+                _chunkExplorer.EnablePublishing += ChunkExplorer_EnablePublishing;
+
+                _chunkExplorer.ElementsLoaded += ChunkExplorer_ElementsLoaded;
+            }
         }
     }
 }
