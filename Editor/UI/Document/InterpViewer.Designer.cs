@@ -32,8 +32,8 @@ namespace Document
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InterpViewer));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.btnDelete = new System.Windows.Forms.ToolStripButton();
-            this.txtContainer = new System.Windows.Forms.FlowLayoutPanel();
             this.loader1 = new Common.Control.Loader();
+            this.txtChunkValue = new System.Windows.Forms.RichTextBox();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -59,18 +59,6 @@ namespace Document
             this.btnDelete.Text = "Удалить";
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
-            // txtContainer
-            // 
-            this.txtContainer.AutoScroll = true;
-            this.txtContainer.BackColor = System.Drawing.SystemColors.Window;
-            this.txtContainer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtContainer.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtContainer.Location = new System.Drawing.Point(0, 25);
-            this.txtContainer.Margin = new System.Windows.Forms.Padding(0);
-            this.txtContainer.Name = "txtContainer";
-            this.txtContainer.Size = new System.Drawing.Size(512, 246);
-            this.txtContainer.TabIndex = 19;
-            // 
             // loader1
             // 
             this.loader1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -78,6 +66,17 @@ namespace Document
             this.loader1.Name = "loader1";
             this.loader1.Size = new System.Drawing.Size(512, 246);
             this.loader1.TabIndex = 0;
+            // 
+            // txtChunkValue
+            // 
+            this.txtChunkValue.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtChunkValue.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtChunkValue.Font = new System.Drawing.Font("Palatino Linotype", 14.25F);
+            this.txtChunkValue.Location = new System.Drawing.Point(0, 25);
+            this.txtChunkValue.Name = "txtChunkValue";
+            this.txtChunkValue.Size = new System.Drawing.Size(512, 246);
+            this.txtChunkValue.TabIndex = 19;
+            this.txtChunkValue.Text = "";
             // 
             // InterpViewer
             // 
@@ -88,7 +87,7 @@ namespace Document
             this.CloseButtonVisible = false;
             this.ControlBox = false;
             this.Controls.Add(this.loader1);
-            this.Controls.Add(this.txtContainer);
+            this.Controls.Add(this.txtChunkValue);
             this.Controls.Add(this.toolStrip1);
             this.DockAreas = ((WeifenLuo.WinFormsUI.Docking.DockAreas)(((((WeifenLuo.WinFormsUI.Docking.DockAreas.DockLeft | WeifenLuo.WinFormsUI.Docking.DockAreas.DockRight) 
             | WeifenLuo.WinFormsUI.Docking.DockAreas.DockTop) 
@@ -107,7 +106,7 @@ namespace Document
 
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton btnDelete;
-        private System.Windows.Forms.FlowLayoutPanel txtContainer;
         private Common.Control.Loader loader1;
+        private System.Windows.Forms.RichTextBox txtChunkValue;
     }
 }

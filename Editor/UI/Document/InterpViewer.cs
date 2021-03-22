@@ -35,14 +35,14 @@ namespace Document
 
         private async Task LoadData()
         {
+            txtChunkValue.Clear();
 
-            txtContainer.Controls.Clear();
-
-            var query = new ElementQuery();
+            ChunkModel chunk;
 
             if (_typeToShow == EditionTypeEnum.Original)
             {
-                query.chunkId = Interp.SourceId;
+
+                chunk = await ChunkProcess.GetChunk(Interp.SourceId).ConfigureAwait(true);
 
                 Text = $"{Interp.SourceIndexName} [{Interp.SourceHeaderCode}]";
 
@@ -50,48 +50,18 @@ namespace Document
             }
             else
             {
-                query.chunkId = Interp.InterpId;
+
+                chunk = await ChunkProcess.GetChunk(Interp.InterpId).ConfigureAwait(true);
 
                 Text = $"{Interp.InterpIndexName} [{Interp.InterpHeaderCode}]";
 
                 ToolTipText = Interp.InterpHeaderDesc;
             }
 
-            var elements = await ElementProcess.GetElements(query).ConfigureAwait(true);
-
-            foreach (var element in elements)
+            if (chunk != null)
             {
-                if (element.Type == (int)ElementTypeEnum.NewLine)
-                {
-                    var lastLabel = txtContainer.Controls.OfType<Label>().LastOrDefault();
-
-                    txtContainer.SetFlowBreak(lastLabel, true);
-                }
-                else if (element.Type == (int)ElementTypeEnum.Space)
-                {
-                    var next = elements.FirstOrDefault(i => i.Order == element.Order + 1);
-
-                    if (next != null && next.Type == (int)ElementTypeEnum.Punctuation)
-                    {
-                        continue;
-                    }
-                }
-                else
-                {
-                    var label = new Label
-                    {
-                        AutoSize = true,
-                        Text = element.Value,
-                        Tag = element,
-                        Margin = new Padding(0, 0, 0, 0),
-                        FlatStyle = FlatStyle.Flat
-                    };
-
-                    txtContainer.Controls.Add(label);
-                }
+                txtChunkValue.Text = chunk.Value;
             }
-
-
         }
 
         private async void btnDelete_Click(object sender, EventArgs e)
