@@ -51,6 +51,9 @@ namespace Document
             this.btnRemoveBookmark = new System.Windows.Forms.ToolStripMenuItem();
             this.loader1 = new Common.Control.Loader();
             this.bookmarkedSource = new System.Windows.Forms.BindingSource(this.components);
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.txtSearchNode = new System.Windows.Forms.ToolStripTextBox();
+            this.btnOpenNode = new System.Windows.Forms.ToolStripButton();
             this.toolStrip2.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bookmarkedSource)).BeginInit();
@@ -85,6 +88,9 @@ namespace Document
             this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnCreateTopIndex,
             this.toolStripSeparator2,
+            this.txtSearchNode,
+            this.btnOpenNode,
+            this.toolStripSeparator4,
             this.btnShowBookmarks,
             this.btnRemoveAllBookmarks,
             this.toolStripSeparator1,
@@ -157,7 +163,7 @@ namespace Document
             this.btnSetBookmark,
             this.btnRemoveBookmark});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(250, 170);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(250, 148);
             // 
             // btnAddSubsection
             // 
@@ -234,6 +240,31 @@ namespace Document
             this.bookmarkedSource.DataSource = typeof(Model.IndexModel);
             this.bookmarkedSource.PositionChanged += new System.EventHandler(this.bookmarkedSource_PositionChanged);
             // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 25);
+            // 
+            // txtSearchNode
+            // 
+            this.txtSearchNode.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.txtSearchNode.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.txtSearchNode.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtSearchNode.Name = "txtSearchNode";
+            this.txtSearchNode.Size = new System.Drawing.Size(75, 25);
+            this.txtSearchNode.TextChanged += new System.EventHandler(this.txtSearchNode_TextChanged);
+            // 
+            // btnOpenNode
+            // 
+            this.btnOpenNode.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnOpenNode.Enabled = false;
+            this.btnOpenNode.Image = ((System.Drawing.Image)(resources.GetObject("btnOpenNode.Image")));
+            this.btnOpenNode.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnOpenNode.Name = "btnOpenNode";
+            this.btnOpenNode.Size = new System.Drawing.Size(23, 22);
+            this.btnOpenNode.Text = "Открыть раздел";
+            this.btnOpenNode.Click += new System.EventHandler(this.btnOpenNode_Click);
+            // 
             // ContentIndexExplorer
             // 
             this.AllowEndUserDocking = false;
@@ -284,5 +315,8 @@ namespace Document
         private System.Windows.Forms.ToolStripButton btnRemoveAllBookmarks;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripButton btnPublish;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        private System.Windows.Forms.ToolStripTextBox txtSearchNode;
+        private System.Windows.Forms.ToolStripButton btnOpenNode;
     }
 }

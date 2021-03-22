@@ -54,6 +54,10 @@ namespace Document
 
             _documentProcess.Indeces = await _documentProcess.GetIndecesByHeader().ConfigureAwait(true);
 
+            txtSearchNode.Enabled = btnPublish.Enabled = _documentProcess.Indeces.Count > 0;
+
+            txtSearchNode.AutoCompleteCustomSource.AddRange(_documentProcess.Indeces.Select(i => i.Name).ToArray());
+
             _bookmarkedIndeces = _documentProcess.Indeces.Where(i => i.Bookmarked == true).ToList();
 
             ShowBookmarkTools();
@@ -343,11 +347,12 @@ namespace Document
 
             foreach (var chunkView in chunks)
             {
-                var chunk = new ChunkModel { 
-                    Id = chunkView.Id, 
-                    HeaderId = chunkView.HeaderId, 
-                    IndexId = chunkView.IndexId, 
-                    Value = chunkView.Value, 
+                var chunk = new ChunkModel
+                {
+                    Id = chunkView.Id,
+                    HeaderId = chunkView.HeaderId,
+                    IndexId = chunkView.IndexId,
+                    Value = chunkView.Value,
                     ValueObj = chunkView.ValueObj,
                     Status = ChunkStatusEnum.Published
                 };
@@ -375,6 +380,21 @@ namespace Document
             StatusInfoShown?.Invoke(this, $"Публикация фрагментов { _documentProcess.Header.Code} завершена. Опубликовано: {updatedCount} из {chunks.Count}");
 
             toolStrip2.Enabled = true;
+        }
+
+        private void txtSearchNode_TextChanged(object sender, EventArgs e)
+        {
+            btnOpenNode.Enabled = txtSearchNode.Text.Length > 0;
+        }
+
+        private void btnOpenNode_Click(object sender, EventArgs e)
+        {
+            var index = _documentProcess.Indeces.FirstOrDefault(i => i.Name == txtSearchNode.Text);
+
+            if (index != null)
+            {
+                IndexSelected?.Invoke(this, index);
+            }
         }
     }
 }
