@@ -58,6 +58,8 @@ namespace Document
             _chunkContainers = new List<ChunkContainer>();
 
             _chunkListViewer = new ChunkListViewer(DocumentProcess);
+
+            _chunkListViewer.IndexSelected += ContentIndexExplorer_IndexSelected;
         }
 
         private void ContentIndexExplorer_StatusInfoShown(object sender, string e)

@@ -25,6 +25,8 @@ namespace Document
 
         ChunkEditAction _chunkEditAction;
 
+        public event EventHandler<IndexModel> IndexSelected;
+
         public ChunkListViewer(DocumentProcess documentProcess)
         {
             _documentProcess = documentProcess;
@@ -34,7 +36,13 @@ namespace Document
 
         public void LoadData(List<ChunkModel> chunks, ElementModel element, ChunkEditAction chunkEditAction)
         {
-            txtChunk.Clear();
+            loader1.BringToFront();
+
+            loader1.SetStatus("Загрузка фрагментов ...");
+
+            panel.Controls.Clear();
+
+            panel.RowCount = 0;
 
             _chunks = chunks;
 
@@ -47,16 +55,50 @@ namespace Document
 
             foreach (var chunk in _chunks)
             {
-                txtChunk.AppendText(_documentProcess.Indeces.FirstOrDefault(i => i.Id == chunk.IndexId).Name, Color.Blue);
+                var txtChunk = new RichTextBox
+                {
+                    Text = chunk.Value,
 
-                txtChunk.AppendText(". ");
+                    Dock = DockStyle.Fill,
 
-                txtChunk.AppendText(chunk.Value);
+                    BorderStyle = BorderStyle.None
+                };
 
-                txtChunk.AppendText(Environment.NewLine);
+                var index = _documentProcess.Indeces.FirstOrDefault(i => i.Id == chunk.IndexId);
+
+                var inxLabel = new LinkLabel
+                {
+                    Text = index.Name,
+
+                    Tag = index,
+
+                    Dock = DockStyle.Fill,
+
+                    BackColor = SystemColors.Window
+                };
+
+                inxLabel.Click += InxLabel_Click;
+
+                txtChunk.HighlightTextRegExp(_element.Value, _chunkEditAction == ChunkEditAction.MorphDefinitionAccepted ? Color.Green : Color.Red, new Font(txtChunk.Font.FontFamily, txtChunk.Font.Size, FontStyle.Underline));
+
+                panel.RowCount += 1;
+
+                panel.RowStyles.Add(new RowStyle(SizeType.AutoSize));
+
+                panel.Controls.Add(inxLabel, 0, panel.RowCount);
+
+                panel.Controls.Add(txtChunk, 1, panel.RowCount);
             }
 
-            txtChunk.HighlightTextRegExp(_element.Value, _chunkEditAction == ChunkEditAction.MorphDefinitionAccepted ? Color.Green : Color.Red, new Font(txtChunk.Font.FontFamily, txtChunk.Font.Size, FontStyle.Underline));
+            loader1.SendToBack();
+        }
+
+        private void InxLabel_Click(object sender, EventArgs e)
+        {
+            if(sender is LinkLabel inxLabel && inxLabel.Tag is IndexModel index)
+            {
+                IndexSelected?.Invoke(this, index);
+            }
         }
     }
 }
