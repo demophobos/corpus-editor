@@ -33,6 +33,7 @@ namespace Document
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.btnAddChunk = new System.Windows.Forms.ToolStripButton();
             this.btnEditChunk = new System.Windows.Forms.ToolStripButton();
+            this.btnReplaceAll = new System.Windows.Forms.ToolStripButton();
             this.btnDeleteChunk = new System.Windows.Forms.ToolStripButton();
             this.btnPublishChunk = new System.Windows.Forms.ToolStripButton();
             this.btnExport = new System.Windows.Forms.ToolStripButton();
@@ -42,7 +43,6 @@ namespace Document
             this.cmbMorphService = new System.Windows.Forms.ToolStripComboBox();
             this.btnRunMorphService = new System.Windows.Forms.ToolStripButton();
             this.dockPanel1 = new WeifenLuo.WinFormsUI.Docking.DockPanel();
-            this.btnReplaceAll = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -88,6 +88,18 @@ namespace Document
             this.btnEditChunk.Size = new System.Drawing.Size(23, 22);
             this.btnEditChunk.Text = "Редактировать фрагмент";
             this.btnEditChunk.Click += new System.EventHandler(this.btnEditChunk_Click);
+            // 
+            // btnReplaceAll
+            // 
+            this.btnReplaceAll.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnReplaceAll.Enabled = false;
+            this.btnReplaceAll.Image = ((System.Drawing.Image)(resources.GetObject("btnReplaceAll.Image")));
+            this.btnReplaceAll.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnReplaceAll.Name = "btnReplaceAll";
+            this.btnReplaceAll.Size = new System.Drawing.Size(23, 22);
+            this.btnReplaceAll.Text = "Заменить";
+            this.btnReplaceAll.ToolTipText = "Заменить строку";
+            this.btnReplaceAll.Click += new System.EventHandler(this.btnReplaceAll_Click);
             // 
             // btnDeleteChunk
             // 
@@ -137,7 +149,7 @@ namespace Document
             this.btnCopyToClipboard.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnCopyToClipboard.Name = "btnCopyToClipboard";
             this.btnCopyToClipboard.Size = new System.Drawing.Size(23, 22);
-            this.btnCopyToClipboard.Text = "toolStripButton1";
+            this.btnCopyToClipboard.Text = "Копировать в буфер";
             this.btnCopyToClipboard.Click += new System.EventHandler(this.btnCopyToClipboard_Click);
             // 
             // toolStripSeparator2
@@ -161,7 +173,7 @@ namespace Document
             this.btnRunMorphService.Name = "btnRunMorphService";
             this.btnRunMorphService.Size = new System.Drawing.Size(62, 22);
             this.btnRunMorphService.Text = "Поиск";
-            this.btnRunMorphService.ToolTipText = "Морфологический разбор...";
+            this.btnRunMorphService.ToolTipText = "Поиск морфологической информации";
             this.btnRunMorphService.Click += new System.EventHandler(this.btnRunMorphService_Click);
             // 
             // dockPanel1
@@ -174,18 +186,6 @@ namespace Document
             this.dockPanel1.Name = "dockPanel1";
             this.dockPanel1.Size = new System.Drawing.Size(797, 459);
             this.dockPanel1.TabIndex = 3;
-            // 
-            // btnReplaceAll
-            // 
-            this.btnReplaceAll.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnReplaceAll.Enabled = false;
-            this.btnReplaceAll.Image = ((System.Drawing.Image)(resources.GetObject("btnReplaceAll.Image")));
-            this.btnReplaceAll.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnReplaceAll.Name = "btnReplaceAll";
-            this.btnReplaceAll.Size = new System.Drawing.Size(23, 22);
-            this.btnReplaceAll.Text = "Заменить";
-            this.btnReplaceAll.ToolTipText = "Заменить строку";
-            this.btnReplaceAll.Click += new System.EventHandler(this.btnReplaceAll_Click);
             // 
             // ChunkContainer
             // 
