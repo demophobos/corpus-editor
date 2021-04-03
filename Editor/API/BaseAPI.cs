@@ -11,7 +11,7 @@ namespace API
         {
             Client = new HttpClient
             {
-                BaseAddress = new Uri(Properties.Settings.Default.APIBaseUrl)
+                BaseAddress = new Uri(AuthAPI.ApiUrl)
             };
 
             Client.DefaultRequestHeaders.Accept.Clear();

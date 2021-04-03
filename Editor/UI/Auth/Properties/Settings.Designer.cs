@@ -25,7 +25,7 @@ namespace Auth.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("agricola.piger@yandex.ru")]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string Email {
             get {
                 return ((string)(this["Email"]));
@@ -37,13 +37,37 @@ namespace Auth.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("@QwePoi71")]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string Pwd {
             get {
                 return ((string)(this["Pwd"]));
             }
             set {
                 this["Pwd"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string APIAuthUrl {
+            get {
+                return ((string)(this["APIAuthUrl"]));
+            }
+            set {
+                this["APIAuthUrl"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string APIBaseUrl {
+            get {
+                return ((string)(this["APIBaseUrl"]));
+            }
+            set {
+                this["APIBaseUrl"] = value;
             }
         }
     }

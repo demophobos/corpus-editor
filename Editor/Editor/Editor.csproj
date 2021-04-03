@@ -6,16 +6,16 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{886AF4D5-907D-41C3-A893-94CEAAC9DF94}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Editor</RootNamespace>
-    <AssemblyName>Editor</AssemblyName>
+    <RootNamespace>CLREditor</RootNamespace>
+    <AssemblyName>CLREditor</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>C:\Users\agricola\Documents\ftp-corpus-editor\</PublishUrl>
+    <PublishUrl>C:\Users\agricola\Projects\DEV\corpus-editor\Build\</PublishUrl>
     <Install>true</Install>
-    <InstallFrom>Unc</InstallFrom>
+    <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
     <UpdateMode>Foreground</UpdateMode>
     <UpdateInterval>7</UpdateInterval>
@@ -23,15 +23,14 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <InstallUrl>\\AGRICOLA\Users\agricola\Documents\ftp-corpus-editor\</InstallUrl>
-    <UpdateUrl>\\AGRICOLA\Users\agricola\Documents\ftp-corpus-editor\</UpdateUrl>
+    <UpdateUrl>https://clr-client.iling.spb.ru/</UpdateUrl>
     <ProductName>CLR Editor</ProductName>
     <PublisherName>ИЛИ РАН</PublisherName>
     <SuiteName>CLR Editor</SuiteName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>index.htm</WebPage>
-    <ApplicationRevision>19</ApplicationRevision>
-    <ApplicationVersion>0.0.1.19</ApplicationVersion>
+    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationVersion>1.0.0.1</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -161,6 +160,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Editor_TemporaryKey.pfx" />
     <None Include="packages.config" />

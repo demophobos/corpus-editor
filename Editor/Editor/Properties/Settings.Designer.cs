@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Editor.Properties {
+namespace CLREditor.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
@@ -25,7 +25,7 @@ namespace Editor.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("agricola.piger@yandex.ru")]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string Email {
             get {
                 return ((string)(this["Email"]));
@@ -37,7 +37,7 @@ namespace Editor.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("@QwePoi71")]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string Pwd {
             get {
                 return ((string)(this["Pwd"]));

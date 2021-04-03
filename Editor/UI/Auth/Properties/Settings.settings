@@ -3,10 +3,16 @@
   <Profiles />
   <Settings>
     <Setting Name="Email" Type="System.String" Scope="User">
-      <Value Profile="(Default)">agricola.piger@yandex.ru</Value>
+      <Value Profile="(Default)" />
     </Setting>
     <Setting Name="Pwd" Type="System.String" Scope="User">
-      <Value Profile="(Default)">@QwePoi71</Value>
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="APIAuthUrl" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="APIBaseUrl" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
     </Setting>
   </Settings>
 </SettingsFile>

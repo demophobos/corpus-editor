@@ -22,29 +22,5 @@ namespace API.Properties {
                 return defaultInstance;
             }
         }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:3000/")]
-        public string APIAuthUrl {
-            get {
-                return ((string)(this["APIAuthUrl"]));
-            }
-            set {
-                this["APIAuthUrl"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:3000/v1/")]
-        public string APIBaseUrl {
-            get {
-                return ((string)(this["APIBaseUrl"]));
-            }
-            set {
-                this["APIBaseUrl"] = value;
-            }
-        }
     }
 }

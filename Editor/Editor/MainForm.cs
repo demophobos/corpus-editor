@@ -175,13 +175,16 @@ namespace Editor
                     if (!File.Exists(iconSourcePath)) return;
 
                     var myUninstallKey = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Uninstall");
+
                     if (myUninstallKey == null) return;
 
                     var mySubKeyNames = myUninstallKey.GetSubKeyNames();
 
                     foreach (var subkeyName in mySubKeyNames)
                     {
+
                         var myKey = myUninstallKey.OpenSubKey(subkeyName, true);
+
                         var myValue = myKey.GetValue("DisplayName");
 
                         // we have two versions 

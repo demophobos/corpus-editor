@@ -9,8 +9,11 @@ namespace API
     public class AuthAPI
     {
         public static UserModel User { get; private set; }
+        public static string ApiUrl { get; set; }
 
         private static HttpClient _anonymousClient;
+
+        private static string _url;
 
         private static void CreateAnonymousClient()
         {
@@ -18,7 +21,7 @@ namespace API
             {
                 _anonymousClient = new HttpClient
                 {
-                    BaseAddress = new Uri(Properties.Settings.Default.APIAuthUrl)
+                    BaseAddress = new Uri(_url)
                 };
 
                 _anonymousClient.DefaultRequestHeaders.Accept.Clear();
@@ -28,8 +31,12 @@ namespace API
 
         }
 
-        public static async Task<AuthResponseModel> LoginAsync(UserModel user)
+        public static async Task<AuthResponseModel> LoginAsync(UserModel user, string url)
         {
+
+            _url = url;
+
+            ApiUrl = _url + "/v1/";
 
             CreateAnonymousClient();
 

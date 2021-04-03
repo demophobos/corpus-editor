@@ -7,9 +7,9 @@ namespace Process
     {
         public static UserModel User { get; set; }
 
-        public static async Task<bool> Login(UserModel user)
+        public static async Task<bool> Login(UserModel user, string url)
         {
-            var report = await API.AuthAPI.LoginAsync(user);
+            var report = await API.AuthAPI.LoginAsync(user, url);
 
             if (report.status == 200)
             {
