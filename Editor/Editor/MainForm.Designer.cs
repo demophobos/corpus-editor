@@ -74,20 +74,20 @@ namespace Editor
             // 
             this.mnuLogin.Image = ((System.Drawing.Image)(resources.GetObject("mnuLogin.Image")));
             this.mnuLogin.Name = "mnuLogin";
-            this.mnuLogin.Size = new System.Drawing.Size(180, 22);
+            this.mnuLogin.Size = new System.Drawing.Size(109, 22);
             this.mnuLogin.Text = "Войти";
             this.mnuLogin.Click += new System.EventHandler(this.mnuLogin_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(106, 6);
             // 
             // mnuExit
             // 
             this.mnuExit.Image = ((System.Drawing.Image)(resources.GetObject("mnuExit.Image")));
             this.mnuExit.Name = "mnuExit";
-            this.mnuExit.Size = new System.Drawing.Size(180, 22);
+            this.mnuExit.Size = new System.Drawing.Size(109, 22);
             this.mnuExit.Text = "Выйти";
             // 
             // MainForm
