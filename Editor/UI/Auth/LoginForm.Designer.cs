@@ -50,7 +50,7 @@ namespace Auth
             this.txtEmail.Location = new System.Drawing.Point(85, 29);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(496, 20);
-            this.txtEmail.TabIndex = 7;
+            this.txtEmail.TabIndex = 1;
             this.txtEmail.TextChanged += new System.EventHandler(this.txtAPI_TextChanged);
             // 
             // tableLayoutPanel1
@@ -83,7 +83,7 @@ namespace Auth
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(496, 20);
-            this.txtPassword.TabIndex = 8;
+            this.txtPassword.TabIndex = 2;
             this.txtPassword.TextChanged += new System.EventHandler(this.txtAPI_TextChanged);
             // 
             // flowLayoutPanel1
@@ -125,7 +125,7 @@ namespace Auth
             this.txtAPI.Location = new System.Drawing.Point(85, 3);
             this.txtAPI.Name = "txtAPI";
             this.txtAPI.Size = new System.Drawing.Size(496, 20);
-            this.txtAPI.TabIndex = 9;
+            this.txtAPI.TabIndex = 0;
             this.txtAPI.TextChanged += new System.EventHandler(this.txtAPI_TextChanged);
             // 
             // label1
