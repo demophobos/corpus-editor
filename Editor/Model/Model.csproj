@@ -69,6 +69,7 @@
     <Compile Include="ChunkModel.cs" />
     <Compile Include="Enum\ChunkEditAction.cs" />
     <Compile Include="Enum\ChunkStatusEnum.cs" />
+    <Compile Include="Enum\ExportTypeEnum.cs" />
     <Compile Include="Enum\MophServiceEnum.cs" />
     <Compile Include="Report\ChunkIndexedReportModel.cs" />
     <Compile Include="Report\ChunkReportModel.cs" />

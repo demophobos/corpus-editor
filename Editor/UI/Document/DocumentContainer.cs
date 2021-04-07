@@ -284,5 +284,52 @@ namespace Document
         {
             lblStatus.Text = e;
         }
+
+        private async void mnuExportToRusCorporaXml_Click(object sender, EventArgs e)
+        {
+            var exportSelector = new ChunkExportSelector(DocumentProcess);
+
+            var result = string.Empty;
+
+            if (exportSelector.ShowDialog() == DialogResult.OK) {
+
+                var exportResultViewer = new ExportResultViewer();
+
+                exportResultViewer.Show(dockPanel1, DockState.Document);
+
+                exportResultViewer.StartExport();
+
+                var rcReportProces = new RusCorporaReportProcess(DocumentProcess);
+
+                switch (exportSelector.ExportTypeEnum)
+                {
+                    case ExportTypeEnum.Text:
+
+                        result = await rcReportProces.CreateTextExport();
+
+                        exportResultViewer.SetResult(DocumentProcess.Header.Code, result);
+
+                        break;
+                    case ExportTypeEnum.Index:
+
+                        result = await rcReportProces.CreateIndexExport(exportSelector.Index, false).ConfigureAwait(true);
+
+                        exportResultViewer.SetResult($"{DocumentProcess.Header.Code} [{exportSelector.Index.Name}]", result);
+
+                        break;
+                    case ExportTypeEnum.IndexWithChildren:
+
+                        result = await rcReportProces.CreateIndexExport(exportSelector.Index, true).ConfigureAwait(true);
+
+                        exportResultViewer.SetResult($"{DocumentProcess.Header.Code} [{exportSelector.Index.Name}]", result);
+
+                        break;
+                    default:
+                        break;
+                }
+
+                exportResultViewer.EndExport();
+            }
+        }
     }
 }

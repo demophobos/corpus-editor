@@ -70,6 +70,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ChunkExportSelector.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChunkExportSelector.Designer.cs">
+      <DependentUpon>ChunkExportSelector.cs</DependentUpon>
+    </Compile>
     <Compile Include="ChunkListViewer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -105,6 +111,12 @@
     </Compile>
     <Compile Include="ContentIndexExplorer.Designer.cs">
       <DependentUpon>ContentIndexExplorer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExportResultViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExportResultViewer.Designer.cs">
+      <DependentUpon>ExportResultViewer.cs</DependentUpon>
     </Compile>
     <Compile Include="IndexBuilder.cs">
       <SubType>Form</SubType>
@@ -164,6 +176,9 @@
     <None Include="Properties\DataSources\Model.MorphModel.datasource" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="ChunkExportSelector.resx">
+      <DependentUpon>ChunkExportSelector.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ChunkListViewer.resx">
       <DependentUpon>ChunkListViewer.cs</DependentUpon>
     </EmbeddedResource>
@@ -181,6 +196,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DocumentContainer.resx">
       <DependentUpon>DocumentContainer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExportResultViewer.resx">
+      <DependentUpon>ExportResultViewer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="IndexBuilder.resx">
       <DependentUpon>IndexBuilder.cs</DependentUpon>

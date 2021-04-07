@@ -32,29 +32,31 @@ namespace Document
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DocumentContainer));
             this.dockPanel1 = new WeifenLuo.WinFormsUI.Docking.DockPanel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.mnuMorphTable = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuTextReport = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuTextReportText = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuTextReportTextCommented = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuTextReportParallelText = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuTextReportParallelTextCommented = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuChunkReport = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuChunkReportIndexWithEmptyText = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuChunkReportWithoutParallelText = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuChunkReportChunkWithUndefinedWord = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuChunkReportUnpublished = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuWordReport = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuWordReportUndefinedWord = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuCommentReport = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuStatReport = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuStatPosReport = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.mnuStatReportReadinessStatistics = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuWindow = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuCloseAllWindows = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuCloseAllWindowsExceptActive = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.lblStatus = new System.Windows.Forms.ToolStripStatusLabel();
+            this.mnuExport = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuReport = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuTools = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuExportToRusCorporaXml = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuText = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuChunk = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuWord = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuComment = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
+            this.mnuStatistics = new System.Windows.Forms.ToolStripMenuItem();
+            this.morphToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuTextReportText = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuTextReportParallelText = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuChunkReportIndexWithEmptyText = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuChunkReportWithoutParallelText = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuChunkReportChunkWithUndefinedWord = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuChunkReportUnpublished = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuStatPosReport = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuStatReportReadinessStatistics = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -66,166 +68,21 @@ namespace Document
             this.dockPanel1.DocumentStyle = WeifenLuo.WinFormsUI.Docking.DocumentStyle.DockingWindow;
             this.dockPanel1.Location = new System.Drawing.Point(0, 24);
             this.dockPanel1.Name = "dockPanel1";
-            this.dockPanel1.Size = new System.Drawing.Size(640, 440);
+            this.dockPanel1.Size = new System.Drawing.Size(831, 440);
             this.dockPanel1.TabIndex = 1;
             // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuMorphTable,
-            this.mnuTextReport,
-            this.mnuChunkReport,
-            this.mnuWordReport,
-            this.mnuCommentReport,
-            this.mnuStatReport,
+            this.mnuExport,
+            this.mnuReport,
+            this.mnuTools,
             this.mnuWindow});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(640, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(831, 24);
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
-            // 
-            // mnuMorphTable
-            // 
-            this.mnuMorphTable.Image = ((System.Drawing.Image)(resources.GetObject("mnuMorphTable.Image")));
-            this.mnuMorphTable.Name = "mnuMorphTable";
-            this.mnuMorphTable.Size = new System.Drawing.Size(108, 20);
-            this.mnuMorphTable.Text = "Морфология";
-            this.mnuMorphTable.Click += new System.EventHandler(this.mnuMorphTable_Click);
-            // 
-            // mnuTextReport
-            // 
-            this.mnuTextReport.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuTextReportText,
-            this.mnuTextReportTextCommented,
-            this.mnuTextReportParallelText,
-            this.mnuTextReportParallelTextCommented});
-            this.mnuTextReport.Image = ((System.Drawing.Image)(resources.GetObject("mnuTextReport.Image")));
-            this.mnuTextReport.MergeIndex = 1;
-            this.mnuTextReport.Name = "mnuTextReport";
-            this.mnuTextReport.Size = new System.Drawing.Size(64, 20);
-            this.mnuTextReport.Text = "Текст";
-            // 
-            // mnuTextReportText
-            // 
-            this.mnuTextReportText.Name = "mnuTextReportText";
-            this.mnuTextReportText.Size = new System.Drawing.Size(285, 22);
-            this.mnuTextReportText.Text = "Текст";
-            this.mnuTextReportText.Click += new System.EventHandler(this.mnuTextReportText_Click);
-            // 
-            // mnuTextReportTextCommented
-            // 
-            this.mnuTextReportTextCommented.Name = "mnuTextReportTextCommented";
-            this.mnuTextReportTextCommented.Size = new System.Drawing.Size(285, 22);
-            this.mnuTextReportTextCommented.Text = "Текст с комментарием";
-            this.mnuTextReportTextCommented.Click += new System.EventHandler(this.mnuTextReportTextCommented_Click);
-            // 
-            // mnuTextReportParallelText
-            // 
-            this.mnuTextReportParallelText.Name = "mnuTextReportParallelText";
-            this.mnuTextReportParallelText.Size = new System.Drawing.Size(285, 22);
-            this.mnuTextReportParallelText.Text = "Параллельный текст";
-            this.mnuTextReportParallelText.Click += new System.EventHandler(this.mnuTextReportParallelText_Click);
-            // 
-            // mnuTextReportParallelTextCommented
-            // 
-            this.mnuTextReportParallelTextCommented.Name = "mnuTextReportParallelTextCommented";
-            this.mnuTextReportParallelTextCommented.Size = new System.Drawing.Size(285, 22);
-            this.mnuTextReportParallelTextCommented.Text = "Параллельный текст с комментарием";
-            this.mnuTextReportParallelTextCommented.Click += new System.EventHandler(this.mnuTextReportParallelTextCommented_Click);
-            // 
-            // mnuChunkReport
-            // 
-            this.mnuChunkReport.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuChunkReportIndexWithEmptyText,
-            this.mnuChunkReportWithoutParallelText,
-            this.mnuChunkReportChunkWithUndefinedWord,
-            this.mnuChunkReportUnpublished});
-            this.mnuChunkReport.Image = ((System.Drawing.Image)(resources.GetObject("mnuChunkReport.Image")));
-            this.mnuChunkReport.Name = "mnuChunkReport";
-            this.mnuChunkReport.Size = new System.Drawing.Size(98, 20);
-            this.mnuChunkReport.Text = "Фрагменты";
-            // 
-            // mnuChunkReportIndexWithEmptyText
-            // 
-            this.mnuChunkReportIndexWithEmptyText.Name = "mnuChunkReportIndexWithEmptyText";
-            this.mnuChunkReportIndexWithEmptyText.Size = new System.Drawing.Size(240, 22);
-            this.mnuChunkReportIndexWithEmptyText.Text = "Индекс без текста";
-            this.mnuChunkReportIndexWithEmptyText.Click += new System.EventHandler(this.mnuChunkReportIndexWithEmptyText_Click);
-            // 
-            // mnuChunkReportWithoutParallelText
-            // 
-            this.mnuChunkReportWithoutParallelText.Name = "mnuChunkReportWithoutParallelText";
-            this.mnuChunkReportWithoutParallelText.Size = new System.Drawing.Size(240, 22);
-            this.mnuChunkReportWithoutParallelText.Text = "Без параллельного текста";
-            this.mnuChunkReportWithoutParallelText.Click += new System.EventHandler(this.mnuChunkReportChunkWithoutParallelText_Click);
-            // 
-            // mnuChunkReportChunkWithUndefinedWord
-            // 
-            this.mnuChunkReportChunkWithUndefinedWord.Name = "mnuChunkReportChunkWithUndefinedWord";
-            this.mnuChunkReportChunkWithUndefinedWord.Size = new System.Drawing.Size(240, 22);
-            this.mnuChunkReportChunkWithUndefinedWord.Text = "С неопределенными словами";
-            this.mnuChunkReportChunkWithUndefinedWord.Click += new System.EventHandler(this.mnuChunkReportChunkWithUndefinedWord_Click);
-            // 
-            // mnuChunkReportUnpublished
-            // 
-            this.mnuChunkReportUnpublished.Name = "mnuChunkReportUnpublished";
-            this.mnuChunkReportUnpublished.Size = new System.Drawing.Size(240, 22);
-            this.mnuChunkReportUnpublished.Text = "Неопубликованные";
-            this.mnuChunkReportUnpublished.Click += new System.EventHandler(this.mnuChunkReportUnpublished_Click);
-            // 
-            // mnuWordReport
-            // 
-            this.mnuWordReport.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuWordReportUndefinedWord});
-            this.mnuWordReport.Image = ((System.Drawing.Image)(resources.GetObject("mnuWordReport.Image")));
-            this.mnuWordReport.Name = "mnuWordReport";
-            this.mnuWordReport.Size = new System.Drawing.Size(69, 20);
-            this.mnuWordReport.Text = "Слова";
-            // 
-            // mnuWordReportUndefinedWord
-            // 
-            this.mnuWordReportUndefinedWord.Name = "mnuWordReportUndefinedWord";
-            this.mnuWordReportUndefinedWord.Size = new System.Drawing.Size(170, 22);
-            this.mnuWordReportUndefinedWord.Text = "Неопределенные";
-            this.mnuWordReportUndefinedWord.Click += new System.EventHandler(this.mnuWordReportUndefinedWord_Click);
-            // 
-            // mnuCommentReport
-            // 
-            this.mnuCommentReport.Image = ((System.Drawing.Image)(resources.GetObject("mnuCommentReport.Image")));
-            this.mnuCommentReport.Name = "mnuCommentReport";
-            this.mnuCommentReport.Size = new System.Drawing.Size(112, 20);
-            this.mnuCommentReport.Text = "Комментарии";
-            // 
-            // mnuStatReport
-            // 
-            this.mnuStatReport.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuStatPosReport,
-            this.toolStripSeparator1,
-            this.mnuStatReportReadinessStatistics});
-            this.mnuStatReport.Image = ((System.Drawing.Image)(resources.GetObject("mnuStatReport.Image")));
-            this.mnuStatReport.Name = "mnuStatReport";
-            this.mnuStatReport.Size = new System.Drawing.Size(96, 20);
-            this.mnuStatReport.Text = "Статистика";
-            // 
-            // mnuStatPosReport
-            // 
-            this.mnuStatPosReport.Name = "mnuStatPosReport";
-            this.mnuStatPosReport.Size = new System.Drawing.Size(162, 22);
-            this.mnuStatPosReport.Text = "По частям речи";
-            this.mnuStatPosReport.Click += new System.EventHandler(this.mnuStatPosReport_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(159, 6);
-            // 
-            // mnuStatReportReadinessStatistics
-            // 
-            this.mnuStatReportReadinessStatistics.Name = "mnuStatReportReadinessStatistics";
-            this.mnuStatReportReadinessStatistics.Size = new System.Drawing.Size(162, 22);
-            this.mnuStatReportReadinessStatistics.Text = "Выполнение";
-            this.mnuStatReportReadinessStatistics.Click += new System.EventHandler(this.mnuStatReportReadinessStatistics_Click);
             // 
             // mnuWindow
             // 
@@ -259,7 +116,7 @@ namespace Document
             this.lblStatus});
             this.statusStrip1.Location = new System.Drawing.Point(0, 464);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(640, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(831, 22);
             this.statusStrip1.TabIndex = 4;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -268,11 +125,172 @@ namespace Document
             this.lblStatus.Name = "lblStatus";
             this.lblStatus.Size = new System.Drawing.Size(0, 17);
             // 
+            // mnuExport
+            // 
+            this.mnuExport.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuExportToRusCorporaXml});
+            this.mnuExport.Image = ((System.Drawing.Image)(resources.GetObject("mnuExport.Image")));
+            this.mnuExport.Name = "mnuExport";
+            this.mnuExport.ShowShortcutKeys = false;
+            this.mnuExport.Size = new System.Drawing.Size(80, 20);
+            this.mnuExport.Text = "Экспорт";
+            // 
+            // mnuReport
+            // 
+            this.mnuReport.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuText,
+            this.mnuChunk,
+            this.mnuWord,
+            this.mnuComment,
+            this.toolStripMenuItem1,
+            this.mnuStatistics});
+            this.mnuReport.Image = ((System.Drawing.Image)(resources.GetObject("mnuReport.Image")));
+            this.mnuReport.Name = "mnuReport";
+            this.mnuReport.Size = new System.Drawing.Size(76, 20);
+            this.mnuReport.Text = "Отчеты";
+            // 
+            // mnuTools
+            // 
+            this.mnuTools.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.morphToolStripMenuItem});
+            this.mnuTools.Image = ((System.Drawing.Image)(resources.GetObject("mnuTools.Image")));
+            this.mnuTools.Name = "mnuTools";
+            this.mnuTools.Size = new System.Drawing.Size(111, 20);
+            this.mnuTools.Text = "Инструменты";
+            // 
+            // mnuExportToRusCorporaXml
+            // 
+            this.mnuExportToRusCorporaXml.Image = ((System.Drawing.Image)(resources.GetObject("mnuExportToRusCorporaXml.Image")));
+            this.mnuExportToRusCorporaXml.Name = "mnuExportToRusCorporaXml";
+            this.mnuExportToRusCorporaXml.Size = new System.Drawing.Size(180, 22);
+            this.mnuExportToRusCorporaXml.Text = "RusCorpora.xml";
+            this.mnuExportToRusCorporaXml.Click += new System.EventHandler(this.mnuExportToRusCorporaXml_Click);
+            // 
+            // mnuText
+            // 
+            this.mnuText.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuTextReportText,
+            this.mnuTextReportParallelText});
+            this.mnuText.Image = ((System.Drawing.Image)(resources.GetObject("mnuText.Image")));
+            this.mnuText.Name = "mnuText";
+            this.mnuText.Size = new System.Drawing.Size(180, 22);
+            this.mnuText.Text = "Текст";
+            // 
+            // mnuChunk
+            // 
+            this.mnuChunk.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuChunkReportIndexWithEmptyText,
+            this.mnuChunkReportWithoutParallelText,
+            this.mnuChunkReportChunkWithUndefinedWord,
+            this.mnuChunkReportUnpublished});
+            this.mnuChunk.Image = ((System.Drawing.Image)(resources.GetObject("mnuChunk.Image")));
+            this.mnuChunk.Name = "mnuChunk";
+            this.mnuChunk.Size = new System.Drawing.Size(180, 22);
+            this.mnuChunk.Text = "Фрагмент";
+            // 
+            // mnuWord
+            // 
+            this.mnuWord.Image = ((System.Drawing.Image)(resources.GetObject("mnuWord.Image")));
+            this.mnuWord.Name = "mnuWord";
+            this.mnuWord.Size = new System.Drawing.Size(180, 22);
+            this.mnuWord.Text = "Слово";
+            // 
+            // mnuComment
+            // 
+            this.mnuComment.Image = ((System.Drawing.Image)(resources.GetObject("mnuComment.Image")));
+            this.mnuComment.Name = "mnuComment";
+            this.mnuComment.Size = new System.Drawing.Size(180, 22);
+            this.mnuComment.Text = "Комментарий";
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(177, 6);
+            // 
+            // mnuStatistics
+            // 
+            this.mnuStatistics.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuStatPosReport,
+            this.toolStripSeparator2,
+            this.mnuStatReportReadinessStatistics});
+            this.mnuStatistics.Image = ((System.Drawing.Image)(resources.GetObject("mnuStatistics.Image")));
+            this.mnuStatistics.Name = "mnuStatistics";
+            this.mnuStatistics.Size = new System.Drawing.Size(180, 22);
+            this.mnuStatistics.Text = "Статистика";
+            // 
+            // morphToolStripMenuItem
+            // 
+            this.morphToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("morphToolStripMenuItem.Image")));
+            this.morphToolStripMenuItem.Name = "morphToolStripMenuItem";
+            this.morphToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.morphToolStripMenuItem.Text = "Морфология";
+            this.morphToolStripMenuItem.Click += new System.EventHandler(this.mnuMorphTable_Click);
+            // 
+            // mnuTextReportText
+            // 
+            this.mnuTextReportText.Name = "mnuTextReportText";
+            this.mnuTextReportText.Size = new System.Drawing.Size(189, 22);
+            this.mnuTextReportText.Text = "Текст";
+            this.mnuTextReportText.Click += new System.EventHandler(this.mnuTextReportText_Click);
+            // 
+            // mnuTextReportParallelText
+            // 
+            this.mnuTextReportParallelText.Name = "mnuTextReportParallelText";
+            this.mnuTextReportParallelText.Size = new System.Drawing.Size(189, 22);
+            this.mnuTextReportParallelText.Text = "Параллельный текст";
+            this.mnuTextReportParallelText.Click += new System.EventHandler(this.mnuTextReportParallelText_Click);
+            // 
+            // mnuChunkReportIndexWithEmptyText
+            // 
+            this.mnuChunkReportIndexWithEmptyText.Name = "mnuChunkReportIndexWithEmptyText";
+            this.mnuChunkReportIndexWithEmptyText.Size = new System.Drawing.Size(240, 22);
+            this.mnuChunkReportIndexWithEmptyText.Text = "Индекс без текста";
+            this.mnuChunkReportIndexWithEmptyText.Click += new System.EventHandler(this.mnuChunkReportIndexWithEmptyText_Click);
+            // 
+            // mnuChunkReportWithoutParallelText
+            // 
+            this.mnuChunkReportWithoutParallelText.Name = "mnuChunkReportWithoutParallelText";
+            this.mnuChunkReportWithoutParallelText.Size = new System.Drawing.Size(240, 22);
+            this.mnuChunkReportWithoutParallelText.Text = "Без параллельного текста";
+            this.mnuChunkReportWithoutParallelText.Click += new System.EventHandler(this.mnuChunkReportChunkWithoutParallelText_Click);
+            // 
+            // mnuChunkReportChunkWithUndefinedWord
+            // 
+            this.mnuChunkReportChunkWithUndefinedWord.Name = "mnuChunkReportChunkWithUndefinedWord";
+            this.mnuChunkReportChunkWithUndefinedWord.Size = new System.Drawing.Size(240, 22);
+            this.mnuChunkReportChunkWithUndefinedWord.Text = "С неопределенными словами";
+            this.mnuChunkReportChunkWithUndefinedWord.Click += new System.EventHandler(this.mnuChunkReportChunkWithUndefinedWord_Click);
+            // 
+            // mnuChunkReportUnpublished
+            // 
+            this.mnuChunkReportUnpublished.Name = "mnuChunkReportUnpublished";
+            this.mnuChunkReportUnpublished.Size = new System.Drawing.Size(240, 22);
+            this.mnuChunkReportUnpublished.Text = "Неопубликованные";
+            this.mnuChunkReportUnpublished.Click += new System.EventHandler(this.mnuChunkReportUnpublished_Click);
+            // 
+            // mnuStatPosReport
+            // 
+            this.mnuStatPosReport.Name = "mnuStatPosReport";
+            this.mnuStatPosReport.Size = new System.Drawing.Size(180, 22);
+            this.mnuStatPosReport.Text = "Части речи";
+            this.mnuStatPosReport.Click += new System.EventHandler(this.mnuStatPosReport_Click);
+            // 
+            // mnuStatReportReadinessStatistics
+            // 
+            this.mnuStatReportReadinessStatistics.Name = "mnuStatReportReadinessStatistics";
+            this.mnuStatReportReadinessStatistics.Size = new System.Drawing.Size(180, 22);
+            this.mnuStatReportReadinessStatistics.Text = "Выполнение";
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
+            // 
             // DocumentContainer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(640, 486);
+            this.ClientSize = new System.Drawing.Size(831, 486);
             this.Controls.Add(this.dockPanel1);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.statusStrip1);
@@ -294,28 +312,30 @@ namespace Document
 
         private WeifenLuo.WinFormsUI.Docking.DockPanel dockPanel1;
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem mnuTextReport;
         private System.Windows.Forms.ToolStripMenuItem mnuWindow;
         private System.Windows.Forms.ToolStripMenuItem mnuCloseAllWindows;
-        private System.Windows.Forms.ToolStripMenuItem mnuTextReportText;
-        private System.Windows.Forms.ToolStripMenuItem mnuTextReportParallelText;
-        private System.Windows.Forms.ToolStripMenuItem mnuChunkReport;
-        private System.Windows.Forms.ToolStripMenuItem mnuChunkReportWithoutParallelText;
-        private System.Windows.Forms.ToolStripMenuItem mnuChunkReportChunkWithUndefinedWord;
-        private System.Windows.Forms.ToolStripMenuItem mnuWordReport;
-        private System.Windows.Forms.ToolStripMenuItem mnuWordReportUndefinedWord;
-        private System.Windows.Forms.ToolStripMenuItem mnuCommentReport;
-        private System.Windows.Forms.ToolStripMenuItem mnuStatReport;
-        private System.Windows.Forms.ToolStripMenuItem mnuStatReportReadinessStatistics;
-        private System.Windows.Forms.ToolStripMenuItem mnuTextReportTextCommented;
-        private System.Windows.Forms.ToolStripMenuItem mnuTextReportParallelTextCommented;
-        private System.Windows.Forms.ToolStripMenuItem mnuStatPosReport;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem mnuCloseAllWindowsExceptActive;
-        private System.Windows.Forms.ToolStripMenuItem mnuChunkReportUnpublished;
-        private System.Windows.Forms.ToolStripMenuItem mnuChunkReportIndexWithEmptyText;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel lblStatus;
-        private System.Windows.Forms.ToolStripMenuItem mnuMorphTable;
+        private System.Windows.Forms.ToolStripMenuItem mnuExport;
+        private System.Windows.Forms.ToolStripMenuItem mnuReport;
+        private System.Windows.Forms.ToolStripMenuItem mnuTools;
+        private System.Windows.Forms.ToolStripMenuItem mnuExportToRusCorporaXml;
+        private System.Windows.Forms.ToolStripMenuItem mnuText;
+        private System.Windows.Forms.ToolStripMenuItem mnuChunk;
+        private System.Windows.Forms.ToolStripMenuItem mnuWord;
+        private System.Windows.Forms.ToolStripMenuItem mnuComment;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem mnuStatistics;
+        private System.Windows.Forms.ToolStripMenuItem morphToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mnuTextReportText;
+        private System.Windows.Forms.ToolStripMenuItem mnuTextReportParallelText;
+        private System.Windows.Forms.ToolStripMenuItem mnuChunkReportIndexWithEmptyText;
+        private System.Windows.Forms.ToolStripMenuItem mnuChunkReportWithoutParallelText;
+        private System.Windows.Forms.ToolStripMenuItem mnuChunkReportChunkWithUndefinedWord;
+        private System.Windows.Forms.ToolStripMenuItem mnuChunkReportUnpublished;
+        private System.Windows.Forms.ToolStripMenuItem mnuStatPosReport;
+        private System.Windows.Forms.ToolStripMenuItem mnuStatReportReadinessStatistics;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
     }
 }

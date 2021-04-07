@@ -36,7 +36,6 @@ namespace Document
             this.btnReplaceAll = new System.Windows.Forms.ToolStripButton();
             this.btnDeleteChunk = new System.Windows.Forms.ToolStripButton();
             this.btnPublishChunk = new System.Windows.Forms.ToolStripButton();
-            this.btnExport = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.btnCopyToClipboard = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
@@ -55,7 +54,6 @@ namespace Document
             this.btnReplaceAll,
             this.btnDeleteChunk,
             this.btnPublishChunk,
-            this.btnExport,
             this.toolStripSeparator1,
             this.btnCopyToClipboard,
             this.toolStripSeparator2,
@@ -123,18 +121,6 @@ namespace Document
             this.btnPublishChunk.Size = new System.Drawing.Size(23, 22);
             this.btnPublishChunk.Text = "Опубликовать";
             this.btnPublishChunk.Click += new System.EventHandler(this.btnPublishChunk_ClickAsync);
-            // 
-            // btnExport
-            // 
-            this.btnExport.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.btnExport.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnExport.Enabled = false;
-            this.btnExport.Image = ((System.Drawing.Image)(resources.GetObject("btnExport.Image")));
-            this.btnExport.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnExport.Name = "btnExport";
-            this.btnExport.Size = new System.Drawing.Size(23, 22);
-            this.btnExport.Text = "Экспорт фрагмента...";
-            this.btnExport.Click += new System.EventHandler(this.btnSaveAs_Click);
             // 
             // toolStripSeparator1
             // 
@@ -212,7 +198,6 @@ namespace Document
         private System.Windows.Forms.ToolStripButton btnEditChunk;
         private System.Windows.Forms.ToolStripButton btnDeleteChunk;
         private System.Windows.Forms.ToolStripButton btnPublishChunk;
-        private System.Windows.Forms.ToolStripButton btnExport;
         private System.Windows.Forms.ToolStripComboBox cmbMorphService;
         private System.Windows.Forms.ToolStripButton btnRunMorphService;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;

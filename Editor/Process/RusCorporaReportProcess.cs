@@ -7,6 +7,7 @@ using Process.Helper;
 using Process.Properties;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -20,9 +21,21 @@ namespace Process
         {
             _documentProcess = documentProcess;
         }
-        #region RLNC
+
         private int pairCount;
-        public async Task<string> CreateRusCorporaChunkReport(ChunkViewModel chunk)
+        private async Task<string> CreateSingleChunkReport(ChunkViewModel chunk)
+        {
+            var interpViews = await GetInterps(chunk);
+
+            if (interpViews.Count == 0)
+            {
+                throw new Exception("Переводы отсутствуют");
+            }
+
+            return CreateRLNCRow(interpViews, pairCount = 0);
+        }
+
+        private async Task<List<InterpViewModel>> GetInterps(ChunkViewModel chunk)
         {
             var query = new InterpViewQuery();
 
@@ -38,50 +51,28 @@ namespace Process
 
             var interpViews = await _documentProcess.GetInterpsByQueryView(query).ConfigureAwait(true);
 
-            if (interpViews.Count == 0)
-            {
-                throw new Exception("Переводы отсутствуют");
-            }
-
-            pairCount = 0;
-
-            var sb = new StringBuilder();
-
-            sb.Append("<?xml version=\"1.0\" encoding=\"utf-8\"?>");
-
-            sb.Append("<html>");
-
-            sb.Append($"<head></head>");
-
-            sb.Append("<body>");
-
-            CreateRLNCRow(sb, interpViews);
-
-            //await CreateRLNCRows(sb, interpViews);
-
-            sb.Append("</body>");
-
-            sb.Append("</html>");
-
-            return sb.ToString();
+            return interpViews;
         }
 
-        //private async Task CreateRLNCRows(StringBuilder sb, List<InterpViewModel> interpretations)
-        //{
-        //    var childerenTexts = _documentProcess.Indeces.Where(i => i.ParentId == chunk.IndexId);
-
-        //    foreach (var child in childerenTexts)
-        //    {
-        //        var childChunk = await ChunkProcess.GetChunkByQuery(new ChunkQuery { IndexId = chunk.IndexId }).ConfigureAwait(true);
-
-        //        CreateRLNCRow(sb, chunk, interpretations);
-
-        //        await CreateRLNCRows(sb, childChunk, interpretations).ConfigureAwait(true);
-        //    }
-        //}
-
-        private void CreateRLNCRow(StringBuilder sb, List<InterpViewModel> interpretations)
+        private async Task CreateRLNCRows(IndexModel parentIndex, StringBuilder sb)
         {
+            var childIndeces = _documentProcess.Indeces.Where(i => i.ParentId == parentIndex.Id).OrderBy(i=>i.Order);
+
+            foreach (var childIndex in childIndeces)
+            {
+                var childChunk = await ChunkProcess.GetChunkByQuery(new ChunkQuery { IndexId = childIndex.Id }).ConfigureAwait(true);
+
+                var interpViews = await GetInterps(childChunk).ConfigureAwait(true);
+
+                sb.Append(CreateRLNCRow(interpViews, pairCount += 1));
+
+                await CreateRLNCRows(childIndex, sb).ConfigureAwait(true);
+            }
+        }
+
+        private string CreateRLNCRow(List<InterpViewModel> interpretations, int pairCount)
+        {
+            var sb = new StringBuilder();
 
             sb.Append($"<para id=\"{pairCount}\">");
 
@@ -89,9 +80,71 @@ namespace Process
 
             sb.Append($"</para>");
 
-            pairCount += 1;
+            return sb.ToString();
         }
 
+        public async Task<string> CreateTextExport()
+        {
+            var sb = new StringBuilder();
+
+            var topIndeces = _documentProcess.Indeces.Where(i => i.ParentId == null).OrderBy(i=>i.Order).ToList();
+
+            sb.Append(CreateHeader());
+
+            foreach (var index in topIndeces)
+            {
+                var singleChunkReport = string.Empty;
+
+                var parentChunk = await ChunkProcess.GetChunkByQuery(new ChunkQuery { IndexId = index.Id });
+
+                if (parentChunk != null)
+                {
+                    singleChunkReport = await CreateSingleChunkReport(parentChunk).ConfigureAwait(true);
+                }
+
+                sb.Append(singleChunkReport);
+
+                await CreateRLNCRows(index, sb).ConfigureAwait(true);
+            }
+
+            sb.Append(CreateFooter());
+
+            return sb.ToString();
+        }
+
+        public async Task<string> CreateIndexExport(IndexModel index, bool includeChildren)
+        {
+            var sb = new StringBuilder();
+
+            var singleChunkReport = string.Empty;
+
+            var parentChunk = await ChunkProcess.GetChunkByQuery(new ChunkQuery { IndexId = index.Id });
+
+            if (parentChunk != null)
+            {
+                singleChunkReport = await CreateSingleChunkReport(parentChunk).ConfigureAwait(true);
+            }
+
+            if (!includeChildren)
+            {
+                sb.Append($"{CreateHeader()}{singleChunkReport}{CreateFooter()}");
+            }
+            else
+            {
+
+                sb.Append(CreateHeader());
+
+                sb.Append(singleChunkReport);
+
+                await CreateRLNCRows(index, sb).ConfigureAwait(true);
+
+                sb.Append(CreateFooter());
+            }
+
+            return sb.ToString();
+        }
+
+        #region Helper Methods
         private string FormatTextToRLNC(List<InterpViewModel> interpretations)
         {
             var sb = new StringBuilder();
@@ -128,6 +181,32 @@ namespace Process
             gsb.Append($"<ana lex=\"{chunkValueItem.Lemma}\" gr=\"{RusCorporaMapper.ConvertPos(chunkValueItem)}\"/>");
 
             return gsb.ToString();
+        }
+
+        private static string CreateFooter()
+        {
+            var sb = new StringBuilder();
+
+            sb.Append("</body>");
+
+            sb.Append("</html>");
+
+            return sb.ToString();
+        }
+
+        private static string CreateHeader()
+        {
+            var sb = new StringBuilder();
+
+            sb.Append("<?xml version=\"1.0\" encoding=\"utf-8\"?>");
+
+            sb.Append("<html>");
+
+            sb.Append($"<head></head>");
+
+            sb.Append("<body>");
+
+            return sb.ToString();
         }
         #endregion
     }

@@ -16,7 +16,6 @@ namespace Document
     {
         private DocumentProcess _documentProcess;
 
-        private RusCorporaReportProcess _rusCorporaReportProcess;
         public IndexModel Index { get; private set; }
 
         private ChunkExplorer _chunkExplorer;
@@ -26,8 +25,6 @@ namespace Document
         private InterpContainer _interpContainer;
 
         private ChunkModel _chunk;
-
-        private SaveFileDialog _saveFileDialog;
 
         private ElementModel _currentElement;
 
@@ -39,8 +36,6 @@ namespace Document
         public ChunkContainer(IndexModel index, DocumentProcess documentProcess)
         {
             _documentProcess = documentProcess;
-
-            _rusCorporaReportProcess = new RusCorporaReportProcess(_documentProcess);
 
             Index = index;
 
@@ -62,8 +57,7 @@ namespace Document
             cmbMorphService.Enabled =
             btnDeleteChunk.Enabled =
             btnEditChunk.Enabled =
-            btnReplaceAll.Enabled =
-            btnExport.Enabled = _chunk != null;
+            btnReplaceAll.Enabled = _chunk != null;
 
             btnAddChunk.Enabled = _chunk == null;
 
@@ -291,78 +285,6 @@ namespace Document
             StatusInfoShown?.Invoke(this, $"Изменения фрагмента {Index.Name} опубликованы");
 
             btnPublishChunk.ToolTipText = "Изменения опубликованы";
-        }
-        #endregion
-
-        #region Export to file
-        private void btnSaveAs_Click(object sender, EventArgs e)
-        {
-            _saveFileDialog = new SaveFileDialog
-            {
-                Title = $"Сохранение фрагмента {_documentProcess.Header.Code}_{Index.Name}",
-
-                Filter = "Текст (*.txt) |*.txt | Json (*.json) |*.json | RusCorpora (*.xml) |*.xml",
-
-                FileName = $"{_documentProcess.Header.Code}_{Index.Name}",
-
-                OverwritePrompt = true,
-
-                AddExtension = true,
-
-                AutoUpgradeEnabled = true,
-
-                SupportMultiDottedExtensions = false
-
-            };
-
-            _saveFileDialog.ValidateNames = true;
-
-            _saveFileDialog.FileOk += SaveFileDialog_FileOk;
-
-            _saveFileDialog.ShowDialog();
-        }
-
-        private async void SaveFileDialog_FileOk(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            if (!e.Cancel)
-            {
-                if (_saveFileDialog.FilterIndex == 1)
-                {
-                    using (StreamWriter sw = File.CreateText(_saveFileDialog.FileName))
-                    {
-                        sw.Write(_chunk.Value);
-                    }
-                }
-
-                if (_saveFileDialog.FilterIndex == 2)
-                {
-                    using (StreamWriter sw = File.CreateText(_saveFileDialog.FileName))
-                    {
-                        sw.Write(_chunk.ValueObj);
-                    }
-                }
-
-                if (_saveFileDialog.FilterIndex == 3)
-                {
-                    using (StreamWriter sw = File.CreateText(_saveFileDialog.FileName))
-                    {
-                        try
-                        {
-                            var chunkView = await ChunkProcess.GetChunkByQuery(new ChunkQuery { IndexId = _chunk.IndexId });
-
-                            var data = await _rusCorporaReportProcess.CreateRusCorporaChunkReport(chunkView).ConfigureAwait(true);
-
-                            sw.Write(data);
-                        }
-                        catch (Exception ex)
-                        {
-                            DialogProcess.InfoMessage("Ошибка сохранения", ex.Message);
-
-                            e.Cancel = true;
-                        }
-                    }
-                }
-            }
         }
         #endregion
 
