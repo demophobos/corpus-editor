@@ -76,7 +76,7 @@ namespace Document
             this.btnSaveAs.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnSaveAs.Name = "btnSaveAs";
             this.btnSaveAs.Size = new System.Drawing.Size(23, 22);
-            this.btnSaveAs.Text = "toolStripButton1";
+            this.btnSaveAs.Text = "Сохранить";
             this.btnSaveAs.Click += new System.EventHandler(this.btnSaveAs_Click);
             // 
             // ExportResultViewer

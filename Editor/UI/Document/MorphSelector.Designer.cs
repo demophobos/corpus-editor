@@ -37,6 +37,7 @@ namespace Document
             this.btnClone = new System.Windows.Forms.ToolStripButton();
             this.btnEdit = new System.Windows.Forms.ToolStripButton();
             this.btnDelete = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.btnCancelDefinition = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.btnAcceptForAllCases = new System.Windows.Forms.ToolStripButton();
@@ -45,6 +46,8 @@ namespace Document
             this.btnCreateRule = new System.Windows.Forms.ToolStripButton();
             this.btnRemoveRule = new System.Windows.Forms.ToolStripButton();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.morphSource = new System.Windows.Forms.BindingSource(this.components);
+            this.loader1 = new Common.Control.Loader();
             this.IsRule = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Form = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lemmaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -61,9 +64,6 @@ namespace Document
             this.dialectDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.langDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.morphId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.morphSource = new System.Windows.Forms.BindingSource(this.components);
-            this.loader1 = new Common.Control.Loader();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuTools.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.morphSource)).BeginInit();
@@ -146,6 +146,11 @@ namespace Document
             this.btnDelete.Size = new System.Drawing.Size(23, 22);
             this.btnDelete.ToolTipText = "Удалить определение";
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_ClickAsync);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
             // 
             // btnCancelDefinition
             // 
@@ -249,6 +254,20 @@ namespace Document
             this.dataGridView1.Size = new System.Drawing.Size(984, 419);
             this.dataGridView1.TabIndex = 18;
             this.dataGridView1.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridView1_CellFormatting);
+            // 
+            // morphSource
+            // 
+            this.morphSource.DataSource = typeof(Model.MorphModel);
+            this.morphSource.DataSourceChanged += new System.EventHandler(this.morphSource_DataSourceChanged);
+            this.morphSource.CurrentChanged += new System.EventHandler(this.morphSource_CurrentChanged);
+            // 
+            // loader1
+            // 
+            this.loader1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.loader1.Location = new System.Drawing.Point(0, 25);
+            this.loader1.Name = "loader1";
+            this.loader1.Size = new System.Drawing.Size(984, 419);
+            this.loader1.TabIndex = 19;
             // 
             // IsRule
             // 
@@ -362,12 +381,11 @@ namespace Document
             // 
             // featureDataGridViewTextBoxColumn
             // 
-            this.featureDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.featureDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.featureDataGridViewTextBoxColumn.DataPropertyName = "Feature";
             this.featureDataGridViewTextBoxColumn.HeaderText = "Особенность";
             this.featureDataGridViewTextBoxColumn.Name = "featureDataGridViewTextBoxColumn";
             this.featureDataGridViewTextBoxColumn.ReadOnly = true;
-            this.featureDataGridViewTextBoxColumn.Width = 99;
             // 
             // dialectDataGridViewTextBoxColumn
             // 
@@ -394,25 +412,6 @@ namespace Document
             this.morphId.Name = "morphId";
             this.morphId.ReadOnly = true;
             this.morphId.Visible = false;
-            // 
-            // morphSource
-            // 
-            this.morphSource.DataSource = typeof(Model.MorphModel);
-            this.morphSource.DataSourceChanged += new System.EventHandler(this.morphSource_DataSourceChanged);
-            this.morphSource.CurrentChanged += new System.EventHandler(this.morphSource_CurrentChanged);
-            // 
-            // loader1
-            // 
-            this.loader1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.loader1.Location = new System.Drawing.Point(0, 25);
-            this.loader1.Name = "loader1";
-            this.loader1.Size = new System.Drawing.Size(984, 419);
-            this.loader1.TabIndex = 19;
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
             // 
             // MorphSelector
             // 
@@ -457,6 +456,9 @@ namespace Document
         private System.Windows.Forms.ToolStripButton btnCancelAllCases;
         private System.Windows.Forms.ToolStripButton btnClone;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        private Common.Control.Loader loader1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.DataGridViewCheckBoxColumn IsRule;
         private System.Windows.Forms.DataGridViewTextBoxColumn Form;
         private System.Windows.Forms.DataGridViewTextBoxColumn lemmaDataGridViewTextBoxColumn;
@@ -473,8 +475,5 @@ namespace Document
         private System.Windows.Forms.DataGridViewTextBoxColumn dialectDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn langDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn morphId;
-        private Common.Control.Loader loader1;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
     }
 }

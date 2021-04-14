@@ -244,14 +244,6 @@ namespace Document
         #endregion
 
         #region Menu Stat Report
-        private async void mnuStatReportReadinessStatistics_Click(object sender, EventArgs e)
-        {
-            var reportViewer = new ReportBrowser(DocumentProcess);
-
-            reportViewer.Show(dockPanel1, DockState.Document);
-
-            await reportViewer.GetReport(ReportTypeEnum.ReadinessStatistics).ConfigureAwait(true);
-        }
 
         private async void mnuStatPosReport_Click(object sender, EventArgs e)
         {
@@ -262,8 +254,14 @@ namespace Document
             await reportViewer.GetReport(ReportTypeEnum.PosStatistics).ConfigureAwait(true);
         }
 
+        private async void mnuStatReportReadinessStatistics_Click_1(object sender, EventArgs e)
+        {
+            var reportViewer = new ReportBrowser(DocumentProcess);
 
+            reportViewer.Show(dockPanel1, DockState.Document);
 
+            await reportViewer.GetReport(ReportTypeEnum.ReadinessStatistics).ConfigureAwait(true);
+        }
 
         #endregion
 

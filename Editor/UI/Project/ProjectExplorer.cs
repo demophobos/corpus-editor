@@ -38,11 +38,11 @@ namespace Project
 
             var projects = await ProjectProcess.GetProjects(query).ConfigureAwait(true);
 
-            var notDeletedProjects = projects.Where(i => i.Status != ProjectStatusStringEnum.Deleted);
+            //var notDeletedProjects = projects.Where(i => i.Status != ProjectStatusStringEnum.Deleted);
 
             treeView1.Nodes.Clear();
 
-            foreach (var project in projects)
+            foreach (var project in projects.OrderBy(i=>i.Code))
             {
                 TreeNode projectNode = CreateNode(project);
 

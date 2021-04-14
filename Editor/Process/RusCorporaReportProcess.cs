@@ -56,15 +56,18 @@ namespace Process
 
         private async Task CreateRLNCRows(IndexModel parentIndex, StringBuilder sb)
         {
-            var childIndeces = _documentProcess.Indeces.Where(i => i.ParentId == parentIndex.Id).OrderBy(i=>i.Order);
+            var childIndeces = _documentProcess.Indeces.Where(i => i.ParentId == parentIndex.Id).OrderBy(i => i.Order);
 
             foreach (var childIndex in childIndeces)
             {
                 var childChunk = await ChunkProcess.GetChunkByQuery(new ChunkQuery { IndexId = childIndex.Id }).ConfigureAwait(true);
 
-                var interpViews = await GetInterps(childChunk).ConfigureAwait(true);
+                if (childChunk != null)
+                {
+                    var interpViews = await GetInterps(childChunk).ConfigureAwait(true);
 
-                sb.Append(CreateRLNCRow(interpViews, pairCount += 1));
+                    sb.Append(CreateRLNCRow(interpViews, pairCount += 1));
+                }
 
                 await CreateRLNCRows(childIndex, sb).ConfigureAwait(true);
             }
@@ -87,7 +90,7 @@ namespace Process
         {
             var sb = new StringBuilder();
 
-            var topIndeces = _documentProcess.Indeces.Where(i => i.ParentId == null).OrderBy(i=>i.Order).ToList();
+            var topIndeces = _documentProcess.Indeces.Where(i => i.ParentId == null).OrderBy(i => i.Order).ToList();
 
             sb.Append(CreateHeader());
 
