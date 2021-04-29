@@ -14,7 +14,7 @@ namespace API
 
         }
 
-        public static async Task<List<IndexModel>> GetIndeces(IQuery query)
+        public static async Task<List<IndexModel>> GetIndeces(IndexQuery query)
         {
             try
             {

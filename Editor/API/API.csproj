@@ -75,6 +75,8 @@
     <Compile Include="InterpAPI.cs" />
     <Compile Include="MorphAPI.cs" />
     <Compile Include="MorpheusAPI.cs" />
+    <Compile Include="NoteAPI.cs" />
+    <Compile Include="NoteLinkAPI.cs" />
     <Compile Include="ProjectAPI.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="APIRegister.cs" />

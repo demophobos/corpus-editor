@@ -71,6 +71,12 @@
     <Compile Include="Enum\ChunkStatusEnum.cs" />
     <Compile Include="Enum\ExportTypeEnum.cs" />
     <Compile Include="Enum\MophServiceEnum.cs" />
+    <Compile Include="Enum\NoteTargetEnum.cs" />
+    <Compile Include="Enum\NoteTypeEnum.cs" />
+    <Compile Include="NoteLinkModel.cs" />
+    <Compile Include="NoteModel.cs" />
+    <Compile Include="Query\NoteLinkQuery.cs" />
+    <Compile Include="Query\NoteQuery.cs" />
     <Compile Include="Report\ChunkIndexedReportModel.cs" />
     <Compile Include="Report\ChunkReportModel.cs" />
     <Compile Include="Report\ChunkStatReportModel.cs" />
@@ -117,7 +123,9 @@
     <Compile Include="TaxonomyModel.cs" />
     <Compile Include="UserModel.cs" />
     <Compile Include="View\ChunkViewModel.cs" />
+    <Compile Include="View\ElementByNoteView.cs" />
     <Compile Include="View\InterpViewModel.cs" />
+    <Compile Include="View\NoteLinkViewModel.cs" />
     <Compile Include="View\TaxonomyViewModel.cs" />
   </ItemGroup>
   <ItemGroup>

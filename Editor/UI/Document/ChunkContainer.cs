@@ -24,6 +24,8 @@ namespace Document
 
         private InterpContainer _interpContainer;
 
+        private NoteViewer _noteViewer;
+
         private ChunkModel _chunk;
 
         private ElementModel _currentElement;
@@ -97,6 +99,8 @@ namespace Document
 
             _interpContainer = new InterpContainer(_documentProcess, Index);
 
+            _noteViewer = new NoteViewer(_documentProcess, _chunk);
+
             if (_chunk != null)
             {
                 _chunkExplorer = new ChunkExplorer(_chunk);
@@ -109,6 +113,8 @@ namespace Document
 
                 _chunkExplorer.Show(dockPanel1, DockState.Document);
 
+                _noteViewer.Show(dockPanel1, DockState.DockBottom);
+
                 _interpContainer.Show(dockPanel1, DockState.DockBottom);
 
                 _morphSelector.Show(dockPanel1, DockState.DockBottom);
@@ -118,6 +124,8 @@ namespace Document
             }
             else
             {
+                _noteViewer.Show(dockPanel1, DockState.DockBottom);
+
                 _morphSelector.Show(dockPanel1, DockState.DockBottom);
 
                 _interpContainer.Show(dockPanel1, DockState.DockBottom);

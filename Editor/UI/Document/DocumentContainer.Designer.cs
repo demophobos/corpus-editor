@@ -57,6 +57,7 @@ namespace Document
             this.mnuCloseAllWindowsExceptActive = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.lblStatus = new System.Windows.Forms.ToolStripStatusLabel();
+            this.notesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -123,7 +124,7 @@ namespace Document
             this.mnuTextReportParallelText});
             this.mnuText.Image = ((System.Drawing.Image)(resources.GetObject("mnuText.Image")));
             this.mnuText.Name = "mnuText";
-            this.mnuText.Size = new System.Drawing.Size(180, 22);
+            this.mnuText.Size = new System.Drawing.Size(151, 22);
             this.mnuText.Text = "Текст";
             // 
             // mnuTextReportText
@@ -149,7 +150,7 @@ namespace Document
             this.mnuChunkReportUnpublished});
             this.mnuChunk.Image = ((System.Drawing.Image)(resources.GetObject("mnuChunk.Image")));
             this.mnuChunk.Name = "mnuChunk";
-            this.mnuChunk.Size = new System.Drawing.Size(180, 22);
+            this.mnuChunk.Size = new System.Drawing.Size(151, 22);
             this.mnuChunk.Text = "Фрагмент";
             // 
             // mnuChunkReportIndexWithEmptyText
@@ -184,20 +185,20 @@ namespace Document
             // 
             this.mnuWord.Image = ((System.Drawing.Image)(resources.GetObject("mnuWord.Image")));
             this.mnuWord.Name = "mnuWord";
-            this.mnuWord.Size = new System.Drawing.Size(180, 22);
+            this.mnuWord.Size = new System.Drawing.Size(151, 22);
             this.mnuWord.Text = "Слово";
             // 
             // mnuComment
             // 
             this.mnuComment.Image = ((System.Drawing.Image)(resources.GetObject("mnuComment.Image")));
             this.mnuComment.Name = "mnuComment";
-            this.mnuComment.Size = new System.Drawing.Size(180, 22);
+            this.mnuComment.Size = new System.Drawing.Size(151, 22);
             this.mnuComment.Text = "Комментарий";
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(148, 6);
             // 
             // mnuStatistics
             // 
@@ -207,32 +208,33 @@ namespace Document
             this.mnuStatReportReadinessStatistics});
             this.mnuStatistics.Image = ((System.Drawing.Image)(resources.GetObject("mnuStatistics.Image")));
             this.mnuStatistics.Name = "mnuStatistics";
-            this.mnuStatistics.Size = new System.Drawing.Size(180, 22);
+            this.mnuStatistics.Size = new System.Drawing.Size(151, 22);
             this.mnuStatistics.Text = "Статистика";
             // 
             // mnuStatPosReport
             // 
             this.mnuStatPosReport.Name = "mnuStatPosReport";
-            this.mnuStatPosReport.Size = new System.Drawing.Size(180, 22);
+            this.mnuStatPosReport.Size = new System.Drawing.Size(144, 22);
             this.mnuStatPosReport.Text = "Части речи";
             this.mnuStatPosReport.Click += new System.EventHandler(this.mnuStatPosReport_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(141, 6);
             // 
             // mnuStatReportReadinessStatistics
             // 
             this.mnuStatReportReadinessStatistics.Name = "mnuStatReportReadinessStatistics";
-            this.mnuStatReportReadinessStatistics.Size = new System.Drawing.Size(180, 22);
+            this.mnuStatReportReadinessStatistics.Size = new System.Drawing.Size(144, 22);
             this.mnuStatReportReadinessStatistics.Text = "Выполнение";
             this.mnuStatReportReadinessStatistics.Click += new System.EventHandler(this.mnuStatReportReadinessStatistics_Click_1);
             // 
             // mnuTools
             // 
             this.mnuTools.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.morphToolStripMenuItem});
+            this.morphToolStripMenuItem,
+            this.notesToolStripMenuItem});
             this.mnuTools.Image = ((System.Drawing.Image)(resources.GetObject("mnuTools.Image")));
             this.mnuTools.Name = "mnuTools";
             this.mnuTools.Size = new System.Drawing.Size(111, 20);
@@ -242,7 +244,7 @@ namespace Document
             // 
             this.morphToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("morphToolStripMenuItem.Image")));
             this.morphToolStripMenuItem.Name = "morphToolStripMenuItem";
-            this.morphToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+            this.morphToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.morphToolStripMenuItem.Text = "Морфология";
             this.morphToolStripMenuItem.Click += new System.EventHandler(this.mnuMorphTable_Click);
             // 
@@ -286,6 +288,14 @@ namespace Document
             // 
             this.lblStatus.Name = "lblStatus";
             this.lblStatus.Size = new System.Drawing.Size(0, 17);
+            // 
+            // notesToolStripMenuItem
+            // 
+            this.notesToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("notesToolStripMenuItem.Image")));
+            this.notesToolStripMenuItem.Name = "notesToolStripMenuItem";
+            this.notesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.notesToolStripMenuItem.Text = "Комментарий";
+            this.notesToolStripMenuItem.Click += new System.EventHandler(this.notesToolStripMenuItem_Click);
             // 
             // DocumentContainer
             // 
@@ -338,5 +348,6 @@ namespace Document
         private System.Windows.Forms.ToolStripMenuItem mnuStatPosReport;
         private System.Windows.Forms.ToolStripMenuItem mnuStatReportReadinessStatistics;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripMenuItem notesToolStripMenuItem;
     }
 }
