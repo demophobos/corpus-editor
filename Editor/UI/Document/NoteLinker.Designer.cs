@@ -31,8 +31,8 @@ namespace Document
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NoteLinker));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.btnAdd = new System.Windows.Forms.ToolStripButton();
             this.cmbTarget = new System.Windows.Forms.ToolStripComboBox();
+            this.btnAdd = new System.Windows.Forms.ToolStripButton();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnSave = new System.Windows.Forms.Button();
@@ -62,6 +62,14 @@ namespace Document
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
+            // cmbTarget
+            // 
+            this.cmbTarget.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbTarget.FlatStyle = System.Windows.Forms.FlatStyle.Standard;
+            this.cmbTarget.Name = "cmbTarget";
+            this.cmbTarget.Size = new System.Drawing.Size(202, 25);
+            this.cmbTarget.SelectedIndexChanged += new System.EventHandler(this.cmbTarget_SelectedIndexChanged);
+            // 
             // btnAdd
             // 
             this.btnAdd.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -71,14 +79,6 @@ namespace Document
             this.btnAdd.Size = new System.Drawing.Size(23, 22);
             this.btnAdd.Text = "toolStripButton1";
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-            // 
-            // cmbTarget
-            // 
-            this.cmbTarget.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbTarget.FlatStyle = System.Windows.Forms.FlatStyle.Standard;
-            this.cmbTarget.Name = "cmbTarget";
-            this.cmbTarget.Size = new System.Drawing.Size(202, 25);
-            this.cmbTarget.SelectedIndexChanged += new System.EventHandler(this.cmbTarget_SelectedIndexChanged);
             // 
             // tableLayoutPanel1
             // 
@@ -164,6 +164,7 @@ namespace Document
             this.lblNote.Name = "lblNote";
             this.lblNote.Size = new System.Drawing.Size(581, 219);
             this.lblNote.TabIndex = 0;
+            this.lblNote.TextChanged += new System.EventHandler(this.lblNote_TextChanged);
             // 
             // NoteLinker
             // 

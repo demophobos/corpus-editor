@@ -28,6 +28,8 @@ namespace Document
 
         private NoteModel _selectedNote;
 
+        private ElementByNoteView _noteView;
+
         public NoteLinker(DocumentProcess documentProcess, ChunkModel chunk)
         {
             _chunk = chunk;
@@ -39,16 +41,15 @@ namespace Document
             ComboProcess.CreateSelect(cmbTarget, TaxonomyProcess.GetNoteTargets().ToArray());
         }
 
+        public NoteLinker(DocumentProcess documentProcess, ChunkModel chunk, ElementByNoteView noteView)
+            : this(documentProcess, chunk)
+        {
+            _noteView = noteView;
+        }
+
         private void cmbTarget_SelectedIndexChanged(object sender, EventArgs e)
         {
             splitContainer1.Panel1Collapsed = cmbTarget.SelectedItem is TaxonomyModel target && target.Id == NoteTargetEnum.Chunk.Id;
-
-
-        }
-
-        private void btnAddWords_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void NoteLinker_Load(object sender, EventArgs e)
@@ -63,12 +64,29 @@ namespace Document
                 ((ListBox)listWords).DataSource = _words;
                 ((ListBox)listWords).DisplayMember = "Value";
                 ((ListBox)listWords).ValueMember = "Id";
+
+                if (_noteView != null) //Note edit case
+                {
+                    foreach (ChunkValueItemModel item in _words)
+                    {
+                        if (_noteView.Words.Select(i => i.Id).Contains(item.Id))
+                        {
+                            listWords.SetItemChecked(listWords.Items.IndexOf(item), true);
+                        }
+                    }
+
+                    _selectedNote = _documentProcess.Notes.FirstOrDefault(i => i.Id == _noteView.Id);
+
+                    lblNote.Text = _selectedNote.Value;
+
+                    cmbTarget.SelectedItem = NoteTargetEnum.GetById(_noteView.Target);
+                }
             }
         }
 
         private void listWords_SelectedValueChanged(object sender, EventArgs e)
         {
-            btnSave.Enabled = listWords.CheckedItems.Count > 0;
+            EnabledSave();
 
             _selectedWords = new List<ChunkValueItemModel>();
 
@@ -96,12 +114,18 @@ namespace Document
 
         private async void btnSave_Click(object sender, EventArgs e)
         {
-            if (_selectedNote != null) {
+            if (_selectedNote != null)
+            {
                 if (_selectedWords.Count > 0 && cmbTarget.SelectedItem is TaxonomyModel target && target.Id == NoteTargetEnum.Words.Id)
                 {
-                    foreach (var word in _selectedWords) {
+                    
+                    await NoteProcess.RemoveNoteLink(new Model.Query.NoteLinkQuery { NoteId = _selectedNote.Id }).ConfigureAwait(true);
+
+                    foreach (var word in _selectedWords)
+                    {
                         var noteItem = new NoteLinkModel
                         {
+                            HeaderId = _chunk.HeaderId,
                             IndexId = _chunk.IndexId,
                             ItemId = word.Id,
                             NoteId = _selectedNote.Id,
@@ -111,9 +135,14 @@ namespace Document
                         await NoteProcess.SaveNoteLink(noteItem).ConfigureAwait(true);
                     }
                 }
-                else { //Link to the chunk 
+                else
+                { //Link to the chunk 
+
+                    await NoteProcess.RemoveNoteLink(new Model.Query.NoteLinkQuery { NoteId = _selectedNote.Id }).ConfigureAwait(true);
+
                     var noteItem = new NoteLinkModel
                     {
+                        HeaderId = _chunk.HeaderId,
                         IndexId = _chunk.IndexId,
                         ItemId = _chunk.Id,
                         NoteId = _selectedNote.Id,
@@ -125,6 +154,22 @@ namespace Document
             }
 
             DialogResult = DialogResult.OK;
+        }
+
+        private void lblNote_TextChanged(object sender, EventArgs e)
+        {
+            EnabledSave();
+        }
+
+        private void EnabledSave()
+        {
+            btnSave.Enabled = (_selectedNote != null && 
+                listWords.CheckedItems.Count > 0 &&
+                cmbTarget.SelectedItem is TaxonomyModel target && target.Id == NoteTargetEnum.Words.Id) 
+                || 
+                (_selectedNote != null && 
+                cmbTarget.SelectedItem is TaxonomyModel target1 
+                && target1.Id == NoteTargetEnum.Chunk.Id);
         }
     }
 }

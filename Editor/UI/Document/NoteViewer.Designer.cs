@@ -32,19 +32,19 @@ namespace Document
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NoteViewer));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.btnAdd = new System.Windows.Forms.ToolStripButton();
-            this.btnEdit = new System.Windows.Forms.ToolStripButton();
-            this.btnDelete = new System.Windows.Forms.ToolStripButton();
-            this.dataSource = new System.Windows.Forms.BindingSource(this.components);
             this.TypeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.elementNamesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.noteValueDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataSource = new System.Windows.Forms.BindingSource(this.components);
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.btnAdd = new System.Windows.Forms.ToolStripButton();
+            this.btnEdit = new System.Windows.Forms.ToolStripButton();
+            this.btnDelete = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataSource)).BeginInit();
+            this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -54,6 +54,7 @@ namespace Document
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
+            this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(57)))), ((int)(((byte)(85)))));
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -72,8 +73,59 @@ namespace Document
             this.dataGridView1.RowTemplate.DefaultCellStyle.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridView1.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1057, 287);
+            this.dataGridView1.Size = new System.Drawing.Size(791, 287);
             this.dataGridView1.TabIndex = 0;
+            // 
+            // TypeName
+            // 
+            this.TypeName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.TypeName.DataPropertyName = "TypeName";
+            this.TypeName.FillWeight = 200F;
+            this.TypeName.HeaderText = "Тип";
+            this.TypeName.Name = "TypeName";
+            this.TypeName.ReadOnly = true;
+            this.TypeName.Width = 51;
+            // 
+            // elementNamesDataGridViewTextBoxColumn
+            // 
+            this.elementNamesDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.elementNamesDataGridViewTextBoxColumn.DataPropertyName = "ElementNames";
+            this.elementNamesDataGridViewTextBoxColumn.HeaderText = "Комментируемое";
+            this.elementNamesDataGridViewTextBoxColumn.Name = "elementNamesDataGridViewTextBoxColumn";
+            this.elementNamesDataGridViewTextBoxColumn.ReadOnly = true;
+            this.elementNamesDataGridViewTextBoxColumn.Width = 121;
+            // 
+            // noteValueDataGridViewTextBoxColumn
+            // 
+            this.noteValueDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.noteValueDataGridViewTextBoxColumn.DataPropertyName = "NoteValue";
+            this.noteValueDataGridViewTextBoxColumn.HeaderText = "Текст";
+            this.noteValueDataGridViewTextBoxColumn.Name = "noteValueDataGridViewTextBoxColumn";
+            this.noteValueDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // idDataGridViewTextBoxColumn
+            // 
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            this.idDataGridViewTextBoxColumn.ReadOnly = true;
+            this.idDataGridViewTextBoxColumn.Visible = false;
+            this.idDataGridViewTextBoxColumn.Width = 41;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "Target";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Target";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Visible = false;
+            this.dataGridViewTextBoxColumn1.Width = 63;
+            // 
+            // dataSource
+            // 
+            this.dataSource.AllowNew = false;
+            this.dataSource.DataSource = typeof(Model.View.ElementByNoteView);
+            this.dataSource.CurrentChanged += new System.EventHandler(this.noteItemSource_CurrentChanged);
             // 
             // toolStrip1
             // 
@@ -85,7 +137,7 @@ namespace Document
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.toolStrip1.Size = new System.Drawing.Size(1057, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(791, 25);
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -102,6 +154,7 @@ namespace Document
             // btnEdit
             // 
             this.btnEdit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnEdit.Enabled = false;
             this.btnEdit.Image = ((System.Drawing.Image)(resources.GetObject("btnEdit.Image")));
             this.btnEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnEdit.Name = "btnEdit";
@@ -112,6 +165,7 @@ namespace Document
             // btnDelete
             // 
             this.btnDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnDelete.Enabled = false;
             this.btnDelete.Image = ((System.Drawing.Image)(resources.GetObject("btnDelete.Image")));
             this.btnDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnDelete.Name = "btnDelete";
@@ -119,59 +173,11 @@ namespace Document
             this.btnDelete.Text = "Удалить";
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
-            // dataSource
-            // 
-            this.dataSource.AllowNew = false;
-            this.dataSource.DataSource = typeof(Model.View.ElementByNoteView);
-            // 
-            // TypeName
-            // 
-            this.TypeName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.TypeName.DataPropertyName = "TypeName";
-            this.TypeName.FillWeight = 200F;
-            this.TypeName.HeaderText = "Тип";
-            this.TypeName.Name = "TypeName";
-            this.TypeName.ReadOnly = true;
-            this.TypeName.Width = 51;
-            // 
-            // elementNamesDataGridViewTextBoxColumn
-            // 
-            this.elementNamesDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.elementNamesDataGridViewTextBoxColumn.DataPropertyName = "ElementNames";
-            this.elementNamesDataGridViewTextBoxColumn.HeaderText = "Элементы";
-            this.elementNamesDataGridViewTextBoxColumn.Name = "elementNamesDataGridViewTextBoxColumn";
-            this.elementNamesDataGridViewTextBoxColumn.ReadOnly = true;
-            this.elementNamesDataGridViewTextBoxColumn.Width = 84;
-            // 
-            // noteValueDataGridViewTextBoxColumn
-            // 
-            this.noteValueDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.noteValueDataGridViewTextBoxColumn.DataPropertyName = "NoteValue";
-            this.noteValueDataGridViewTextBoxColumn.HeaderText = "Комментарий";
-            this.noteValueDataGridViewTextBoxColumn.Name = "noteValueDataGridViewTextBoxColumn";
-            this.noteValueDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // idDataGridViewTextBoxColumn
-            // 
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            this.idDataGridViewTextBoxColumn.ReadOnly = true;
-            this.idDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "Target";
-            this.dataGridViewTextBoxColumn1.HeaderText = "Target";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Visible = false;
-            // 
             // NoteViewer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1057, 312);
+            this.ClientSize = new System.Drawing.Size(791, 312);
             this.CloseButton = false;
             this.CloseButtonVisible = false;
             this.ControlBox = false;
@@ -182,9 +188,9 @@ namespace Document
             this.Text = "Комментарий";
             this.Load += new System.EventHandler(this.NoteViewer_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSource)).EndInit();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

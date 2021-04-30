@@ -9,7 +9,11 @@ namespace Model.Query
 {
     public class NoteLinkQuery: BaseQuery
     {
+        [JsonProperty("headerId", NullValueHandling = NullValueHandling.Ignore)]
+        public string HeaderId { get; set; }
         [JsonProperty("indexId", NullValueHandling = NullValueHandling.Ignore)]
         public string IndexId { get; set; }
+        [JsonProperty("noteId", NullValueHandling = NullValueHandling.Ignore)]
+        public string NoteId { get; set; }
     }
 }

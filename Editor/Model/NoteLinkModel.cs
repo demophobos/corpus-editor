@@ -9,6 +9,8 @@ namespace Model
 {
     public class NoteLinkModel: BaseModel
     {
+        [JsonProperty("headerId")]
+        public string HeaderId { get; set; }
         [JsonProperty("indexId")]
         public string IndexId { get; set; }
         [JsonProperty("itemId")]

@@ -118,8 +118,9 @@ namespace Document
             // 
             // txtValue
             // 
+            this.txtValue.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtValue.Name = "txtValue";
-            this.txtValue.Size = new System.Drawing.Size(150, 25);
+            this.txtValue.Size = new System.Drawing.Size(300, 25);
             this.txtValue.TextChanged += new System.EventHandler(this.txtValue_TextChanged);
             // 
             // dataGridView1
@@ -131,6 +132,7 @@ namespace Document
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
+            this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(57)))), ((int)(((byte)(85)))));
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.ColumnHeadersVisible = false;

@@ -66,13 +66,15 @@ namespace Document
             toolStrip1.Enabled = true;
         }
 
-        private void ChunkExplorer_EnablePublishing(object sender, bool e)
+        private async void ChunkExplorer_EnablePublishing(object sender, bool e)
         {
             btnPublishChunk.Enabled = e;
 
             StatusInfoShown?.Invoke(this, $"Фрагмент {Index.Name} изменен");
 
             btnPublishChunk.ToolTipText = "Изменения не опубликованы";
+
+            await _noteViewer.LoadData(_chunk).ConfigureAwait(true);
         }
 
         private async void ChunkContainer_LoadAsync(object sender, EventArgs e)
@@ -99,7 +101,7 @@ namespace Document
 
             _interpContainer = new InterpContainer(_documentProcess, Index);
 
-            _noteViewer = new NoteViewer(_documentProcess, _chunk);
+            _noteViewer = new NoteViewer(_documentProcess);
 
             if (_chunk != null)
             {
@@ -113,13 +115,15 @@ namespace Document
 
                 _chunkExplorer.Show(dockPanel1, DockState.Document);
 
-                _noteViewer.Show(dockPanel1, DockState.DockBottom);
-
                 _interpContainer.Show(dockPanel1, DockState.DockBottom);
 
                 _morphSelector.Show(dockPanel1, DockState.DockBottom);
 
+                _noteViewer.Show(dockPanel1, DockState.DockBottom);
+
                 await _interpContainer.LoadData(_chunk).ConfigureAwait(true);
+
+                await _noteViewer.LoadData(_chunk).ConfigureAwait(true);
 
             }
             else

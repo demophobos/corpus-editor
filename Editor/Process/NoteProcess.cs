@@ -35,5 +35,10 @@ namespace Process
         {
             return await NoteLinkAPI.Save(noteItem).ConfigureAwait(true);
         }
+
+        public static async Task<NoteLinkModel> RemoveNoteLink(NoteLinkQuery query)
+        {
+            return await NoteLinkAPI.RemoveByQuery(query);
+        }
     }
 }

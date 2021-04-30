@@ -88,11 +88,17 @@ namespace Process
 
         public async Task<IndexModel> DeleteIndex(IndexModel index)
         {
+            await NoteLinkAPI.RemoveByQuery(new NoteLinkQuery { IndexId = index.Id }).ConfigureAwait(true);
+
             return await IndexAPI.Remove(index);
         }
 
         public async Task<HeaderModel> DeleteHeader(HeaderModel header)
         {
+            await NoteLinkAPI.RemoveByQuery(new NoteLinkQuery { HeaderId = header.Id }).ConfigureAwait(true);
+
+            await NoteAPI.RemoveByQuery(new NoteQuery { HeaderId = header.Id }).ConfigureAwait(true);
+
             return await HeaderAPI.Remove(header);
         }
 

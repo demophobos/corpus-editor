@@ -37,6 +37,31 @@ namespace API
 
         }
 
+        public static async Task<NoteLinkModel> RemoveByQuery(NoteLinkQuery query)
+        {
+            try
+            {
+                NoteLinkModel report = null;
+
+                HttpResponseMessage response = await Client.DeleteAsync($"note-links/{0}?params={query}").ConfigureAwait(true);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    report = await response.Content.ReadAsAsync<NoteLinkModel>().ConfigureAwait(true);
+                }
+                else
+                {
+                    throw new Exception(response.StatusCode.ToString());
+                }
+
+                return report;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
         public static async Task<NoteLinkModel> Remove(NoteLinkModel note)
         {
             try
