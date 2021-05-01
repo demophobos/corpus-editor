@@ -2,29 +2,26 @@
 using Model.Query;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace API
 {
-    public class IndexAPI : BaseAPI
+    public class NoteLinkAPI: BaseAPI
     {
-        public IndexAPI() : base()
-        {
-
-        }
-
-        public static async Task<List<IndexModel>> GetIndeces(IndexQuery query)
+        public static async Task<List<NoteLinkModel>> GetNoteLinks(NoteLinkQuery query)
         {
             try
             {
-                List<IndexModel> report = null;
+                List<NoteLinkModel> report = null;
 
-                HttpResponseMessage response = await Client.GetAsync($"indeces?params={query}").ConfigureAwait(true);
+                HttpResponseMessage response = await Client.GetAsync($"note-links?params={query}").ConfigureAwait(true);
 
                 if (response.IsSuccessStatusCode)
                 {
-                    report = await response.Content.ReadAsAsync<List<IndexModel>>().ConfigureAwait(true);
+                    report = await response.Content.ReadAsAsync<List<NoteLinkModel>>().ConfigureAwait(true);
                 }
                 else
                 {
@@ -40,17 +37,17 @@ namespace API
 
         }
 
-        public static async Task<IndexModel> Remove(IndexModel index)
+        public static async Task<NoteLinkModel> RemoveByQuery(NoteLinkQuery query)
         {
             try
             {
-                IndexModel report = null;
+                NoteLinkModel report = null;
 
-                HttpResponseMessage response = await Client.DeleteAsync($"indeces/{index.Id}").ConfigureAwait(true);
+                HttpResponseMessage response = await Client.DeleteAsync($"note-links/{0}?params={query}").ConfigureAwait(true);
 
                 if (response.IsSuccessStatusCode)
                 {
-                    report = await response.Content.ReadAsAsync<IndexModel>().ConfigureAwait(true);
+                    report = await response.Content.ReadAsAsync<NoteLinkModel>().ConfigureAwait(true);
                 }
                 else
                 {
@@ -65,17 +62,17 @@ namespace API
             }
         }
 
-        public static async Task<IndexModel> RemoveByQuery(IndexQuery query)
+        public static async Task<NoteLinkModel> Remove(NoteLinkModel note)
         {
             try
             {
-                IndexModel report = null;
+                NoteLinkModel report = null;
 
-                HttpResponseMessage response = await Client.DeleteAsync($"indeces/{0}?params={query}").ConfigureAwait(true);
+                HttpResponseMessage response = await Client.DeleteAsync($"note-links/{note.Id}").ConfigureAwait(true);
 
                 if (response.IsSuccessStatusCode)
                 {
-                    report = await response.Content.ReadAsAsync<IndexModel>().ConfigureAwait(true);
+                    report = await response.Content.ReadAsAsync<NoteLinkModel>().ConfigureAwait(true);
                 }
                 else
                 {
@@ -90,27 +87,27 @@ namespace API
             }
         }
 
-        public static async Task<IndexModel> Save(IndexModel index)
+        public static async Task<NoteLinkModel> Save(NoteLinkModel note)
         {
             try
             {
-                IndexModel report = null;
+                NoteLinkModel report = null;
 
                 HttpResponseMessage response;
 
-                if (string.IsNullOrEmpty(index.Id))
+                if (string.IsNullOrEmpty(note.Id))
                 {
 
-                    response = await Client.PostAsJsonAsync("indeces/", index).ConfigureAwait(true);
+                    response = await Client.PostAsJsonAsync("note-links/", note).ConfigureAwait(true);
                 }
                 else
                 {
-                    response = await Client.PutAsJsonAsync($"indeces/{index.Id}", index).ConfigureAwait(true);
+                    response = await Client.PutAsJsonAsync($"note-links/{note.Id}", note).ConfigureAwait(true);
                 }
 
                 if (response.IsSuccessStatusCode)
                 {
-                    report = await response.Content.ReadAsAsync<IndexModel>().ConfigureAwait(true);
+                    report = await response.Content.ReadAsAsync<NoteLinkModel>().ConfigureAwait(true);
                 }
                 else
                 {

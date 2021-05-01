@@ -34,6 +34,8 @@ namespace Process
         {
             await ElementAPI.RemoveByQuery(new ElementQuery { chunkId = chunk.Id }).ConfigureAwait(true);
 
+            await NoteLinkAPI.RemoveByQuery(new NoteLinkQuery { IndexId = chunk.IndexId }).ConfigureAwait(true);
+
             return await ChunkAPI.Remove(chunk);
         }
 
@@ -152,6 +154,8 @@ namespace Process
             chunk.ValueObj = JsonConvert.SerializeObject(chunkValueItems);
 
             var savedChunk = await ChunkAPI.Save(chunk).ConfigureAwait(true);
+
+            await NoteLinkAPI.RemoveByQuery(new NoteLinkQuery { IndexId = chunk.IndexId }).ConfigureAwait(true);
 
             await ElementAPI.RemoveByQuery(new ElementQuery { chunkId = savedChunk.Id }).ConfigureAwait(true);
 

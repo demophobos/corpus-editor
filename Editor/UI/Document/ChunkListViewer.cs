@@ -17,7 +17,7 @@ namespace Document
 {
     public partial class ChunkListViewer : DockContent
     {
-        private DocumentProcess _documentProcess;
+        private readonly DocumentProcess _documentProcess;
 
         private List<ChunkModel> _chunks;
 

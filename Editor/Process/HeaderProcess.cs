@@ -11,11 +11,6 @@ namespace Process
             return await API.HeaderAPI.GetHeaders(projectId);
         }
 
-        public static async Task<HeaderModel> RemoveHeader(HeaderModel header)
-        {
-            return await API.HeaderAPI.Remove(header);
-        }
-
         public static async Task<HeaderModel> SaveHeader(HeaderModel header)
         {
             return await API.HeaderAPI.Save(header);

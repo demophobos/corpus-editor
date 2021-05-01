@@ -17,6 +17,25 @@ namespace Process
             MophServiceEnum.MyStem
             };
         }
+
+        public static List<TaxonomyModel> GetNoteTypes() {
+            return new List<TaxonomyModel>
+            {
+                NoteTypeEnum.Real,
+                NoteTypeEnum.Linguistic,
+                NoteTypeEnum.Critical
+            };
+        }
+
+        public static List<TaxonomyModel> GetNoteTargets()
+        {
+            return new List<TaxonomyModel>
+            {
+                NoteTargetEnum.Words,
+                NoteTargetEnum.Chunk
+            };
+        }
+
         public static async Task<List<TaxonomyModel>> GetAuthWorks()
         {
             return await TaxonomyAPI.GetTaxonomyItems(new TaxonomyQuery { CategoryCode = TaxonomyCategoryEnum.AuthWork });

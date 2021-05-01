@@ -28,6 +28,8 @@ namespace Document
 
         private ReplaceDialog _replaceDialog;
 
+        private NoteExplorer _noteExplorer;
+
         public DocumentContainer(HeaderModel header)
         {
             DocumentProcess = new DocumentProcess(header);
@@ -278,6 +280,15 @@ namespace Document
             _morphExplorer.Show(dockPanel1, DockState.Document);
         }
 
+        private void notesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (_noteExplorer == null || _noteExplorer.IsDisposed) {
+                _noteExplorer = new NoteExplorer(DocumentProcess);
+            }
+
+            _noteExplorer.Show(dockPanel1, DockState.Document);
+        }
+
         private void MorphExplorer_StatusInfoShown(object sender, string e)
         {
             lblStatus.Text = e;
@@ -329,5 +340,7 @@ namespace Document
                 exportResultViewer.EndExport();
             }
         }
+
+
     }
 }

@@ -109,10 +109,12 @@ namespace Process
         private static string ConvertFeature(string[] attrArray)
         {
             var result = string.Empty;
+
             //Adj
             if (attrArray.Contains("brev")) result += "brev;";
             if (attrArray.Contains("plen")) result += "plen;";
             if (attrArray.Contains("poss")) result += "poss;";
+
             //Verb
             if (attrArray.Contains("tran")) result += "tran;";
             if (attrArray.Contains("intr")) result += "intr;";
@@ -138,6 +140,7 @@ namespace Process
             if (attrArray.Contains("abbr")) result += "abbr;"; //сокращение
             if (attrArray.Contains("obsol")) result += "obsol;"; //устаревшая форма
             if (attrArray.Contains("famn")) result += "famn;";//фамилия
+
             return result;
         }
 

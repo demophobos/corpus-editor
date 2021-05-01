@@ -1,4 +1,5 @@
-﻿using Model;
+﻿using API;
+using Model;
 using Model.Enum;
 using Model.Query;
 using Model.View;
@@ -12,115 +13,133 @@ namespace Process
     {
         public HeaderModel Header { get; private set; }
         public List<IndexModel> Indeces { get; set; }
+        public List<NoteModel> Notes { get; set; }
         public DocumentProcess(HeaderModel header)
         {
             Header = header;
 
             Indeces = new List<IndexModel>();
+
+            Notes = new List<NoteModel>();
         }
 
         public async Task<List<IndexModel>> GetIndecesByName(string name)
         {
             var query = new IndexQuery { HeaderId = Header.Id, Name = name };
 
-            return await API.IndexAPI.GetIndeces(query);
+            return await IndexAPI.GetIndeces(query);
         }
 
         public async Task<List<IndexModel>> GetIndecesByHeader()
         {
             var query = new IndexQuery { HeaderId = Header.Id };
 
-            return await API.IndexAPI.GetIndeces(query);
+            return await IndexAPI.GetIndeces(query);
         }
 
         public async Task<List<IndexModel>> GetIndecesByHeader(string headerId)
         {
             var query = new IndexQuery { HeaderId = headerId };
 
-            return await API.IndexAPI.GetIndeces(query);
+            return await IndexAPI.GetIndeces(query);
+        }
+
+        public async Task<List<NoteModel>> GetNotesByHeader()
+        {
+            var query = new NoteQuery { HeaderId = Header.Id };
+
+            Notes = await NoteAPI.GetNotes(query);
+
+            return Notes;
         }
 
         public async Task<List<ChunkViewModel>> GetChunksByHeader()
         {
             var query = new ChunkQuery { HeaderId = Header.Id };
 
-            return await API.ChunkAPI.GetChunksByQuery(query);
+            return await ChunkAPI.GetChunksByQuery(query);
         }
 
         public async Task<List<ChunkViewModel>> GetChunksByHeader(string chunkStatus)
         {
             var query = new ChunkQuery { HeaderId = Header.Id, Status = chunkStatus };
 
-            return await API.ChunkAPI.GetChunksByQuery(query);
+            return await ChunkAPI.GetChunksByQuery(query);
         }
 
         public async Task<List<ChunkViewModel>> GetChunksByHeader(HeaderModel header)
         {
             var query = new ChunkQuery { HeaderId = header.Id };
 
-            return await API.ChunkAPI.GetChunksByQuery(query);
+            return await ChunkAPI.GetChunksByQuery(query);
         }
 
         public async Task<List<IndexModel>> GetIndecesByParent(string parentId)
         {
             var query = new IndexQuery { ParentId = parentId };
 
-            return await API.IndexAPI.GetIndeces(query);
+            return await IndexAPI.GetIndeces(query);
         }
 
         public async Task<IndexModel> SaveIndex(IndexModel index)
         {
-            return await API.IndexAPI.Save(index);
+            return await IndexAPI.Save(index);
         }
 
         public async Task<IndexModel> DeleteIndex(IndexModel index)
         {
-            return await API.IndexAPI.Remove(index);
+            await NoteLinkAPI.RemoveByQuery(new NoteLinkQuery { IndexId = index.Id }).ConfigureAwait(true);
+
+            return await IndexAPI.Remove(index);
         }
 
         public async Task<HeaderModel> DeleteHeader(HeaderModel header)
         {
-            return await API.HeaderAPI.Remove(header);
+            await NoteLinkAPI.RemoveByQuery(new NoteLinkQuery { HeaderId = header.Id }).ConfigureAwait(true);
+
+            await NoteAPI.RemoveByQuery(new NoteQuery { HeaderId = header.Id }).ConfigureAwait(true);
+
+            return await HeaderAPI.Remove(header);
         }
 
         public async Task<List<InterpViewModel>> GetInterpsByQueryView(InterpViewQuery query)
         {
-            return await API.InterpAPI.GetInterpsView(query);
+            return await InterpAPI.GetInterpsView(query);
         }
 
         public async Task<List<InterpModel>> GetInterpsByQueryTable(InterpTableQuery query)
         {
-            return await API.InterpAPI.GetInterpsTable(query);
+            return await InterpAPI.GetInterpsTable(query);
         }
 
         public async Task<InterpModel> SaveInterp(InterpModel interp)
         {
-            return await API.InterpAPI.Save(interp);
+            return await InterpAPI.Save(interp);
         }
 
         public async Task<InterpModel> DeleteInterp(InterpModel interp)
         {
-            return await API.InterpAPI.Remove(interp);
+            return await InterpAPI.Remove(interp);
         }
 
         public async Task<ChunkModel> DeleteChunksByQuery(ChunkQuery query)
         {
-            return await API.ChunkAPI.RemoveByQuery(query);
+            return await ChunkAPI.RemoveByQuery(query);
         }
 
         public async Task<ElementModel> DeleteElementsByQuery(ElementQuery query)
         {
-            return await API.ElementAPI.RemoveByQuery(query);
+            return await ElementAPI.RemoveByQuery(query);
         }
 
         public async Task<InterpModel> DeleteInterpsByQuery(InterpViewQuery query)
         {
-            return await API.InterpAPI.RemoveByQuery(query);
+            return await InterpAPI.RemoveByQuery(query);
         }
 
         public async Task<IndexModel> DeleteIndecesByQuery(IndexQuery query)
         {
-            return await API.IndexAPI.RemoveByQuery(query);
+            return await IndexAPI.RemoveByQuery(query);
         }
 
     }

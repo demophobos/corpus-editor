@@ -16,9 +16,9 @@ namespace Document
     {
         public InterpViewModel Interp { get; private set; }
 
-        private EditionTypeEnum _typeToShow;
+        private readonly EditionTypeEnum _typeToShow;
 
-        private DocumentProcess _documentProcess;
+        private readonly DocumentProcess _documentProcess;
 
         public event EventHandler<InterpModel> InterpDeleted;
 

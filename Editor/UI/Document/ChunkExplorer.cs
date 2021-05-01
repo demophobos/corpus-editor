@@ -395,6 +395,8 @@ namespace Document
             {
                 Chunk.ValueObj = result.ValueObj;
 
+                Chunk.Status = result.Status;
+
                 EnablePublishing.Invoke(this, false);
             }
 
