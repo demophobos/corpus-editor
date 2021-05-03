@@ -66,8 +66,14 @@ namespace Report
                 case ReportTypeEnum.Text:
                     await GetTextReport().ConfigureAwait(true);
                     break;
+                case ReportTypeEnum.TextWithNotes:
+                    await GetTextWithNotesReport().ConfigureAwait(true);
+                    break;
                 case ReportTypeEnum.ParallelText:
                     await GetParallelTextReport().ConfigureAwait(true);
+                    break;
+                case ReportTypeEnum.ParallelTextWithNotes:
+                    await GetParallelTextWithNotesReport().ConfigureAwait(true);
                     break;
                 case ReportTypeEnum.ReadinessStatistics:
                     await GetReadinessStatisticsReport().ConfigureAwait(true);
@@ -81,6 +87,9 @@ namespace Report
                 case ReportTypeEnum.IndexWithEmptyText:
                     await GetIndexWithEmptyTextReport().ConfigureAwait(true);
                     break;
+                case ReportTypeEnum.NoteUsage:
+                    await GetNoteUsageReport().ConfigureAwait(true);
+                    break;
                 default:
                     break;
             }
@@ -88,6 +97,101 @@ namespace Report
             _reportViewer.ReportRefresh += ReportRefresh;
 
             loader1.SendToBack();
+        }
+
+        private async Task GetNoteUsageReport()
+        {
+            Text = $"Использование комментария";
+
+            _reportViewer.LocalReport.DataSources.Clear();
+
+            _reportViewer.LocalReport.ReportPath = @"Reports\NoteUsage.rdlc";
+
+            var dsHeader = new ReportDataSource
+            {
+                Name = "DS_Headers",
+            };
+
+            dsHeader.Value = new List<HeaderModel>
+            {
+                _documentProcess.Header
+            };
+
+            _reportViewer.LocalReport.DataSources.Add(dsHeader);
+
+            var dsLinks = new ReportDataSource
+            {
+                Name = "DS_NoteLinks",
+            };
+
+            dsLinks.Value = await _documentReportProcess.GetNoteLinksReport().ConfigureAwait(true);
+
+            _reportViewer.LocalReport.DataSources.Add(dsLinks);
+
+            _reportViewer.RefreshReport();
+        }
+
+        private async Task GetParallelTextWithNotesReport()
+        {
+            var headers = await HeaderProcess.GetHeaders(_documentProcess.Header.ProjectId).ConfigureAwait(true);
+
+            Text = $"Параллельный текст с комментарием";
+
+            _reportViewer.LocalReport.DataSources.Clear();
+
+            _reportViewer.LocalReport.ReportPath = @"Reports\ParallelText.rdlc";
+
+            var dsHeader = new ReportDataSource
+            {
+                Name = "DS_Headers",
+            };
+
+            dsHeader.Value = headers;
+
+            _reportViewer.LocalReport.DataSources.Add(dsHeader);
+
+            var dsChunks = new ReportDataSource
+            {
+                Name = "DS_Chunks",
+            };
+
+            dsChunks.Value = await _documentReportProcess.GetParallelTextReport(headers).ConfigureAwait(true);
+
+            _reportViewer.LocalReport.DataSources.Add(dsChunks);
+
+            _reportViewer.RefreshReport();
+        }
+
+        private async Task GetTextWithNotesReport()
+        {
+            Text = $"Текст c комментарием";
+
+            _reportViewer.LocalReport.DataSources.Clear();
+
+            _reportViewer.LocalReport.ReportPath = @"Reports\Text.rdlc";
+
+            var dsHeader = new ReportDataSource
+            {
+                Name = "DS_Headers",
+            };
+
+            dsHeader.Value = new List<HeaderModel>
+            {
+                _documentProcess.Header
+            };
+
+            _reportViewer.LocalReport.DataSources.Add(dsHeader);
+
+            var dsChunks = new ReportDataSource
+            {
+                Name = "DS_Chunks",
+            };
+
+            dsChunks.Value = await _documentReportProcess.GetTextReport().ConfigureAwait(true);
+
+            _reportViewer.LocalReport.DataSources.Add(dsChunks);
+
+            _reportViewer.RefreshReport();
         }
 
         private async Task GetIndexWithEmptyTextReport()

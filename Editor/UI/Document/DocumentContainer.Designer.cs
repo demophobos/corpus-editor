@@ -44,7 +44,7 @@ namespace Document
             this.mnuChunkReportChunkWithUndefinedWord = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuChunkReportUnpublished = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuWord = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuComment = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuNote = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuStatistics = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuStatPosReport = new System.Windows.Forms.ToolStripMenuItem();
@@ -52,12 +52,13 @@ namespace Document
             this.mnuStatReportReadinessStatistics = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuTools = new System.Windows.Forms.ToolStripMenuItem();
             this.morphToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.notesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuWindow = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuCloseAllWindows = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuCloseAllWindowsExceptActive = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.lblStatus = new System.Windows.Forms.ToolStripStatusLabel();
-            this.notesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuNoteUsage = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -109,7 +110,7 @@ namespace Document
             this.mnuText,
             this.mnuChunk,
             this.mnuWord,
-            this.mnuComment,
+            this.mnuNote,
             this.toolStripMenuItem1,
             this.mnuStatistics});
             this.mnuReport.Image = ((System.Drawing.Image)(resources.GetObject("mnuReport.Image")));
@@ -124,7 +125,7 @@ namespace Document
             this.mnuTextReportParallelText});
             this.mnuText.Image = ((System.Drawing.Image)(resources.GetObject("mnuText.Image")));
             this.mnuText.Name = "mnuText";
-            this.mnuText.Size = new System.Drawing.Size(151, 22);
+            this.mnuText.Size = new System.Drawing.Size(180, 22);
             this.mnuText.Text = "Текст";
             // 
             // mnuTextReportText
@@ -150,7 +151,7 @@ namespace Document
             this.mnuChunkReportUnpublished});
             this.mnuChunk.Image = ((System.Drawing.Image)(resources.GetObject("mnuChunk.Image")));
             this.mnuChunk.Name = "mnuChunk";
-            this.mnuChunk.Size = new System.Drawing.Size(151, 22);
+            this.mnuChunk.Size = new System.Drawing.Size(180, 22);
             this.mnuChunk.Text = "Фрагмент";
             // 
             // mnuChunkReportIndexWithEmptyText
@@ -185,20 +186,22 @@ namespace Document
             // 
             this.mnuWord.Image = ((System.Drawing.Image)(resources.GetObject("mnuWord.Image")));
             this.mnuWord.Name = "mnuWord";
-            this.mnuWord.Size = new System.Drawing.Size(151, 22);
+            this.mnuWord.Size = new System.Drawing.Size(180, 22);
             this.mnuWord.Text = "Слово";
             // 
-            // mnuComment
+            // mnuNote
             // 
-            this.mnuComment.Image = ((System.Drawing.Image)(resources.GetObject("mnuComment.Image")));
-            this.mnuComment.Name = "mnuComment";
-            this.mnuComment.Size = new System.Drawing.Size(151, 22);
-            this.mnuComment.Text = "Комментарий";
+            this.mnuNote.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuNoteUsage});
+            this.mnuNote.Image = ((System.Drawing.Image)(resources.GetObject("mnuNote.Image")));
+            this.mnuNote.Name = "mnuNote";
+            this.mnuNote.Size = new System.Drawing.Size(180, 22);
+            this.mnuNote.Text = "Комментарий";
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(148, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(177, 6);
             // 
             // mnuStatistics
             // 
@@ -208,7 +211,7 @@ namespace Document
             this.mnuStatReportReadinessStatistics});
             this.mnuStatistics.Image = ((System.Drawing.Image)(resources.GetObject("mnuStatistics.Image")));
             this.mnuStatistics.Name = "mnuStatistics";
-            this.mnuStatistics.Size = new System.Drawing.Size(151, 22);
+            this.mnuStatistics.Size = new System.Drawing.Size(180, 22);
             this.mnuStatistics.Text = "Статистика";
             // 
             // mnuStatPosReport
@@ -244,9 +247,17 @@ namespace Document
             // 
             this.morphToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("morphToolStripMenuItem.Image")));
             this.morphToolStripMenuItem.Name = "morphToolStripMenuItem";
-            this.morphToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.morphToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
             this.morphToolStripMenuItem.Text = "Морфология";
             this.morphToolStripMenuItem.Click += new System.EventHandler(this.mnuMorphTable_Click);
+            // 
+            // notesToolStripMenuItem
+            // 
+            this.notesToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("notesToolStripMenuItem.Image")));
+            this.notesToolStripMenuItem.Name = "notesToolStripMenuItem";
+            this.notesToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.notesToolStripMenuItem.Text = "Комментарий";
+            this.notesToolStripMenuItem.Click += new System.EventHandler(this.notesToolStripMenuItem_Click);
             // 
             // mnuWindow
             // 
@@ -289,13 +300,12 @@ namespace Document
             this.lblStatus.Name = "lblStatus";
             this.lblStatus.Size = new System.Drawing.Size(0, 17);
             // 
-            // notesToolStripMenuItem
+            // mnuNoteUsage
             // 
-            this.notesToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("notesToolStripMenuItem.Image")));
-            this.notesToolStripMenuItem.Name = "notesToolStripMenuItem";
-            this.notesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.notesToolStripMenuItem.Text = "Комментарий";
-            this.notesToolStripMenuItem.Click += new System.EventHandler(this.notesToolStripMenuItem_Click);
+            this.mnuNoteUsage.Name = "mnuNoteUsage";
+            this.mnuNoteUsage.Size = new System.Drawing.Size(180, 22);
+            this.mnuNoteUsage.Text = "Использование";
+            this.mnuNoteUsage.Click += new System.EventHandler(this.mnuNoteUsage_Click);
             // 
             // DocumentContainer
             // 
@@ -335,7 +345,7 @@ namespace Document
         private System.Windows.Forms.ToolStripMenuItem mnuText;
         private System.Windows.Forms.ToolStripMenuItem mnuChunk;
         private System.Windows.Forms.ToolStripMenuItem mnuWord;
-        private System.Windows.Forms.ToolStripMenuItem mnuComment;
+        private System.Windows.Forms.ToolStripMenuItem mnuNote;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem mnuStatistics;
         private System.Windows.Forms.ToolStripMenuItem morphToolStripMenuItem;
@@ -349,5 +359,6 @@ namespace Document
         private System.Windows.Forms.ToolStripMenuItem mnuStatReportReadinessStatistics;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem notesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mnuNoteUsage;
     }
 }

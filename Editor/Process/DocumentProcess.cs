@@ -3,8 +3,10 @@ using Model;
 using Model.Enum;
 using Model.Query;
 using Model.View;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Process
@@ -14,6 +16,7 @@ namespace Process
         public HeaderModel Header { get; private set; }
         public List<IndexModel> Indeces { get; set; }
         public List<NoteModel> Notes { get; set; }
+        public List<NoteLinkModel> NoteLinks { get; private set; }
         public DocumentProcess(HeaderModel header)
         {
             Header = header;
@@ -30,27 +33,32 @@ namespace Process
             return await IndexAPI.GetIndeces(query);
         }
 
-        public async Task<List<IndexModel>> GetIndecesByHeader()
+        public async Task GetIndecesByHeader()
         {
             var query = new IndexQuery { HeaderId = Header.Id };
 
-            return await IndexAPI.GetIndeces(query);
+            Indeces = await IndexAPI.GetIndeces(query);
         }
 
         public async Task<List<IndexModel>> GetIndecesByHeader(string headerId)
         {
             var query = new IndexQuery { HeaderId = headerId };
 
-            return await IndexAPI.GetIndeces(query);
+            return await IndexAPI.GetIndeces(query).ConfigureAwait(true);
         }
 
-        public async Task<List<NoteModel>> GetNotesByHeader()
+        public async Task GetNotesByHeader()
         {
             var query = new NoteQuery { HeaderId = Header.Id };
 
-            Notes = await NoteAPI.GetNotes(query);
+            Notes = await NoteAPI.GetNotes(query).ConfigureAwait(true);
+        }
 
-            return Notes;
+        public async Task GetNoteLinksByHeader()
+        {
+            var query = new NoteLinkQuery { HeaderId = Header.Id };
+
+            NoteLinks = await NoteLinkAPI.GetNoteLinks(query).ConfigureAwait(true);
         }
 
         public async Task<List<ChunkViewModel>> GetChunksByHeader()
@@ -65,6 +73,42 @@ namespace Process
             var query = new ChunkQuery { HeaderId = Header.Id, Status = chunkStatus };
 
             return await ChunkAPI.GetChunksByQuery(query);
+        }
+
+        public List<ElementByNoteView> GetNotesByIndex(ChunkModel chunk)
+        {
+            var items = JsonConvert.DeserializeObject<List<ChunkValueItemModel>>(chunk.ValueObj);
+
+            var words = items.Where(i => i.Type == (int)ElementTypeEnum.Word).ToList();
+
+            var links = NoteLinks.Where(i=>i.IndexId == chunk.IndexId);
+
+            var grouppedLinks = links.GroupBy(i => i.NoteId);
+
+            var data = new List<ElementByNoteView>();
+
+            foreach (var note in grouppedLinks)
+            {
+
+                var ids = note.Select(i => i.ItemId);
+
+                var relatedWords = words.Where(i => ids.Contains(i.Id)).ToList();
+
+                var noteObject = Notes.FirstOrDefault(j => j.Id == note.Key);
+
+                var itemView = new ElementByNoteView
+                {
+                    Id = note.Key,
+                    NoteValue = noteObject.Value,
+                    Target = note.FirstOrDefault().Target,
+                    Words = relatedWords,
+                    Type = noteObject.Type
+                };
+
+                data.Add(itemView);
+            }
+
+            return data;
         }
 
         public async Task<List<ChunkViewModel>> GetChunksByHeader(HeaderModel header)

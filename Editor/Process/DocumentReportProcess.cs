@@ -126,6 +126,49 @@ namespace Process
             return result;
         }
 
+        public async Task<List<NoteReportModel>> GetNoteReport()
+        {
+            var result = new List<NoteReportModel>();
+
+            await _documentProcess.GetNotesByHeader().ConfigureAwait(true);
+
+            foreach (var i in _documentProcess.Notes)
+            {
+                var n = new NoteReportModel { HeaderId = i.HeaderId, Id = i.Id, Type = i.Type, Value = i.Value, TypeName = NoteTypeEnum.GetById(i.Type).Code };
+                result.Add(n);
+            };
+
+            return result;
+        }
+
+        public async Task<List<NoteLinkReportModel>> GetNoteLinksReport()
+        {
+            var result = new List<NoteLinkReportModel>();
+
+            foreach (var i in _documentProcess.NoteLinks)
+            {
+                var chunk = await ChunkProcess.GetChunkByQuery(new ChunkQuery { IndexId = i.IndexId });
+
+                var links = _documentProcess.GetNotesByIndex(chunk);
+
+                foreach (var link in links)
+                {
+                    var linkModel = new NoteLinkReportModel
+                    {
+                        IndexName = chunk.IndexName,
+                        NoteId = link.Id,
+                        NoteLinkTitle = link.ElementNames,
+                        NoteValue = link.NoteValue,
+                        NoteTarget = link.Target,
+                        NoteType = link.TypeName
+                    };
+                    result.Add(linkModel);
+                }
+            };
+
+            return result;
+        }
+
         public async Task<List<ChunkStatusReportModel>> GetReadinessStatisticsReport()
         {
             return await GetStatusItems().ConfigureAwait(true);

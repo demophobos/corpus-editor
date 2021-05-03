@@ -188,15 +188,6 @@ namespace Document
             await reportViewer.GetReport(ReportTypeEnum.ParallelText).ConfigureAwait(true);
         }
 
-        private void mnuTextReportTextCommented_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void mnuTextReportParallelTextCommented_Click(object sender, EventArgs e)
-        {
-
-        }
         #endregion
 
         #region Menu Chunk Report
@@ -265,6 +256,17 @@ namespace Document
             await reportViewer.GetReport(ReportTypeEnum.ReadinessStatistics).ConfigureAwait(true);
         }
 
+        #endregion
+
+        #region Menu Note Report
+        private async void mnuNoteUsage_Click(object sender, EventArgs e)
+        {
+            var reportViewer = new ReportBrowser(DocumentProcess);
+
+            reportViewer.Show(dockPanel1, DockState.Document);
+
+            await reportViewer.GetReport(ReportTypeEnum.NoteUsage).ConfigureAwait(true);
+        }
         #endregion
 
         #endregion

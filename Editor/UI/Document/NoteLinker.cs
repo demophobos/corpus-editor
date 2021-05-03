@@ -153,6 +153,8 @@ namespace Document
                 }
             }
 
+            await _documentProcess.GetNoteLinksByHeader().ConfigureAwait(true);
+
             DialogResult = DialogResult.OK;
         }
 

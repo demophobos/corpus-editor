@@ -119,6 +119,8 @@
     <Compile Include="Query\ProjectQuery.cs" />
     <Compile Include="Query\TaxonomyQuery.cs" />
     <Compile Include="Report\ElementStatReportModel.cs" />
+    <Compile Include="Report\NoteLinkReportModel.cs" />
+    <Compile Include="Report\NoteReportModel.cs" />
     <Compile Include="Report\PosReportModel.cs" />
     <Compile Include="TaxonomyModel.cs" />
     <Compile Include="UserModel.cs" />

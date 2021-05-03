@@ -52,7 +52,11 @@ namespace Document
 
             treeView1.Nodes.Clear();
 
-            _documentProcess.Indeces = await _documentProcess.GetIndecesByHeader().ConfigureAwait(true);
+            await _documentProcess.GetIndecesByHeader().ConfigureAwait(true);
+
+            await _documentProcess.GetNotesByHeader().ConfigureAwait(true);
+
+            await _documentProcess.GetNoteLinksByHeader().ConfigureAwait(true);
 
             txtSearchNode.Enabled = btnPublish.Enabled = _documentProcess.Indeces.Count > 0;
 

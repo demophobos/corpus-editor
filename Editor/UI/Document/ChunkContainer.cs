@@ -66,7 +66,7 @@ namespace Document
             toolStrip1.Enabled = true;
         }
 
-        private async void ChunkExplorer_EnablePublishing(object sender, bool e)
+        private void ChunkExplorer_EnablePublishing(object sender, bool e)
         {
             btnPublishChunk.Enabled = e;
 
@@ -74,7 +74,7 @@ namespace Document
 
             btnPublishChunk.ToolTipText = "Изменения не опубликованы";
 
-            await _noteViewer.LoadData(_chunk).ConfigureAwait(true);
+            _noteViewer.LoadData(_chunk);
         }
 
         private async void ChunkContainer_LoadAsync(object sender, EventArgs e)
@@ -123,7 +123,7 @@ namespace Document
 
                 await _interpContainer.LoadData(_chunk).ConfigureAwait(true);
 
-                await _noteViewer.LoadData(_chunk).ConfigureAwait(true);
+                _noteViewer.LoadData(_chunk);
 
             }
             else

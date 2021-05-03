@@ -6,10 +6,13 @@
         ChunkWithUndefinedWord,
         ReadinessStatistics,
         Text,
+        TextWithNotes,
         ParallelText,
+        ParallelTextWithNotes,
         VersionAndOriginal,
         PosStatistics,
         ChunkUnpublished,
-        IndexWithEmptyText
+        IndexWithEmptyText,
+        NoteUsage
     }
 }
