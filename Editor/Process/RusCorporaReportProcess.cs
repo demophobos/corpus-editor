@@ -170,9 +170,9 @@ namespace Process
                 }
             }
 
-            sb.AppendLine($" [{interpretations[0].SourceHeaderCode}, {interpretations[0].SourceIndexName}]</se>");
+            sb.AppendLine($" <noindex>[{interpretations[0].SourceHeaderCode}, {interpretations[0].SourceIndexName}]</noindex></se>");
 
-            sb.AppendLine($"<se lang=\"{RusCorporaMapper.ConvertLang(interpretations[0].InterpHeaderLang)}\" variant_id=\"1\">{interpretations[0].InterpValue} [{interpretations[0].InterpHeaderCode}, {interpretations[0].InterpIndexName}]</se>");
+            sb.AppendLine($"<se lang=\"{RusCorporaMapper.ConvertLang(interpretations[0].InterpHeaderLang)}\" variant_id=\"1\">{interpretations[0].InterpValue} <noindex>[{interpretations[0].InterpHeaderCode}, {interpretations[0].InterpIndexName}]</noindex></se>");
 
             return sb.ToString();
         }
