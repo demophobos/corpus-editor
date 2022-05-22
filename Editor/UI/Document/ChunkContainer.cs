@@ -117,22 +117,22 @@ namespace Document
 
                 _interpContainer.Show(dockPanel1, DockState.DockBottom);
 
-                _morphSelector.Show(dockPanel1, DockState.DockBottom);
+                //_noteViewer.Show(dockPanel1, DockState.DockBottom);
 
-                _noteViewer.Show(dockPanel1, DockState.DockBottom);
+                _morphSelector.Show(dockPanel1, DockState.DockBottom);
 
                 await _interpContainer.LoadData(_chunk).ConfigureAwait(true);
 
-                _noteViewer.LoadData(_chunk);
+                //_noteViewer.LoadData(_chunk);
 
             }
             else
             {
-                _noteViewer.Show(dockPanel1, DockState.DockBottom);
-
-                _morphSelector.Show(dockPanel1, DockState.DockBottom);
+                //_noteViewer.Show(dockPanel1, DockState.DockBottom);
 
                 _interpContainer.Show(dockPanel1, DockState.DockBottom);
+
+                _morphSelector.Show(dockPanel1, DockState.DockBottom);
             }
 
             _morphSelector.StatusInfoShown += MorphSelector_StatusInfoShown;
