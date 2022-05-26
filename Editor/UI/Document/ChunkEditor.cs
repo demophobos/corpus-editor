@@ -2,6 +2,7 @@
 using Model.Enum;
 using Process;
 using System;
+using System.Text;
 using System.Windows.Forms;
 
 namespace Document
@@ -63,7 +64,30 @@ namespace Document
             {
                 ((RichTextBox)sender).Paste(DataFormats.GetFormat("Text"));
                 e.Handled = true;
+                btnPoeticFormat.Enabled = txtChunk.Lines.Length > 0;
             }
+        }
+
+        private void btnPoeticFormat_Click(object sender, EventArgs e)
+        {
+            var sb = new StringBuilder();
+            for (int i = 0; i < txtChunk.Lines.Length; i++)
+            {
+                if (i > 0 && i % 5 == 0)
+                {
+                    var indexLength = i.ToString().Length * 2;
+                    sb.AppendFormat("{0}{1}{2}", i, new string(' ', 6 - indexLength), txtChunk.Lines[i]);
+                }
+                else
+                {
+                    sb.AppendFormat("{0}{1}", new string(' ', 6), txtChunk.Lines[i]);
+                }
+                if (i <= txtChunk.Lines.Length)
+                {
+                    sb.Append("\n");
+                }
+            }
+            txtChunk.Text = sb.ToString().TrimEnd();
         }
     }
 }
