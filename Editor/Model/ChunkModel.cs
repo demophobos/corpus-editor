@@ -15,7 +15,10 @@ namespace Model
         public string HeaderId { get; set; }
         [JsonProperty("status")]
         public string Status { get; set; }
-
+        [JsonProperty("updated")]
+        public DateTimeOffset Updated { get; set; }
+        [JsonProperty("created")]
+        public DateTimeOffset Created { get; set; }
         public override string ToString()
         {
             return Value;

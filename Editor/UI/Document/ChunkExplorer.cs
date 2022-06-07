@@ -384,7 +384,9 @@ namespace Document
                 IndexId = Chunk.IndexId,
                 Value = Chunk.Value,
                 ValueObj = Chunk.ValueObj,
-                Status = ChunkStatusEnum.Published
+                Status = ChunkStatusEnum.Published,
+                Created = Chunk.Created,
+                Updated = Chunk.Updated
             };
 
             var newValueObj = await ChunkProcess.CreateChunkValueObjs(_elements).ConfigureAwait(true);
@@ -396,6 +398,10 @@ namespace Document
                 Chunk.ValueObj = result.ValueObj;
 
                 Chunk.Status = result.Status;
+
+                Chunk.Updated = result.Updated;
+
+                Chunk.Created = Chunk.Created;
 
                 EnablePublishing.Invoke(this, false);
             }

@@ -1,6 +1,8 @@
 ﻿using Model;
 using Model.Query;
 using Model.View;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -145,11 +147,13 @@ namespace API
 
                 if (string.IsNullOrEmpty(chunk.Id))
                 {
-
+                    chunk.Created = DateTime.UtcNow;
+                    chunk.Updated = DateTime.UtcNow;
                     response = await Client.PostAsJsonAsync("chunks/", chunk).ConfigureAwait(true);
                 }
                 else
                 {
+                    chunk.Updated = DateTime.UtcNow;
                     response = await Client.PutAsJsonAsync($"chunks/{chunk.Id}", chunk).ConfigureAwait(true);
                 }
 

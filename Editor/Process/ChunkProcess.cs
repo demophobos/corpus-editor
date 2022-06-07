@@ -123,7 +123,7 @@ namespace Process
         {
             if (chunk.GetType() != typeof(ChunkModel))
             {
-                chunk = new ChunkModel { HeaderId = chunk.HeaderId, Id = chunk.Id, IndexId = chunk.IndexId, Value = chunk.Value, ValueObj = chunk.ValueObj };
+                chunk = new ChunkModel { HeaderId = chunk.HeaderId, Id = chunk.Id, IndexId = chunk.IndexId, Value = chunk.Value, ValueObj = chunk.ValueObj, Created = chunk.Created, Updated = chunk.Updated };
             }
             chunk.Status = status;
 

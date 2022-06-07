@@ -91,6 +91,8 @@ namespace Document
 
             _chunk = await ChunkProcess.GetChunkByQuery(query).ConfigureAwait(true);
 
+            DisplayChunkDates();
+
             _morphSelector = new MorphSelector(Index);
 
             _morphSelector.ElementMorphAccepted += MorphSelector_ElementMorphAccepted;
@@ -166,6 +168,8 @@ namespace Document
 
                 _chunkExplorer = new ChunkExplorer(_chunk);
 
+                DisplayChunkDates();
+
                 _chunkExplorer.ElementSelected += ChunkExplorer_ElementSelected;
 
                 _chunkExplorer.EnablePublishing += ChunkExplorer_EnablePublishing;
@@ -199,6 +203,8 @@ namespace Document
 
                 _chunk = await ChunkProcess.GetChunkByQuery(query).ConfigureAwait(true);
 
+                DisplayChunkDates();
+
                 _chunkExplorer = new ChunkExplorer(_chunk);
 
                 _chunkExplorer.Show(dockPanel1, DockState.Document);
@@ -208,6 +214,23 @@ namespace Document
                 _chunkExplorer.EnablePublishing += ChunkExplorer_EnablePublishing;
 
                 _chunkExplorer.ElementsLoaded += ChunkExplorer_ElementsLoaded;
+            }
+        }
+
+        private void DisplayChunkDates()
+        {
+            if (_chunk != null)
+            {
+                createdSep.Visible = true;
+
+                lblCreated.Text = $"{ _chunk.Created.ToLocalTime().ToString("MM/dd/yyyy HH:mm:ss") }";
+
+                if (_chunk.Updated != _chunk.Created)
+                {
+                    updatedSep.Visible = true;
+
+                    lblUpdated.Text = $"{ _chunk.Updated.ToLocalTime().ToString("MM/dd/yyyy HH:mm:ss") }";
+                }
             }
         }
 
@@ -297,6 +320,8 @@ namespace Document
             StatusInfoShown?.Invoke(this, $"Изменения фрагмента {Index.Name} опубликованы");
 
             btnPublishChunk.ToolTipText = "Изменения опубликованы";
+
+            DisplayChunkDates();
         }
         #endregion
 
@@ -328,7 +353,9 @@ namespace Document
                     IndexId = _chunk.IndexId,
                     Status = ChunkStatusEnum.Changed,
                     Value = ReplaceDialog.Output,
-                    ValueObj = _chunk.ValueObj
+                    ValueObj = _chunk.ValueObj,
+                    Created = _chunk.Created,
+                    Updated = _chunk.Updated
                 };
 
                 await ChunkProcess.SaveChunkAndElements(chunk, _documentProcess.Header.Lang).ConfigureAwait(true);

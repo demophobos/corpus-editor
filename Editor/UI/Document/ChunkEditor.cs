@@ -43,7 +43,9 @@ namespace Document
                 IndexId = chunk.IndexId,
                 Value = chunk.Value,
                 HeaderId = _index.HeaderId,
-                Status = ChunkStatusEnum.Changed
+                Status = ChunkStatusEnum.Changed,
+                Created = chunk.Created,
+                Updated = chunk.Updated
             };
 
             await ChunkProcess.SaveChunkAndElements(chunkBase, _ruleLang).ConfigureAwait(true);

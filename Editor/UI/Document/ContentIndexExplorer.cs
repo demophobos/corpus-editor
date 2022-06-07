@@ -358,7 +358,9 @@ namespace Document
                     IndexId = chunkView.IndexId,
                     Value = chunkView.Value,
                     ValueObj = chunkView.ValueObj,
-                    Status = ChunkStatusEnum.Published
+                    Status = ChunkStatusEnum.Published,
+                    Created = chunkView.Created,
+                    Updated = chunkView.Updated
                 };
 
                 var elements = await ElementProcess.GetElements(new ElementQuery { chunkId = chunk.Id }).ConfigureAwait(true);
